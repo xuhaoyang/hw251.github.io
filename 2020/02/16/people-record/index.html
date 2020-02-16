@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="test_blog, Hexo">
-    <meta name="description" content="test_blog | Hexo">
+    <meta name="keywords" content="people_record, Hexo">
+    <meta name="description" content="人员记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>test_blog | Hexo</title>
+    <title>people_record | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -234,15 +234,28 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = 'b87c40d83d654d196a4087cf6eead620a7fc2d79853d647b087a9c4c1ff62707';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">test_blog</h1>
+                    <h1 class="description center-align post-title">people_record</h1>
                 </div>
             </div>
         </div>
@@ -388,7 +401,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="人员记录"><a href="#人员记录" class="headerlink" title="人员记录"></a>人员记录</h1>
             </div>
             <hr/>
 
@@ -413,7 +426,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://uhaoyang.github.io/2020/02/16/test-blog/">https://uhaoyang.github.io/2020/02/16/test-blog/</a>
+                    <a href="https://uhaoyang.github.io/2020/02/16/people-record/">https://uhaoyang.github.io/2020/02/16/people-record/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -619,19 +632,19 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2020/02/16/test-blog/">
+                <a href="/2020/02/16/people-record/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="test_blog">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="people_record">
                         
-                        <span class="card-title">test_blog</span>
+                        <span class="card-title">people_record</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            人员记录
                         
                     </div>
                     <div class="publish-info">
@@ -657,19 +670,19 @@
                 本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/16/test-blog/">
+                <a href="/2020/02/16/people-record/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="test_blog">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="people_record">
                         
-                        <span class="card-title">test_blog</span>
+                        <span class="card-title">people_record</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            人员记录
                         
                     </div>
                     <div class="publish-info">
