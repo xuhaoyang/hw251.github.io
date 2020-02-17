@@ -4,14 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ClashX, 记录小站">
-    <meta name="description" content="
-系统要求: Mac OS 10.5 及以上
-
-ClashX 不兼容SSR 协议
-
-
-首次使用 ClashX 时，macOS 会提醒你此应用来自未知开发者，请允许打开此应用。ClashX 首次运行会提示是否安装帮助程序（Helper）。此帮">
+    <meta name="keywords" content="Clash 使用教程, 记录小站">
+    <meta name="description" content="Clash 是支持Windows、Linux、macOS、Android等多平台的代理软件。支持协议shadowsocks/V2ray。是主要以规则导向型软件。
+Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模式。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +14,7 @@ ClashX 不兼容SSR 协议
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ClashX | 记录小站</title>
+    <title>Clash 使用教程 | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -256,12 +251,12 @@ ClashX 不兼容SSR 协议
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ClashX</h1>
+                    <h1 class="description center-align post-title">Clash 使用教程</h1>
                 </div>
             </div>
         </div>
@@ -407,32 +402,23 @@ ClashX 不兼容SSR 协议
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
-<li><p>系统要求: Mac OS 10.5 及以上</p>
-<blockquote>
-<p>ClashX 不兼容SSR 协议</p>
-</blockquote>
-<blockquote>
-<p>首次使用 ClashX 时，macOS 会提醒你此应用来自未知开发者，请允许打开此应用。<br><br>ClashX 首次运行会提示是否安装帮助程序（Helper）。此帮助程序用于设置系统代理，否则每次你通过 ClashX 变更系统系统状态（打开或关闭）时都需要输入密码，请点击「Install」，之后 macOS 会提示输入用户密码。</p>
-</blockquote>
-<p><img src="clashx1.png" alt="clashx1"></p>
-</li>
+                <p>Clash 是支持Windows、Linux、macOS、Android等多平台的代理软件。支持协议shadowsocks/V2ray。是主要以规则导向型软件。</p>
+<h2 id="Clash-设置介绍"><a href="#Clash-设置介绍" class="headerlink" title="Clash 设置介绍"></a>Clash 设置介绍</h2><p>这里的设置，主要是指Clash软件当前Proxy运行模式。<br>有<code>Global-全局</code>、<code>Rule-规则</code>、<code>Direct-直连</code>。</p>
+<p><code>Global</code> 指全部数据通过选择的节点进行网络访问<br><code>Rule</code> 请求根据根据配置决定是走翻墙还是不翻墙(往下会进行说明)<br><code>Direct</code> 请求不进行代理(翻墙)</p>
+<p>Clash for Windows 相关设置如图<br><img src="clashl1.jpg" alt=""></p>
+<p>Clash for Android 暂无此类设置</p>
+<p>ClashX(Mac OS) 相关设置如图<br><img src="clashl2.jpg" alt=""></p>
+<h3 id="Clash-代理组介绍"><a href="#Clash-代理组介绍" class="headerlink" title="Clash 代理组介绍"></a>Clash 代理组介绍</h3><p>这里以ClashX的图进行介绍，其他系统的Clash可以参考</p>
+<p>默认情况下什么都不改动，是可以自动翻墙。<br>图中的分组，是来自DlerCloud。</p>
+<p><img src="clashl3.jpg" alt=""></p>
+<p><code>Auto - UrlTest</code> 自动根据网络延迟选择节点，会选择延迟最低的服务器。但延迟低不代表速度快。<br><code>Proxy</code> 代理组，主要的外国网站会走这个代理组，如图选择了<code>Auto - UrlTest</code>，则是根据<code>Auto - UrlTest</code>组自动选择节点进行翻墙。<br><code>Domestic</code> 代理组，主要国内重点网站/国内IP会走这个代理组，如图改代理组选择了<code>DIRECT</code>，则是直连<br><code>Others</code> 代理组，部分特殊外国网站走这个代理组。<br><code>Adblock</code> 代理组，部分广告网址 会走这个代理组，如图选择了<code>REJECT</code>(阻断)，匹配中的广告将无法显示。<br><code>Apple</code> 代理组，Apple 有关服务会走这个代理组。<br><code>AsinTV</code> 代理组，如 youku，爱奇艺，bilibil等中国大陆视频网站走这个代理组。<br><code>GlobalTV</code> 代理组，如Youtube等国外视频网站走这个代理组。<br><code>Telegram</code> 代理组，Telegram 聊天软件走这个代理组<br><code>Speedtest</code> 代理组，speedtest.net测速走这个代理组<br><code>Mircrosoft</code> 代理组，微软相关网络服务走这个代理组。</p>
+<p>每个代理组中，所选择的节点，则为该代理组所匹配到的网站，会从哪个节点进行访问。</p>
+<p>但有一些共有参数：</p>
+<ul>
+<li><code>DIRECT</code> 直连</li>
+<li><code>REJECT</code> 阻断</li>
 </ul>
-<ol>
-<li>从右上角的状态栏找到 ClashX 图标并进行鼠标右键</li>
-<li>通过 配置 - 托管配置 - 管理 点击，等待窗口弹出</li>
-</ol>
-<p><img src="clashx2.jpg" alt="clashx2"></p>
-<ol start="3">
-<li>点击 添加 ，等待窗口弹出</li>
-<li><code>Url</code> 输入 对应的订阅地址，<code>Config Name</code> 可以随意填，点击确定。</li>
-</ol>
-<p><img src="clashx3.jpg" alt="clashx3"></p>
-<ol start="5">
-<li>等待出现配置列表 如图</li>
-</ol>
-<p><img src="clashx4.jpg" alt="clashx4"></p>
-<p>6.点击 [设置为系统代理] 即可<br><img src="clashx5.png" alt="clashx5"></p>
+<p>节点中如果包含<code>back</code>，则为外国用户访问国内服务使用。</p>
 
             </div>
             <hr/>
@@ -458,7 +444,7 @@ ClashX 不兼容SSR 协议
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io/2020/02/17/clashx/">https://xuhaoyang.github.io/2020/02/17/clashx/</a>
+                    <a href="https://xuhaoyang.github.io/2020/02/17/clash-tutorial/">https://xuhaoyang.github.io/2020/02/17/clash-tutorial/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -659,9 +645,10 @@ ClashX 不兼容SSR 协议
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/17/clash-tutorial/">
                     <div class="card-image">
@@ -680,9 +667,9 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -691,6 +678,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -701,24 +689,30 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/16/people-record/">
+                <a href="/2020/02/17/clashx/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="人员记录">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ClashX">
                         
-                        <span class="card-title">人员记录</span>
+                        <span class="card-title">ClashX</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            人员记录一起用名单
+                            
+系统要求: Mac OS 10.5 及以上
+
+ClashX 不兼容SSR 协议
+
+
+首次使用 ClashX 时，macOS 会提醒你此应用来自未知开发者，请允许打开此应用。ClashX 首次运行会提示是否安装帮助程序（Helper）。此帮
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
                             </span>
                         <span class="publish-author">
                             
