@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Git 总结, 记录小站">
-    <meta name="description" content="Git整理
-初始化git生成密钥可以通过命令行ssh-keygen[Windows没有需要安装cmder类似软件支持]，或者PuTTYgen软件生成
-$ ssh-keygen -t rsa -C &amp;quot;497633959@qq.com">
+    <meta name="keywords" content="Custom Build Bilibili ijkplayer, 记录小站">
+    <meta name="description" content="Build Bilibili ijkplayerMacOS 环境Homebrewgit、yasm
+NDK必需 Android NDK 10-14
+https://developer.android.google.cn/ndk/downloa">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +15,7 @@ $ ssh-keygen -t rsa -C &amp;quot;497633959@qq.com">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Git 总结 | 记录小站</title>
+    <title>Custom Build Bilibili ijkplayer | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -252,12 +252,12 @@ $ ssh-keygen -t rsa -C &amp;quot;497633959@qq.com">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Git 总结</h1>
+                    <h1 class="description center-align post-title">Custom Build Bilibili ijkplayer</h1>
                 </div>
             </div>
         </div>
@@ -386,7 +386,7 @@ $ ssh-keygen -t rsa -C &amp;quot;497633959@qq.com">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-26
+                    2020-03-05
                 </div>
                 
 
@@ -403,246 +403,119 @@ $ ssh-keygen -t rsa -C &amp;quot;497633959@qq.com">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Git整理"><a href="#Git整理" class="headerlink" title="Git整理"></a>Git整理</h1><hr>
-<h3 id="初始化git"><a href="#初始化git" class="headerlink" title="初始化git"></a>初始化git</h3><h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><p>可以通过命令行<code>ssh-keygen</code>[Windows没有需要安装cmder类似软件支持]，或者<code>PuTTYgen</code>软件生成</p>
-<pre><code>$ ssh-keygen -t rsa -C &quot;497633959@qq.com&quot;
-Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/xuhaoyang/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /Users/xuhaoyang/.ssh/id_rsa.
-Your public key has been saved in /Users/xuhaoyang/.ssh/id_rsa.pub.
-The key fingerprint is:
-SHA256:LGVPxsHQKFHyMjwcfVNRIZCNpro4ORUHTW6NYhbplSk 497633959@qq.com
-The key&#39;s randomart image is:
-+---[RSA 2048]----+
-|      =B+Bo*+oo. |
-|     oE*B+O...   |
-|     .X=B+=.     |
-|     ooXo+       |
-|      .+S .      |
-|      o.         |
-|     + .         |
-|    = .          |
-|     o           |
-+----[SHA256]-----+</code></pre><p>默认生成密钥，公钥<code>id_rsa.pub</code>和私钥<code>id_rsa</code>，注意私钥必须自己保存不能外泄。</p>
-<h4 id="初始化git-信息"><a href="#初始化git-信息" class="headerlink" title="初始化git 信息"></a>初始化git 信息</h4><pre><code>$ git config --global user.name &quot;Your Name&quot;
-$ git config --global user.email &quot;email@example.com&quot;</code></pre><h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><p>版本库又名仓库，英文名<code>repository</code>。你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。<br>创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：</p>
-<pre><code>$ mkdir learngit
-$ cd learngit
-$ pwd
-/Users/michael/learngit</code></pre><p><code>pwd</code>命令用于显示当前目录。在我的Mac上，这个仓库位于/Users/michael/learngit。<br>第二步，通过<code>git init</code>命令把这个目录变成Git可以管理的仓库：</p>
-<pre><code>$ git init
-Initialized empty Git repository in /Users/michael/learngit/.git/</code></pre><p>一个空的仓库（empty Git repository），细心的读者可以发现当前目录下多了一个<code>.git</code>的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。<br>如果你没有看到<code>.git</code>目录，那是因为这个目录默认是隐藏的，用<code>ls -ah</code>命令就可以看见。</p>
-<p>添加文件到Git仓库，分两步：</p>
+                <h1 id="Build-Bilibili-ijkplayer"><a href="#Build-Bilibili-ijkplayer" class="headerlink" title="Build Bilibili ijkplayer"></a>Build Bilibili ijkplayer</h1><h3 id="MacOS-环境"><a href="#MacOS-环境" class="headerlink" title="MacOS 环境"></a>MacOS 环境</h3><p>Homebrew<br>git、yasm</p>
+<h4 id="NDK"><a href="#NDK" class="headerlink" title="NDK"></a>NDK</h4><p>必需 Android NDK 10-14</p>
+<p><a href="https://developer.android.google.cn/ndk/downloads/older_releases.html" target="_blank" rel="noopener">https://developer.android.google.cn/ndk/downloads/older_releases.html</a></p>
+<h3 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h3><pre><code>export ANDROID_NDK=~/workspace/android/ndk-r10e
+export PATH=$PATH:$ANDROID_NDK</code></pre><h4 id="配置编解码器格式支持"><a href="#配置编解码器格式支持" class="headerlink" title="配置编解码器格式支持"></a>配置编解码器格式支持</h4><p>默认为最少支持，如果足够你使用，可以跳过这一步，否则可以改为以下配置:</p>
 <ul>
-<li><p>第一步，使用命令<code>git add &lt;file&gt;</code>，注意，可反复多次使用，添加多个文件；</p>
-</li>
-<li><p>第二步，使用命令<code>git commit</code>，完成。</p>
-<h3 id="状态命令"><a href="#状态命令" class="headerlink" title="状态命令"></a>状态命令</h3></li>
-<li><p>要随时掌握工作区的状态，使用<code>git status</code>命令。</p>
-</li>
-<li><p>如果git status告诉你有文件被修改过，用git diff可以查看修改内容。git diff顾名思义就是查看difference，显示的格式正是Unix通用的diff格式。</p>
-</li>
+<li>module-default.sh 更多的编解码器/格式</li>
+<li>module-lite-hevc.sh 较少的编解码器/格式(包括 hevc)</li>
+<li>module-lite.sh 较少的编解码器/格式(默认情况)</li>
 </ul>
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><ul>
-<li>可以通过命令<code>git log</code>查看Git的历史记录。如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数。</li>
-<li>Git的<code>commit id</code>是一个SHA1计算出来的一个非常大的数字，用十六进制表示。</li>
-<li>在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>3628164...882e1e0</code>，上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个^比较容易数不过来，所以写成<code>HEAD~100</code>。</li>
-<li>回退到上一版本的操作</li>
-</ul>
-<pre><code>$ git reset --hard HEAD^
-HEAD is now at ea34578 add distributed</code></pre><p>当回退完成之后，如果返回到回退之前的状态的话，可以通过<code>git reflog</code>命令查看git的记录，然后找到想要回退的<code>commit id</code>，就可以使用下面的命令返回到指定的commit。</p>
-<pre><code>git reset --hard commit id</code></pre><h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p>在本地中，一个项目的目录就是一个工作区。<br>版本库，工作区有一个隐藏目录<code>.git</code>，这个不算工作区，而是Git的版本库。Git的版本库里存了很多东西，其中最重要的就是称为<code>stage</code>（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支<code>master</code>，以及指向master的一个指针叫<code>HEAD</code>。</p>
-<p><img src="media/14729548203031/1458722977422.png" alt="1458722977422"></p>
-<p>我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
-<ol>
-<li>用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</li>
-<li>用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。</li>
-</ol>
-<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个<code>master</code>分支，所以，<code>git commit</code>就是往<code>master</code>分支上提交更改。可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
-<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git管理的是修改，当你用<code>git add</code>命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以，<code>git commit</code>只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。</p>
-<h4 id="修改commit时间"><a href="#修改commit时间" class="headerlink" title="修改commit时间"></a>修改commit时间</h4><pre><code>git commit --amend --date=&quot;$(date -R)&quot;</code></pre><h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>使用命令git checkout – file可以丢弃工作的的修改。这里存在两种情况：</p>
-<ol>
-<li>一种是file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</li>
-<li>一种是file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。总之，就是让这个文件回到最近一次git commit或git add时的状态。</li>
-</ol>
-<p><code>git checkout -- file</code>命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令。</p>
-<p>撤销修改有以下几个场景：</p>
-<ol>
-<li>当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</li>
-<li>当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD file</code>，就回到了场景1，第二步按场景1操作。</li>
-<li>已经提交了不合适的修改到版本库时，想要撤销本次提交，可以使用版本回退。</li>
-</ol>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>一般情况下，可以直接在文件管理器中把没用的文件删了，或者用rm命令删除。</p>
-<pre class=" language-shell"><code class="language-shell">$ rm test.txt</code></pre>
-<p>这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了。<br>现在有两种情况，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且<code>git commit</code>。<br>另一种情况是删错了，因为版本库里还有，所以可以通过命令<code>git checkout --file</code>来进行“一键还原”。</p>
-<h3 id="撤出暂存区（或从暂存区删除）"><a href="#撤出暂存区（或从暂存区删除）" class="headerlink" title="撤出暂存区（或从暂存区删除）"></a>撤出暂存区（或从暂存区删除）</h3><p>使用 <code>git rm --cached &lt;file&gt;...</code> 撤出暂存区</p>
-<h3 id="查看日志log"><a href="#查看日志log" class="headerlink" title="查看日志log"></a>查看日志log</h3><h4 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h4><p><code>-p</code> 选项展开显示每次提交的内容差异</p>
-<p><code>--word-diff</code> 从而获取单词层面上的对比<br>git log –word-diff -U1<br><img src="media/14729548203031/15275755278746.jpg" alt="-w480"></p>
-<p><code>--stat</code> 仅显示简要的增改行数统计<br><img src="media/14729548203031/15275754061918.jpg" alt="-w480"></p>
-<p><code>--graph</code> 一些 ASCII 字符串表示的简单图形</p>
-<pre><code> git log --oneline --stat --decorate --pretty=format:&quot;%h - %an, %ar : %s&quot;</code></pre><table>
-<thead>
-<tr>
-<th>选项</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>%H</td>
-<td>提交对象（commit）的完整哈希字串</td>
-</tr>
-<tr>
-<td>%h</td>
-<td>提交对象的简短哈希字串</td>
-</tr>
-<tr>
-<td>%T</td>
-<td>树对象（tree）的完整哈希字串</td>
-</tr>
-<tr>
-<td>%t</td>
-<td>树对象的简短哈希字串</td>
-</tr>
-<tr>
-<td>%P</td>
-<td>父对象（parent）的完整哈希字串</td>
-</tr>
-<tr>
-<td>%p</td>
-<td>父对象的简短哈希字串</td>
-</tr>
-<tr>
-<td>%an</td>
-<td>作者（author）的名字</td>
-</tr>
-<tr>
-<td>%ae</td>
-<td>作者的电子邮件地址</td>
-</tr>
-<tr>
-<td>%ad</td>
-<td>作者修订日期（可以用 -date= 选项定制格式）</td>
-</tr>
-<tr>
-<td>%ar</td>
-<td>作者修订日期，按多久以前的方式显示</td>
-</tr>
-<tr>
-<td>%cn</td>
-<td>提交者(committer)的名字</td>
-</tr>
-<tr>
-<td>%ce</td>
-<td>提交者的电子邮件地址</td>
-</tr>
-<tr>
-<td>%cd</td>
-<td>提交日期</td>
-</tr>
-<tr>
-<td>%cr</td>
-<td>提交日期，按多久以前的方式显示</td>
-</tr>
-<tr>
-<td>%s</td>
-<td>提交说明</td>
-</tr>
-</tbody></table>
-<pre><code>git config --global alias.lm  &quot;log --no-merges --color --date=format:&#39;%Y-%m-%d %H:%M:%S&#39; --author=&#39;XHY&#39; --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;
+<pre><code>git clone https://github.com/bilibili/ijkplayer.git
+
+// 这步会下载 FFmpeg 源码，并自动执行 init-config.sh 和 ./init-android-libyuv.sh
+./init-android.sh
+// 如果需要启用 ssl、https 支持，执行这步
+./init-android-openssl.sh
+// 其他文件有待探索
+// ./init-android-j4a.sh
+// ./init-android-prof.sh
+// ./init-android-libsoxr.sh
+// ./init-android-exo.sh
 
 
-git config --global alias.lms  &quot;log --no-merges --color --stat --date=format:&#39;%Y-%m-%d %H:%M:%S&#39; --author=&#39;XHY&#39; --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;
+//build extra
+cd android/contrib
+./compile-ffmpeg.sh clean
+./compile-ffmpeg.sh all
 
 
-git config --global alias.ls &quot;log --no-merges --color --graph --date=format:&#39;%Y-%m-%d %H:%M:%S&#39; --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;
+cd ..
+./compile-ijk.sh all</code></pre><h4 id="NDK-1"><a href="#NDK-1" class="headerlink" title="NDK"></a>NDK</h4><p>注意申明<code>ANDROID_NDK</code>为指定版本的</p>
+<pre><code># export ANDROID_SDK=&lt;your sdk path&gt;
+# export ANDROID_NDK=&lt;your ndk path&gt;</code></pre><h4 id="0-8-8-Build"><a href="#0-8-8-Build" class="headerlink" title="0.8.8 Build"></a>0.8.8 Build</h4><p><code>module.sh</code> add this </p>
+<pre><code>export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-linux-perf&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bzlib&quot;</code></pre><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://www.jianshu.com/p/11493731ea2c" target="_blank" rel="noopener">https://www.jianshu.com/p/11493731ea2c</a></p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><pre><code>// 添加格式、rtsp(tcp)支持
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mpeg4&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mp2*&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=ac3&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mjpeg&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mjpeg&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=rtp&quot;
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=tcp&quot;</code></pre><p>注释掉</p>
+<pre><code>export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=rtp&quot;</code></pre><h3 id="Gradlew"><a href="#Gradlew" class="headerlink" title="Gradlew"></a>Gradlew</h3><pre><code>#强制清除 gradle 依赖缓存
+./gradlew build --refresh-dependencies  </code></pre><h3 id="问题集合"><a href="#问题集合" class="headerlink" title="问题集合"></a>问题集合</h3><p>1、IJKPlayer 不像系统播放器会给你旋转视频角度，所以你需要通过<code>onInfo</code>的<code>what == IMediaPlayer.MEDIA_INFO_VIDEO_ROTATION_CHANGED</code>去获取角度，自己旋转画面；或者开启硬解硬解码，不过硬解码容易造成黑屏无声</p>
+<pre><code>mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
+mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec-auto-rotate&quot;, 1);
+mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec-handle-resolution-change&quot;, 1);</code></pre><p>2、 IJKPlayer 出现黑色有声音没图像，看看你的视频编码是不是H264，pixel format是否存在，音频编码是不是AAC？默认IJKPlayer是不支持3pg（支持它干啥(・-・)？），不支持mepg（比如这个库RecordVideoDemo ）,不支持AMR。所以如果你真的想要支持，那么参考这个#1961，打开mpeg支持，重新编ffmpeg，然后通过硬解码播放mpeg；或者通过系统的录制VideoRecord；或者选另外的JAVACV录制封装FFmpegRecorder。</p>
+<pre><code>ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec_mpeg4&quot;, 1);</code></pre><p>3、 **快进和慢放接口，已经支持全版本，如果遇到声调问题，可以设置：</p>
+<pre><code>ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;soundtouch&quot;, 1);</code></pre><p>4、暂停的时候，退到后台再回到前台，画面黑了？</p>
+<p>1、<br>这时候个人处理方式是，可以在暂停的时候，通过TextureView.getBitmap(point.x, point.y);获取到暂停的画面，用ImageView显示它，在onSurfaceTextureUpdated的时候隐藏ImageView，来实现画面的衔接。</p>
+<p>2、暂停时绘制静态画面多TextureView的Surface上，详细参考GSYVideoPlayer。</p>
+<p>5、一些视频返回码</p>
+<pre><code>int MEDIA_INFO_VIDEO_RENDERING_START = 3;//视频准备渲染
+int MEDIA_INFO_BUFFERING_START = 701;//开始缓冲
+int MEDIA_INFO_BUFFERING_END = 702;//缓冲结束
+int MEDIA_INFO_VIDEO_ROTATION_CHANGED = 10001;//视频选择信息
+int MEDIA_ERROR_SERVER_DIED = 100;//视频中断，一般是视频源异常或者不支持的视频类型。
+int MEDIA_ERROR_IJK_PLAYER = -10000,//一般是视频源有问题或者数据格式不支持，比如音频不是AAC之类的
+int MEDIA_ERROR_NOT_VALID_FOR_PROGRESSIVE_PLAYBACK = 200;//数据错误没有有效的回收</code></pre><p>6、某些视频在SeekTo的时候，会跳回到拖动前的位置，这是因为视频的关键帧的问题，通俗一点就是FFMPEG不兼容，视频压缩过于厉害，seek只支持关键帧，出现这个情况就是原始的视频文件中i 帧比较少，可开启以下来解决：</p>
+<pre><code>setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;enable-accurate-seek&quot;, 1);</code></pre><p>7、下载速度可以通过IjkMediaPlayer的getTcpSpeed获取。</p>
+<p>8、高分辨率开启硬解码，不支持的话会自动切换到软解，就算开启mediacodec，如果设备不支持，显示的解码器也是avcodec软解。</p>
+<p>9、ijkMediaPlayer.setOption可配置的对应头文件参考：ff_ffplay_options。</p>
+<p>10、缓冲进度条不到100，官方表示我就不保证都100，所以一般我都是：</p>
+<pre><code>//95这个数值可能不准确，有些时候可能还需要低一些
+if (secProgress &gt; 95) secProgress = 100;</code></pre><p>11、上面1、2、6的问题，在IJK封装的EXOPlayer和MediaPlayer都不会有问题，兼容上确实强过IJKPlayer，但是它们在细节上，却没有IJK处理的好，如EXOPlayer：退到后再回到前台、切换渲染控件的黑屏一段时间问题，除了用seekto之外目前没发现其他办法，这样的体验让我最后还是选择IJKPlayer。</p>
+<p>12、设置cookie 可以通过ijkPlayer的public void setDataSource(String path, Map&lt;String, String&gt; headers) 的header实现设置，参考ijkPlayer的issues-1150，headers也是在内部被转化为何issuses一样的setOption方法</p>
+<p>13、多个分片播放的功能，请查阅:</p>
+<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/64" target="_blank" rel="noopener">issues64-一个视频，多个视频片段问题</a><br><a href="https://github.com/Bilibili/ijkplayer/issues/490" target="_blank" rel="noopener">issues490分段视频</a><br><a href="https://www.jianshu.com/p/ea794a357b48" target="_blank" rel="noopener">ijkplayer-ffmpeg之concat</a></p>
+<p>14、硬解码黑屏相关issuse以及建议<br><a href="https://github.com/Bilibili/ijkplayer/issues/1324" target="_blank" rel="noopener">android用硬解码播放器切后台恢复问题</a></p>
+<p>14、硬解码黑屏相关issuse以及建议</p>
+<p><a href="https://github.com/Bilibili/ijkplayer/issues/1324" target="_blank" rel="noopener">bilibili-issuse-1324</a></p>
+<p>15、出现声音画面不同步</p>
+<p>1、关了硬解码。</p>
+<p>2、参考如下：</p>
+<p><a href="http://www.jianshu.com/p/a5cf04181f3d" target="_blank" rel="noopener">http://www.jianshu.com/p/a5cf04181f3d</a><br>设置视频的倍速：<br>[options setPlayerOptionIntValue:10 forKey:@”framedrop”];<br>mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, “framedrop”, 60);</p>
+<p>16、rtsp播放失败问题</p>
+<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/232" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/232</a></p>
+<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/207" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/207</a></p>
+<p>17、m3u8拖动seek之后，加载很长时间</p>
+<p><a href="https://github.com/Bilibili/ijkplayer/issues/2874" target="_blank" rel="noopener">https://github.com/Bilibili/ijkplayer/issues/2874</a></p>
+<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/252" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/252</a></p>
+<p>18、m3u8本地播放问题</p>
+<pre><code>ijkplayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;protocol_whitelist&quot;, &quot;crypto,file,http,https,tcp,tls,udp&quot;); </code></pre><p>19、断网自动重新连接<br>url前接上ijkhttphook:，如</p>
+<p>String url = “ijkhttphook:<a href="http://baobab.wdjcdn.com/14564977406580.mp4&quot;" target="_blank" rel="noopener">http://baobab.wdjcdn.com/14564977406580.mp4&quot;</a>;<br>然后设置</p>
+<pre class=" language-((IjkMediaPlayer)mediaPlayer).setOnNativeInvokeListener(new"><code class="language-((IjkMediaPlayer)mediaPlayer).setOnNativeInvokeListener(new">            @Override
+            public boolean onNativeInvoke(int i, Bundle bundle) {
+                return true;
+            }
+        })</code></pre>
+<p>20、url切换400（http与https域名共用）</p>
+<pre><code>ijkplayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;dns_cache_clear&quot;, 1);</code></pre><p>21、Rtsp优化</p>
+<pre><code>//硬解码：1、打开，0、关闭
+//mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
+//软解码：1、打开，0、关闭
+//mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;videotoolbox&quot;, 0);
 
+//rtsp设置 https://ffmpeg.org/ffmpeg-protocols.html#rtsp
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;rtsp_transport&quot;, &quot;tcp&quot;);
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;rtsp_flags&quot;, &quot;prefer_tcp&quot;);
 
-git config --global alias.lss &quot;log --no-merges --color --stat --graph --date=format:&#39;%Y-%m-%d %H:%M:%S&#39; --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</code></pre><p><img src="media/14729548203031/15275769609397.jpg" alt="-w480"></p>
-<h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><p>Git鼓励大量使用分支：<br>查看分支：<code>git branch</code><br>创建分支：<code>git branch &lt;name&gt;</code><br>切换分支：<code>git checkout &lt;name&gt;</code><br>创建+切换分支：<code>git checkout -b &lt;name&gt;</code><br>合并某分支到当前分支：<code>git merge &lt;name&gt;</code><br>删除分支：<code>git branch -d &lt;name&gt;</code><br>参考文章：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="noopener">创建和合并分支</a></p>
-<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>合并分支时出现冲突的情况：</p>
-<pre><code>$ git merge feature1
-Auto-merging readme.txt
-CONFLICT (content): Merge conflict in readme.txt
-Automatic merge failed; fix conflicts and then commit the result.</code></pre><p>通过使用命令<code>git status</code>可以查看冲突的文件。Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容。用<code>git log --graph</code>命令可以看到分支合并图。</p>
-<h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><p>通常，合并分支时，如果可能，Git会用<code>Fast forward</code>模式，就是使用命令<code>git merge --no-ff -m &quot;message&quot; branch</code>，但这种模式下，删除分支后，会丢掉分支信息。如果要强制禁用<code>Fast forward</code>模式，Git就会在<code>merge</code>时生成一个新的<code>commit</code>，这样，从分支历史上就可以看出分支信息。</p>
-<h3 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h3><p>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；<br>当手头工作没有完成时，先把工作现场<code>git stash</code>一下，然后去修复bug，修复后，再<code>git stash pop</code>，回到工作现场。</p>
-<h3 id="feature分支"><a href="#feature分支" class="headerlink" title="feature分支"></a>feature分支</h3><p>开发一个新<code>feature</code>，最好新建一个分支；<br>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
-<h3 id="多人协助"><a href="#多人协助" class="headerlink" title="多人协助"></a>多人协助</h3><h5 id="查看远程库"><a href="#查看远程库" class="headerlink" title="查看远程库"></a>查看远程库</h5><p>要查看远程库的信息，用<code>git remote</code></p>
-<pre><code>$ git remote
-origin</code></pre><p>或者，用<code>git remote -v</code>显示更详细的信息：</p>
-<pre><code>$ git remote -v
-origin  git@github.com:michaelliao/learngit.git (fetch)
-origin  git@github.com:michaelliao/learngit.git (push)</code></pre><h5 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h5><p>远程仓库还为空时，或推送到新的一个远程仓库，与本地关联，使用<code>git remote add [origin名字] [git@github.com:michaelliao/learngit.git]</code></p>
-<p>添加后，远程库的名字就是<code>origin</code>，这是Git默认的叫法，也可以改成别的，但是<code>origin</code>这个名字一看就知道是远程库。</p>
-<p>下一步，就可以把本地库的所有内容推送到远程库上：</p>
-<pre><code>$ git push -u origin master
-Counting objects: 19, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (19/19), done.
-Writing objects: 100% (1a9/19), 13.73 KiB, done.
-Total 23 (delta 6), reused 0 (delta 0)
-To git@github.com:michaelliao/learngit.git
- * [new branch]      master -&gt; master
-Branch master set up to track remote branch master from origin.</code></pre><h5 id="取消远程与本地库关联"><a href="#取消远程与本地库关联" class="headerlink" title="取消远程与本地库关联"></a>取消远程与本地库关联</h5><pre><code>git remote remove [origin/名字]</code></pre><h5 id="抓取分支"><a href="#抓取分支" class="headerlink" title="抓取分支"></a>抓取分支</h5><p>多人协作时，大家都会往<code>master</code>和<code>dev</code>分支上推送各自的修改。<br>当你的小伙伴从远程库<code>clone</code>时，默认情况下，你的小伙伴只能看到本地的<code>master</code>分支。<br>现在，你的小伙伴要在<code>dev</code>分支上开发，就必须创建远程<code>origin</code>的<code>dev</code>分支到本地，于是他用这个命令创建本地<code>dev</code>分支：</p>
-<pre><code>$ git checkout -b dev origin/dev</code></pre><p>如果克隆指定分支</p>
-<pre><code>$ git clone -b dev [地址]</code></pre><p>现在，他就可以在<code>dev</code>上继续修改，然后，时不时地把<code>dev</code>分支<code>push</code>到远程。<br>你的小伙伴已经向<code>origin/dev</code>分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送。这时就会推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用<code>git pull</code>把最新的提交从<code>origin/dev</code>抓下来，然后，在本地合并，解决冲突，再推送。有时<code>git pull</code>也会失败，原因是没有指定本地<code>dev</code>分支与远程<code>origin/dev</code>分支的链接，根据提示，设置<code>dev</code>和origin/dev的链接（建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code>）：</p>
-<pre><code>$ git branch --set-upstream dev origin/dev
-Branch dev set up to track remote branch dev from origin.</code></pre><p>再pull：</p>
-<pre><code>$ git pull
-Auto-merging hello.py
-CONFLICT (content): Merge conflict in hello.py
-Automatic merge failed; fix conflicts and then commit the result.</code></pre><p>这回git pull成功。</p>
-<h3 id="推送本地分支到远程新分支"><a href="#推送本地分支到远程新分支" class="headerlink" title="推送本地分支到远程新分支"></a>推送本地分支到远程新分支</h3><p>命令<code>git push origin &lt;本地分支name&gt;:&lt;远程分支name&gt;</code>，将本地推送的远程新分支，注意推送成功后，再次用<code>git push</code>是无法直接推送成功，</p>
-<pre><code>git push origin dev:dev</code></pre><h3 id="强制覆盖本地文件"><a href="#强制覆盖本地文件" class="headerlink" title="强制覆盖本地文件"></a>强制覆盖本地文件</h3><pre><code>git fetch --all  
-git reset --hard origin/master 
-git pull</code></pre><h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p>如果不再需要某个远程分支了，比如搞定了某个特性并把它合并进了远程的 <code>master</code> 分支（或任何其他存放稳定代码的分支），可以用这个非常无厘头的语法来删除它：<code>git push [远程名] :[分支名]</code>。如果想在服务器上删除 <code>serverfix</code> 分支，运行下面的命令：</p>
-<pre><code>$ git push origin :serverfix
-To git@github.com:schacon/simplegit.git
- - [deleted]         serverfix</code></pre><h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><p>发布一个版本时，我们通常先在版本库中打一个标签，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。<br>Git的标签虽然是版本库的快照，但其实它就是指向某个<code>commit</code>的指针，<br>所以，创建和删除标签都是瞬间完成的。</p>
-<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><ol>
-<li>命令<code>git tag &lt;name&gt;</code>用于新建一个标签，默认为<code>HEAD</code>，也可以指定一个<code>commit id</code>；</li>
-<li><code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息；</li>
-<li><code>git tag -s &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以用PGP签名标签；</li>
-<li>命令<code>git tag</code>可以查看所有标签。</li>
-</ol>
-<h3 id="操作标签"><a href="#操作标签" class="headerlink" title="操作标签"></a>操作标签</h3><ol>
-<li>命令<code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签；</li>
-<li>命令<code>git push origin --tags</code>可以推送全部未推送过的本地标签；</li>
-<li>命令<code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</li>
-<li>命令<code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</li>
-</ol>
-<h3 id="优雅的删除子模块"><a href="#优雅的删除子模块" class="headerlink" title="优雅的删除子模块"></a>优雅的删除子模块</h3><pre class=" language-shell"><code class="language-shell"># 逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空
-git submodule deinit {MOD_NAME} 
-# 删除.gitmodules中记录的模块信息（--cached选项清除.git/modules中的缓存）
-git rm --cached {MOD_NAME} 
-# 提交更改到代码库，可观察到'.gitmodules'内容发生变更
-git commit -am "Remove a submodule." </code></pre>
-<h3 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h3><p>要push代码到git时，出现提示：</p>
-<pre><code>error:failed to push some refs to ...
-Dealing with “non-fast-forward” errors
-From time to time you may encounter this error while pushing:
-$ git push origin master
-To ../remote/
-! [rejected]        master -&gt; master (non-fast forward)
-error: failed to push some refs to &#39;../remote/&#39;
-To prevent you from losing history, non-fast-forward updates were rejected
-Merge the remote changes before pushing again.  See the &#39;non-fast forward&#39;
-section of &#39;git push --help&#39; for details.</code></pre><p>问题<code>（Non-fast-forward）</code>的出现原因在于：git仓库中已经有一部分代码，所以它不允许你直接把你的代码覆盖上去。可以有两种解决方法:</p>
-<ul>
-<li>使用命令<code>git push -f</code>强推，利用强覆盖方式用你本地的代码替代git仓库内的内容。</li>
-<li>先把<code>git</code>的东西<code>fetch</code>到你本地然后<code>merge</code>后再<code>push</code></li>
-</ul>
-<pre><code>$ git fetch
-$ git merge</code></pre><p>这2句命令等价于</p>
-<pre><code>$ git pull</code></pre><p>可是，这时候又出现了如下的问题：<br>上面出现的 <code>[branch “master”]</code>是需要明确<code>(.git/config)</code>如下的内容</p>
-<pre><code>[branch &quot;master&quot;]
-    remote = origin
-    merge = refs/heads/master</code></pre><p>这等于告诉<code>git</code> 2件事:<br>1，当你处于<code>master branch</code>, 默认的<code>remote</code>就是<code>origin</code>。<br>2，当你在<code>master branch</code>上使用<code>git pull</code>时，没有指定<code>remote</code>和<code>branch</code>，那么<code>git</code>就会采用默认的<code>remote</code>（也就是<code>origin</code>）来<code>merge</code>在master <code>branch</code>上所有的改变<br>如果不想或者不会编辑<code>config</code>文件的话，可以在<code>bush</code>上输入如下命令行：</p>
-<pre><code>$ git config branch.master.remote origin
-$ git config branch.master.merge refs/heads/master</code></pre><p>之后再重新<code>git pull</code>。最后<code>git push</code>代码吧。</p>
-
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;allowed_media_types&quot;, &quot;video&quot;); //根据媒体类型来配置
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;timeout&quot;, 20000);
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;buffer_size&quot;, 1316);
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;infbuf&quot;, 1);  // 无限读
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;analyzemaxduration&quot;, 100L);
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;probesize&quot;, 10240L);
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;flush_packets&quot;, 1L);
+//  关闭播放器缓冲，这个必须关闭，否则会出现播放一段时间后，一直卡主，控制台打印 FFP_MSG_BUFFERING_START 
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;packet-buffering&quot;, 0L);
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;, 1L);</code></pre>
             </div>
             <hr/>
 
@@ -667,7 +540,7 @@ $ git config branch.master.merge refs/heads/master</code></pre><p>之后再重�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io/2020/02/26/git-summary/">https://xuhaoyang.github.io/2020/02/26/git-summary/</a>
+                    <a href="https://xuhaoyang.github.io/2020/03/05/ijkplayer-build/">https://xuhaoyang.github.io/2020/03/05/ijkplayer-build/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -868,9 +741,10 @@ $ git config branch.master.merge refs/heads/master</code></pre><p>之后再重�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/05/ijkplayer-build/">
                     <div class="card-image">
@@ -890,9 +764,9 @@ https://developer.android.google.cn/ndk/downloa
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -901,6 +775,7 @@ https://developer.android.google.cn/ndk/downloa
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -911,25 +786,26 @@ https://developer.android.google.cn/ndk/downloa
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/17/clash-tutorial/">
+                <a href="/2020/02/26/git-summary/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Clash 使用教程">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Git 总结">
                         
-                        <span class="card-title">Clash 使用教程</span>
+                        <span class="card-title">Git 总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Clash 是支持Windows、Linux、macOS、Android等多平台的代理软件。支持协议shadowsocks/V2ray。是主要以规则导向型软件。
-Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模式。
+                            Git整理
+初始化git生成密钥可以通过命令行ssh-keygen[Windows没有需要安装cmder类似软件支持]，或者PuTTYgen软件生成
+$ ssh-keygen -t rsa -C &quot;497633959@qq.com
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
                             </span>
                         <span class="publish-author">
                             
