@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>rsync 使用</title>
+      <link href="/2020/03/17/rsync/"/>
+      <url>/2020/03/17/rsync/</url>
+      
+        <content type="html"><![CDATA[<h1 id="rsync-使用"><a href="#rsync-使用" class="headerlink" title="rsync 使用"></a>rsync 使用</h1><ul><li>h： human-readable, 输出友好</li><li>a： 合并模式；等于-rlptgoD（不含 -H -A -X）。</li><li>b： 制作备份。</li><li>C： 使用与CVS相同的方式来忽略文件。</li><li>u： 跳过比较新的文件。</li><li>v： 处理过程中，显示较多的信息。</li><li>z： 在传输过程中压缩文件。</li><li>–exclude： 排除通配模式匹配到的文件及文件夹。</li><li>a：合并了多个选项，其中每一项的含义如下：<ul><li>r： 递归的方式拷贝文件（recursive）。</li><li>l： 拷贝符号链接为符号链接（symlinks）。</li><li>p： 保留文件的权限信息（permissions）。</li><li>t： 保留文件的修改时间（times）。</li><li>g： 保留用户组信息（group）。</li><li>o： 保留所有者信息（owner）。</li><li>D： 等同于（–devices –specials）再次展开含义如下：<ul><li>–devices： 允许rsync传输字符设备和块设备</li><li>–specials： 允许rsync传输sockets文件和管道（fifos）文件。</li></ul></li></ul></li></ul><h4 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a>增量备份</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre><p>会将<code>data</code>文件夹 备份到<code>/your/backup/</code>下</p><h4 id="增量备份并删除额外的文件"><a href="#增量备份并删除额外的文件" class="headerlink" title="增量备份并删除额外的文件"></a>增量备份并删除额外的文件</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre><h4 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h4><pre class=" language-shell"><code class="language-shell">rsync -abuvz --exclude '*~' /your/backup/data/ /home/data/</code></pre><h4 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h4><p>在服务器上，通常需要备份多个目录，如备份/home 、/etc、/opt目录， 则可以用以下的参数：</p><pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ root@serverhost:/etc/ root@serverhost:/opt/ /local/backup/media/</code></pre><p>也可以省略后面的主机：</p><pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ :/etc/ :/opt/ /local/backup/media/</code></pre><p><a href="https://www.cnblogs.com/kevingrace/p/6601088.html" target="_blank" rel="noopener">linux下rsync和tar增量备份梳理</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> rsync </tag>
+            
+            <tag> 备份 </tag>
+            
+            <tag> macOS </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Custom Build Bilibili ijkplayer</title>
       <link href="/2020/03/05/ijkplayer-build/"/>
       <url>/2020/03/05/ijkplayer-build/</url>

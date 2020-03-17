@@ -4,10 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Custom Build Bilibili ijkplayer, 记录小站">
-    <meta name="description" content="Build Bilibili ijkplayerMacOS 环境Homebrewgit、yasm
-NDK必需 Android NDK 10-14
-https://developer.android.google.cn/ndk/downloa">
+    <meta name="keywords" content="rsync 使用, 记录小站">
+    <meta name="description" content="rsync 使用
+h： human-readable, 输出友好
+a： 合并模式；等于-rlptgoD（不含 -H -A -X）。
+b： 制作备份。
+C： 使用与CVS相同的方式来忽略文件。
+u： 跳过比较新的文件。
+v： 处理过程中，显示">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +19,7 @@ https://developer.android.google.cn/ndk/downloa">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Custom Build Bilibili ijkplayer | 记录小站</title>
+    <title>rsync 使用 | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -252,12 +256,12 @@ https://developer.android.google.cn/ndk/downloa">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Custom Build Bilibili ijkplayer</h1>
+                    <h1 class="description center-align post-title">rsync 使用</h1>
                 </div>
             </div>
         </div>
@@ -372,12 +376,37 @@ https://developer.android.google.cn/ndk/downloa">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/rsync/">
+                                <span class="chip bg-color">rsync</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%87%E4%BB%BD/">
+                                <span class="chip bg-color">备份</span>
+                            </a>
+                        
+                            <a href="/tags/macOS/">
+                                <span class="chip bg-color">macOS</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
+                                总结
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -386,7 +415,7 @@ https://developer.android.google.cn/ndk/downloa">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-05
+                    2020-03-17
                 </div>
                 
 
@@ -403,119 +432,40 @@ https://developer.android.google.cn/ndk/downloa">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Build-Bilibili-ijkplayer"><a href="#Build-Bilibili-ijkplayer" class="headerlink" title="Build Bilibili ijkplayer"></a>Build Bilibili ijkplayer</h1><h3 id="MacOS-环境"><a href="#MacOS-环境" class="headerlink" title="MacOS 环境"></a>MacOS 环境</h3><p>Homebrew<br>git、yasm</p>
-<h4 id="NDK"><a href="#NDK" class="headerlink" title="NDK"></a>NDK</h4><p>必需 Android NDK 10-14</p>
-<p><a href="https://developer.android.google.cn/ndk/downloads/older_releases.html" target="_blank" rel="noopener">https://developer.android.google.cn/ndk/downloads/older_releases.html</a></p>
-<h3 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h3><pre><code>export ANDROID_NDK=~/workspace/android/ndk-r10e
-export PATH=$PATH:$ANDROID_NDK</code></pre><h4 id="配置编解码器格式支持"><a href="#配置编解码器格式支持" class="headerlink" title="配置编解码器格式支持"></a>配置编解码器格式支持</h4><p>默认为最少支持，如果足够你使用，可以跳过这一步，否则可以改为以下配置:</p>
-<ul>
-<li>module-default.sh 更多的编解码器/格式</li>
-<li>module-lite-hevc.sh 较少的编解码器/格式(包括 hevc)</li>
-<li>module-lite.sh 较少的编解码器/格式(默认情况)</li>
+                <h1 id="rsync-使用"><a href="#rsync-使用" class="headerlink" title="rsync 使用"></a>rsync 使用</h1><ul>
+<li>h： human-readable, 输出友好</li>
+<li>a： 合并模式；等于-rlptgoD（不含 -H -A -X）。</li>
+<li>b： 制作备份。</li>
+<li>C： 使用与CVS相同的方式来忽略文件。</li>
+<li>u： 跳过比较新的文件。</li>
+<li>v： 处理过程中，显示较多的信息。</li>
+<li>z： 在传输过程中压缩文件。</li>
+<li>–exclude： 排除通配模式匹配到的文件及文件夹。</li>
+<li>a：合并了多个选项，其中每一项的含义如下：<ul>
+<li>r： 递归的方式拷贝文件（recursive）。</li>
+<li>l： 拷贝符号链接为符号链接（symlinks）。</li>
+<li>p： 保留文件的权限信息（permissions）。</li>
+<li>t： 保留文件的修改时间（times）。</li>
+<li>g： 保留用户组信息（group）。</li>
+<li>o： 保留所有者信息（owner）。</li>
+<li>D： 等同于（–devices –specials）再次展开含义如下：<ul>
+<li>–devices： 允许rsync传输字符设备和块设备</li>
+<li>–specials： 允许rsync传输sockets文件和管道（fifos）文件。</li>
 </ul>
-<pre><code>git clone https://github.com/bilibili/ijkplayer.git
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a>增量备份</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre>
+<p>会将<code>data</code>文件夹 备份到<code>/your/backup/</code>下</p>
+<h4 id="增量备份并删除额外的文件"><a href="#增量备份并删除额外的文件" class="headerlink" title="增量备份并删除额外的文件"></a>增量备份并删除额外的文件</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre>
+<h4 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h4><pre class=" language-shell"><code class="language-shell">rsync -abuvz --exclude '*~' /your/backup/data/ /home/data/</code></pre>
+<h4 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h4><p>在服务器上，通常需要备份多个目录，如备份/home 、/etc、/opt目录， 则可以用以下的参数：</p>
+<pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ root@serverhost:/etc/ root@serverhost:/opt/ /local/backup/media/</code></pre>
+<p>也可以省略后面的主机：</p>
+<pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ :/etc/ :/opt/ /local/backup/media/</code></pre>
+<p><a href="https://www.cnblogs.com/kevingrace/p/6601088.html" target="_blank" rel="noopener">linux下rsync和tar增量备份梳理</a></p>
 
-// 这步会下载 FFmpeg 源码，并自动执行 init-config.sh 和 ./init-android-libyuv.sh
-./init-android.sh
-// 如果需要启用 ssl、https 支持，执行这步
-./init-android-openssl.sh
-// 其他文件有待探索
-// ./init-android-j4a.sh
-// ./init-android-prof.sh
-// ./init-android-libsoxr.sh
-// ./init-android-exo.sh
-
-
-//build extra
-cd android/contrib
-./compile-ffmpeg.sh clean
-./compile-ffmpeg.sh all
-
-
-cd ..
-./compile-ijk.sh all</code></pre><h4 id="NDK-1"><a href="#NDK-1" class="headerlink" title="NDK"></a>NDK</h4><p>注意申明<code>ANDROID_NDK</code>为指定版本的</p>
-<pre><code># export ANDROID_SDK=&lt;your sdk path&gt;
-# export ANDROID_NDK=&lt;your ndk path&gt;</code></pre><h4 id="0-8-8-Build"><a href="#0-8-8-Build" class="headerlink" title="0.8.8 Build"></a>0.8.8 Build</h4><p><code>module.sh</code> add this </p>
-<pre><code>export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-linux-perf&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bzlib&quot;</code></pre><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://www.jianshu.com/p/11493731ea2c" target="_blank" rel="noopener">https://www.jianshu.com/p/11493731ea2c</a></p>
-<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><pre><code>// 添加格式、rtsp(tcp)支持
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mpeg4&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mp2*&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=ac3&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mjpeg&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mjpeg&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=rtp&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=tcp&quot;</code></pre><p>注释掉</p>
-<pre><code>export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=rtp&quot;</code></pre><h3 id="Gradlew"><a href="#Gradlew" class="headerlink" title="Gradlew"></a>Gradlew</h3><pre><code>#强制清除 gradle 依赖缓存
-./gradlew build --refresh-dependencies  </code></pre><h3 id="问题集合"><a href="#问题集合" class="headerlink" title="问题集合"></a>问题集合</h3><p>1、IJKPlayer 不像系统播放器会给你旋转视频角度，所以你需要通过<code>onInfo</code>的<code>what == IMediaPlayer.MEDIA_INFO_VIDEO_ROTATION_CHANGED</code>去获取角度，自己旋转画面；或者开启硬解硬解码，不过硬解码容易造成黑屏无声</p>
-<pre><code>mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
-mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec-auto-rotate&quot;, 1);
-mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec-handle-resolution-change&quot;, 1);</code></pre><p>2、 IJKPlayer 出现黑色有声音没图像，看看你的视频编码是不是H264，pixel format是否存在，音频编码是不是AAC？默认IJKPlayer是不支持3pg（支持它干啥(・-・)？），不支持mepg（比如这个库RecordVideoDemo ）,不支持AMR。所以如果你真的想要支持，那么参考这个#1961，打开mpeg支持，重新编ffmpeg，然后通过硬解码播放mpeg；或者通过系统的录制VideoRecord；或者选另外的JAVACV录制封装FFmpegRecorder。</p>
-<pre><code>ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
-ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec_mpeg4&quot;, 1);</code></pre><p>3、 **快进和慢放接口，已经支持全版本，如果遇到声调问题，可以设置：</p>
-<pre><code>ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;soundtouch&quot;, 1);</code></pre><p>4、暂停的时候，退到后台再回到前台，画面黑了？</p>
-<p>1、<br>这时候个人处理方式是，可以在暂停的时候，通过TextureView.getBitmap(point.x, point.y);获取到暂停的画面，用ImageView显示它，在onSurfaceTextureUpdated的时候隐藏ImageView，来实现画面的衔接。</p>
-<p>2、暂停时绘制静态画面多TextureView的Surface上，详细参考GSYVideoPlayer。</p>
-<p>5、一些视频返回码</p>
-<pre><code>int MEDIA_INFO_VIDEO_RENDERING_START = 3;//视频准备渲染
-int MEDIA_INFO_BUFFERING_START = 701;//开始缓冲
-int MEDIA_INFO_BUFFERING_END = 702;//缓冲结束
-int MEDIA_INFO_VIDEO_ROTATION_CHANGED = 10001;//视频选择信息
-int MEDIA_ERROR_SERVER_DIED = 100;//视频中断，一般是视频源异常或者不支持的视频类型。
-int MEDIA_ERROR_IJK_PLAYER = -10000,//一般是视频源有问题或者数据格式不支持，比如音频不是AAC之类的
-int MEDIA_ERROR_NOT_VALID_FOR_PROGRESSIVE_PLAYBACK = 200;//数据错误没有有效的回收</code></pre><p>6、某些视频在SeekTo的时候，会跳回到拖动前的位置，这是因为视频的关键帧的问题，通俗一点就是FFMPEG不兼容，视频压缩过于厉害，seek只支持关键帧，出现这个情况就是原始的视频文件中i 帧比较少，可开启以下来解决：</p>
-<pre><code>setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;enable-accurate-seek&quot;, 1);</code></pre><p>7、下载速度可以通过IjkMediaPlayer的getTcpSpeed获取。</p>
-<p>8、高分辨率开启硬解码，不支持的话会自动切换到软解，就算开启mediacodec，如果设备不支持，显示的解码器也是avcodec软解。</p>
-<p>9、ijkMediaPlayer.setOption可配置的对应头文件参考：ff_ffplay_options。</p>
-<p>10、缓冲进度条不到100，官方表示我就不保证都100，所以一般我都是：</p>
-<pre><code>//95这个数值可能不准确，有些时候可能还需要低一些
-if (secProgress &gt; 95) secProgress = 100;</code></pre><p>11、上面1、2、6的问题，在IJK封装的EXOPlayer和MediaPlayer都不会有问题，兼容上确实强过IJKPlayer，但是它们在细节上，却没有IJK处理的好，如EXOPlayer：退到后再回到前台、切换渲染控件的黑屏一段时间问题，除了用seekto之外目前没发现其他办法，这样的体验让我最后还是选择IJKPlayer。</p>
-<p>12、设置cookie 可以通过ijkPlayer的public void setDataSource(String path, Map&lt;String, String&gt; headers) 的header实现设置，参考ijkPlayer的issues-1150，headers也是在内部被转化为何issuses一样的setOption方法</p>
-<p>13、多个分片播放的功能，请查阅:</p>
-<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/64" target="_blank" rel="noopener">issues64-一个视频，多个视频片段问题</a><br><a href="https://github.com/Bilibili/ijkplayer/issues/490" target="_blank" rel="noopener">issues490分段视频</a><br><a href="https://www.jianshu.com/p/ea794a357b48" target="_blank" rel="noopener">ijkplayer-ffmpeg之concat</a></p>
-<p>14、硬解码黑屏相关issuse以及建议<br><a href="https://github.com/Bilibili/ijkplayer/issues/1324" target="_blank" rel="noopener">android用硬解码播放器切后台恢复问题</a></p>
-<p>14、硬解码黑屏相关issuse以及建议</p>
-<p><a href="https://github.com/Bilibili/ijkplayer/issues/1324" target="_blank" rel="noopener">bilibili-issuse-1324</a></p>
-<p>15、出现声音画面不同步</p>
-<p>1、关了硬解码。</p>
-<p>2、参考如下：</p>
-<p><a href="http://www.jianshu.com/p/a5cf04181f3d" target="_blank" rel="noopener">http://www.jianshu.com/p/a5cf04181f3d</a><br>设置视频的倍速：<br>[options setPlayerOptionIntValue:10 forKey:@”framedrop”];<br>mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, “framedrop”, 60);</p>
-<p>16、rtsp播放失败问题</p>
-<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/232" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/232</a></p>
-<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/207" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/207</a></p>
-<p>17、m3u8拖动seek之后，加载很长时间</p>
-<p><a href="https://github.com/Bilibili/ijkplayer/issues/2874" target="_blank" rel="noopener">https://github.com/Bilibili/ijkplayer/issues/2874</a></p>
-<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/252" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/252</a></p>
-<p>18、m3u8本地播放问题</p>
-<pre><code>ijkplayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;protocol_whitelist&quot;, &quot;crypto,file,http,https,tcp,tls,udp&quot;); </code></pre><p>19、断网自动重新连接<br>url前接上ijkhttphook:，如</p>
-<p>String url = “ijkhttphook:<a href="http://baobab.wdjcdn.com/14564977406580.mp4&quot;" target="_blank" rel="noopener">http://baobab.wdjcdn.com/14564977406580.mp4&quot;</a>;<br>然后设置</p>
-<pre class=" language-((IjkMediaPlayer)mediaPlayer).setOnNativeInvokeListener(new"><code class="language-((IjkMediaPlayer)mediaPlayer).setOnNativeInvokeListener(new">            @Override
-            public boolean onNativeInvoke(int i, Bundle bundle) {
-                return true;
-            }
-        })</code></pre>
-<p>20、url切换400（http与https域名共用）</p>
-<pre><code>ijkplayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;dns_cache_clear&quot;, 1);</code></pre><p>21、Rtsp优化</p>
-<pre><code>//硬解码：1、打开，0、关闭
-//mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
-//软解码：1、打开，0、关闭
-//mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;videotoolbox&quot;, 0);
-
-//rtsp设置 https://ffmpeg.org/ffmpeg-protocols.html#rtsp
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;rtsp_transport&quot;, &quot;tcp&quot;);
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;rtsp_flags&quot;, &quot;prefer_tcp&quot;);
-
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;allowed_media_types&quot;, &quot;video&quot;); //根据媒体类型来配置
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;timeout&quot;, 20000);
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;buffer_size&quot;, 1316);
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;infbuf&quot;, 1);  // 无限读
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;analyzemaxduration&quot;, 100L);
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;probesize&quot;, 10240L);
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;flush_packets&quot;, 1L);
-//  关闭播放器缓冲，这个必须关闭，否则会出现播放一段时间后，一直卡主，控制台打印 FFP_MSG_BUFFERING_START 
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;packet-buffering&quot;, 0L);
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;, 1L);</code></pre>
             </div>
             <hr/>
 
@@ -540,7 +490,7 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io/2020/03/05/ijkplayer-build/">https://xuhaoyang.github.io/2020/03/05/ijkplayer-build/</a>
+                    <a href="https://xuhaoyang.github.io/2020/03/17/rsync/">https://xuhaoyang.github.io/2020/03/17/rsync/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -577,7 +527,23 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/rsync/">
+                                    <span class="chip bg-color">rsync</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%87%E4%BB%BD/">
+                                    <span class="chip bg-color">备份</span>
+                                </a>
+                            
+                                <a href="/tags/macOS/">
+                                    <span class="chip bg-color">macOS</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -741,9 +707,10 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/17/rsync/">
                     <div class="card-image">
@@ -767,9 +734,9 @@ v： 处理过程中，显示
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -782,6 +749,7 @@ v： 处理过程中，显示
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -812,26 +780,26 @@ v： 处理过程中，显示
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/26/git-summary/">
+                <a href="/2020/03/05/ijkplayer-build/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Git 总结">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Custom Build Bilibili ijkplayer">
                         
-                        <span class="card-title">Git 总结</span>
+                        <span class="card-title">Custom Build Bilibili ijkplayer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git整理
-初始化git生成密钥可以通过命令行ssh-keygen[Windows没有需要安装cmder类似软件支持]，或者PuTTYgen软件生成
-$ ssh-keygen -t rsa -C &quot;497633959@qq.com
+                            Build Bilibili ijkplayerMacOS 环境Homebrewgit、yasm
+NDK必需 Android NDK 10-14
+https://developer.android.google.cn/ndk/downloa
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
                             </span>
                         <span class="publish-author">
                             
