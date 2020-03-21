@@ -1156,6 +1156,258 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 <li>每个String对应一个hashcode，再次使用的话不用重新计算</li>
 </ol>
 </blockquote>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><h3 id="0-讲一下Java的编码方式"><a href="#0-讲一下Java的编码方式" class="headerlink" title="0. 讲一下Java的编码方式"></a>0. 讲一下Java的编码方式</h3><h4 id="为什么需要编码"><a href="#为什么需要编码" class="headerlink" title="为什么需要编码"></a>为什么需要编码</h4><blockquote>
+<p>计算机存储信息的最小单元是一个字节即8bit，所以能表示的范围是0~255，这个范围无法保存所有的字符，所以需要一个新的数据结构char来表示这些字符，从char到byte需要编码。</p>
+</blockquote>
+<h4 id="常见的编码方式有以下几种："><a href="#常见的编码方式有以下几种：" class="headerlink" title="常见的编码方式有以下几种："></a>常见的编码方式有以下几种：</h4><blockquote>
+<ol>
+<li>ASCII：总共有 128 个，用一个字节的低 7 位表示，031 是控制字符如换行回车删除等；32126 是打印字符，可以通过键盘输入并且能够显示出来。</li>
+<li>GBK：码范围是 8140~FEFE（去掉 XX7F）总共有 23940 个码位，它能表示 21003 个汉字，它的编码是和 GB2312 兼容的，也就是说用 GB2312 编码的汉字可以用 GBK 来解码，并且不会有乱码。</li>
+<li>UTF-16：UTF-16 具体定义了 Unicode 字符在计算机中存取方法。UTF-16 用两个字节来表示 Unicode 转化格式，这个是定长的表示方法，不论什么字符都可以用两个字节表示，两个字节是 16 个 bit，所以叫 UTF-16。UTF-16 表示字符非常方便，每两个字节表示一个字符，这个在字符串操作时就大大简化了操作，这也是 Java 以 UTF-16 作为内存的字符存储格式的一个很重要的原因。</li>
+<li>UTF-8：统一采用两个字节表示一个字符，虽然在表示上非常简单方便，但是也有其缺点，有很大一部分字符用一个字节就可以表示的现在要两个字节表示，存储空间放大了一倍，在现在的网络带宽还非常有限的今天，这样会增大网络传输的流量，而且也没必要。而 UTF-8 采用了一种变长技术，每个编码区域有不同的字码长度。不同类型的字符可以是由 1~6 个字节组成。</li>
+</ol>
+</blockquote>
+<h4 id="Java中需要编码的地方一般都在字符到字节的转换上，这个一般包括磁盘IO和网络IO。"><a href="#Java中需要编码的地方一般都在字符到字节的转换上，这个一般包括磁盘IO和网络IO。" class="headerlink" title="Java中需要编码的地方一般都在字符到字节的转换上，这个一般包括磁盘IO和网络IO。"></a>Java中需要编码的地方一般都在字符到字节的转换上，这个一般包括磁盘IO和网络IO。</h4><blockquote>
+<p>Reader 类是 Java 的 I/O 中读字符的父类，而 InputStream 类是读字节的父类，InputStreamReader 类就是关联字节到字符的桥梁，它负责在 I/O 过程中处理读取字节到字符的转换，而具体字节到字符的解码实现它由 StreamDecoder 去实现，在 StreamDecoder 解码过程中必须由用户指定 Charset 编码格式。</p>
+</blockquote>
+<h3 id="1-Unicode与UTF-8的关系"><a href="#1-Unicode与UTF-8的关系" class="headerlink" title="1. Unicode与UTF-8的关系"></a>1. <a href="https://www.zhihu.com/question/23374078" target="_blank" rel="noopener">Unicode与UTF-8的关系</a></h3><blockquote>
+<p>Unicode是字符集 UTF-8是一种编码方式，达到了对数据流压缩的目的</p>
+</blockquote>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="0-List和Set的区别"><a href="#0-List和Set的区别" class="headerlink" title="0. List和Set的区别"></a>0. List和Set的区别</h3><blockquote>
+<ol>
+<li>它们都是接口，都实现了Collection接口</li>
+<li>List元素可以重复，元素顺序与插入顺序相同，其子类有LinkedList和ArrayList</li>
+<li>Set元素不能重复，元素顺序与插入顺序不同，子类有HashSet（通过HashMap实现），LinkedHashSet，TreeSet（红黑树实现，排序的）</li>
+</ol>
+</blockquote>
+<h3 id="1-List、Map、Set三个接口存取元素时，各有什么特点？"><a href="#1-List、Map、Set三个接口存取元素时，各有什么特点？" class="headerlink" title="1. List、Map、Set三个接口存取元素时，各有什么特点？"></a>1. List、Map、Set三个接口存取元素时，各有什么特点？</h3><blockquote>
+<ol>
+<li>List继承了Collection，储存值,可以有重复值</li>
+<li>Set继承了Collection，储存值,不能有重复值</li>
+<li>Map储存健值对，可以一对一或一对多</li>
+</ol>
+</blockquote>
+<h3 id="2-List、Set、Map是否继承自Collection接口"><a href="#2-List、Set、Map是否继承自Collection接口" class="headerlink" title="2. List、Set、Map是否继承自Collection接口"></a>2. List、Set、Map是否继承自Collection接口</h3><blockquote>
+<p>List、Set 是，Map 不是。Map是键值对映射容器，与List和Set有明显的区别，而Set存储的零散的元素且不允许有重复元素（数学中的集合也是如此），List是线性结构的容器，适用于按数值索引访问元素的情形</p>
+</blockquote>
+<h3 id="3-HashMap实现原理"><a href="#3-HashMap实现原理" class="headerlink" title="3. HashMap实现原理"></a>3. <a href="http://blog.csdn.net/carson_ho/article/details/79373026" target="_blank" rel="noopener">HashMap实现原理</a></h3><blockquote>
+<ol>
+<li>在1.7中，HashMap采用数组+单链表的结构；1.8中，采用数组+单链表或红黑树的结构（当链表size &gt; 8时，转换成红黑树）</li>
+<li>HaspMap中有两个关键的构造函数，一个是初始容量，另一个是负载因子。</li>
+<li>初始容量即数组的初始大小，当map中元素个数 &gt; 初始容量*负载因子时，HashMap调用resize（）方法扩容</li>
+<li>在存入数据时，对key的hashCode再次进行hash（），目的是让hash值分布均匀</li>
+<li>对hash() 返回的值与容量进行与运算，确定在数组中的位置</li>
+<li>key可以为null，null的hash值是0</li>
+</ol>
+</blockquote>
+<h3 id="4-HashMap是怎么解决hash冲突的"><a href="#4-HashMap是怎么解决hash冲突的" class="headerlink" title="4. HashMap是怎么解决hash冲突的"></a>4. HashMap是怎么解决hash冲突的</h3><blockquote>
+<ol>
+<li>对hashCode在调用hash（）方法进行计算</li>
+<li>当超过阈值时进行扩容</li>
+<li>当发生冲突时使用链表或者红黑树解决冲突</li>
+</ol>
+</blockquote>
+<h3 id="5-为什么不直接采用经过hashCode（）处理的哈希码作为存储数组table的下标位置"><a href="#5-为什么不直接采用经过hashCode（）处理的哈希码作为存储数组table的下标位置" class="headerlink" title="5. 为什么不直接采用经过hashCode（）处理的哈希码作为存储数组table的下标位置"></a>5. 为什么不直接采用经过hashCode（）处理的哈希码作为存储数组table的下标位置</h3><blockquote>
+<ol>
+<li>hashCode可能很大，数组初始容量可能很小，不匹配，所以需要： hash码 &amp; （数组长度-1）作为数组下标</li>
+<li>hashCode可能分布的不均匀</li>
+</ol>
+</blockquote>
+<h3 id="6-为什么在计算数组下标前，需对哈希码进行二次处理：扰动处理？"><a href="#6-为什么在计算数组下标前，需对哈希码进行二次处理：扰动处理？" class="headerlink" title="6. 为什么在计算数组下标前，需对哈希码进行二次处理：扰动处理？"></a>6. 为什么在计算数组下标前，需对哈希码进行二次处理：扰动处理？</h3><blockquote>
+<p>加大哈希码低位的随机性，使得分布更均匀，从而提高对应数组存储下标位置的随机性 &amp; 均匀性，最终减少Hash冲突</p>
+</blockquote>
+<h3 id="7-为什么说HashMap不保证有序，储存位置会随时间变化"><a href="#7-为什么说HashMap不保证有序，储存位置会随时间变化" class="headerlink" title="7. 为什么说HashMap不保证有序，储存位置会随时间变化"></a>7. 为什么说HashMap不保证有序，储存位置会随时间变化</h3><blockquote>
+<ol>
+<li>通过hash值确定位置，与用户插入顺序不同</li>
+<li>在达到阈值后，HashMap会调用resize方法扩容，扩容后位置发生变化</li>
+</ol>
+</blockquote>
+<h3 id="8-HashMap的时间复杂度"><a href="#8-HashMap的时间复杂度" class="headerlink" title="8. HashMap的时间复杂度"></a>8. HashMap的时间复杂度</h3><blockquote>
+<p>HashMap通过数组和链表实现，数组查找的时间复杂度是O(1)，链表的时间复杂度是O（n），所以要让HashMap尽可能的块，就需要链表的长度尽可能的小，当链表长度是1是，HashMap的时间复杂度就变成了O(1)；根据HashMap的实现原理，要想让链表长度尽可能的短，需要hash算法尽量减少冲突。</p>
+</blockquote>
+<h3 id="9-HashMap-中的-key若-Object类型，-则需实现哪些方法"><a href="#9-HashMap-中的-key若-Object类型，-则需实现哪些方法" class="headerlink" title="9. HashMap 中的 key若 Object类型， 则需实现哪些方法"></a>9. HashMap 中的 key若 Object类型， 则需实现哪些方法</h3><blockquote>
+<p>hashCode和equals</p>
+</blockquote>
+<h3 id="10-为什么-HashMap-中-String、Integer-这样的包装类适合作为-key-键"><a href="#10-为什么-HashMap-中-String、Integer-这样的包装类适合作为-key-键" class="headerlink" title="10. 为什么 HashMap 中 String、Integer 这样的包装类适合作为 key 键"></a>10. 为什么 HashMap 中 String、Integer 这样的包装类适合作为 key 键</h3><blockquote>
+<ol>
+<li>它们是final的，不可变，保证了安全性</li>
+<li>均已经实现了hashCode和equals方法，计算准确</li>
+</ol>
+</blockquote>
+<h3 id="11-HashMap线程安全吗"><a href="#11-HashMap线程安全吗" class="headerlink" title="11. HashMap线程安全吗"></a>11. HashMap线程安全吗</h3><blockquote>
+<ol>
+<li>HashMap线程不安全</li>
+<li>HashMap没有同步锁，举例：比如A、B两个线程同时触发扩容，HashMap容量增加2倍，并将原数据重新分配到新的位置，这个时候可能出现原链表转移到新链表时生成了环形链表，出现死循环。</li>
+</ol>
+</blockquote>
+<h3 id="12-HashMap线程安全的解决方案"><a href="#12-HashMap线程安全的解决方案" class="headerlink" title="12. HashMap线程安全的解决方案"></a>12. HashMap线程安全的解决方案</h3><blockquote>
+<ol>
+<li>使用Collections.synchronizedMap()方法，该方法的实现方式是使用synchronized关键字</li>
+<li>使用ConcurrentHashMap，性能比Collections.synchronizedMap()更好</li>
+</ol>
+</blockquote>
+<h3 id="13-HashMap-如何删除元素"><a href="#13-HashMap-如何删除元素" class="headerlink" title="13. HashMap 如何删除元素"></a>13. HashMap 如何删除元素</h3><blockquote>
+<ol>
+<li>计算key的Hash值，找到数组中的位置，得到链表的头指针</li>
+<li>遍历链表，通过equals比较key，确定是不是要找的元素</li>
+<li>找到后调整链表，将该元素从链表中删除</li>
+</ol>
+</blockquote>
+<pre><code>//源码 java8
+ @Override public V remove(Object key) {
+        if (key == null) {
+            return removeNullKey();
+        }
+        int hash = Collections.secondaryHash(key);
+        HashMapEntry&lt;K, V&gt;[] tab = table;
+        int index = hash &amp; (tab.length - 1);
+        for (HashMapEntry&lt;K, V&gt; e = tab[index], prev = null;
+                e != null; prev = e, e = e.next) {
+            if (e.hash == hash &amp;&amp; key.equals(e.key)) {
+                if (prev == null) {
+                    tab[index] = e.next;
+                } else {
+                    prev.next = e.next;
+                }
+                modCount++;
+                size--;
+                postRemove(e);
+                return e.value;
+            }
+        }
+        return null;
+    }
+复制代码</code></pre><h3 id="14-HashMap的扩容过程"><a href="#14-HashMap的扩容过程" class="headerlink" title="14. HashMap的扩容过程"></a>14. HashMap的扩容过程</h3><blockquote>
+<ol>
+<li>在初次加载时，会调用resize（）进行初始化</li>
+<li>当put（）时，会查看当前元素个数是否大于阈值（阈值=数组长度*负载因子），当大于时，调用resize方法扩容</li>
+<li>新建一个数组，扩容后的容量是原来的两倍</li>
+<li>将原来的数据重新计算位置，拷贝到新的table上</li>
+</ol>
+</blockquote>
+<h3 id="15-java8-中HashMap的优化"><a href="#15-java8-中HashMap的优化" class="headerlink" title="15. java8 中HashMap的优化"></a>15. java8 中HashMap的优化</h3><blockquote>
+<p>最大变化是当链表超过一定的长度后，将链表转换成红黑树存储，在存储很多数据时，效率提升了。链表的查找复杂度是O（n），红黑树是O（log（n））</p>
+</blockquote>
+<h3 id="16-HashMap和HashTable的区别"><a href="#16-HashMap和HashTable的区别" class="headerlink" title="16. HashMap和HashTable的区别"></a>16. HashMap和HashTable的区别</h3><blockquote>
+<ol>
+<li>HashTable是线程安全的，而HashMap不是</li>
+<li>HashMap中允许存在null键和null值，而HashTable中不允许</li>
+<li>HashTable已经弃用，我们可以用ConcurrentHashMap等替代</li>
+</ol>
+</blockquote>
+<h3 id="17-ConcurrentHashMap实现原理"><a href="#17-ConcurrentHashMap实现原理" class="headerlink" title="17. ConcurrentHashMap实现原理"></a>17. ConcurrentHashMap实现原理</h3><blockquote>
+<ol>
+<li>ConcurrentHashMap是线程安全的HashMap，效率比直接加cynchronized要好</li>
+<li>1.7中通过分段锁实现，读不枷锁（通过volatile保证可见性），写时给对应的分段加锁。（1.8实现原理变了）</li>
+</ol>
+</blockquote>
+<h3 id="18-ConcurrentHashMap的并发度是什么"><a href="#18-ConcurrentHashMap的并发度是什么" class="headerlink" title="18. ConcurrentHashMap的并发度是什么"></a>18. ConcurrentHashMap的并发度是什么</h3><blockquote>
+<ol>
+<li>ConcurrentHashMap通过分段锁来实现，并发度即为段数</li>
+<li>段数是ConcurrentHashMap类构造函数的一个可选参数，默认值为16</li>
+</ol>
+</blockquote>
+<h3 id="19-LinkedHashMap原理"><a href="#19-LinkedHashMap原理" class="headerlink" title="19. LinkedHashMap原理"></a>19. LinkedHashMap原理</h3><blockquote>
+<ol>
+<li>LinkedHashMap通过继承HashMap实现，既保留了HashMap快速查找能力，又保存了存入顺序</li>
+<li>LinkedHashMap重写了HashMap的Entry，通过LinkedEntry保存了存入顺序，可以理解为通过双向链表和HashMap共同实现</li>
+</ol>
+</blockquote>
+<h3 id="20-HashMap和Arraylist都是线程不安全的，怎么让他们线程安全"><a href="#20-HashMap和Arraylist都是线程不安全的，怎么让他们线程安全" class="headerlink" title="20. HashMap和Arraylist都是线程不安全的，怎么让他们线程安全"></a>20. HashMap和Arraylist都是线程不安全的，怎么让他们线程安全</h3><blockquote>
+<ol>
+<li>借助Collections工具类synchronizedMap和synchronizedList将其转为线程安全的</li>
+<li>使用安全的类替代，如HashTable（不建议使用）或者ConcurrentHashMap替代Hashmap，用CopyOnWriteArrayList替代ArrayList</li>
+</ol>
+</blockquote>
+<h3 id="21-HashSet-是如何保证不重复的"><a href="#21-HashSet-是如何保证不重复的" class="headerlink" title="21. HashSet 是如何保证不重复的"></a>21. HashSet 是如何保证不重复的</h3><blockquote>
+<ol>
+<li>HashSet 是通过HashMap来实现的，内部持有一个HashMap实例</li>
+<li>HashSet存入的值即为HashMap的key，hashMap的value是HashSet中new 的一个Object实例，所有的value都相同</li>
+</ol>
+</blockquote>
+<h3 id="22-TreeSet-两种排序方式"><a href="#22-TreeSet-两种排序方式" class="headerlink" title="22. TreeSet 两种排序方式"></a>22. <a href="https://www.cnblogs.com/alhh/p/5507909.html" target="_blank" rel="noopener">TreeSet 两种排序方式</a></h3><blockquote>
+<ol>
+<li>自然排序：调用无参构造函数，添加的元素必须实现Comparable接口</li>
+<li>定制排序：使用有参构造函数，传入一个Comparator实例</li>
+</ol>
+</blockquote>
+<h3 id="23-Array-和-ArrayList对比"><a href="#23-Array-和-ArrayList对比" class="headerlink" title="23. Array 和 ArrayList对比"></a>23. Array 和 ArrayList对比</h3><blockquote>
+<ol>
+<li>Array可以是基本类型和引用类型，ArrayList只能是引用类型</li>
+<li>Array固定大小，ArrayList长度可以动态改变</li>
+<li>ArrayList有很多方法可以调用，如addAll（）</li>
+</ol>
+</blockquote>
+<h3 id="24-List和数组的互相转换-String转换成数组"><a href="#24-List和数组的互相转换-String转换成数组" class="headerlink" title="24. List和数组的互相转换/String转换成数组"></a>24. List和数组的互相转换/String转换成数组</h3><blockquote>
+<ol>
+<li>String[] a = list.toArray(new String[size]));</li>
+<li>List list = Arrays.asList(array);</li>
+<li>char[] char = string.toCharArray();</li>
+</ol>
+</blockquote>
+<h3 id="25-数组在内存中是如何分配的"><a href="#25-数组在内存中是如何分配的" class="headerlink" title="25.  数组在内存中是如何分配的"></a>25.  数组在内存中是如何分配的</h3><blockquote>
+<p>和引用类型一样，在栈中保存一个引用，指向堆地址</p>
+</blockquote>
+<h3 id="26-TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？"><a href="#26-TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？" class="headerlink" title="26. TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？"></a>26. TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？</h3><blockquote>
+<ol>
+<li>TreeMap和TreeSet都是通过<a href="http://www.sohu.com/a/201923614_466939" target="_blank" rel="noopener">红黑树</a>实现的，因此要求元素都是可比较的，元素必须实现Comparable接口，该接口中有compareTo（）方法。</li>
+<li>Collections的sort方法有两种重载形式，一种只有一个参数，要求传入的待排序元素必须实现Comparable接口；第二种有两个参数，要求传入待排序容器即Comparator实例</li>
+</ol>
+</blockquote>
+<h3 id="27-阐述ArrayList、Vector、LinkedList的存储性能和特性。"><a href="#27-阐述ArrayList、Vector、LinkedList的存储性能和特性。" class="headerlink" title="27. 阐述ArrayList、Vector、LinkedList的存储性能和特性。"></a>27. 阐述ArrayList、Vector、LinkedList的存储性能和特性。</h3><blockquote>
+<ol>
+<li>ArrayList 和Vector都是使用数组方式存储数据,数组方式节省空间，便与读取；但插入删除涉及数组移动，性能较差。</li>
+<li>Vector中的方法由于添加了synchronized修饰，因此Vector是线程安全的容器。</li>
+<li>LinkedList使用双向链表实现存储,占用空间大，读取慢；插入删除快</li>
+<li>Vector已经被遗弃，不推荐使用。为了实现线程安全的list，可以使用Collections中的synchronizedList方法将其转换成线程安全的容器后再使用</li>
+</ol>
+</blockquote>
+<h3 id="28-什么是Java优先级队列-Priority-Queue"><a href="#28-什么是Java优先级队列-Priority-Queue" class="headerlink" title="28. 什么是Java优先级队列(Priority Queue)"></a>28. <a href="https://blog.csdn.net/qq_35326718/article/details/72866180" target="_blank" rel="noopener">什么是Java优先级队列(Priority Queue)</a></h3><blockquote>
+<p>PriorityQueue是一个基于优先级堆的无界队列，它的元素是按照自然顺序(natural order)排序的。在创建的时候，我们可以给它提供一个负责给元素排序的比较器。PriorityQueue不允许null值，因为他们没有自然顺序，或者说他们没有任何的相关联的比较器。PriorityQueue的逻辑结构为堆（完全二叉树），物理结构为数组。最后，PriorityQueue不是线程安全的，入队和出队的时间复杂度是O(log(n))</p>
+</blockquote>
+<h3 id="29-List、Set、Map的遍历方式"><a href="#29-List、Set、Map的遍历方式" class="headerlink" title="29. List、Set、Map的遍历方式"></a>29. List、Set、Map的遍历方式</h3><blockquote>
+<ol>
+<li><a href="https://blog.csdn.net/angus_17/article/details/7521639" target="_blank" rel="noopener">List、Set</a>都继承了Collection接口，可以使用for each遍历或者Iterator</li>
+<li><a href="https://blog.csdn.net/u010127245/article/details/50937384" target="_blank" rel="noopener">HashMap</a>可以拿到KeySet或者entrySet，然后用iterator或者 for each 方式遍历</li>
+</ol>
+</blockquote>
+<h3 id="30-什么是Iterator-迭代器"><a href="#30-什么是Iterator-迭代器" class="headerlink" title="30. 什么是Iterator(迭代器)"></a>30. 什么是Iterator(迭代器)</h3><blockquote>
+<p>迭代器是一个接口，我们可以借助这个接口实现对集合的遍历，删除 <a href="https://www.jianshu.com/p/a16ca1560551" target="_blank" rel="noopener">扩展（迭代器实现原理）</a>：Collection继承了Iterable接口，iterable接口中有iterator方法，返回一个Iterator迭代器 -&gt; Collection的实现类通过在内部实现自定义Iterator，在iterator时返回这个实例。</p>
+</blockquote>
+<h3 id="31-Iterator和ListIterator的区别是什么"><a href="#31-Iterator和ListIterator的区别是什么" class="headerlink" title="31. Iterator和ListIterator的区别是什么"></a>31. Iterator和ListIterator的区别是什么</h3><blockquote>
+<ol>
+<li>ListIterator 继承自 Iterator</li>
+<li>Iterator可用来遍历Set和List集合，但是ListIterator只能用来遍历List</li>
+<li>ListIterator比Iterator增加了更多功能，例如可以双向遍历，增加元素等</li>
+</ol>
+</blockquote>
+<h3 id="32-如何权衡是使用无序的数组还是有序的数组"><a href="#32-如何权衡是使用无序的数组还是有序的数组" class="headerlink" title="32. 如何权衡是使用无序的数组还是有序的数组"></a>32. 如何权衡是使用无序的数组还是有序的数组</h3><blockquote>
+<ol>
+<li>查找多用有序数组，插入删除多用无序数组</li>
+<li>解释：有序数组最大的好处在于查找的时间复杂度是O(log n)，而无序数组是O(n)。有序数组的缺点是插入操作的时间复杂度是O(n)，因为值大的元素需要往后移动来给新元素腾位置。相反，无序数组的插入时间复杂度是常量O(1)</li>
+</ol>
+</blockquote>
+<h3 id="33-Arrays-sort-实现原理和-Collections-sort-实现原理"><a href="#33-Arrays-sort-实现原理和-Collections-sort-实现原理" class="headerlink" title="33. Arrays.sort 实现原理和 Collections.sort 实现原理"></a>33. Arrays.sort 实现原理和 Collections.sort 实现原理</h3><blockquote>
+<ol>
+<li>Collections.sort是通过Arrays.sort实现的。当list不为ArrayList时，先转成数组，再调用Arrays.sort</li>
+<li>java 8 中Array.Sort()是通过timsort（一种优化的归并排序）来实现的</li>
+</ol>
+</blockquote>
+<h3 id="34-Collection和Collections的区别"><a href="#34-Collection和Collections的区别" class="headerlink" title="34. Collection和Collections的区别"></a>34. Collection和Collections的区别</h3><blockquote>
+<ol>
+<li>Collection 是一个接口，Set、List都继承了该接口</li>
+<li>Collections 是一个工具类，该工具类可以帮我们完成对容器的判空，排序，线程安全化等。</li>
+</ol>
+</blockquote>
+<h3 id="35-快速失败（fail-fast）和安全失败（fail-safe）"><a href="#35-快速失败（fail-fast）和安全失败（fail-safe）" class="headerlink" title="35. 快速失败（fail-fast）和安全失败（fail-safe）"></a>35. 快速失败（fail-fast）和安全失败（fail-safe）</h3><blockquote>
+<ol>
+<li>快速失败：在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了修改（增加、删除、修改），则会抛出Concurrent Modification Exception</li>
+<li>安全失败：操作是对象的副本，这个时候原对象改变并不会对当前迭代器遍历产生影响。java.util.concurrent类下边容器都是安全失败<br> 扩展：快速失败原理：容器内部有一个modCount，记录变化的次数，当进行遍历时，如果mocount值发生改变，责快速失败</li>
+</ol>
+</blockquote>
+<h3 id="36-当一个集合被作为参数传递给一个函数时，如何才可以确保函数不能修改它"><a href="#36-当一个集合被作为参数传递给一个函数时，如何才可以确保函数不能修改它" class="headerlink" title="36. 当一个集合被作为参数传递给一个函数时，如何才可以确保函数不能修改它"></a>36. 当一个集合被作为参数传递给一个函数时，如何才可以确保函数不能修改它</h3><blockquote>
+<p>在作为参数传递之前，我们可以使用Collections.unmodifiableCollection(Collection c)方法创建一个只读集合，这将确保改变集合的任何操作都会抛出UnsupportedOperationException。</p>
+</blockquote>
 
             </div>
             <hr/>
