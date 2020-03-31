@@ -4,14 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="rsync 使用, 记录小站">
-    <meta name="description" content="rsync 使用
-h： human-readable, 输出友好
-a： 合并模式；等于-rlptgoD（不含 -H -A -X）。
-b： 制作备份。
-C： 使用与CVS相同的方式来忽略文件。
-u： 跳过比较新的文件。
-v： 处理过程中，显示">
+    <meta name="keywords" content="理解final在Java和Android中修饰局部变量的意义, 记录小站">
+    <meta name="description" content="final在Java和Android中修饰局部变量的意义Q：为什么经常在Android项目中看到final 对变量进行修饰？
+在Java中，有四种内部类：
+
+静态内部类（static inner class）
+成员内部类（Method in">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@ v： 处理过程中，显示">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>rsync 使用 | 记录小站</title>
+    <title>理解final在Java和Android中修饰局部变量的意义 | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -256,12 +254,12 @@ v： 处理过程中，显示">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">rsync 使用</h1>
+                    <h1 class="description center-align post-title">理解final在Java和Android中修饰局部变量的意义</h1>
                 </div>
             </div>
         </div>
@@ -376,37 +374,12 @@ v： 处理过程中，显示">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/rsync/">
-                                <span class="chip bg-color">rsync</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%A4%87%E4%BB%BD/">
-                                <span class="chip bg-color">备份</span>
-                            </a>
-                        
-                            <a href="/tags/macOS/">
-                                <span class="chip bg-color">macOS</span>
-                            </a>
-                        
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                总结
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -415,7 +388,7 @@ v： 处理过程中，显示">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-17
+                    2020-03-21
                 </div>
                 
 
@@ -432,39 +405,90 @@ v： 处理过程中，显示">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="rsync-使用"><a href="#rsync-使用" class="headerlink" title="rsync 使用"></a>rsync 使用</h1><ul>
-<li>h： human-readable, 输出友好</li>
-<li>a： 合并模式；等于-rlptgoD（不含 -H -A -X）。</li>
-<li>b： 制作备份。</li>
-<li>C： 使用与CVS相同的方式来忽略文件。</li>
-<li>u： 跳过比较新的文件。</li>
-<li>v： 处理过程中，显示较多的信息。</li>
-<li>z： 在传输过程中压缩文件。</li>
-<li>–exclude： 排除通配模式匹配到的文件及文件夹。</li>
-<li>a：合并了多个选项，其中每一项的含义如下：<ul>
-<li>r： 递归的方式拷贝文件（recursive）。</li>
-<li>l： 拷贝符号链接为符号链接（symlinks）。</li>
-<li>p： 保留文件的权限信息（permissions）。</li>
-<li>t： 保留文件的修改时间（times）。</li>
-<li>g： 保留用户组信息（group）。</li>
-<li>o： 保留所有者信息（owner）。</li>
-<li>D： 等同于（–devices –specials）再次展开含义如下：<ul>
-<li>–devices： 允许rsync传输字符设备和块设备</li>
-<li>–specials： 允许rsync传输sockets文件和管道（fifos）文件。</li>
+                <h1 id="final在Java和Android中修饰局部变量的意义"><a href="#final在Java和Android中修饰局部变量的意义" class="headerlink" title="final在Java和Android中修饰局部变量的意义"></a>final在Java和Android中修饰局部变量的意义</h1><p>Q：为什么经常在Android项目中看到final 对变量进行修饰？</p>
+<p><strong>在Java中，有四种内部类：</strong></p>
+<ul>
+<li><strong>静态内部类（static inner class）</strong></li>
+<li><strong>成员内部类（Method inner class）</strong></li>
+<li><strong>局部内部类（Local inner class）</strong></li>
+<li><strong>匿名内部类（Anonymous inner class）</strong></li>
 </ul>
+<p>在后面两种内部类中如果访问了外部方法中的局部变量，都需要加final。为了弄清本质，我翻开了《Thinking in Java》，找到了如下这样一段话：</p>
+<p>If you’re defining an anonymous inner class and want to use an object that’s defined outside the anonymous inner class, the compiler</p>
+<p>requires that the argument reference be final, as you see in the argument to destination( ).</p>
+<p>这里确实给出了结论，和我们在前面陈述的是一样的，但是没有说清楚为什么，然后我又去翻开了《Java核心卷》，这里面才找到我想要的，首先它贴出这样的代码：</p>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token keyword">int</span> interval<span class="token punctuation">,</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> beep<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">TimePrinter</span> <span class="token keyword">implements</span> <span class="token class-name">ActionListener</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span>ActionEvent event<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Date now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"At the tone, the time is "</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>beep<span class="token punctuation">)</span> Toolkit<span class="token punctuation">.</span><span class="token function">getDefaultToolkit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">beep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    ActionListener listener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TimePrinter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Timer t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Timer</span><span class="token punctuation">(</span>interval<span class="token punctuation">,</span> listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    t<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>注意这个beep，在局部内部类中使用了，而且使用了final，接下来它做了一件事：反编译这个TimePrinter：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">TalkingClock</span>$1TimePrinter
+<span class="token punctuation">{</span>
+    TalkingClock$<span class="token function">1TimePrinter</span><span class="token punctuation">(</span>TalkingClock<span class="token punctuation">,</span> <span class="token keyword">boolean</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>awt<span class="token punctuation">.</span>event<span class="token punctuation">.</span>ActionEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> <span class="token keyword">boolean</span> val$beep<span class="token punctuation">;</span>
+    <span class="token keyword">final</span> TalkingClock <span class="token keyword">this</span>$<span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>into the constructor and stored in the val$beep field. The compiler detects access of local variables, makes matching instance fields for each one of them, and copies the local variables into the constructor so that the instance fields can be initialized.</p>
+<p>以上文档就很好的阐述了理由：原来，我们在局部内部类中访问的这些final修饰的局部变量，都会作为局部内部类的由final修饰的成员变量，并在构造中传入值初始化。</p>
+<p>原来，编译器是这么处理的，渐渐有了眉目，但是为什么必须声明是final的呢？还是核心卷里的一段话启发了我：</p>
+<blockquote>
+<p>From the programmer’s point of view, local variable access is quite pleasant. It makes your inner classes simpler by reducing the instance fields that you need to program explicitly.</p>
+</blockquote>
+<p>也就是说，我们在局部内部类中访问的实际上是这个var$beep（它的值等于beep），它是局部变量beep一份拷贝，并不是局部变量本身，但是为了方便编程，编译器允许我们直接使用beep来指代var$beep。那到这里就能解释为什么要是final了。</p>
+<p>我们来试想这样的场景：如果我们在局部内部类中对访问的这个局部变量进行了修改，例如在上面的actionPerformed方法中，我添加了这样的一行代码：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span>ActionEvent event<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    beep <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    Date now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"At the tone, the time is "</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>beep<span class="token punctuation">)</span> Toolkit<span class="token punctuation">.</span><span class="token function">getDefaultToolkit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">beep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>那么这个时候，就会出现矛盾，在actionPerformed中将beep置为false，这个时候，这个beep本质上是我们前面提到的var$beep，而不是局部变量beep，那么接下来的代码中，到底以谁为准，就会造成不一致，就会给程序员带来困扰，那么这个时候规定，此时只能使用这个局部变量，而不允许修改它，<strong>因此，局部变量必须声明为final，而且内部类中的这份拷贝，这个成员变量也是final的</strong>。到这里我们已经能够解释原因了。</p>
+<p>接下来我就把项目中遇到的问题在这里与大家分享一下：</p>
+<p>先贴出关键代码：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GroupDetailAdapter</span> <span class="token keyword">extends</span> <span class="token class-name">BaseAdapter</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> UserInfo userInfo<span class="token punctuation">;</span>
+
+     <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> View <span class="token function">getView</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token keyword">int</span> position<span class="token punctuation">,</span> View convertView<span class="token punctuation">,</span> ViewGroup parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        userInfo  <span class="token operator">=</span> mUsers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+        holder<span class="token punctuation">.</span>ivGroupDetailDelete<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token annotation punctuation">@Override</span>
+                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                    <span class="token comment" spellcheck="true">// 删除群成员</span>
+                    mOnGroupDetailListener<span class="token punctuation">.</span><span class="token function">onDeleteMember</span><span class="token punctuation">(</span>userInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>用局部变量，如果在内部类要使用，就声明为final，但是这次就不知为啥心血来潮将这个userInfo声明为成员变量，最终导致onClick方法会出现问题，传入onDeleteMember方法里的userInfo始终是集合中最后一个。后来各种debug，最后把userInfo = mUsers.get(position);这行代码放入到onClick方法中就好了，或者将这个userInfo换成局部变量然后使用也能解决问题。为什么？先解释bug出现的原因：</p>
+<p>由于我的userInfo是在getView方法中获取的，而getView方法只会在视图显示的时候被调用，显示完毕后，position的值肯定到达了它的最大值（即集合的size - 1，#2017.7.19修改：这个地方不严谨，position的值应该为当前页面显示列表的条目，我这刚好是一页就显示完毕，所以position的值为size - 1#），那么这个时候userInfo自然保存的就是集合中的最后一个元素，然后静静的等待着onClick方法的被回调，一旦回调就把userInfo传给onDeleteMember方法执行相应的逻辑，而userInfo此时肯定是集合中的最后一个元素，最终导致这个bug的诞生。</p>
+<p>这实际上才是这篇博客最初的触发点，这里来分别解释下这两种解决问题的办法：</p>
+<ul>
+<li><p>userInfo为成员变量，userInfo = mUsers.get(position);放到onClick中：这种情况下，如果这么去使用，那么position肯定为final的，也就是这个匿名内部类中会维护这样一份拷贝，注意，这里是position的拷贝，要注意和第二种方法的区分。</p>
+</li>
+<li><p>userInfo为局部变量，userInfo = mUsers.get(position);还在原来的位置：这种情况下，如果这么去使用，那么userInfo肯定为final的，同样在这个匿名内部类中维护一份拷贝，但这里是userInfo的拷贝。</p>
 </li>
 </ul>
-</li>
-</ul>
-<h4 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a>增量备份</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre>
-<p>会将<code>data</code>文件夹 备份到<code>/your/backup/</code>下</p>
-<h4 id="增量备份并删除额外的文件"><a href="#增量备份并删除额外的文件" class="headerlink" title="增量备份并删除额外的文件"></a>增量备份并删除额外的文件</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre>
-<h4 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h4><pre class=" language-shell"><code class="language-shell">rsync -abuvz --exclude '*~' /your/backup/data/ /home/data/</code></pre>
-<h4 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h4><p>在服务器上，通常需要备份多个目录，如备份/home 、/etc、/opt目录， 则可以用以下的参数：</p>
-<pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ root@serverhost:/etc/ root@serverhost:/opt/ /local/backup/media/</code></pre>
-<p>也可以省略后面的主机：</p>
-<pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ :/etc/ :/opt/ /local/backup/media/</code></pre>
-<p><a href="https://www.cnblogs.com/kevingrace/p/6601088.html" target="_blank" rel="noopener">linux下rsync和tar增量备份梳理</a></p>
+<p>谢谢这个bug，才衍生出自己这样的思考，才能理解的更加透彻！</p>
 
             </div>
             <hr/>
@@ -490,7 +514,7 @@ v： 处理过程中，显示">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io/2020/03/17/rsync/">https://xuhaoyang.github.io/2020/03/17/rsync/</a>
+                    <a href="https://xuhaoyang.github.io/2020/03/21/java-android-final/">https://xuhaoyang.github.io/2020/03/21/java-android-final/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -527,23 +551,7 @@ v： 处理过程中，显示">
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/rsync/">
-                                    <span class="chip bg-color">rsync</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%A4%87%E4%BB%BD/">
-                                    <span class="chip bg-color">备份</span>
-                                </a>
-                            
-                                <a href="/tags/macOS/">
-                                    <span class="chip bg-color">macOS</span>
-                                </a>
-                            
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -707,35 +715,72 @@ v： 处理过程中，显示">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/19/java-interview/">
+                <a href="/2020/03/21/java-android-final/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Java面试知识">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="理解final在Java和Android中修饰局部变量的意义">
                         
-                        <span class="card-title">Java面试知识</span>
+                        <span class="card-title">理解final在Java和Android中修饰局部变量的意义</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java 面试基础知识Java设计思想0. OOP是什么
-面向对象编程（Object Oriented Programming）
+                            final在Java和Android中修饰局部变量的意义Q：为什么经常在Android项目中看到final 对变量进行修饰？
+在Java中，有四种内部类：
 
-1.面向对象的特征有哪些面向对象的特征有：抽象、封装、继承、多态
-
-
-抽象：抽象是将一类对象的共同特征总结出
+静态内部类（static inner class）
+成员内部类（Method in
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ECM
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/21/android-interview/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Android面试知识">
+                        
+                        <span class="card-title">Android面试知识</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android Interview
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -763,71 +808,8 @@ v： 处理过程中，显示">
                         <span class="chip bg-color">知识</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/05/ijkplayer-build/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Custom Build Bilibili ijkplayer">
-                        
-                        <span class="card-title">Custom Build Bilibili ijkplayer</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Build Bilibili ijkplayerMacOS 环境Homebrewgit、yasm
-NDK必需 Android NDK 10-14
-https://developer.android.google.cn/ndk/downloa
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                    总结
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/ffmpeg/">
-                        <span class="chip bg-color">ffmpeg</span>
-                    </a>
-                    
-                    <a href="/tags/ijkplayer/">
-                        <span class="chip bg-color">ijkplayer</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E8%AF%91/">
-                        <span class="chip bg-color">编译</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%A4%9A%E5%AA%92%E4%BD%93/">
-                        <span class="chip bg-color">多媒体</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%A7%86%E9%A2%91/">
-                        <span class="chip bg-color">视频</span>
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
                     </a>
                     
                 </div>

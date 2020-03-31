@@ -4,14 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="rsync 使用, 记录小站">
-    <meta name="description" content="rsync 使用
-h： human-readable, 输出友好
-a： 合并模式；等于-rlptgoD（不含 -H -A -X）。
-b： 制作备份。
-C： 使用与CVS相同的方式来忽略文件。
-u： 跳过比较新的文件。
-v： 处理过程中，显示">
+    <meta name="keywords" content="Android面试知识, 记录小站">
+    <meta name="description" content="Android Interview">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +13,7 @@ v： 处理过程中，显示">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>rsync 使用 | 记录小站</title>
+    <title>Android面试知识 | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -256,12 +250,12 @@ v： 处理过程中，显示">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">rsync 使用</h1>
+                    <h1 class="description center-align post-title">Android面试知识</h1>
                 </div>
             </div>
         </div>
@@ -378,20 +372,20 @@ v： 处理过程中，显示">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/rsync/">
-                                <span class="chip bg-color">rsync</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
-                            <a href="/tags/%E5%A4%87%E4%BB%BD/">
-                                <span class="chip bg-color">备份</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
-                            <a href="/tags/macOS/">
-                                <span class="chip bg-color">macOS</span>
+                            <a href="/tags/%E7%9F%A5%E8%AF%86/">
+                                <span class="chip bg-color">知识</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/Android/">
+                                <span class="chip bg-color">Android</span>
                             </a>
                         
                     </div>
@@ -415,7 +409,7 @@ v： 处理过程中，显示">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-17
+                    2020-03-21
                 </div>
                 
 
@@ -432,40 +426,7 @@ v： 处理过程中，显示">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="rsync-使用"><a href="#rsync-使用" class="headerlink" title="rsync 使用"></a>rsync 使用</h1><ul>
-<li>h： human-readable, 输出友好</li>
-<li>a： 合并模式；等于-rlptgoD（不含 -H -A -X）。</li>
-<li>b： 制作备份。</li>
-<li>C： 使用与CVS相同的方式来忽略文件。</li>
-<li>u： 跳过比较新的文件。</li>
-<li>v： 处理过程中，显示较多的信息。</li>
-<li>z： 在传输过程中压缩文件。</li>
-<li>–exclude： 排除通配模式匹配到的文件及文件夹。</li>
-<li>a：合并了多个选项，其中每一项的含义如下：<ul>
-<li>r： 递归的方式拷贝文件（recursive）。</li>
-<li>l： 拷贝符号链接为符号链接（symlinks）。</li>
-<li>p： 保留文件的权限信息（permissions）。</li>
-<li>t： 保留文件的修改时间（times）。</li>
-<li>g： 保留用户组信息（group）。</li>
-<li>o： 保留所有者信息（owner）。</li>
-<li>D： 等同于（–devices –specials）再次展开含义如下：<ul>
-<li>–devices： 允许rsync传输字符设备和块设备</li>
-<li>–specials： 允许rsync传输sockets文件和管道（fifos）文件。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a>增量备份</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre>
-<p>会将<code>data</code>文件夹 备份到<code>/your/backup/</code>下</p>
-<h4 id="增量备份并删除额外的文件"><a href="#增量备份并删除额外的文件" class="headerlink" title="增量备份并删除额外的文件"></a>增量备份并删除额外的文件</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre>
-<h4 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h4><pre class=" language-shell"><code class="language-shell">rsync -abuvz --exclude '*~' /your/backup/data/ /home/data/</code></pre>
-<h4 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h4><p>在服务器上，通常需要备份多个目录，如备份/home 、/etc、/opt目录， 则可以用以下的参数：</p>
-<pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ root@serverhost:/etc/ root@serverhost:/opt/ /local/backup/media/</code></pre>
-<p>也可以省略后面的主机：</p>
-<pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ :/etc/ :/opt/ /local/backup/media/</code></pre>
-<p><a href="https://www.cnblogs.com/kevingrace/p/6601088.html" target="_blank" rel="noopener">linux下rsync和tar增量备份梳理</a></p>
-
+                <h1 id="Android-Interview"><a href="#Android-Interview" class="headerlink" title="Android Interview"></a>Android Interview</h1>
             </div>
             <hr/>
 
@@ -490,7 +451,7 @@ v： 处理过程中，显示">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io/2020/03/17/rsync/">https://xuhaoyang.github.io/2020/03/17/rsync/</a>
+                    <a href="https://xuhaoyang.github.io/2020/03/21/android-interview/">https://xuhaoyang.github.io/2020/03/21/android-interview/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -528,20 +489,20 @@ v： 处理过程中，显示">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/rsync/">
-                                    <span class="chip bg-color">rsync</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
                                 </a>
                             
-                                <a href="/tags/%E5%A4%87%E4%BB%BD/">
-                                    <span class="chip bg-color">备份</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
-                                <a href="/tags/macOS/">
-                                    <span class="chip bg-color">macOS</span>
+                                <a href="/tags/%E7%9F%A5%E8%AF%86/">
+                                    <span class="chip bg-color">知识</span>
                                 </a>
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/Android/">
+                                    <span class="chip bg-color">Android</span>
                                 </a>
                             
                         </div>
@@ -711,6 +672,47 @@ v： 处理过程中，显示">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2020/03/21/java-android-final/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="理解final在Java和Android中修饰局部变量的意义">
+                        
+                        <span class="card-title">理解final在Java和Android中修饰局部变量的意义</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            final在Java和Android中修饰局部变量的意义Q：为什么经常在Android项目中看到final 对变量进行修饰？
+在Java中，有四种内部类：
+
+静态内部类（static inner class）
+成员内部类（Method in
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ECM
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020/03/19/java-interview/">
                     <div class="card-image">
                         
@@ -733,9 +735,9 @@ v： 处理过程中，显示">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -761,73 +763,6 @@ v： 处理过程中，显示">
                     
                     <a href="/tags/%E7%9F%A5%E8%AF%86/">
                         <span class="chip bg-color">知识</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/05/ijkplayer-build/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Custom Build Bilibili ijkplayer">
-                        
-                        <span class="card-title">Custom Build Bilibili ijkplayer</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Build Bilibili ijkplayerMacOS 环境Homebrewgit、yasm
-NDK必需 Android NDK 10-14
-https://developer.android.google.cn/ndk/downloa
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                    总结
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/ffmpeg/">
-                        <span class="chip bg-color">ffmpeg</span>
-                    </a>
-                    
-                    <a href="/tags/ijkplayer/">
-                        <span class="chip bg-color">ijkplayer</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E8%AF%91/">
-                        <span class="chip bg-color">编译</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%A4%9A%E5%AA%92%E4%BD%93/">
-                        <span class="chip bg-color">多媒体</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%A7%86%E9%A2%91/">
-                        <span class="chip bg-color">视频</span>
                     </a>
                     
                 </div>
