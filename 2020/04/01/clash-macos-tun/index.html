@@ -445,9 +445,19 @@ Clash Tun Configfake-ip mode (not under test)dns:
 <h3 id="real-ip-mode-recommend"><a href="#real-ip-mode-recommend" class="headerlink" title="real-ip mode (recommend)"></a>real-ip mode (recommend)</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">dns</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">listen</span><span class="token punctuation">:</span> 0.0.0.0<span class="token punctuation">:</span><span class="token number">53</span>
+  <span class="token key atrule">ipv6</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
   <span class="token key atrule">enhanced-mode</span><span class="token punctuation">:</span> redir<span class="token punctuation">-</span>host
   <span class="token key atrule">nameserver</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> 114.114.114.114
+    <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//doh.rixcloud.dev/dns<span class="token punctuation">-</span>query
+    <span class="token punctuation">-</span> tls<span class="token punctuation">:</span>//dns.rubyfish.cn<span class="token punctuation">:</span><span class="token number">853 </span><span class="token comment" spellcheck="true"># dns over tls</span>
+    <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//i.233py.com/dns<span class="token punctuation">-</span>query
+    <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//dns.google/dns<span class="token punctuation">-</span>query
+    <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//118.31.13.131/dns<span class="token punctuation">-</span>query
+    <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//120.25.25.166/dns<span class="token punctuation">-</span>query
+    <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//139.224.112.177/dns<span class="token punctuation">-</span>query
+    <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//47.108.56.233/dns<span class="token punctuation">-</span>query
+    <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//59.110.53.209/dns<span class="token punctuation">-</span>query
+    <span class="token punctuation">-</span> 119.28.28.28
 
 <span class="token key atrule">experimental</span><span class="token punctuation">:</span>
   <span class="token key atrule">interface-name</span><span class="token punctuation">:</span> en0 <span class="token comment" spellcheck="true"># your interface-name</span>
@@ -497,7 +507,54 @@ net.inet6.ip6.forwarding: 0 -&gt; 1
 
 sudo sysctl -a | grep forward
 
-/etc/sysctl.conf </code></pre>
+/etc/sysctl.conf </code></pre><h3 id="Shell-setting"><a href="#Shell-setting" class="headerlink" title="Shell setting"></a>Shell setting</h3><pre class=" language-shell"><code class="language-shell">fun setClashNetwork(){
+  OLDIFS=$IFS
+  IFS=$'\n'
+  sudo route -n add -net 1 198.18.0.1
+  sudo route -n add -net 2/7 198.18.0.1
+  sudo route -n add -net 4/6 198.18.0.1
+  sudo route -n add -net 8/5 198.18.0.1
+  sudo route -n add -net 16/4 198.18.0.1
+  sudo route -n add -net 32/3 198.18.0.1
+  sudo route -n add -net 64/2 198.18.0.1
+  sudo route -n add -net 128.0/1 198.18.0.1
+  for line in $(networksetup -listallnetworkservices)
+  do
+    if [[ "$line" != *"An asterisk"* ]] 
+    then
+      echo "$line"
+      networksetup -setdnsservers $line "127.0.0.1"
+    fi
+  done
+  IFS=$OLDIFS
+}
+
+fun unsetClashNetwork(){
+  OLDIFS=$IFS
+  IFS=$'\n'
+  sudo route delete -net 1 198.18.0.1
+  sudo route delete -net 2/7 198.18.0.1
+  sudo route delete -net 4/6 198.18.0.1
+  sudo route delete -net 8/5 198.18.0.1
+  sudo route delete -net 16/4 198.18.0.1
+  sudo route delete -net 32/3 198.18.0.1
+  sudo route delete -net 64/2 198.18.0.1
+  sudo route delete -net 128.0/1 198.18.0.1
+  for line in $(networksetup -listallnetworkservices)
+  do
+    if [[ "$line" != *"An asterisk"* ]] 
+    then
+      echo "$line"
+      networksetup -setdnsservers $line
+    fi
+  done
+  IFS=$OLDIFS
+}
+
+fun updateClashConfig(){
+  curl -v -X PUT -H "Accept: application/json" -H "Content-type: application/json"  -d '{"path":"/Users/xuhaoyang/clash/config/config.yaml"}' 127.0.0.1:9090/configs
+}</code></pre>
+
             </div>
             <hr/>
 
