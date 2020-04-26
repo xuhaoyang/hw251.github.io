@@ -11,6 +11,24 @@
         <content type="html"><![CDATA[<h1 id="Custom-Web-总结"><a href="#Custom-Web-总结" class="headerlink" title="Custom Web 总结"></a>Custom Web 总结</h1><h2 id="SSL-证书"><a href="#SSL-证书" class="headerlink" title="SSL 证书"></a>SSL 证书</h2><pre><code>export CF_Email=&quot;123123213@qq.com&quot;export CF_Key=&quot;12345667&quot;~/.acme.sh/acme.sh --issue --installcert -d [域名] --dns dns_cf --key-file /usr/local/nginx/conf/ssl/hw251.icu/hw251.icu.key --fullchain-file /usr/local/nginx/conf/ssl/hw251.icu/fullchain.cer</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> 总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web </tag>
+            
+            <tag> https </tag>
+            
+            <tag> ssl </tag>
+            
+            <tag> tls </tag>
+            
+        </tags>
       
     </entry>
     
