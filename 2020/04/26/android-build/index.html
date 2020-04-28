@@ -512,7 +512,32 @@ android {
         pgyUpload<span class="token operator">=</span><span class="token string">"https://www.pgyer.com/apiv2/app/upload"</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>根据Flavor和debug模式等，手动配置apk路径供脚本上传</p>
+<p>在 application 工程的 <code>build.gradle</code> 中修改 apk 文件名</p>
+<pre><code>productFlavors {
+        offline {
+            versionName getVersionName(&quot;offline&quot;) //修改 versionName
+        }
+
+                lowversion {
+            minSdkVersion 15
+            versionName getVersionName(&quot;lowversion&quot;)
+        }
+
+        online {
+            versionName demoVersionName
+        }
+
+        admin {
+            versionName versionName getVersionName(&quot;管理员&quot;) //修改 versionName
+        }
+}
+
+android.applicationVariants.all { variant -&gt;
+    variant.outputs.all {
+        outputFileName = getApkName(variant.versionName)
+    }
+}
+</code></pre><p>根据Flavor和debug模式等，手动配置apk路径供脚本上传</p>
 <pre class=" language-groovy"><code class="language-groovy"><span class="token keyword">def</span> <span class="token function">getVersionName</span><span class="token punctuation">(</span>String suffix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>suffix <span class="token operator">==</span> null <span class="token operator">||</span> suffix<span class="token operator">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> String<span class="token operator">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> demoVersionName<span class="token punctuation">)</span>
@@ -561,6 +586,7 @@ task <span class="token function">uploadLowversionDebugApk</span><span class="to
         <span class="token function">uploadPGY</span><span class="token punctuation">(</span><span class="token function">getApkPath</span><span class="token punctuation">(</span>lowversion<span class="token punctuation">,</span> <span class="token string">"debug"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
+<h3 id="打包加固"><a href="#打包加固" class="headerlink" title="打包加固"></a>打包加固</h3><p><a href="https://juejin.im/post/5c977ead6fb9a070ea79d3f6" target="_blank" rel="noopener">https://juejin.im/post/5c977ead6fb9a070ea79d3f6</a></p>
 <h2 id="Docker-打包"><a href="#Docker-打包" class="headerlink" title="Docker 打包"></a>Docker 打包</h2><pre class=" language-sh"><code class="language-sh">docker run --rm -v ${PWD}:/build -w /build circleci/android:api-29 bash -c "./gradlew assembleDebug"</code></pre>
 <h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>Android:api-29</p>
 <p><a href="https://github.com/CircleCI-Public/circleci-dockerfiles/blob/master/android/images/api-29/Dockerfile" target="_blank" rel="noopener">https://github.com/CircleCI-Public/circleci-dockerfiles/blob/master/android/images/api-29/Dockerfile</a></p>
