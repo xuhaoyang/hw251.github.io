@@ -562,6 +562,8 @@ task <span class="token function">uploadLowversionDebugApk</span><span class="to
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <h2 id="Docker-打包"><a href="#Docker-打包" class="headerlink" title="Docker 打包"></a>Docker 打包</h2><pre class=" language-sh"><code class="language-sh">docker run --rm -v ${PWD}:/build -w /build circleci/android:api-29 bash -c "./gradlew assembleDebug"</code></pre>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>Android:api-29</p>
+<p><a href="https://github.com/CircleCI-Public/circleci-dockerfiles/blob/master/android/images/api-29/Dockerfile" target="_blank" rel="noopener">https://github.com/CircleCI-Public/circleci-dockerfiles/blob/master/android/images/api-29/Dockerfile</a></p>
 
             </div>
             <hr/>
