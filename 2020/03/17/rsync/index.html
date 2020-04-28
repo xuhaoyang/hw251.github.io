@@ -458,7 +458,7 @@ v： 处理过程中，显示">
 </ul>
 <h4 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a>增量备份</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre>
 <p>会将<code>data</code>文件夹 备份到<code>/your/backup/</code>下</p>
-<h4 id="增量备份并删除额外的文件"><a href="#增量备份并删除额外的文件" class="headerlink" title="增量备份并删除额外的文件"></a>增量备份并删除额外的文件</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz /home/data/ /your/backup/</code></pre>
+<h4 id="增量备份并删除额外的文件"><a href="#增量备份并删除额外的文件" class="headerlink" title="增量备份并删除额外的文件"></a>增量备份并删除额外的文件</h4><pre class=" language-shell"><code class="language-shell">rsync -abCuvz  --delete /home/data/ /your/backup/</code></pre>
 <h4 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h4><pre class=" language-shell"><code class="language-shell">rsync -abuvz --exclude '*~' /your/backup/data/ /home/data/</code></pre>
 <h4 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h4><p>在服务器上，通常需要备份多个目录，如备份/home 、/etc、/opt目录， 则可以用以下的参数：</p>
 <pre class=" language-shell"><code class="language-shell">rsync -av root@serverhost:/home/ root@serverhost:/etc/ root@serverhost:/opt/ /local/backup/media/</code></pre>
