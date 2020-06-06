@@ -467,7 +467,7 @@ Initialized empty Git repository in /Users/michael/learngit/.git/</code></pre><p
 <pre><code>$ git reset --hard HEAD^
 HEAD is now at ea34578 add distributed</code></pre><p>当回退完成之后，如果返回到回退之前的状态的话，可以通过<code>git reflog</code>命令查看git的记录，然后找到想要回退的<code>commit id</code>，就可以使用下面的命令返回到指定的commit。</p>
 <pre><code>git reset --hard commit id</code></pre><h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p>在本地中，一个项目的目录就是一个工作区。<br>版本库，工作区有一个隐藏目录<code>.git</code>，这个不算工作区，而是Git的版本库。Git的版本库里存了很多东西，其中最重要的就是称为<code>stage</code>（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支<code>master</code>，以及指向master的一个指针叫<code>HEAD</code>。</p>
-<p><img src="media/14729548203031/1458722977422.png" alt="1458722977422"></p>
+<p><img src="1458722977422.png" alt="1458722977422"></p>
 <p>我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
 <ol>
 <li>用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</li>
@@ -492,8 +492,8 @@ HEAD is now at ea34578 add distributed</code></pre><p>当回退完成之后，�
 <p>这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了。<br>现在有两种情况，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且<code>git commit</code>。<br>另一种情况是删错了，因为版本库里还有，所以可以通过命令<code>git checkout --file</code>来进行“一键还原”。</p>
 <h3 id="撤出暂存区（或从暂存区删除）"><a href="#撤出暂存区（或从暂存区删除）" class="headerlink" title="撤出暂存区（或从暂存区删除）"></a>撤出暂存区（或从暂存区删除）</h3><p>使用 <code>git rm --cached &lt;file&gt;...</code> 撤出暂存区</p>
 <h3 id="查看日志log"><a href="#查看日志log" class="headerlink" title="查看日志log"></a>查看日志log</h3><h4 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h4><p><code>-p</code> 选项展开显示每次提交的内容差异</p>
-<p><code>--word-diff</code> 从而获取单词层面上的对比<br>git log –word-diff -U1<br><img src="media/14729548203031/15275755278746.jpg" alt="-w480"></p>
-<p><code>--stat</code> 仅显示简要的增改行数统计<br><img src="media/14729548203031/15275754061918.jpg" alt="-w480"></p>
+<p><code>--word-diff</code> 从而获取单词层面上的对比<br>git log –word-diff -U1<br><img src="15275755278746.jpg" alt="-w480"></p>
+<p><code>--stat</code> 仅显示简要的增改行数统计<br><img src="15275754061918.jpg" alt="-w480"></p>
 <p><code>--graph</code> 一些 ASCII 字符串表示的简单图形</p>
 <pre><code> git log --oneline --stat --decorate --pretty=format:&quot;%h - %an, %ar : %s&quot;</code></pre><table>
 <thead>
@@ -572,8 +572,8 @@ git config --global alias.lms  &quot;log --no-merges --color --stat --date=forma
 git config --global alias.ls &quot;log --no-merges --color --graph --date=format:&#39;%Y-%m-%d %H:%M:%S&#39; --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;
 
 
-git config --global alias.lss &quot;log --no-merges --color --stat --graph --date=format:&#39;%Y-%m-%d %H:%M:%S&#39; --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</code></pre><p><img src="media/14729548203031/15275769609397.jpg" alt="-w480"></p>
-<h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><p>Git鼓励大量使用分支：<br>查看分支：<code>git branch</code><br>创建分支：<code>git branch &lt;name&gt;</code><br>切换分支：<code>git checkout &lt;name&gt;</code><br>创建+切换分支：<code>git checkout -b &lt;name&gt;</code><br>合并某分支到当前分支：<code>git merge &lt;name&gt;</code><br>删除分支：<code>git branch -d &lt;name&gt;</code><br>参考文章：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="noopener">创建和合并分支</a></p>
+git config --global alias.lss &quot;log --no-merges --color --stat --graph --date=format:&#39;%Y-%m-%d %H:%M:%S&#39; --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</code></pre><p><img src="15275769609397.jpg" alt="-w480"></p>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><p>Git鼓励大量使用分支：<br>查看分支：<code>git branch</code><br>创建分支：<code>git branch &lt;name&gt;</code><br>切换分支：<code>git checkout &lt;name&gt;</code><br>创建+切换分支：<code>git checkout -b &lt;name&gt;</code><br>合并某分支到当前分支：<code>git merge &lt;name&gt;</code><br>删除分支：<code>git branch -d &lt;name&gt;</code><br>参考文章：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="noopener">创建和合并分支</a></p>
 <h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>合并分支时出现冲突的情况：</p>
 <pre><code>$ git merge feature1
 Auto-merging readme.txt
@@ -613,7 +613,20 @@ git reset --hard origin/master
 git pull</code></pre><h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p>如果不再需要某个远程分支了，比如搞定了某个特性并把它合并进了远程的 <code>master</code> 分支（或任何其他存放稳定代码的分支），可以用这个非常无厘头的语法来删除它：<code>git push [远程名] :[分支名]</code>。如果想在服务器上删除 <code>serverfix</code> 分支，运行下面的命令：</p>
 <pre><code>$ git push origin :serverfix
 To git@github.com:schacon/simplegit.git
- - [deleted]         serverfix</code></pre><h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><p>发布一个版本时，我们通常先在版本库中打一个标签，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。<br>Git的标签虽然是版本库的快照，但其实它就是指向某个<code>commit</code>的指针，<br>所以，创建和删除标签都是瞬间完成的。</p>
+ - [deleted]         serverfix</code></pre><h3 id="Git合并指定commit到当前分支-cherry-pick-rebase"><a href="#Git合并指定commit到当前分支-cherry-pick-rebase" class="headerlink" title="Git合并指定commit到当前分支(cherry-pick/rebase)"></a>Git合并指定commit到当前分支(cherry-pick/rebase)</h3><p>有时我们需要将指定的某一次commit合并到当前分支，比如线上的一次bugfix，只合并需要的commits。</p>
+<p>首先，用git log或GitX工具查看一下你想选择哪些commits进行合并，例如：</p>
+<pre><code>dd2e86 - 946992 -9143a9 - a6fd86 - 5a6057 [master]
+
+           \
+
+            76cada - 62ecb3 - b886a0 [feature]</code></pre><p>比如，feature 分支上的commit <code>62ecb3</code> 非常重要，它含有一个bug的修改。你现在只需要将62ecb3 合并到master，而不合并feature上的其他commits，所以我们用<code>git cherry-pick</code>命令来做：</p>
+<pre><code>&gt; git checkout master
+&gt; git cherry-pick 62ecb3</code></pre><p>这样就好啦。现在62ecb3 就被合并到master分支，并在master中添加了commit（作为一个新的commit）。cherry-pick 和merge比较类似，如果git不能合并代码改动（比如遇到合并冲突），git需要你自己来解决冲突并手动添加commit。</p>
+<p><strong>合并某个分支上的一系列commits</strong><br>在一些特性情况下，合并单个commit并不够，你需要合并一系列相连的commits。这种情况下就不要选择<code>cherry-pick</code>了，rebase 更适合。还以上例为例，假设你需要合并feature分支的commit76cada ~62ecb3 到master分支。</p>
+<p>首先需要基于feature创建一个新的分支，并指明新分支的最后一个commit：</p>
+<pre><code>git checkout -bnewbranch 62ecb3</code></pre><p>然后，rebase这个新分支的commit到master（–ontomaster）。76cada^ 指明你想从哪个特定的commit开始。</p>
+<pre><code>&gt; git rebase --ontomaster 76cada^</code></pre><p>得到的结果就是feature分支的commit 76cada ~62ecb3 都被合并到了master分支。</p>
+<h3 id="通过Git-rebase-i-修订历史commit"><a href="#通过Git-rebase-i-修订历史commit" class="headerlink" title="通过Git rebase -i 修订历史commit"></a>通过Git rebase -i 修订历史commit</h3><h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><p>发布一个版本时，我们通常先在版本库中打一个标签，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。<br>Git的标签虽然是版本库的快照，但其实它就是指向某个<code>commit</code>的指针，<br>所以，创建和删除标签都是瞬间完成的。</p>
 <h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><ol>
 <li>命令<code>git tag &lt;name&gt;</code>用于新建一个标签，默认为<code>HEAD</code>，也可以指定一个<code>commit id</code>；</li>
 <li><code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息；</li>
