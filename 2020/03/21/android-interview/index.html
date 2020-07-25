@@ -1120,8 +1120,7 @@ public static int calculateInSampleSize(
 
     return inSampleSize;
 }
-
-复制代码</code></pre><h3 id="5-图片的三级缓存"><a href="#5-图片的三级缓存" class="headerlink" title="5. 图片的三级缓存"></a>5. <a href="https://www.jianshu.com/p/2cd59a79ed4a" target="_blank" rel="noopener">图片的三级缓存</a></h3><blockquote>
+</code></pre><h3 id="5-图片的三级缓存"><a href="#5-图片的三级缓存" class="headerlink" title="5. 图片的三级缓存"></a>5. <a href="https://www.jianshu.com/p/2cd59a79ed4a" target="_blank" rel="noopener">图片的三级缓存</a></h3><blockquote>
 <ol>
 <li>首次加载 Android App 时，肯定要通过网络交互来获取图片，之后我们可以将图片保存至本地SD卡和内存中</li>
 <li>之后运行 App 时，优先访问内存中的图片缓存</li>
@@ -1353,6 +1352,8 @@ public static int calculateInSampleSize(
 </li>
 </ol>
 </blockquote>
+<h3 id="23-Bitmap有没有必要主动recycle"><a href="#23-Bitmap有没有必要主动recycle" class="headerlink" title="23. Bitmap有没有必要主动recycle"></a>23. Bitmap有没有必要主动recycle</h3><p><a href="https://developer.android.com/topic/performance/graphics/manage-memory" target="_blank" rel="noopener">Google Guide-manage bitmap manager</a></p>
+<p><a href="https://developer.android.com/topic/performance/graphics/cache-bitmap.html" target="_blank" rel="noopener">Google Guide-Cache Bitmap</a></p>
 <h2 id="系统实现及原理"><a href="#系统实现及原理" class="headerlink" title="系统实现及原理"></a>系统实现及原理</h2><hr>
 <h3 id="0-AsyncTask"><a href="#0-AsyncTask" class="headerlink" title="0. AsyncTask"></a>0. AsyncTask</h3><blockquote>
 <ol>
