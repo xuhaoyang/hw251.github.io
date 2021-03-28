@@ -5,10 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Clash Tun in macOS, 记录小站">
-    <meta name="description" content="Clash Tun in macOSClash Tun Experimental release
-Clash Tun Configfake-ip mode (not under test)dns:
-  enable: true
-  list">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,6 +13,9 @@ Clash Tun Configfake-ip mode (not under test)dns:
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
     <title>Clash Tun in macOS | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -28,8 +28,10 @@ Clash Tun Configfake-ip mode (not under test)dns:
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
 
 
 <body>
@@ -99,6 +101,7 @@ Clash Tun Configfake-ip mode (not under test)dns:
     </a>
   </li>
 </ul>
+
 
 <div id="mobile-nav" class="side-nav sidenav">
 
@@ -172,6 +175,7 @@ Clash Tun Configfake-ip mode (not under test)dns:
         
     </ul>
 </div>
+
 
         </div>
 
@@ -301,8 +305,7 @@ Clash Tun Configfake-ip mode (not under test)dns:
     }
 
     .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
+        padding: 35px 0 15px 17px;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 1.5rem;
@@ -314,7 +317,7 @@ Clash Tun Configfake-ip mode (not under test)dns:
     }
 
     #toc-content {
-        height: calc(100vh - 250px);
+        padding-bottom: 30px;
         overflow: auto;
     }
 
@@ -335,14 +338,14 @@ Clash Tun Configfake-ip mode (not under test)dns:
     #toc-content .toc-link::before {
         background-color: transparent;
         max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
     }
 
     #toc-content .is-active-link {
         color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
     }
 
     #floating-toc-btn {
@@ -375,12 +378,12 @@ Clash Tun Configfake-ip mode (not under test)dns:
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/macOS/">
-                                <span class="chip bg-color">macOS</span>
-                            </a>
-                        
                             <a href="/tags/Clash/">
                                 <span class="chip bg-color">Clash</span>
+                            </a>
+                        
+                            <a href="/tags/macOS/">
+                                <span class="chip bg-color">macOS</span>
                             </a>
                         
                             <a href="/tags/Tun/">
@@ -424,12 +427,16 @@ Clash Tun Configfake-ip mode (not under test)dns:
 
                 
             </div>
-
         </div>
         <hr class="clearfix">
+
+        
+
+        
+
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Clash-Tun-in-macOS"><a href="#Clash-Tun-in-macOS" class="headerlink" title="Clash Tun in macOS"></a>Clash Tun in macOS</h1><p><a href="https://github.com/Dreamacro/clash/releases/tag/TUN" target="_blank" rel="noopener">Clash Tun Experimental release</a></p>
+                <h1 id="Clash-Tun-in-macOS"><a href="#Clash-Tun-in-macOS" class="headerlink" title="Clash Tun in macOS"></a>Clash Tun in macOS</h1><p><a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases/tag/TUN">Clash Tun Experimental release</a></p>
 <h2 id="Clash-Tun-Config"><a href="#Clash-Tun-Config" class="headerlink" title="Clash Tun Config"></a>Clash Tun Config</h2><h3 id="fake-ip-mode-not-under-test"><a href="#fake-ip-mode-not-under-test" class="headerlink" title="fake-ip mode (not under test)"></a>fake-ip mode (not under test)</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">dns</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">listen</span><span class="token punctuation">:</span> 0.0.0.0<span class="token punctuation">:</span><span class="token number">53</span>
@@ -441,7 +448,8 @@ Clash Tun Configfake-ip mode (not under test)dns:
   <span class="token key atrule">interface-name</span><span class="token punctuation">:</span> en0 <span class="token comment" spellcheck="true"># your interface-name</span>
 
 <span class="token key atrule">tun</span><span class="token punctuation">:</span>
-  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre>
 <h3 id="real-ip-mode-recommend"><a href="#real-ip-mode-recommend" class="headerlink" title="real-ip mode (recommend)"></a>real-ip mode (recommend)</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">dns</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">listen</span><span class="token punctuation">:</span> 0.0.0.0<span class="token punctuation">:</span><span class="token number">53</span>
@@ -463,21 +471,24 @@ Clash Tun Configfake-ip mode (not under test)dns:
   <span class="token key atrule">interface-name</span><span class="token punctuation">:</span> en0 <span class="token comment" spellcheck="true"># your interface-name</span>
 
 <span class="token key atrule">tun</span><span class="token punctuation">:</span>
-  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre>
 <h3 id="DNS-recommendations"><a href="#DNS-recommendations" class="headerlink" title="DNS recommendations"></a>DNS recommendations</h3><p>use DoT/DoH.</p>
 <ul>
 <li>tls://dns.rubyfish.cn:853 # dns over tls</li>
-<li><a href="https://dns.google/dns-query" target="_blank" rel="noopener">https://dns.google/dns-query</a></li>
-<li><a href="https://i.233py.com/dns-query" target="_blank" rel="noopener">https://i.233py.com/dns-query</a></li>
-<li><a href="https://doh.rixcloud.dev/dns-query" target="_blank" rel="noopener">https://doh.rixcloud.dev/dns-query</a></li>
-<li><a href="https://118.31.13.131/dns-query" target="_blank" rel="noopener">https://118.31.13.131/dns-query</a></li>
-<li><a href="https://120.25.25.166/dns-query" target="_blank" rel="noopener">https://120.25.25.166/dns-query</a></li>
-<li><a href="https://139.224.112.177/dns-query" target="_blank" rel="noopener">https://139.224.112.177/dns-query</a></li>
-<li><a href="https://47.108.56.233/dns-query" target="_blank" rel="noopener">https://47.108.56.233/dns-query</a></li>
-<li><a href="https://59.110.53.209/dns-query" target="_blank" rel="noopener">https://59.110.53.209/dns-query</a></li>
+<li><a target="_blank" rel="noopener" href="https://dns.google/dns-query">https://dns.google/dns-query</a></li>
+<li><a target="_blank" rel="noopener" href="https://i.233py.com/dns-query">https://i.233py.com/dns-query</a></li>
+<li><a target="_blank" rel="noopener" href="https://doh.rixcloud.dev/dns-query">https://doh.rixcloud.dev/dns-query</a></li>
+<li><a target="_blank" rel="noopener" href="https://118.31.13.131/dns-query">https://118.31.13.131/dns-query</a></li>
+<li><a target="_blank" rel="noopener" href="https://120.25.25.166/dns-query">https://120.25.25.166/dns-query</a></li>
+<li><a target="_blank" rel="noopener" href="https://139.224.112.177/dns-query">https://139.224.112.177/dns-query</a></li>
+<li><a target="_blank" rel="noopener" href="https://47.108.56.233/dns-query">https://47.108.56.233/dns-query</a></li>
+<li><a target="_blank" rel="noopener" href="https://59.110.53.209/dns-query">https://59.110.53.209/dns-query</a></li>
 </ul>
-<h3 id="Update-Config-When-Clash-is-Running"><a href="#Update-Config-When-Clash-is-Running" class="headerlink" title="Update Config When Clash  is Running"></a>Update Config When Clash  is Running</h3><pre class=" language-shell"><code class="language-shell">curl -v -X PUT -H "Accept: application/json" -H "Content-type: application/json"  -d '{"path":"/Users/xuhaoyang/clash/config.yaml"}' 127.0.0.1:9090/configs</code></pre>
-<h3 id="Run-clash-with-sudo"><a href="#Run-clash-with-sudo" class="headerlink" title="Run clash with sudo"></a>Run clash with sudo</h3><pre class=" language-shell"><code class="language-shell">sudo ./clash -d .</code></pre>
+<h3 id="Update-Config-When-Clash-is-Running"><a href="#Update-Config-When-Clash-is-Running" class="headerlink" title="Update Config When Clash  is Running"></a>Update Config When Clash  is Running</h3><pre class=" language-shell"><code class="language-shell">curl -v -X PUT -H "Accept: application/json" -H "Content-type: application/json"  -d '&#123;"path":"/Users/xuhaoyang/clash/config.yaml"&#125;' 127.0.0.1:9090/configs
+</code></pre>
+<h3 id="Run-clash-with-sudo"><a href="#Run-clash-with-sudo" class="headerlink" title="Run clash with sudo"></a>Run clash with sudo</h3><pre class=" language-shell"><code class="language-shell">sudo ./clash -d .
+</code></pre>
 <h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><h3 id="macOS-set-global-route-after-tun-start"><a href="#macOS-set-global-route-after-tun-start" class="headerlink" title="macOS set global route (after tun start)"></a>macOS set global route (after tun start)</h3><pre class=" language-shell"><code class="language-shell">sudo route -n add -net 1 198.18.0.1
 sudo route -n add -net 2/7 198.18.0.1
 sudo route -n add -net 4/6 198.18.0.1
@@ -486,7 +497,8 @@ sudo route -n add -net 16/4 198.18.0.1
 sudo route -n add -net 32/3 198.18.0.1
 sudo route -n add -net 64/2 198.18.0.1
 sudo route -n add -net 128.0/1 198.18.0.1
-networksetup -setdnsservers Wi-Fi 127.0.0.1</code></pre>
+networksetup -setdnsservers Wi-Fi 127.0.0.1
+</code></pre>
 <h3 id="Unset"><a href="#Unset" class="headerlink" title="Unset"></a>Unset</h3><pre class=" language-shell"><code class="language-shell">sudo route -n delete -net 1 198.18.0.1
 sudo route -n delete -net 2/7 198.18.0.1
 sudo route -n delete -net 4/6 198.18.0.1
@@ -495,7 +507,8 @@ sudo route -n delete -net 16/4 198.18.0.1
 sudo route -n delete -net 32/3 198.18.0.1
 sudo route -n delete -net 64/2 198.18.0.1
 sudo route -n delete -net 128.0/1 198.18.0.1
-networksetup -setdnsservers Wi-Fi</code></pre>
+networksetup -setdnsservers Wi-Fi
+</code></pre>
 <p>Or close clash</p>
 <h3 id="IP-foward"><a href="#IP-foward" class="headerlink" title="IP foward"></a>IP foward</h3><pre><code># IPv4 的转发
 $ sudo sysctl -w net.inet.ip.forwarding=1
@@ -507,7 +520,9 @@ net.inet6.ip6.forwarding: 0 -&gt; 1
 
 sudo sysctl -a | grep forward
 
-/etc/sysctl.conf </code></pre><h3 id="Shell-setting"><a href="#Shell-setting" class="headerlink" title="Shell setting"></a>Shell setting</h3><pre class=" language-shell"><code class="language-shell">fun setClashNetwork(){
+/etc/sysctl.conf 
+</code></pre>
+<h3 id="Shell-setting"><a href="#Shell-setting" class="headerlink" title="Shell setting"></a>Shell setting</h3><pre class=" language-shell"><code class="language-shell">fun setClashNetwork()&#123;
   OLDIFS=$IFS
   IFS=$'\n'
   sudo route -n add -net 1 198.18.0.1
@@ -527,9 +542,9 @@ sudo sysctl -a | grep forward
     fi
   done
   IFS=$OLDIFS
-}
+&#125;
 
-fun unsetClashNetwork(){
+fun unsetClashNetwork()&#123;
   OLDIFS=$IFS
   IFS=$'\n'
   sudo route delete -net 1 198.18.0.1
@@ -549,12 +564,14 @@ fun unsetClashNetwork(){
     fi
   done
   IFS=$OLDIFS
-}
+&#125;
 
-fun updateClashConfig(){
-  curl -v -X PUT -H "Accept: application/json" -H "Content-type: application/json"  -d '{"path":"/Users/xuhaoyang/clash/config/config.yaml"}' 127.0.0.1:9090/configs
-}</code></pre>
+fun updateClashConfig()&#123;
+  curl -v -X PUT -H "Accept: application/json" -H "Content-type: application/json"  -d '&#123;"path":"/Users/xuhaoyang/clash/config/config.yaml"&#125;' 127.0.0.1:9090/configs
+&#125;
+</code></pre>
 
+                
             </div>
             <hr/>
 
@@ -569,7 +586,7 @@ fun updateClashConfig(){
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io" rel="external nofollow noreferrer">ECM</a>
+                    <a href="/about" rel="external nofollow noreferrer">ECM</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -592,7 +609,7 @@ fun updateClashConfig(){
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+                    <a href="/about" target="_blank">ECM</a>
                     !
                 </span>
             </div>
@@ -617,12 +634,12 @@ fun updateClashConfig(){
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/macOS/">
-                                    <span class="chip bg-color">macOS</span>
-                                </a>
-                            
                                 <a href="/tags/Clash/">
                                     <span class="chip bg-color">Clash</span>
+                                </a>
+                            
+                                <a href="/tags/macOS/">
+                                    <span class="chip bg-color">macOS</span>
                                 </a>
                             
                                 <a href="/tags/Tun/">
@@ -638,9 +655,8 @@ fun updateClashConfig(){
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
 <div id="article-share">
-    
+
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
@@ -777,9 +793,14 @@ fun updateClashConfig(){
         $('.tabs').tabs();
     });
 </script>
+
             
         </div>
     </div>
+
+    
+
+    
 
     
 
@@ -812,13 +833,7 @@ fun updateClashConfig(){
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Android面试之网络本文是Android面试题整理中的一篇，结合右下角目录食用更佳
-1. 计算机网络的分层按照不同组织的标准和规范，可以有不同的分层方式
-OSI七层
-应用层、表示层、会话层、运输层、网络层、数据链路层、物理层
-
-
-TCP
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -840,12 +855,12 @@ TCP
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
-                    </a>
-                    
                     <a href="/tags/%E7%9F%A5%E8%AF%86/">
                         <span class="chip bg-color">知识</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
                     <a href="/tags/%E7%BD%91%E7%BB%9C/">
@@ -879,11 +894,7 @@ TCP
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            final在Java和Android中修饰局部变量的意义Q：为什么经常在Android项目中看到final 对变量进行修饰？
-在Java中，有四种内部类：
-
-静态内部类（static inner class）
-成员内部类（Method in
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -943,16 +954,9 @@ TCP
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
+        <div class="toc-widget card" style="background-color: white;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
@@ -1050,13 +1054,17 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
+
     <footer class="page-footer bg-color">
     
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
             <span id="year">2019</span>
-            <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+            <a href="/about" target="_blank">ECM</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1132,12 +1140,98 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </div>
 </div>
 
-<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
+
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -1152,9 +1246,6 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Baidu Analytics -->
 
@@ -1185,12 +1276,13 @@ $(function () {
 
     
 
+	
     
 
     
 
     
-    
+
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     

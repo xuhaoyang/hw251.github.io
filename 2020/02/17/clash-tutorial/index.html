@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Clash 使用教程, 记录小站">
-    <meta name="description" content="Clash 是支持Windows、Linux、macOS、Android等多平台的代理软件。支持协议shadowsocks/V2ray。是主要以规则导向型软件。
-Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模式。">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,6 +13,9 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
     <title>Clash 使用教程 | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -26,8 +28,10 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
 
 
 <body>
@@ -97,6 +101,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
     </a>
   </li>
 </ul>
+
 
 <div id="mobile-nav" class="side-nav sidenav">
 
@@ -170,6 +175,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
         
     </ul>
 </div>
+
 
         </div>
 
@@ -299,8 +305,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
     }
 
     .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
+        padding: 35px 0 15px 17px;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 1.5rem;
@@ -312,7 +317,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
     }
 
     #toc-content {
-        height: calc(100vh - 250px);
+        padding-bottom: 30px;
         overflow: auto;
     }
 
@@ -333,14 +338,14 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
     #toc-content .toc-link::before {
         background-color: transparent;
         max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
     }
 
     #toc-content .is-active-link {
         color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
     }
 
     #floating-toc-btn {
@@ -410,20 +415,24 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
 
                 
             </div>
-
         </div>
         <hr class="clearfix">
+
+        
+
+        
+
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Clash 是支持Windows、Linux、macOS、Android等多平台的代理软件。支持协议shadowsocks/V2ray。是主要以规则导向型软件。</p>
 <h2 id="Clash-设置介绍"><a href="#Clash-设置介绍" class="headerlink" title="Clash 设置介绍"></a>Clash 设置介绍</h2><p>这里的设置，主要是指Clash软件当前Proxy运行模式。<br>有<code>Global-全局</code>、<code>Rule-规则</code>、<code>Direct-直连</code>。</p>
 <p><code>Global</code> 指全部数据通过选择的节点进行网络访问<br><code>Rule</code> 请求根据根据配置决定是走翻墙还是不翻墙(往下会进行说明)<br><code>Direct</code> 请求不进行代理(翻墙)</p>
-<p>Clash for Windows 相关设置如图<br><img src="clashl1.jpg" alt=""></p>
+<p>Clash for Windows 相关设置如图<br><img src="clashl1.jpg"></p>
 <p>Clash for Android 暂无此类设置</p>
-<p>ClashX(Mac OS) 相关设置如图<br><img src="clashl2.jpg" alt=""></p>
+<p>ClashX(Mac OS) 相关设置如图<br><img src="clashl2.jpg"></p>
 <h3 id="Clash-代理组介绍"><a href="#Clash-代理组介绍" class="headerlink" title="Clash 代理组介绍"></a>Clash 代理组介绍</h3><p>这里以ClashX的图进行介绍，其他系统的Clash可以参考</p>
 <p>默认情况下什么都不改动，是可以自动翻墙。<br>图中的分组，是来自DlerCloud。</p>
-<p><img src="clashl3.jpg" alt=""></p>
+<p><img src="clashl3.jpg"></p>
 <p><code>Auto - UrlTest</code> 自动根据网络延迟选择节点，会选择延迟最低的服务器。但延迟低不代表速度快。<br><code>Proxy</code> 代理组，主要的外国网站会走这个代理组，如图选择了<code>Auto - UrlTest</code>，则是根据<code>Auto - UrlTest</code>组自动选择节点进行翻墙。<br><code>Domestic</code> 代理组，主要国内重点网站/国内IP会走这个代理组，如图改代理组选择了<code>DIRECT</code>，则是直连<br><code>Others</code> 代理组，部分特殊外国网站走这个代理组。<br><code>Adblock</code> 代理组，部分广告网址 会走这个代理组，如图选择了<code>REJECT</code>(阻断)，匹配中的广告将无法显示。<br><code>Apple</code> 代理组，Apple 有关服务会走这个代理组。<br><code>AsinTV</code> 代理组，如 youku，爱奇艺，bilibil等中国大陆视频网站走这个代理组。<br><code>GlobalTV</code> 代理组，如Youtube等国外视频网站走这个代理组。<br><code>Telegram</code> 代理组，Telegram 聊天软件走这个代理组<br><code>Speedtest</code> 代理组，speedtest.net测速走这个代理组<br><code>Mircrosoft</code> 代理组，微软相关网络服务走这个代理组。</p>
 <p>每个代理组中，所选择的节点，则为该代理组所匹配到的网站，会从哪个节点进行访问。</p>
 <p>但有一些共有参数：</p>
@@ -433,6 +442,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
 </ul>
 <p>节点中如果包含<code>back</code>，则为外国用户访问国内服务使用。</p>
 
+                
             </div>
             <hr/>
 
@@ -447,7 +457,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io" rel="external nofollow noreferrer">ECM</a>
+                    <a href="/about" rel="external nofollow noreferrer">ECM</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -470,7 +480,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+                    <a href="/about" target="_blank">ECM</a>
                     !
                 </span>
             </div>
@@ -504,9 +514,8 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
 <div id="article-share">
-    
+
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
@@ -643,9 +652,14 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
         $('.tabs').tabs();
     });
 </script>
+
             
         </div>
     </div>
+
+    
+
+    
 
     
 
@@ -678,9 +692,7 @@ Clash 设置介绍这里的设置，主要是指Clash软件当前Proxy运行模�
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git整理
-入门初始化git生成密钥可以通过命令行ssh-keygen[Windows没有需要安装cmder类似软件支持]，或者PuTTYgen软件生成
-$ ssh-keygen -t rsa -C &quot;497633959@qq.c
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -730,12 +742,6 @@ $ ssh-keygen -t rsa -C &quot;497633959@qq.c
                     <div class="summary block-with-text">
                         
                             
-系统要求: Mac OS 10.5 及以上
-
-ClashX 不兼容SSR 协议
-
-
-首次使用 ClashX 时，macOS 会提醒你此应用来自未知开发者，请允许打开此应用。ClashX 首次运行会提示是否安装帮助程序（Helper）。此帮
                         
                     </div>
                     <div class="publish-info">
@@ -791,16 +797,9 @@ ClashX 不兼容SSR 协议
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
+        <div class="toc-widget card" style="background-color: white;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
@@ -898,13 +897,17 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
+
     <footer class="page-footer bg-color">
     
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
             <span id="year">2019</span>
-            <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+            <a href="/about" target="_blank">ECM</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -980,12 +983,98 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </div>
 </div>
 
-<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
+
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -1000,9 +1089,6 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Baidu Analytics -->
 
@@ -1033,12 +1119,13 @@ $(function () {
 
     
 
+	
     
 
     
 
     
-    
+
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     

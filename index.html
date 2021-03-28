@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="记录小站">
-    <meta name="description" content="记录小站">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,6 +13,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
     <title>记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -25,8 +28,10 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
 
 
 <body>
@@ -96,6 +101,7 @@
     </a>
   </li>
 </ul>
+
 
 <div id="mobile-nav" class="side-nav sidenav">
 
@@ -169,6 +175,7 @@
         
     </ul>
 </div>
+
 
         </div>
 
@@ -266,7 +273,7 @@
     }
 
     .carousel-control:hover {
-        background-color:rgba(0, 0, 0, .4);
+        background-color: rgba(0, 0, 0, .4);
     }
 
     .carousel-control i {
@@ -287,7 +294,7 @@
         <div class="brand">
             <div class="title center-align">
                 
-                subtitle
+                    subtitle
                 
             </div>
 
@@ -314,13 +321,14 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
 
 
             <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
+                <a href="#articles" class="waves-effect waves-light btn">
                     <i class="fa fa-angle-double-down"></i>开始阅读
                 </a>
 
@@ -369,7 +377,6 @@
 </div>
 
 <script>
-    // TODO 此处的轮播尚需优化，PC/Mobile 在触摸切换时都感觉相当不灵活
     $(function () {
         let coverSlider = $('.carousel');
 
@@ -402,7 +409,7 @@
         let carouselIntervalId;
         
         // Loop to call the next cover article picture.
-        let autoCarousel = function() {
+        let autoCarousel = function () {
             carouselIntervalId = setInterval(function () {
                 coverSlider.carousel('next');
             }, 5000);
@@ -453,6 +460,7 @@
         </div>
     </div>
 </div>
+
                     
 
                     
@@ -478,6 +486,186 @@
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/03/28/recyclerview-summary-example-unkown-you-known/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="关于RecyclerView你知道的不知道的都在这了">
+                            
+                            <span class="card-title">关于RecyclerView你知道的不知道的都在这了</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                力求将 RecyclerView 开放给开发人员的所有接口都体验一番，将 ReyclerView 常用的不常用的功能都试一下，为系统的研究、学习 RecyclerView 做准备
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-28
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
+                                    总结
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Android/">
+                            <span class="chip bg-color">Android</span>
+                        </a>
+                        
+                        <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                            <span class="chip bg-color">转载</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%88%97%E8%A1%A8/">
+                            <span class="chip bg-color">列表</span>
+                        </a>
+                        
+                        <a href="/tags/recyclerview/">
+                            <span class="chip bg-color">recyclerview</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/11/27/java-inner-class-action-and-android-handler-memory-leak/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Java内部类四大作用 和 Android Handler内存泄漏原因">
+                            
+                            <span class="card-title">Java内部类四大作用 和 Android Handler内存泄漏原因</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Java内部类四大作用 和 Android Handler内存泄漏原因定义在类中的类
+内部类的作用需求/存在原因：
+
+内部类方法可以访问该类定义所在作用域中的数据，包括被 private 修饰的私有数据
+内部类可以对同一包中的其他类隐藏起来
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
+                                    总结
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Android/">
+                            <span class="chip bg-color">Android</span>
+                        </a>
+                        
+                        <a href="/tags/Java/">
+                            <span class="chip bg-color">Java</span>
+                        </a>
+                        
+                        <a href="/tags/Memory-leak/">
+                            <span class="chip bg-color">Memory leak</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/09/17/shadowsocks-libev-multiple-port-config/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Shadowsocks libev multiple port Config">
+                            
+                            <span class="card-title">Shadowsocks libev multiple port Config</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Shadowsocks libev 多端口配置方式创建不同端口的配置文件新建/etc/shadowsocks-libev/config_x.json文件
+&amp;#123;
+    "server":"server_ip",
+    "s
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
+                                    总结
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Shadowsocks/">
+                            <span class="chip bg-color">Shadowsocks</span>
+                        </a>
+                        
+                        <a href="/tags/ss/">
+                            <span class="chip bg-color">ss</span>
+                        </a>
+                        
+                        <a href="/tags/server/">
+                            <span class="chip bg-color">server</span>
+                        </a>
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -525,12 +713,12 @@ https://www.jianshu.com/p/0c63a8e5c1ad
                             <span class="chip bg-color">Android</span>
                         </a>
                         
-                        <a href="/tags/BUG/">
-                            <span class="chip bg-color">BUG</span>
-                        </a>
-                        
                         <a href="/tags/Activity/">
                             <span class="chip bg-color">Activity</span>
+                        </a>
+                        
+                        <a href="/tags/BUG/">
+                            <span class="chip bg-color">BUG</span>
                         </a>
                         
                     </div>
@@ -613,8 +801,10 @@ https://www.jianshu.com/p/0c63a8e5c1ad
                         <div class="summary block-with-text">
                             
                                 重新安装新系统准备List备份系统APP备份APP 数据备份/Users/[user]/Library/Application Support
-/Users/[user]/Library/Containers开发配置备份~/.ssh
-.zs
+/Users/[user]/Library/Containers
+
+开发配置备份~/.ssh
+.
                             
                         </div>
                         <div class="publish-info">
@@ -737,10 +927,12 @@ https://www.jianshu.com/p/0c63a8e5c1ad
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Android 项目 Build 总结Gradle获得当前flavor nameimport java.util.regex.Matcher
-import java.util.regex.Pattern
+                                Android 项目 Build 总结Gradle查询当前项目依赖./gradlew module:dependencies
 
-def getCurrentFla
+最后会询问是否生成在线的doc yes
+./gradlew build --scan
+
+获得当前flavor n
                             
                         </div>
                         <div class="publish-info">
@@ -889,12 +1081,12 @@ TCP
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                            <span class="chip bg-color">面试</span>
-                        </a>
-                        
                         <a href="/tags/%E7%9F%A5%E8%AF%86/">
                             <span class="chip bg-color">知识</span>
+                        </a>
+                        
+                        <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                            <span class="chip bg-color">面试</span>
                         </a>
                         
                         <a href="/tags/%E7%BD%91%E7%BB%9C/">
@@ -951,12 +1143,12 @@ Clash Tun Configfake-ip mode (not under test)dns:
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/macOS/">
-                            <span class="chip bg-color">macOS</span>
-                        </a>
-                        
                         <a href="/tags/Clash/">
                             <span class="chip bg-color">Clash</span>
+                        </a>
+                        
+                        <a href="/tags/macOS/">
+                            <span class="chip bg-color">macOS</span>
                         </a>
                         
                         <a href="/tags/Tun/">
@@ -1027,197 +1219,6 @@ Clash Tun Configfake-ip mode (not under test)dns:
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/03/21/android-interview/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Android面试知识">
-                            
-                            <span class="card-title">Android面试知识</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Android InterviewAndroid的大体架构图
-分为四个层次：linux内核；libraies和Android runntime；framework；Application
-
-
-Android的四大组件是哪些，它们的作用？
-
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                    总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                            <span class="chip bg-color">面试</span>
-                        </a>
-                        
-                        <a href="/tags/Java/">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%9F%A5%E8%AF%86/">
-                            <span class="chip bg-color">知识</span>
-                        </a>
-                        
-                        <a href="/tags/Android/">
-                            <span class="chip bg-color">Android</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/03/19/java-interview/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Java面试知识">
-                            
-                            <span class="card-title">Java面试知识</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Java 面试基础知识Java设计思想0. OOP是什么
-面向对象编程（Object Oriented Programming）
-
-1.面向对象的特征有哪些面向对象的特征有：抽象、封装、继承、多态
-
-
-抽象：抽象是将一类对象的共同特征总结出
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                    总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                            <span class="chip bg-color">面试</span>
-                        </a>
-                        
-                        <a href="/tags/Java/">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%9F%A5%E8%AF%86/">
-                            <span class="chip bg-color">知识</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/03/17/rsync/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="rsync 使用">
-                            
-                            <span class="card-title">rsync 使用</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                rsync 使用
-h： human-readable, 输出友好
-a： 合并模式；等于-rlptgoD（不含 -H -A -X）。
-b： 制作备份。
-C： 使用与CVS相同的方式来忽略文件。
-u： 跳过比较新的文件。
-v： 处理过程中，显示
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%80%BB%E7%BB%93/" class="post-category">
-                                    总结
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/rsync/">
-                            <span class="chip bg-color">rsync</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%A4%87%E4%BB%BD/">
-                            <span class="chip bg-color">备份</span>
-                        </a>
-                        
-                        <a href="/tags/macOS/">
-                            <span class="chip bg-color">macOS</span>
-                        </a>
-                        
-                        <a href="/tags/Linux/">
-                            <span class="chip bg-color">Linux</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1255,8 +1256,11 @@ v： 处理过程中，显示
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
             <span id="year">2019</span>
-            <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+            <a href="/about" target="_blank">ECM</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1332,12 +1336,98 @@ v： 处理过程中，显示
     </div>
 </div>
 
-<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
+
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -1352,9 +1442,6 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Baidu Analytics -->
 
@@ -1385,12 +1472,13 @@ $(function () {
 
     
 
+	
     
 
     
 
     
-    
+
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     

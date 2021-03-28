@@ -5,13 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Java面试知识, 记录小站">
-    <meta name="description" content="Java 面试基础知识Java设计思想0. OOP是什么
-面向对象编程（Object Oriented Programming）
-
-1.面向对象的特征有哪些面向对象的特征有：抽象、封装、继承、多态
-
-
-抽象：抽象是将一类对象的共同特征总结出">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,6 +13,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
     <title>Java面试知识 | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -31,8 +28,10 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
 
 
 <body>
@@ -102,6 +101,7 @@
     </a>
   </li>
 </ul>
+
 
 <div id="mobile-nav" class="side-nav sidenav">
 
@@ -175,6 +175,7 @@
         
     </ul>
 </div>
+
 
         </div>
 
@@ -304,8 +305,7 @@
     }
 
     .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
+        padding: 35px 0 15px 17px;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 1.5rem;
@@ -317,7 +317,7 @@
     }
 
     #toc-content {
-        height: calc(100vh - 250px);
+        padding-bottom: 30px;
         overflow: auto;
     }
 
@@ -338,14 +338,14 @@
     #toc-content .toc-link::before {
         background-color: transparent;
         max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
     }
 
     #toc-content .is-active-link {
         color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
     }
 
     #floating-toc-btn {
@@ -378,16 +378,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                                <span class="chip bg-color">面试</span>
-                            </a>
-                        
                             <a href="/tags/Java/">
                                 <span class="chip bg-color">Java</span>
                             </a>
                         
                             <a href="/tags/%E7%9F%A5%E8%AF%86/">
                                 <span class="chip bg-color">知识</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
                     </div>
@@ -423,9 +423,13 @@
 
                 
             </div>
-
         </div>
         <hr class="clearfix">
+
+        
+
+        
+
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Java-面试基础知识"><a href="#Java-面试基础知识" class="headerlink" title="Java 面试基础知识"></a>Java 面试基础知识</h1><h2 id="Java设计思想"><a href="#Java设计思想" class="headerlink" title="Java设计思想"></a>Java设计思想</h2><h3 id="0-OOP是什么"><a href="#0-OOP是什么" class="headerlink" title="0. OOP是什么"></a>0. OOP是什么</h3><blockquote>
@@ -446,30 +450,31 @@
 <p>基础类型如int long等，引用类型例如String</p>
 <pre class=" language-Java"><code class="language-Java">
 第一个例子：基本类型
-void foo(int value) {
+void foo(int value) &#123;
     value = 100;
-}
+&#125;
 foo(num); // num 没有被改变
 
 第二个例子：没有提供改变自身方法的引用类型
-void foo(String text) {
+void foo(String text) &#123;
     text = "windows";
-}
+&#125;
 foo(str); // str 也没有被改变
 
 第三个例子：提供了改变自身方法的引用类型
 StringBuilder sb = new StringBuilder("iphone");
-void foo(StringBuilder builder) {
+void foo(StringBuilder builder) &#123;
     builder.append("4");
-}
+&#125;
 foo(sb); // sb 被改变了，变成了"iphone4"。
 
 第四个例子：提供了改变自身方法的引用类型，但是不使用，而是使用赋值运算符。
 StringBuilder sb = new StringBuilder("iphone");
-void foo(StringBuilder builder) {
+void foo(StringBuilder builder) &#123;
     builder = new StringBuilder("ipad");
-}
-foo(sb); // sb 没有被改变，还是 "iphone"。</code></pre>
+&#125;
+foo(sb); // sb 没有被改变，还是 "iphone"。
+</code></pre>
 <p>Java 堆(Heap) 和 栈(Stack) 。</p>
 <h4 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h4><p><strong>从局部变量/方法参数开始讲起：</strong></p>
 <p>局部变量和方法参数在jvm中的储存方法是相同的，都是在栈上开辟空间来储存的，随着进入方法开辟，退出方法回收。以32位JVM为例，boolean/byte/short/char/int/float以及引用都是分配4字节空间，long/double分配8字节空间。对于每个方法来说，最多占用多少空间是一定的，这在编译时就可以计算好。</p>
@@ -596,13 +601,13 @@ foo(sb); // sb 没有被改变，还是 "iphone"。</code></pre>
 <li>clone方法是Object类中方法，会检查当前实例是否实现Cloneable接口，没有实现则抛出异常，实现了就调用native方法进行clone（clone进行的是浅拷贝），源码如下</li>
 </ol>
 </blockquote>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">Cloneable</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">Cloneable</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">CloneNotSupportedException</span><span class="token punctuation">(</span><span class="token string">"Class "</span> <span class="token operator">+</span> <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span>
                                                  <span class="token string">" doesn't implement Cloneable"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> <span class="token function">internalClone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="5-两个对象值相同-x-equals-y-true-，但却可有不同的hash-code，这句话对不对？"><a href="#5-两个对象值相同-x-equals-y-true-，但却可有不同的hash-code，这句话对不对？" class="headerlink" title="5. 两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对？"></a>5. 两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对？</h3><blockquote>
 <ol>
@@ -623,14 +628,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class MyUtil {
+public class MyUtil &#123;
 
-private MyUtil() {
+private MyUtil() &#123;
 throw new AssertionError();
-}
+&#125;
 
 @SuppressWarnings(&quot;unchecked&quot;)
-public static &lt;T extends Serializable&gt; T clone(T obj) throws Exception {
+public static &lt;T extends Serializable&gt; T clone(T obj) throws Exception &#123;
 ByteArrayOutputStream bout = new ByteArrayOutputStream();
 ObjectOutputStream oos = new ObjectOutputStream(bout);
 oos.writeObject(obj);
@@ -641,50 +646,53 @@ return (T) ois.readObject();
 
 // 说明：调用ByteArrayInputStream或ByteArrayOutputStream对象的close方法没有任何意义
 // 这两个基于内存的流只要垃圾回收器清理对象就能够释放资源，这一点不同于对外部资源（如文件流）的释放
-}
-}
-</code></pre><h3 id="7-谈一谈”-“与”equals-”的区别"><a href="#7-谈一谈”-“与”equals-”的区别" class="headerlink" title="7. 谈一谈”==“与”equals()”的区别"></a>7. 谈一谈”==“与”equals()”的区别</h3><blockquote>
+&#125;
+&#125;
+</code></pre>
+<h3 id="7-谈一谈”-“与”equals-”的区别"><a href="#7-谈一谈”-“与”equals-”的区别" class="headerlink" title="7. 谈一谈”==“与”equals()”的区别"></a>7. 谈一谈”==“与”equals()”的区别</h3><blockquote>
 <ol>
 <li>== :对于基本类型，比较的是他们的值；对于引用类型，比较的是引用的值，也就是对象实例的地址</li>
 <li>equals()方法是Object类中的方法，默认实现是public boolean equals(Object obj) {return (this == obj);}；我们可以重写该方法达到我们的目的，例如String重写了该方法要求每个字符都相等。</li>
 </ol>
 </blockquote>
 <h3 id="8-类中方法调用顺序"><a href="#8-类中方法调用顺序" class="headerlink" title="8. 类中方法调用顺序"></a>8. 类中方法调用顺序</h3><p>指出下面程序的运行结果</p>
-<pre><code>class A {
+<pre><code>class A &#123;
 
-static {
+static &#123;
 System.out.print(&quot;1&quot;);
-}
+&#125;
 
-public A() {
+public A() &#123;
 System.out.print(&quot;2&quot;);
-}
-}
+&#125;
+&#125;
 
-class B extends A{
+class B extends A&#123;
 
-static {
+static &#123;
 System.out.print(&quot;a&quot;);
-}
+&#125;
 
-public B() {
+public B() &#123;
 System.out.print(&quot;b&quot;);
-}
-}
+&#125;
+&#125;
 
-public class Hello {
+public class Hello &#123;
 
-public static void main(String[] args) {
+public static void main(String[] args) &#123;
 A ab = new B();
 ab = new B();
-}
+&#125;
 
-}
-复制代码</code></pre><blockquote>
+&#125;
+复制代码
+</code></pre>
+<blockquote>
 <p>执行结果：1a2b2b。 创建对象时构造器的调用顺序是：  父类静态初始化块  -&gt; 子类静态初始化块 -&gt; 父类初始化块 -&gt;调用了父类构造器 -&gt; 子类初始化块 -&gt; 调用子类的构造器</p>
 </blockquote>
 <h3 id="9-重载（Overload）和重写（Override）的区别"><a href="#9-重载（Overload）和重写（Override）的区别" class="headerlink" title="9. 重载（Overload）和重写（Override）的区别"></a>9. 重载（Overload）和重写（Override）的区别</h3><blockquote>
-<p>重写（Override）和重载（Overload）其实并无联系，可能是因为名称相似，容易引起混淆 &gt; <a href="https://www.runoob.com/java/java-override-overload.html" target="_blank" rel="noopener">重写发生在运行时，重载发生在编译期</a></p>
+<p>重写（Override）和重载（Overload）其实并无联系，可能是因为名称相似，容易引起混淆 &gt; <a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-override-overload.html">重写发生在运行时，重载发生在编译期</a></p>
 </blockquote>
 <h4 id="重写（Override）"><a href="#重写（Override）" class="headerlink" title="重写（Override）"></a>重写（Override）</h4><p>重写是针对父类和子类来说的，是在子类中重写父类的方法。</p>
 <blockquote>
@@ -710,7 +718,9 @@ ab = new B();
 float max(int a, int b);
 int max(int a, int b);
 当调用max(1, 2);时无法确定调用的是哪个。
-参考：https://www.zhihu.com/question/21455159/answer/59874307</code></pre><h3 id="10-阐述静态变量和实例变量的区别。"><a href="#10-阐述静态变量和实例变量的区别。" class="headerlink" title="10. 阐述静态变量和实例变量的区别。"></a>10. 阐述静态变量和实例变量的区别。</h3><blockquote>
+参考：https://www.zhihu.com/question/21455159/answer/59874307
+</code></pre>
+<h3 id="10-阐述静态变量和实例变量的区别。"><a href="#10-阐述静态变量和实例变量的区别。" class="headerlink" title="10. 阐述静态变量和实例变量的区别。"></a>10. 阐述静态变量和实例变量的区别。</h3><blockquote>
 <ol>
 <li>静态变量（static 修饰的变量）属于类，被所有类的实例共享，没有实例时也可通过类直接访问</li>
 <li>实例变量：必须通过实例来访问</li>
@@ -735,7 +745,7 @@ int max(int a, int b);
 <li>hashcode相等，equals不一定相等</li>
 </ol>
 </blockquote>
-<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="1-内部类的作用"><a href="#1-内部类的作用" class="headerlink" title="1. 内部类的作用"></a>1. <a href="https://blog.csdn.net/mid120/article/details/53644539" target="_blank" rel="noopener">内部类的作用</a></h3><blockquote>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="1-内部类的作用"><a href="#1-内部类的作用" class="headerlink" title="1. 内部类的作用"></a>1. <a target="_blank" rel="noopener" href="https://blog.csdn.net/mid120/article/details/53644539">内部类的作用</a></h3><blockquote>
 <ol>
 <li>内部类可以很好的实现隐藏</li>
 <li>内部类拥有外围类的所有元素的访问权限</li>
@@ -754,15 +764,17 @@ int max(int a, int b);
 <p>可以继承其他类，也可以实现接口</p>
 </blockquote>
 <pre><code>解析：
-btn.setOnClickListener(new View.OnClickListener(){
+btn.setOnClickListener(new View.OnClickListener()&#123;
 @Override
-public void onClick(View view){
+public void onClick(View view)&#123;
 
-}
-})
+&#125;
+&#125;)
 
 这里new的就是一个匿名内部类，这个匿名内部类实现了View.OnClickListener接口。所以匿名内部类本身一定会继承或实现一个且仅一个类或者接口。
-复制代码</code></pre><h3 id="4-内部类-非静态内部类-可以引用它的包含类（外部类）的成员吗？有没有什么限制？"><a href="#4-内部类-非静态内部类-可以引用它的包含类（外部类）的成员吗？有没有什么限制？" class="headerlink" title="4. 内部类(非静态内部类)可以引用它的包含类（外部类）的成员吗？有没有什么限制？"></a>4. 内部类(非静态内部类)可以引用它的包含类（外部类）的成员吗？有没有什么限制？</h3><blockquote>
+复制代码
+</code></pre>
+<h3 id="4-内部类-非静态内部类-可以引用它的包含类（外部类）的成员吗？有没有什么限制？"><a href="#4-内部类-非静态内部类-可以引用它的包含类（外部类）的成员吗？有没有什么限制？" class="headerlink" title="4. 内部类(非静态内部类)可以引用它的包含类（外部类）的成员吗？有没有什么限制？"></a>4. 内部类(非静态内部类)可以引用它的包含类（外部类）的成员吗？有没有什么限制？</h3><blockquote>
 <ol>
 <li>一个内部类对象可以访问创建它的外部类对象的成员，包括私有成员。</li>
 <li>应用局部变量，局部变量前要加final修饰</li>
@@ -816,43 +828,45 @@ public void onClick(View view){
 </blockquote>
 <h3 id="6-Exception继承相关考题"><a href="#6-Exception继承相关考题" class="headerlink" title="6. Exception继承相关考题"></a>6. Exception继承相关考题</h3><pre><code>题目1:
 类ExampleA继承Exception，类ExampleB继承ExampleA。有如下代码片断,请问执行此段代码的输出是什么？
-try {
+try &#123;
 throw new ExampleB(&quot;b&quot;)
-} catch（ExampleA e）{
+&#125; catch（ExampleA e）&#123;
 System.out.println(&quot;ExampleA&quot;);
-} catch（Exception e）{
+&#125; catch（Exception e）&#123;
 System.out.println(&quot;Exception&quot;);
-}
+&#125;
 
 解析：ExampleA。（根据里氏代换原则[能使用父类型的地方一定能使用子类型]，抓取ExampleA类型异常的catch块能够抓住try块中抛出的ExampleB类型的异常）
 
 题目2:
-class Annoyance extends Exception {}
-class Sneeze extends Annoyance {}
+class Annoyance extends Exception &#123;&#125;
+class Sneeze extends Annoyance &#123;&#125;
 
-class Human {
+class Human &#123;
 
 public static void main(String[] args)
-throws Exception {
-try {
-try {
+throws Exception &#123;
+try &#123;
+try &#123;
 throw new Sneeze();
-}
-catch ( Annoyance a ) {
+&#125;
+catch ( Annoyance a ) &#123;
 System.out.println(&quot;Caught Annoyance&quot;);
 throw a;
-}
-}
-catch ( Sneeze s ) {
+&#125;
+&#125;
+catch ( Sneeze s ) &#123;
 System.out.println(&quot;Caught Sneeze&quot;);
 return ;
-}
-finally {
+&#125;
+finally &#123;
 System.out.println(&quot;Hello World!&quot;);
-}
-}
-}
-解析：输出Caught AnnoyanceCaught SneezeHello World!</code></pre><h2 id="关键字和运算符"><a href="#关键字和运算符" class="headerlink" title="关键字和运算符"></a>关键字和运算符</h2><h3 id="1-amp-和-amp-amp-的区别；-和-的区别？"><a href="#1-amp-和-amp-amp-的区别；-和-的区别？" class="headerlink" title="1. &amp;和&amp;&amp;的区别；|和||的区别？"></a>1. &amp;和&amp;&amp;的区别；|和||的区别？</h3><blockquote>
+&#125;
+&#125;
+&#125;
+解析：输出Caught AnnoyanceCaught SneezeHello World!
+</code></pre>
+<h2 id="关键字和运算符"><a href="#关键字和运算符" class="headerlink" title="关键字和运算符"></a>关键字和运算符</h2><h3 id="1-amp-和-amp-amp-的区别；-和-的区别？"><a href="#1-amp-和-amp-amp-的区别；-和-的区别？" class="headerlink" title="1. &amp;和&amp;&amp;的区别；|和||的区别？"></a>1. &amp;和&amp;&amp;的区别；|和||的区别？</h3><blockquote>
 <ol>
 <li>&amp;有两种用法：(1)按位与；(2)逻辑与，我们这里说的是逻辑与。</li>
 <li>与运算要求左右两端的布尔值都是true整个表达式的值才是true</li>
@@ -977,70 +991,70 @@ System.out.println(&quot;Hello World!&quot;);
 </blockquote>
 <pre><code>扩展1：
 java5中引入了自动拆装箱功能，例如在比较时可以自动拆装箱
-class AutoUnboxingTest {
+class AutoUnboxingTest &#123;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) &#123;
         Integer a = new Integer(3);
         Integer b = 3;                  // 将3自动装箱成Integer类型
         int c = 3;
         System.out.println(a == b);     // false 两个引用没有引用同一对象
         System.out.println(a == c);     // true a自动拆箱成int类型再和c比较
-    }
-}
+    &#125;
+&#125;
 复制代码
 扩展2：
 一道和装箱有关的面试题
-public class Test03 {
+public class Test03 &#123;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) &#123;
         Integer f1 = 100, f2 = 100, f3 = 150, f4 = 150;
 
         System.out.println(f1 == f2); //true
         System.out.println(f3 == f4); //false
-    }
-}
+    &#125;
+&#125;
 
 分析：自动装箱时，使用的时Integer的valueof方法，当int在-128到127之间时，并不会new一个新的对象，而是直接使用常量池中的Integer
 具体分析： 
 
-public static Integer valueOf(int i) {
+public static Integer valueOf(int i) &#123;
         if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
             return IntegerCache.cache[i + (-IntegerCache.low)];
         return new Integer(i);
-    }
-
+    &#125;
+    
 IntegerCache是Integer的内部类，其代码如下所示：
 /**
      * Cache to support the object identity semantics of autoboxing for values between
      * -128 and 127 (inclusive) as required by JLS.
      *
      * The cache is initialized on first usage.  The size of the cache
-     * may be controlled by the {@code -XX:AutoBoxCacheMax=&lt;size&gt;} option.
+     * may be controlled by the &#123;@code -XX:AutoBoxCacheMax=&lt;size&gt;&#125; option.
      * During VM initialization, java.lang.Integer.IntegerCache.high property
      * may be set and saved in the private system properties in the
      * sun.misc.VM class.
      */
 
-    private static class IntegerCache {
+    private static class IntegerCache &#123;
         static final int low = -128;
         static final int high;
         static final Integer cache[];
 
-        static {
+        static &#123;
             // high value may be configured by property
             int h = 127;
             String integerCacheHighPropValue =
                 sun.misc.VM.getSavedProperty(&quot;java.lang.Integer.IntegerCache.high&quot;);
-            if (integerCacheHighPropValue != null) {
-                try {
+            if (integerCacheHighPropValue != null) &#123;
+                try &#123;
                     int i = parseInt(integerCacheHighPropValue);
                     i = Math.max(i, 127);
                     // Maximum array size is Integer.MAX_VALUE
                     h = Math.min(i, Integer.MAX_VALUE - (-low) -1);
-                } catch( NumberFormatException nfe) {
+                &#125; catch( NumberFormatException nfe) &#123;
                     // If the property cannot be parsed into an int, ignore it.
-                }
-            }
+                &#125;
+            &#125;
             high = h;
 
             cache = new Integer[(high - low) + 1];
@@ -1050,13 +1064,15 @@ IntegerCache是Integer的内部类，其代码如下所示：
 
             // range [-128, 127] must be interned (JLS7 5.1.7)
             assert IntegerCache.high &gt;= 127;
-        }
+        &#125;
 
-        private IntegerCache() {}
-    }
+        private IntegerCache() &#123;&#125;
+    &#125;
     简单的说，如果整型字面量的值在-128到127之间，那么不会new新的Integer对象，而是直接引用常量池中的Integer对象，
     所以上面的面试题中f1==f2的结果是true，而f3==f4的结果是false。
-复制代码</code></pre><h3 id="1-float-f-3-4-是否正确？"><a href="#1-float-f-3-4-是否正确？" class="headerlink" title="1. float f=3.4;是否正确？"></a>1. float f=3.4;是否正确？</h3><blockquote>
+复制代码
+</code></pre>
+<h3 id="1-float-f-3-4-是否正确？"><a href="#1-float-f-3-4-是否正确？" class="headerlink" title="1. float f=3.4;是否正确？"></a>1. float f=3.4;是否正确？</h3><blockquote>
 <p>答:不正确。3.4是双精度数，将双精度型（double）赋值给浮点型（float）属于下转型（down-casting，也称为窄化）会造成精度损失，因此需要强制类型转换float f =(float)3.4; 或者写成float f =3.4F;。</p>
 </blockquote>
 <h3 id="2-short-s1-1-s1-s1-1-有错吗-short-s1-1-s1-1-有错吗？"><a href="#2-short-s1-1-s1-s1-1-有错吗-short-s1-1-s1-1-有错吗？" class="headerlink" title="2. short s1 = 1; s1 = s1 + 1;有错吗?short s1 = 1; s1 += 1;有错吗？"></a>2. short s1 = 1; s1 = s1 + 1;有错吗?short s1 = 1; s1 += 1;有错吗？</h3><blockquote>
@@ -1089,22 +1105,22 @@ IntegerCache是Integer的内部类，其代码如下所示：
 String str = &quot;hello,world!&quot;;
         String result = &quot;&quot;;
 
-        for (int i = 0; i &lt; loopCount; i++) {
+        for (int i = 0; i &lt; loopCount; i++) &#123;
             result += str;
-        }
+        &#125;
 这个时候编译器会优化成
 String str = &quot;hello,world!&quot;;
         String result = &quot;&quot;;
 
-        for (int i = 0; i &lt; loopCount; i++) {
+        for (int i = 0; i &lt; loopCount; i++) &#123;
             result = new StringBuilder(result).append(str).toString();
-        }
+        &#125;
 多次new StringBuilder造成了性能浪费。
 复制代码
 扩展例题
-class StringEqualTest {
+class StringEqualTest &#123;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) &#123;
         String s1 = &quot;Programming&quot;;
         String s2 = new String(&quot;Programming&quot;);
         String s3 = &quot;Program&quot;;
@@ -1116,13 +1132,15 @@ class StringEqualTest {
         System.out.println(s1 == s6); //false
         System.out.println(s1 == s6.intern()); //true
         System.out.println(s2 == s2.intern()); //false
-    }
-}
+    &#125;
+&#125;
 
 解析：1. String是引用类型，这里 == 比较的是引用是否相同，即是否指向相同的地址
      2. 在new String对象时，会产生一个新的对象，并不会使用常量池中的字符串
      3. intern会在常量池中寻找该字符串（如果没有责新建），并返回他的地址
-复制代码</code></pre><h3 id="8-String-s-new-String-“xyz”-创建了几个字符串对象？"><a href="#8-String-s-new-String-“xyz”-创建了几个字符串对象？" class="headerlink" title="8. String s = new String(“xyz”);创建了几个字符串对象？"></a>8. String s = new String(“xyz”);创建了几个字符串对象？</h3><blockquote>
+复制代码
+</code></pre>
+<h3 id="8-String-s-new-String-“xyz”-创建了几个字符串对象？"><a href="#8-String-s-new-String-“xyz”-创建了几个字符串对象？" class="headerlink" title="8. String s = new String(“xyz”);创建了几个字符串对象？"></a>8. String s = new String(“xyz”);创建了几个字符串对象？</h3><blockquote>
 <p>两个对象，一个是静态区的”xyz”;一个是用new创建在堆上的对象。</p>
 </blockquote>
 <h3 id="9-String-和基本数据类型之间的转换"><a href="#9-String-和基本数据类型之间的转换" class="headerlink" title="9. String 和基本数据类型之间的转换"></a>9. String 和基本数据类型之间的转换</h3><blockquote>
@@ -1137,13 +1155,15 @@ class StringEqualTest {
 <li>再举例一种递归方法：</li>
 </ol>
 </blockquote>
-<pre><code>public String reverse(String originString){
+<pre><code>public String reverse(String originString)&#123;
 if(originString == null || originString.length &lt;= 1)
 return originString;
 return reverse(originString.subString(1)) + originString.charAt(0);
-}
+&#125;
 
-复制代码</code></pre><h3 id="11-String-为什么要设计成不可变的"><a href="#11-String-为什么要设计成不可变的" class="headerlink" title="11. String 为什么要设计成不可变的"></a>11. <a href="https://juejin.im/post/5aa1ee0c51882555677e2109" target="_blank" rel="noopener">String 为什么要设计成不可变的</a></h3><h4 id="1-安全性"><a href="#1-安全性" class="headerlink" title="1. 安全性"></a>1. 安全性</h4><blockquote>
+复制代码
+</code></pre>
+<h3 id="11-String-为什么要设计成不可变的"><a href="#11-String-为什么要设计成不可变的" class="headerlink" title="11. String 为什么要设计成不可变的"></a>11. <a target="_blank" rel="noopener" href="https://juejin.im/post/5aa1ee0c51882555677e2109">String 为什么要设计成不可变的</a></h3><h4 id="1-安全性"><a href="#1-安全性" class="headerlink" title="1. 安全性"></a>1. 安全性</h4><blockquote>
 <ol>
 <li>线程安全，不可变天生线程安全</li>
 <li>String常被用作HashMap的key，如果可变会引有安全问题，如两个key相同</li>
@@ -1170,7 +1190,7 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 <h4 id="Java中需要编码的地方一般都在字符到字节的转换上，这个一般包括磁盘IO和网络IO。"><a href="#Java中需要编码的地方一般都在字符到字节的转换上，这个一般包括磁盘IO和网络IO。" class="headerlink" title="Java中需要编码的地方一般都在字符到字节的转换上，这个一般包括磁盘IO和网络IO。"></a>Java中需要编码的地方一般都在字符到字节的转换上，这个一般包括磁盘IO和网络IO。</h4><blockquote>
 <p>Reader 类是 Java 的 I/O 中读字符的父类，而 InputStream 类是读字节的父类，InputStreamReader 类就是关联字节到字符的桥梁，它负责在 I/O 过程中处理读取字节到字符的转换，而具体字节到字符的解码实现它由 StreamDecoder 去实现，在 StreamDecoder 解码过程中必须由用户指定 Charset 编码格式。</p>
 </blockquote>
-<h3 id="1-Unicode与UTF-8的关系"><a href="#1-Unicode与UTF-8的关系" class="headerlink" title="1. Unicode与UTF-8的关系"></a>1. <a href="https://www.zhihu.com/question/23374078" target="_blank" rel="noopener">Unicode与UTF-8的关系</a></h3><blockquote>
+<h3 id="1-Unicode与UTF-8的关系"><a href="#1-Unicode与UTF-8的关系" class="headerlink" title="1. Unicode与UTF-8的关系"></a>1. <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23374078">Unicode与UTF-8的关系</a></h3><blockquote>
 <p>Unicode是字符集 UTF-8是一种编码方式，达到了对数据流压缩的目的</p>
 </blockquote>
 <h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="0-List和Set的区别"><a href="#0-List和Set的区别" class="headerlink" title="0. List和Set的区别"></a>0. List和Set的区别</h3><blockquote>
@@ -1190,7 +1210,7 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 <h3 id="2-List、Set、Map是否继承自Collection接口"><a href="#2-List、Set、Map是否继承自Collection接口" class="headerlink" title="2. List、Set、Map是否继承自Collection接口"></a>2. List、Set、Map是否继承自Collection接口</h3><blockquote>
 <p>List、Set 是，Map 不是。Map是键值对映射容器，与List和Set有明显的区别，而Set存储的零散的元素且不允许有重复元素（数学中的集合也是如此），List是线性结构的容器，适用于按数值索引访问元素的情形</p>
 </blockquote>
-<h3 id="3-HashMap实现原理"><a href="#3-HashMap实现原理" class="headerlink" title="3. HashMap实现原理"></a>3. <a href="http://blog.csdn.net/carson_ho/article/details/79373026" target="_blank" rel="noopener">HashMap实现原理</a></h3><blockquote>
+<h3 id="3-HashMap实现原理"><a href="#3-HashMap实现原理" class="headerlink" title="3. HashMap实现原理"></a>3. <a target="_blank" rel="noopener" href="http://blog.csdn.net/carson_ho/article/details/79373026">HashMap实现原理</a></h3><blockquote>
 <ol>
 <li>在1.7中，HashMap采用数组+单链表的结构；1.8中，采用数组+单链表或红黑树的结构（当链表size &gt; 8时，转换成红黑树）</li>
 <li>HaspMap中有两个关键的构造函数，一个是初始容量，另一个是负载因子。</li>
@@ -1254,30 +1274,32 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 </ol>
 </blockquote>
 <pre><code>//源码 java8
- @Override public V remove(Object key) {
-        if (key == null) {
+ @Override public V remove(Object key) &#123;
+        if (key == null) &#123;
             return removeNullKey();
-        }
+        &#125;
         int hash = Collections.secondaryHash(key);
         HashMapEntry&lt;K, V&gt;[] tab = table;
         int index = hash &amp; (tab.length - 1);
         for (HashMapEntry&lt;K, V&gt; e = tab[index], prev = null;
-                e != null; prev = e, e = e.next) {
-            if (e.hash == hash &amp;&amp; key.equals(e.key)) {
-                if (prev == null) {
+                e != null; prev = e, e = e.next) &#123;
+            if (e.hash == hash &amp;&amp; key.equals(e.key)) &#123;
+                if (prev == null) &#123;
                     tab[index] = e.next;
-                } else {
+                &#125; else &#123;
                     prev.next = e.next;
-                }
+                &#125;
                 modCount++;
                 size--;
                 postRemove(e);
                 return e.value;
-            }
-        }
+            &#125;
+        &#125;
         return null;
-    }
-复制代码</code></pre><h3 id="14-HashMap的扩容过程"><a href="#14-HashMap的扩容过程" class="headerlink" title="14. HashMap的扩容过程"></a>14. HashMap的扩容过程</h3><blockquote>
+    &#125;
+复制代码
+</code></pre>
+<h3 id="14-HashMap的扩容过程"><a href="#14-HashMap的扩容过程" class="headerlink" title="14. HashMap的扩容过程"></a>14. HashMap的扩容过程</h3><blockquote>
 <ol>
 <li>在初次加载时，会调用resize（）进行初始化</li>
 <li>当put（）时，会查看当前元素个数是否大于阈值（阈值=数组长度*负载因子），当大于时，调用resize方法扩容</li>
@@ -1325,7 +1347,7 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 <li>HashSet存入的值即为HashMap的key，hashMap的value是HashSet中new 的一个Object实例，所有的value都相同</li>
 </ol>
 </blockquote>
-<h3 id="22-TreeSet-两种排序方式"><a href="#22-TreeSet-两种排序方式" class="headerlink" title="22. TreeSet 两种排序方式"></a>22. <a href="https://www.cnblogs.com/alhh/p/5507909.html" target="_blank" rel="noopener">TreeSet 两种排序方式</a></h3><blockquote>
+<h3 id="22-TreeSet-两种排序方式"><a href="#22-TreeSet-两种排序方式" class="headerlink" title="22. TreeSet 两种排序方式"></a>22. <a target="_blank" rel="noopener" href="https://www.cnblogs.com/alhh/p/5507909.html">TreeSet 两种排序方式</a></h3><blockquote>
 <ol>
 <li>自然排序：调用无参构造函数，添加的元素必须实现Comparable接口</li>
 <li>定制排序：使用有参构造函数，传入一个Comparator实例</li>
@@ -1350,7 +1372,7 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 </blockquote>
 <h3 id="26-TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？"><a href="#26-TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort-方法如何比较元素？" class="headerlink" title="26. TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？"></a>26. TreeMap和TreeSet在排序时如何比较元素？Collections工具类中的sort()方法如何比较元素？</h3><blockquote>
 <ol>
-<li>TreeMap和TreeSet都是通过<a href="http://www.sohu.com/a/201923614_466939" target="_blank" rel="noopener">红黑树</a>实现的，因此要求元素都是可比较的，元素必须实现Comparable接口，该接口中有compareTo（）方法。</li>
+<li>TreeMap和TreeSet都是通过<a target="_blank" rel="noopener" href="http://www.sohu.com/a/201923614_466939">红黑树</a>实现的，因此要求元素都是可比较的，元素必须实现Comparable接口，该接口中有compareTo（）方法。</li>
 <li>Collections的sort方法有两种重载形式，一种只有一个参数，要求传入的待排序元素必须实现Comparable接口；第二种有两个参数，要求传入待排序容器即Comparator实例</li>
 </ol>
 </blockquote>
@@ -1362,17 +1384,17 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 <li>Vector已经被遗弃，不推荐使用。为了实现线程安全的list，可以使用Collections中的synchronizedList方法将其转换成线程安全的容器后再使用</li>
 </ol>
 </blockquote>
-<h3 id="28-什么是Java优先级队列-Priority-Queue"><a href="#28-什么是Java优先级队列-Priority-Queue" class="headerlink" title="28. 什么是Java优先级队列(Priority Queue)"></a>28. <a href="https://blog.csdn.net/qq_35326718/article/details/72866180" target="_blank" rel="noopener">什么是Java优先级队列(Priority Queue)</a></h3><blockquote>
+<h3 id="28-什么是Java优先级队列-Priority-Queue"><a href="#28-什么是Java优先级队列-Priority-Queue" class="headerlink" title="28. 什么是Java优先级队列(Priority Queue)"></a>28. <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35326718/article/details/72866180">什么是Java优先级队列(Priority Queue)</a></h3><blockquote>
 <p>PriorityQueue是一个基于优先级堆的无界队列，它的元素是按照自然顺序(natural order)排序的。在创建的时候，我们可以给它提供一个负责给元素排序的比较器。PriorityQueue不允许null值，因为他们没有自然顺序，或者说他们没有任何的相关联的比较器。PriorityQueue的逻辑结构为堆（完全二叉树），物理结构为数组。最后，PriorityQueue不是线程安全的，入队和出队的时间复杂度是O(log(n))</p>
 </blockquote>
 <h3 id="29-List、Set、Map的遍历方式"><a href="#29-List、Set、Map的遍历方式" class="headerlink" title="29. List、Set、Map的遍历方式"></a>29. List、Set、Map的遍历方式</h3><blockquote>
 <ol>
-<li><a href="https://blog.csdn.net/angus_17/article/details/7521639" target="_blank" rel="noopener">List、Set</a>都继承了Collection接口，可以使用for each遍历或者Iterator</li>
-<li><a href="https://blog.csdn.net/u010127245/article/details/50937384" target="_blank" rel="noopener">HashMap</a>可以拿到KeySet或者entrySet，然后用iterator或者 for each 方式遍历</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/angus_17/article/details/7521639">List、Set</a>都继承了Collection接口，可以使用for each遍历或者Iterator</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010127245/article/details/50937384">HashMap</a>可以拿到KeySet或者entrySet，然后用iterator或者 for each 方式遍历</li>
 </ol>
 </blockquote>
 <h3 id="30-什么是Iterator-迭代器"><a href="#30-什么是Iterator-迭代器" class="headerlink" title="30. 什么是Iterator(迭代器)"></a>30. 什么是Iterator(迭代器)</h3><blockquote>
-<p>迭代器是一个接口，我们可以借助这个接口实现对集合的遍历，删除 <a href="https://www.jianshu.com/p/a16ca1560551" target="_blank" rel="noopener">扩展（迭代器实现原理）</a>：Collection继承了Iterable接口，iterable接口中有iterator方法，返回一个Iterator迭代器 -&gt; Collection的实现类通过在内部实现自定义Iterator，在iterator时返回这个实例。</p>
+<p>迭代器是一个接口，我们可以借助这个接口实现对集合的遍历，删除 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a16ca1560551">扩展（迭代器实现原理）</a>：Collection继承了Iterable接口，iterable接口中有iterator方法，返回一个Iterator迭代器 -&gt; Collection的实现类通过在内部实现自定义Iterator，在iterator时返回这个实例。</p>
 </blockquote>
 <h3 id="31-Iterator和ListIterator的区别是什么"><a href="#31-Iterator和ListIterator的区别是什么" class="headerlink" title="31. Iterator和ListIterator的区别是什么"></a>31. Iterator和ListIterator的区别是什么</h3><blockquote>
 <ol>
@@ -1437,36 +1459,38 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
-public class MyStack&lt;T&gt; {
+public class MyStack&lt;T&gt; &#123;
 private T[] elements;
 private int size = 0;
 
 private static final int INIT_CAPACITY = 16;
 
-public MyStack() {
+public MyStack() &#123;
    elements = (T[]) new Object[INIT_CAPACITY];
- }
+ &#125;
 
-public void push(T elem) {
+public void push(T elem) &#123;
    ensureCapacity();
    elements[size++] = elem;
- }
+ &#125;
 
-public T pop() {
+public T pop() &#123;
 if(size == 0)
    throw new EmptyStackException();
    return elements[--size];
-   }
+   &#125;
 
-private void ensureCapacity() {
- if(elements.length == size) {
+private void ensureCapacity() &#123;
+ if(elements.length == size) &#123;
    elements = Arrays.copyOf(elements, 2 * size + 1);
-  }
- }
-}
+  &#125;
+ &#125;
+&#125;
 
 分析：这里用数组实现了一个栈，但是当数据pop之后，数组里内容并没有被清空。
-复制代码</code></pre><h3 id="1-GC是什么？为什么要有GC？"><a href="#1-GC是什么？为什么要有GC？" class="headerlink" title="1. GC是什么？为什么要有GC？"></a>1. GC是什么？为什么要有GC？</h3><blockquote>
+复制代码
+</code></pre>
+<h3 id="1-GC是什么？为什么要有GC？"><a href="#1-GC是什么？为什么要有GC？" class="headerlink" title="1. GC是什么？为什么要有GC？"></a>1. GC是什么？为什么要有GC？</h3><blockquote>
 <ol>
 <li>GC是垃圾收集器（Garbage Collection）的缩写，是面试中常考的点。了解GC的运行方式，对防止内存泄漏，提高运行效率等都有好处</li>
 <li>垃圾收集器会自动进行内存回收，不需要程序员进行操作，System.gc() 或Runtime.getRuntime().gc() 时并不是马上进行内存回收，甚至不会进行内存回收</li>
@@ -1524,7 +1548,7 @@ private void ensureCapacity() {
 <li>permgen space说的是溢出的区域在永久代</li>
 </ol>
 </blockquote>
-<h3 id="9-内存溢出的种类"><a href="#9-内存溢出的种类" class="headerlink" title="9. 内存溢出的种类"></a>9. <a href="http://www.importnew.com/19946.html" target="_blank" rel="noopener">内存溢出的种类</a></h3><blockquote>
+<h3 id="9-内存溢出的种类"><a href="#9-内存溢出的种类" class="headerlink" title="9. 内存溢出的种类"></a>9. <a target="_blank" rel="noopener" href="http://www.importnew.com/19946.html">内存溢出的种类</a></h3><blockquote>
 <ol>
 <li>stackoverflow：；当线程调用一个方法是，jvm压入一个新的栈帧到这个线程的栈中，只要这个方法还没返回，这个栈帧就存在。如果方法的嵌套调用层次太多(如递归调用),随着java栈中的帧的增多，最终导致这个线程的栈中的所有栈帧的大小的总和大于-Xss设置的值，而产生生StackOverflowError溢出异常</li>
 <li>outofmemory:<ol>
@@ -1539,14 +1563,14 @@ private void ensureCapacity() {
 <h3 id="1-什么是线程"><a href="#1-什么是线程" class="headerlink" title="1. 什么是线程"></a>1. 什么是线程</h3><blockquote>
 <p>线程是操作系统能够进行调度的最小单位，它被包含在进程之中，是进程中的实际运作单位，可以使用多线程对进行运算提速。</p>
 </blockquote>
-<h3 id="2-编写多线程的几种方式"><a href="#2-编写多线程的几种方式" class="headerlink" title="2. 编写多线程的几种方式"></a>2. <a href="https://juejin.im/post/5aa12936f265da238d504b7c" target="_blank" rel="noopener">编写多线程的几种方式</a></h3><blockquote>
+<h3 id="2-编写多线程的几种方式"><a href="#2-编写多线程的几种方式" class="headerlink" title="2. 编写多线程的几种方式"></a>2. <a target="_blank" rel="noopener" href="https://juejin.im/post/5aa12936f265da238d504b7c">编写多线程的几种方式</a></h3><blockquote>
 <ol>
 <li>一种是继承Thread类；</li>
 <li>另一种是实现Runnable接口。两种方式都要通过重写run()方法来定义线程的行为，推荐使用后者，因为Java中的继承是单继承，一个类有一个父类，如果继承了Thread类就无法再继承其他类了，显然使用Runnable接口更为灵活。</li>
 <li>实现Callable接口，该接口中的call方法可以在线程执行结束时产生一个返回值</li>
 </ol>
 </blockquote>
-<h3 id="3-什么是FutureTask"><a href="#3-什么是FutureTask" class="headerlink" title="3.  什么是FutureTask"></a>3.  <a href="http://www.importnew.com/25286.html" target="_blank" rel="noopener">什么是FutureTask</a></h3><blockquote>
+<h3 id="3-什么是FutureTask"><a href="#3-什么是FutureTask" class="headerlink" title="3.  什么是FutureTask"></a>3.  <a target="_blank" rel="noopener" href="http://www.importnew.com/25286.html">什么是FutureTask</a></h3><blockquote>
 <p>FutureTask实现了Future接口和Runnable接口，可以对任务进行取消和获取返回值等操作。</p>
 </blockquote>
 <h3 id="4-如何强制启动一个线程"><a href="#4-如何强制启动一个线程" class="headerlink" title="4. 如何强制启动一个线程"></a>4. 如何强制启动一个线程</h3><blockquote>
@@ -1570,10 +1594,10 @@ private void ensureCapacity() {
 <li>Lock/ReadWriteLock</li>
 <li>ThreadLocal：每个线程都有一个局部变量的副本，互不干扰。一种以空间换时间的方式</li>
 <li>java中有很多线程安全的容器和方法，可以帮助我们实现线程同步：如Collections.synchronizedList()方法将List转为线程同步；用ConurrentHashMap 实现hashmap的线程同步。BlockingQueue阻塞队列也是线程同步的，非常适用于生产者消费者模式</li>
-<li>扩展：volatile（volatile修饰的变量不会缓存在寄存器中，每次使用都会从主存中读取）：保证可见性，不保证原子性，因此不是线程安全。<a href="https://zhuanlan.zhihu.com/p/27266281" target="_blank" rel="noopener">在一写多读/状态标志的场景中使用</a></li>
+<li>扩展：volatile（volatile修饰的变量不会缓存在寄存器中，每次使用都会从主存中读取）：保证可见性，不保证原子性，因此不是线程安全。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27266281">在一写多读/状态标志的场景中使用</a></li>
 </ol>
 </blockquote>
-<h3 id="8-什么是可重入锁"><a href="#8-什么是可重入锁" class="headerlink" title="8. 什么是可重入锁"></a>8. <a href="https://blog.csdn.net/johnking123/article/details/50043961" target="_blank" rel="noopener">什么是可重入锁</a></h3><blockquote>
+<h3 id="8-什么是可重入锁"><a href="#8-什么是可重入锁" class="headerlink" title="8. 什么是可重入锁"></a>8. <a target="_blank" rel="noopener" href="https://blog.csdn.net/johnking123/article/details/50043961">什么是可重入锁</a></h3><blockquote>
 <p>所谓重入锁，指的是以线程为单位，当一个线程获取对象锁之后，这个线程可以再次获取本对象上的锁，而其他的线程是不可以的</p>
 </blockquote>
 <h3 id="9-Java中如何停止一个线程"><a href="#9-Java中如何停止一个线程" class="headerlink" title="9. Java中如何停止一个线程"></a>9. Java中如何停止一个线程</h3><blockquote>
@@ -1609,7 +1633,7 @@ private void ensureCapacity() {
 <li>适用场景：多线程情况下某一变量不需要线程间共享，需要各个线程间相互独立</li>
 </ol>
 </blockquote>
-<h3 id="14-ThreadLocal原理，用的时候需要注意什么"><a href="#14-ThreadLocal原理，用的时候需要注意什么" class="headerlink" title="14. ThreadLocal原理，用的时候需要注意什么"></a>14. <a href="http://www.jb51.net/article/105491.htm" target="_blank" rel="noopener">ThreadLocal原理</a>，用的时候需要注意什么</h3><blockquote>
+<h3 id="14-ThreadLocal原理，用的时候需要注意什么"><a href="#14-ThreadLocal原理，用的时候需要注意什么" class="headerlink" title="14. ThreadLocal原理，用的时候需要注意什么"></a>14. <a target="_blank" rel="noopener" href="http://www.jb51.net/article/105491.htm">ThreadLocal原理</a>，用的时候需要注意什么</h3><blockquote>
 <ol>
 <li>ThreadLocal通过获得Thread实例内部的ThreadLocalMap来存取数据</li>
 <li>ThreadLocal实例本身作为key值</li>
@@ -1633,7 +1657,7 @@ private void ensureCapacity() {
 <h3 id="19-为什么应该在循环中检查等待条件"><a href="#19-为什么应该在循环中检查等待条件" class="headerlink" title="19. 为什么应该在循环中检查等待条件"></a>19. 为什么应该在循环中检查等待条件</h3><blockquote>
 <p>处于等待状态的线程可能会收到错误警报和伪唤醒，如果不在循环中检查等待条件，程序就会在没有满足结束条件的情况下退出</p>
 </blockquote>
-<h3 id="20-Java中的同步集合与并发集合有什么区别"><a href="#20-Java中的同步集合与并发集合有什么区别" class="headerlink" title="20. Java中的同步集合与并发集合有什么区别"></a>20. <a href="http://youyu4.iteye.com/blog/2352846" target="_blank" rel="noopener">Java中的同步集合与并发集合有什么区别</a></h3><blockquote>
+<h3 id="20-Java中的同步集合与并发集合有什么区别"><a href="#20-Java中的同步集合与并发集合有什么区别" class="headerlink" title="20. Java中的同步集合与并发集合有什么区别"></a>20. <a target="_blank" rel="noopener" href="http://youyu4.iteye.com/blog/2352846">Java中的同步集合与并发集合有什么区别</a></h3><blockquote>
 <ol>
 <li>同步集合与并发集合都为多线程和并发提供了合适的线程安全的集合</li>
 <li>并发集合性能更高</li>
@@ -1642,7 +1666,7 @@ private void ensureCapacity() {
 <h3 id="21-Java中活锁和死锁有什么区别"><a href="#21-Java中活锁和死锁有什么区别" class="headerlink" title="21. Java中活锁和死锁有什么区别"></a>21. Java中活锁和死锁有什么区别</h3><blockquote>
 <p>这是上题的扩展，活锁和死锁类似，不同之处在于处于活锁的线程或进程的状态是不断改变的，活锁可以认为是一种特殊的饥饿。一个现实的活锁例子是两个 人在狭小的走廊碰到，两个人都试着避让对方好让彼此通过，但是因为避让的方向都一样导致最后谁都不能通过走廊。简单的说就是，活锁和死锁的主要区别是前者进程的状态可以改变但是却不能继续执行</p>
 </blockquote>
-<h3 id="22-怎么检测一个线程是否拥有锁"><a href="#22-怎么检测一个线程是否拥有锁" class="headerlink" title="22. 怎么检测一个线程是否拥有锁"></a>22. <a href="https://blog.csdn.net/w410589502/article/details/54949506" target="_blank" rel="noopener">怎么检测一个线程是否拥有锁</a></h3><blockquote>
+<h3 id="22-怎么检测一个线程是否拥有锁"><a href="#22-怎么检测一个线程是否拥有锁" class="headerlink" title="22. 怎么检测一个线程是否拥有锁"></a>22. <a target="_blank" rel="noopener" href="https://blog.csdn.net/w410589502/article/details/54949506">怎么检测一个线程是否拥有锁</a></h3><blockquote>
 <p>java.lang.Thread中有一个方法叫holdsLock()，它返回true如果当且仅当当前线程拥有某个具体对象的锁</p>
 </blockquote>
 <h3 id="23-Java中ConcurrentHashMap的并发度是什么"><a href="#23-Java中ConcurrentHashMap的并发度是什么" class="headerlink" title="23. Java中ConcurrentHashMap的并发度是什么"></a>23. Java中ConcurrentHashMap的并发度是什么</h3><blockquote>
@@ -1666,7 +1690,7 @@ private void ensureCapacity() {
 <li>同步代码块可以给指定实例加锁</li>
 </ol>
 </blockquote>
-<h3 id="28-类锁和对象锁"><a href="#28-类锁和对象锁" class="headerlink" title="28. 类锁和对象锁"></a>28. <a href="https://blog.csdn.net/crazylzxlzx/article/details/52200865" target="_blank" rel="noopener">类锁和对象锁</a></h3><blockquote>
+<h3 id="28-类锁和对象锁"><a href="#28-类锁和对象锁" class="headerlink" title="28. 类锁和对象锁"></a>28. <a target="_blank" rel="noopener" href="https://blog.csdn.net/crazylzxlzx/article/details/52200865">类锁和对象锁</a></h3><blockquote>
 <p>类锁其实时一种特殊的对象锁，它锁的其实时类对应的class对象</p>
 </blockquote>
 <h2 id="线程中的关键字和类"><a href="#线程中的关键字和类" class="headerlink" title="线程中的关键字和类"></a>线程中的关键字和类</h2><hr>
@@ -1689,7 +1713,7 @@ private void ensureCapacity() {
 <h3 id="2-为什么wait-notify-和-notifyAll这些方法不在thread类里面"><a href="#2-为什么wait-notify-和-notifyAll这些方法不在thread类里面" class="headerlink" title="2. 为什么wait, notify 和 notifyAll这些方法不在thread类里面"></a>2. 为什么wait, notify 和 notifyAll这些方法不在thread类里面</h3><blockquote>
 <p>JAVA提供的锁是对象级的而不是线程级的，每个对象都有锁，通 过线程获得。如果线程需要等待某些锁那么调用对象中的wait()方法就有意义了。如果wait()方法定义在Thread类中，线程正在等待的是哪个锁 就不明显了</p>
 </blockquote>
-<h3 id="3-为什么wait和notify方法要在同步块中调用"><a href="#3-为什么wait和notify方法要在同步块中调用" class="headerlink" title="3. 为什么wait和notify方法要在同步块中调用"></a>3. <a href="https://blog.csdn.net/haluoluo211/article/details/49558155" target="_blank" rel="noopener">为什么wait和notify方法要在同步块中调用</a></h3><blockquote>
+<h3 id="3-为什么wait和notify方法要在同步块中调用"><a href="#3-为什么wait和notify方法要在同步块中调用" class="headerlink" title="3. 为什么wait和notify方法要在同步块中调用"></a>3. <a target="_blank" rel="noopener" href="https://blog.csdn.net/haluoluo211/article/details/49558155">为什么wait和notify方法要在同步块中调用</a></h3><blockquote>
 <ol>
 <li>java规定必须在同步块中，不在同步块中会抛出异常</li>
 <li>如果不在同步块中，有可能notify在执行的时候，wait没有收到陷入死锁</li>
@@ -1721,19 +1745,21 @@ private void ensureCapacity() {
 </blockquote>
 <h3 id="8-写一个双检锁的单例"><a href="#8-写一个双检锁的单例" class="headerlink" title="8. 写一个双检锁的单例"></a>8. 写一个双检锁的单例</h3><pre><code>private static volatile Singleton instance;  
 
-private Singleton(){}  
-
+private Singleton()&#123;&#125;  
+    
 public Singleton getInstance(
-if(singleton == null){
-  synchronized(Singleton.class){
-  if(singleton == null){
+if(singleton == null)&#123;
+  synchronized(Singleton.class)&#123;
+  if(singleton == null)&#123;
   singleton = new Singleton();
-  }
-  }
-}
+  &#125;
+  &#125;
+&#125;
 return sinlgeton;
 )
-复制代码</code></pre><h3 id="9-单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用"><a href="#9-单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用" class="headerlink" title="9. 单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用"></a>9. <a href="https://blog.csdn.net/glory1234work2115/article/details/50814419" target="_blank" rel="noopener">单例的DCL方式下，那个单例的私有变量要不要加volatile关键字</a>，这个关键字有什么用</h3><blockquote>
+复制代码
+</code></pre>
+<h3 id="9-单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用"><a href="#9-单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用" class="headerlink" title="9. 单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用"></a>9. <a target="_blank" rel="noopener" href="https://blog.csdn.net/glory1234work2115/article/details/50814419">单例的DCL方式下，那个单例的私有变量要不要加volatile关键字</a>，这个关键字有什么用</h3><blockquote>
 <ol>
 <li>要加</li>
 <li>两个线程同时访问双检锁，有可能指令重排序，线程1初始化一半，切换到线程2；因为初始化不是一个原子操作，此时线程2读到不为null直接使用，但是因为还没有初始化完成引起崩溃</li>
@@ -1758,10 +1784,10 @@ return sinlgeton;
 <li>读读能共存，读写、写写不能共存</li>
 </ol>
 </blockquote>
-<h3 id="13-可重入锁（RetrantLock）实现原理"><a href="#13-可重入锁（RetrantLock）实现原理" class="headerlink" title="13. 可重入锁（RetrantLock）实现原理"></a>13. <a href="http://blog.jobbole.com/108571/" target="_blank" rel="noopener">可重入锁（RetrantLock）实现原理</a></h3><blockquote>
+<h3 id="13-可重入锁（RetrantLock）实现原理"><a href="#13-可重入锁（RetrantLock）实现原理" class="headerlink" title="13. 可重入锁（RetrantLock）实现原理"></a>13. <a target="_blank" rel="noopener" href="http://blog.jobbole.com/108571/">可重入锁（RetrantLock）实现原理</a></h3><blockquote>
 <ol>
 <li>RetrantLock 是通过CAS和AQS实现的</li>
-<li><a href="https://www.jianshu.com/p/fb6e91b013cc" target="_blank" rel="noopener">CAS（Compare And Swap）</a>：三个参数，一个当前内存值V、旧的预期值A、即将更新的值B，当且仅当预期值A和内存值V相同时，将内存值修改为B并返回true，否则什么都不做，并返回false。原子性操作</li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fb6e91b013cc">CAS（Compare And Swap）</a>：三个参数，一个当前内存值V、旧的预期值A、即将更新的值B，当且仅当预期值A和内存值V相同时，将内存值修改为B并返回true，否则什么都不做，并返回false。原子性操作</li>
 <li>RetrantLock内部有一个AbstractQueuedSynchronizer实例，AbstractQueuedSynchronizer是一个抽象类，RetrantLock中有两种对他的实现，一种是公平锁，一种是非公平锁</li>
 <li>在lock时，调用一个CAS的方法compareAndSet来将state设置为1，state是一个volitale的变量，并将当前线程和锁绑定</li>
 <li>当compareAndSet失败时，尝试获取锁：如果和锁绑定的线程时当前线程，state+1</li>
@@ -1770,7 +1796,7 @@ return sinlgeton;
 </ol>
 </blockquote>
 <h3 id="14-Others"><a href="#14-Others" class="headerlink" title="14. Others"></a>14. Others</h3><blockquote>
-<p>synchronized 的实现原理以及锁优化？:Monitor<br> volatile 的实现原理？：内存屏障<br> CAS？CAS 有什么缺陷，如何解决？CompareAndSwap，通过cpu指令实现的<br> AQS ：AbstractQueueSynchronizer，是ReentrantLock一个内部类<br> 如何检测死锁？怎么预防死锁？：死锁必须满足四个条件，破坏任意一个条件都可以解除死锁<br> <a href="http://ifeve.com/talk-concurrency-forkjoin/" target="_blank" rel="noopener">Fork/Join框架</a></p>
+<p>synchronized 的实现原理以及锁优化？:Monitor<br> volatile 的实现原理？：内存屏障<br> CAS？CAS 有什么缺陷，如何解决？CompareAndSwap，通过cpu指令实现的<br> AQS ：AbstractQueueSynchronizer，是ReentrantLock一个内部类<br> 如何检测死锁？怎么预防死锁？：死锁必须满足四个条件，破坏任意一个条件都可以解除死锁<br> <a target="_blank" rel="noopener" href="http://ifeve.com/talk-concurrency-forkjoin/">Fork/Join框架</a></p>
 </blockquote>
 <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><hr>
 <h3 id="0-什么是线程池（thread-pool）"><a href="#0-什么是线程池（thread-pool）" class="headerlink" title="0. 什么是线程池（thread pool）"></a>0. 什么是线程池（thread pool）</h3><blockquote>
@@ -1783,7 +1809,9 @@ return sinlgeton;
 newFixedThreadPool：创建一个指定工作线程数量的线程池。每当提交一个任务就创建一个工作线程，如果工作线程数量达到线程池初始的最大数，则将提交的任务存入到池队列中。
 newCachedThreadPool：创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
 newScheduleThreadPool：创建一个定长的线程池，而且支持定时的以及周期性的任务执行，支持定时及周期性任务执行。
-复制代码</code></pre><blockquote>
+复制代码
+</code></pre>
+<blockquote>
 <ol>
 <li>我们常用的ThreadPoolExecutor实现了ExecutorService接口,以下是原理和参数说明</li>
 </ol>
@@ -1811,11 +1839,13 @@ RejectedExecutionHandler 线程拒绝策略
 2. submit有返回值
 3. 在异常处理时，submit可以通过Future.get捕获抛出的异常
 
-复制代码</code></pre><h3 id="1-线程池如何调优，最大数目如何确认"><a href="#1-线程池如何调优，最大数目如何确认" class="headerlink" title="1. 线程池如何调优，最大数目如何确认"></a>1. 线程池如何调优，最大数目如何确认</h3><blockquote>
+复制代码
+</code></pre>
+<h3 id="1-线程池如何调优，最大数目如何确认"><a href="#1-线程池如何调优，最大数目如何确认" class="headerlink" title="1. 线程池如何调优，最大数目如何确认"></a>1. 线程池如何调优，最大数目如何确认</h3><blockquote>
 <ol>
 <li>线程池的调优优根据具体情况具体分析，尽量使系统资源利用率最大</li>
-<li>例如如果cpu效率明显高于IO，那么就应该创建更多线程提高cpu利用率，避免io等待（<a href="https://www.cnblogs.com/jianzh5/p/6437315.html" target="_blank" rel="noopener">参考1</a>，<a href="https://www.zhihu.com/question/37804956" target="_blank" rel="noopener">参考2</a>）</li>
-<li>Android中最大数目可以是：cpu数目*2+1，但也要根据具体场景，例如picaso会根据网络状况调整最大数目（<a href="https://www.aliyun.com/jiaocheng/14845.html" target="_blank" rel="noopener">参考</a>）</li>
+<li>例如如果cpu效率明显高于IO，那么就应该创建更多线程提高cpu利用率，避免io等待（<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jianzh5/p/6437315.html">参考1</a>，<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37804956">参考2</a>）</li>
+<li>Android中最大数目可以是：cpu数目*2+1，但也要根据具体场景，例如picaso会根据网络状况调整最大数目（<a target="_blank" rel="noopener" href="https://www.aliyun.com/jiaocheng/14845.html">参考</a>）</li>
 </ol>
 </blockquote>
 <h3 id="2-如果你提交给ThreadPoolExcuter任务时，线程池队列已满，这时会发生什么"><a href="#2-如果你提交给ThreadPoolExcuter任务时，线程池队列已满，这时会发生什么" class="headerlink" title="2. 如果你提交给ThreadPoolExcuter任务时，线程池队列已满，这时会发生什么"></a>2. 如果你提交给ThreadPoolExcuter任务时，线程池队列已满，这时会发生什么</h3><blockquote>
@@ -1828,129 +1858,135 @@ RejectedExecutionHandler 线程拒绝策略
 <p>用法: 我们可以调用ThreadPoolExecutor的某个构造方法来自己创建一个线程池。但通常情况下我们可以使用Executors类提供给我们的静态工厂方法来更方便的创建一个线程池对象。创建了线程池对象后，我们就可以调用submit或者excute方法提交任务到线程池中去执行了；线程池使用完毕后我们要记得调用shutdown方法来关闭它。</p>
 </blockquote>
 <h2 id="多线程中的工具类"><a href="#多线程中的工具类" class="headerlink" title="多线程中的工具类"></a>多线程中的工具类</h2><hr>
-<h3 id="0-Java并发编程：CountDownLatch、CyclicBarrier（栅栏）和Semaphore（信号量）"><a href="#0-Java并发编程：CountDownLatch、CyclicBarrier（栅栏）和Semaphore（信号量）" class="headerlink" title="0. Java并发编程：CountDownLatch、CyclicBarrier（栅栏）和Semaphore（信号量）"></a>0. Java并发编程：<a href="https://www.cnblogs.com/dolphin0520/p/3920397.html" target="_blank" rel="noopener">CountDownLatch、CyclicBarrier（栅栏）和Semaphore（信号量）</a></h3><blockquote>
+<h3 id="0-Java并发编程：CountDownLatch、CyclicBarrier（栅栏）和Semaphore（信号量）"><a href="#0-Java并发编程：CountDownLatch、CyclicBarrier（栅栏）和Semaphore（信号量）" class="headerlink" title="0. Java并发编程：CountDownLatch、CyclicBarrier（栅栏）和Semaphore（信号量）"></a>0. Java并发编程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dolphin0520/p/3920397.html">CountDownLatch、CyclicBarrier（栅栏）和Semaphore（信号量）</a></h3><blockquote>
 <ol>
 <li>CountDownLatch:利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了</li>
 </ol>
 </blockquote>
-<pre><code>public class Test {
-     public static void main(String[] args) {   
+<pre><code>public class Test &#123;
+     public static void main(String[] args) &#123;   
          final CountDownLatch latch = new CountDownLatch(2);
-
-         new Thread(){
-             public void run() {
-                 try {
+          
+         new Thread()&#123;
+             public void run() &#123;
+                 try &#123;
                      System.out.println(&quot;子线程&quot;+Thread.currentThread().getName()+&quot;正在执行&quot;);
                     Thread.sleep(3000);
                     System.out.println(&quot;子线程&quot;+Thread.currentThread().getName()+&quot;执行完毕&quot;);
                     latch.countDown();
-                } catch (InterruptedException e) {
+                &#125; catch (InterruptedException e) &#123;
                     e.printStackTrace();
-                }
-             };
-         }.start();
-
-         new Thread(){
-             public void run() {
-                 try {
+                &#125;
+             &#125;;
+         &#125;.start();
+          
+         new Thread()&#123;
+             public void run() &#123;
+                 try &#123;
                      System.out.println(&quot;子线程&quot;+Thread.currentThread().getName()+&quot;正在执行&quot;);
                      Thread.sleep(3000);
                      System.out.println(&quot;子线程&quot;+Thread.currentThread().getName()+&quot;执行完毕&quot;);
                      latch.countDown();
-                } catch (InterruptedException e) {
+                &#125; catch (InterruptedException e) &#123;
                     e.printStackTrace();
-                }
-             };
-         }.start();
-
-         try {
+                &#125;
+             &#125;;
+         &#125;.start();
+          
+         try &#123;
              System.out.println(&quot;等待2个子线程执行完毕...&quot;);
             latch.await();
             System.out.println(&quot;2个子线程已经执行完毕&quot;);
             System.out.println(&quot;继续执行主线程&quot;);
-        } catch (InterruptedException e) {
+        &#125; catch (InterruptedException e) &#123;
             e.printStackTrace();
-        }
-     }
-}
-复制代码</code></pre><blockquote>
+        &#125;
+     &#125;
+&#125;
+复制代码
+</code></pre>
+<blockquote>
 <ol>
 <li>CyclicBarrier: 实现让一组线程等待至某个状态之后再全部同时执行</li>
 </ol>
 </blockquote>
-<pre><code>public class Test {
-    public static void main(String[] args) {
+<pre><code>public class Test &#123;
+    public static void main(String[] args) &#123;
         int N = 4;
         CyclicBarrier barrier  = new CyclicBarrier(N);
         for(int i=0;i&lt;N;i++)
             new Writer(barrier).start();
-    }
-    static class Writer extends Thread{
+    &#125;
+    static class Writer extends Thread&#123;
         private CyclicBarrier cyclicBarrier;
-        public Writer(CyclicBarrier cyclicBarrier) {
+        public Writer(CyclicBarrier cyclicBarrier) &#123;
             this.cyclicBarrier = cyclicBarrier;
-        }
-
+        &#125;
+ 
         @Override
-        public void run() {
+        public void run() &#123;
             System.out.println(&quot;线程&quot;+Thread.currentThread().getName()+&quot;正在写入数据...&quot;);
-            try {
+            try &#123;
                 Thread.sleep(5000);      //以睡眠来模拟写入数据操作
                 System.out.println(&quot;线程&quot;+Thread.currentThread().getName()+&quot;写入数据完毕，等待其他线程写入完毕&quot;);
                 cyclicBarrier.await();
-            } catch (InterruptedException e) {
+            &#125; catch (InterruptedException e) &#123;
                 e.printStackTrace();
-            }catch(BrokenBarrierException e){
+            &#125;catch(BrokenBarrierException e)&#123;
                 e.printStackTrace();
-            }
+            &#125;
             System.out.println(&quot;所有线程写入完毕，继续处理其他任务...&quot;);
-        }
-    }
-}
+        &#125;
+    &#125;
+&#125;
 
 扩展（CyclicBarrier和CountdownLatch的区别）：1.CountdownLatch等待几个任务执行完毕，CyclicBarrier等待达到某个状态；2.CyclicBarrier可以调用reset，循环使用；3.CyclicBarrier可以有含Runnable的构造方法，当达到某一状态时执行某一任务。
-复制代码</code></pre><blockquote>
+复制代码
+</code></pre>
+<blockquote>
 <ol>
 <li>Semaphore：Semaphore可以控同时访问的某个资源的线程个数</li>
 </ol>
 </blockquote>
-<pre><code>public class Test {
-    public static void main(String[] args) {
+<pre><code>public class Test &#123;
+    public static void main(String[] args) &#123;
         int N = 8;            //工人数
         Semaphore semaphore = new Semaphore(5); //机器数目
         for(int i=0;i&lt;N;i++)
             new Worker(i,semaphore).start();
-    }
-
-    static class Worker extends Thread{
+    &#125;
+     
+    static class Worker extends Thread&#123;
         private int num;
         private Semaphore semaphore;
-        public Worker(int num,Semaphore semaphore){
+        public Worker(int num,Semaphore semaphore)&#123;
             this.num = num;
             this.semaphore = semaphore;
-        }
-
+        &#125;
+         
         @Override
-        public void run() {
-            try {
+        public void run() &#123;
+            try &#123;
                 semaphore.acquire();
                 System.out.println(&quot;工人&quot;+this.num+&quot;占用一个机器在生产...&quot;);
                 Thread.sleep(2000);
                 System.out.println(&quot;工人&quot;+this.num+&quot;释放出机器&quot;);
                 semaphore.release();           
-            } catch (InterruptedException e) {
+            &#125; catch (InterruptedException e) &#123;
                 e.printStackTrace();
-            }
-        }
-    }
-}
-复制代码</code></pre><h3 id="1-java中的信号量（Semaphore）"><a href="#1-java中的信号量（Semaphore）" class="headerlink" title="1. java中的信号量（Semaphore）"></a>1. <a href="https://blog.csdn.net/zzp_403184692/article/details/8017173" target="_blank" rel="noopener">java中的信号量（Semaphore）</a></h3><blockquote>
+            &#125;
+        &#125;
+    &#125;
+&#125;
+复制代码
+</code></pre>
+<h3 id="1-java中的信号量（Semaphore）"><a href="#1-java中的信号量（Semaphore）" class="headerlink" title="1. java中的信号量（Semaphore）"></a>1. <a target="_blank" rel="noopener" href="https://blog.csdn.net/zzp_403184692/article/details/8017173">java中的信号量（Semaphore）</a></h3><blockquote>
 <ol>
 <li>Semaphore可以控制当前资源被访问的线程个数，超过最大个数后线程处于阻塞等待状态</li>
 <li>当线程个数指定为1时，可以当锁使用</li>
 </ol>
 </blockquote>
-<h3 id="2-怎么实现所有线程在等待某个事件的发生才会去执行"><a href="#2-怎么实现所有线程在等待某个事件的发生才会去执行" class="headerlink" title="2. 怎么实现所有线程在等待某个事件的发生才会去执行"></a>2. <a href="https://blog.csdn.net/jiyiqinlovexx/article/details/51236323" target="_blank" rel="noopener">怎么实现所有线程在等待某个事件的发生才会去执行</a></h3><blockquote>
+<h3 id="2-怎么实现所有线程在等待某个事件的发生才会去执行"><a href="#2-怎么实现所有线程在等待某个事件的发生才会去执行" class="headerlink" title="2. 怎么实现所有线程在等待某个事件的发生才会去执行"></a>2. <a target="_blank" rel="noopener" href="https://blog.csdn.net/jiyiqinlovexx/article/details/51236323">怎么实现所有线程在等待某个事件的发生才会去执行</a></h3><blockquote>
 <p>所有线程需要阻塞等待，并且观察到事件状态改变满足条件时自动执行，可以用以下方法实现</p>
 <ol>
 <li>闭锁CountDownLatch：闭锁是典型的等待事件发生的同步工具类，将闭锁的初始值设置1，所有线程调用await方法等待，当事件发生时调用countDown将闭锁值减为0，则所有await等待闭锁的线程得以继续执行。</li>
@@ -1958,49 +1994,51 @@ RejectedExecutionHandler 线程拒绝策略
 <li>信号量Semaphore：设置信号量的初始值为等待的线程数N，一开始将信号量申请完，让剩余的信号量为0，待事件发生时，同时释放N个占用的信号量，则等待信号量的所有线程将获取信号量得以继续执行。</li>
 </ol>
 </blockquote>
-<h3 id="3-生产者-消费者实现之阻塞队列"><a href="#3-生产者-消费者实现之阻塞队列" class="headerlink" title="3. 生产者-消费者实现之阻塞队列"></a>3. 生产者-消费者实现之<a href="http://ifeve.com/java-blocking-queue/" target="_blank" rel="noopener">阻塞队列</a></h3><blockquote>
+<h3 id="3-生产者-消费者实现之阻塞队列"><a href="#3-生产者-消费者实现之阻塞队列" class="headerlink" title="3. 生产者-消费者实现之阻塞队列"></a>3. 生产者-消费者实现之<a target="_blank" rel="noopener" href="http://ifeve.com/java-blocking-queue/">阻塞队列</a></h3><blockquote>
 <ol>
-<li>扩展：<a href="https://github.com/francistao/LearningNotes/blob/master/Part2/JavaConcurrent/生产者和消费者问题.md" target="_blank" rel="noopener">通过sychronized关键字实现</a></li>
+<li>扩展：<a target="_blank" rel="noopener" href="https://github.com/francistao/LearningNotes/blob/master/Part2/JavaConcurrent/%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98.md">通过sychronized关键字实现</a></li>
 <li>阻塞队列的特征是当取或放元素是，队列不满足条件（比如队列为空时进行取操作）可以阻塞等待，知道满足条件</li>
 </ol>
 </blockquote>
-<pre><code>public class BlockingQueueTest {
+<pre><code>public class BlockingQueueTest &#123;
  private int size = 20;
  private ArrayBlockingQueue&lt;Integer&gt; queue = new ArrayBlockingQueue&lt;&gt;(size); 
- public static void main(String[] args) { 
+ public static void main(String[] args) &#123; 
  BlockingQueueTest test = new BlockingQueueTest();
  Producer producer = test.new Producer();
  Consumer consumer = test.new Consumer(); 
  producer.start();
  consumer.start(); 
- }
- class Consumer extends Thread{ 
- @Override public void run() {
- while(true){
- try { 
+ &#125;
+ class Consumer extends Thread&#123; 
+ @Override public void run() &#123;
+ while(true)&#123;
+ try &#123; 
       //从阻塞队列中取出一个元素 
       queue.take(); 
       System.out.println(&quot;队列剩余&quot; + queue.size() + &quot;个元素&quot;); 
-      } catch (InterruptedException e) { 
-      } } } 
-} 
- class Producer extends Thread{
-       @Override public void run() {
-        while (true) {
-         try { 
+      &#125; catch (InterruptedException e) &#123; 
+      &#125; &#125; &#125; 
+&#125; 
+ class Producer extends Thread&#123;
+       @Override public void run() &#123;
+        while (true) &#123;
+         try &#123; 
          //向阻塞队列中插入一个元素 
          queue.put(1); 
          System.out.println(&quot;队列剩余空间：&quot; + (size - queue.size())); 
-         } catch (InterruptedException e) {} }} 
-}
-}
-复制代码</code></pre><h3 id="4-ArrayBlockingQueue-CountDownLatch类的作用"><a href="#4-ArrayBlockingQueue-CountDownLatch类的作用" class="headerlink" title="4. ArrayBlockingQueue, CountDownLatch类的作用"></a>4. ArrayBlockingQueue, CountDownLatch类的作用</h3><blockquote>
+         &#125; catch (InterruptedException e) &#123;&#125; &#125;&#125; 
+&#125;
+&#125;
+复制代码
+</code></pre>
+<h3 id="4-ArrayBlockingQueue-CountDownLatch类的作用"><a href="#4-ArrayBlockingQueue-CountDownLatch类的作用" class="headerlink" title="4. ArrayBlockingQueue, CountDownLatch类的作用"></a>4. ArrayBlockingQueue, CountDownLatch类的作用</h3><blockquote>
 <ol>
 <li>ArrayBlockingQueue:一个基于数组实现的阻塞队列，它在构造时需要指定容量。当试图向满队列中添加元素或者从空队列中移除元素时，当前线程会被阻塞。</li>
-<li><a href="http://blog.csdn.net/coderinchina/article/details/53160290" target="_blank" rel="noopener">CountDownLatch</a>：同步计数器,是一个线程工具类，可以让一个或几个线程等待其他线程</li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/coderinchina/article/details/53160290">CountDownLatch</a>：同步计数器,是一个线程工具类，可以让一个或几个线程等待其他线程</li>
 </ol>
 </blockquote>
-<h3 id="5-Condition"><a href="#5-Condition" class="headerlink" title="5. Condition"></a>5. <a href="https://www.jianshu.com/p/b476df2f6d08" target="_blank" rel="noopener">Condition</a></h3><blockquote>
+<h3 id="5-Condition"><a href="#5-Condition" class="headerlink" title="5. Condition"></a>5. <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b476df2f6d08">Condition</a></h3><blockquote>
 <p>Condition是一个接口,有await和signal方法，和Object的wait、notify类似 Condition 通过lock获得：Condition condition = lock.newCondition(); 相对于Object的wait、notify，Condition的控制更加灵活，可以满足唤起某一线程的目的</p>
 </blockquote>
 <h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><hr>
@@ -2017,7 +2055,7 @@ RejectedExecutionHandler 线程拒绝策略
 <li>对于互斥的资源，A进程到达了该点后，若此时B进程正在对此资源进行操作，则A停下来，等待这些操作的完成再继续操作。这就是进程间的同步</li>
 </ol>
 </blockquote>
-<h3 id="2-死锁产生的必要条件"><a href="#2-死锁产生的必要条件" class="headerlink" title="2. 死锁产生的必要条件"></a>2. <a href="http://www.runoob.com/java/thread-deadlock.html" target="_blank" rel="noopener">死锁产生的必要条件</a></h3><blockquote>
+<h3 id="2-死锁产生的必要条件"><a href="#2-死锁产生的必要条件" class="headerlink" title="2. 死锁产生的必要条件"></a>2. <a target="_blank" rel="noopener" href="http://www.runoob.com/java/thread-deadlock.html">死锁产生的必要条件</a></h3><blockquote>
 <ol>
 <li>互斥：一个资源一次只能被一个进程所使用，即是排它性使用</li>
 <li>不剥夺条件：一个资源仅能被占有它的进程所释放，而不能被别的进程强占</li>
@@ -2032,7 +2070,7 @@ RejectedExecutionHandler 线程拒绝策略
 <li>启动类加载器（根加载器 Bootstrap ClassLoader）：由native代码实现，负责将存放在<JAVA_HOME>\lib目录或-Xbootclasspath参数指定的路径中的类库加载到内存中</li>
 <li>扩展加载器（Extension ClassLoader）：java语言实现，父加载器是Bootstrap，：负责加载<JAVA_HOME>\lib\ext目录或java.ext.dirs系统变量指定的路径中的所有类库。</li>
 <li>应用程序类加载器（Application ClassLoader）:java实现，负责加载用户类路径（classpath）上的指定类库，我们可以直接使用这个类加载器。一般情况，如果我们没有自定义类加载器默认就是用这个加载器。</li>
-<li><a href="https://www.cnblogs.com/wxd0108/p/6681618.html" target="_blank" rel="noopener">自定义类加载器</a>：有时为了安全会将类加密，或者从远程（服务器）加载类 ，这个时候就需要自定义类加载器。自定义通过继承ClassLoader类实现，loadClass方法已经实现了双亲委派模式，当父类没有加载成功时，调用当前类的findclass方法，所以我们一般重写该方法。</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wxd0108/p/6681618.html">自定义类加载器</a>：有时为了安全会将类加密，或者从远程（服务器）加载类 ，这个时候就需要自定义类加载器。自定义通过继承ClassLoader类实现，loadClass方法已经实现了双亲委派模式，当父类没有加载成功时，调用当前类的findclass方法，所以我们一般重写该方法。</li>
 </ol>
 </blockquote>
 <h4 id="加载过程"><a href="#加载过程" class="headerlink" title="加载过程"></a>加载过程</h4><blockquote>
@@ -2047,7 +2085,7 @@ RejectedExecutionHandler 线程拒绝策略
 <li>我们可以使用自定义的类加载器加载同名类，这样就阻止了系统双亲委派模式的加载</li>
 </ol>
 </blockquote>
-<h3 id="2-ClassLoader的隔离问题"><a href="#2-ClassLoader的隔离问题" class="headerlink" title="2. ClassLoader的隔离问题"></a>2. <a href="http://www.trinea.cn/android/java-loader-common-class/" target="_blank" rel="noopener">ClassLoader的隔离问题</a></h3><blockquote>
+<h3 id="2-ClassLoader的隔离问题"><a href="#2-ClassLoader的隔离问题" class="headerlink" title="2. ClassLoader的隔离问题"></a>2. <a target="_blank" rel="noopener" href="http://www.trinea.cn/android/java-loader-common-class/">ClassLoader的隔离问题</a></h3><blockquote>
 <ol>
 <li>JVM 及 Dalvik 对类唯一的识别是 ClassLoader id + PackageName + ClassName</li>
 <li>两个相同的类可能因为两个ClassLoader加载而不兼容</li>
@@ -2092,7 +2130,7 @@ RejectedExecutionHandler 线程拒绝策略
 <li>范型的实现是通过擦除实现的，也就是说编译之后范型信息会被擦出</li>
 </ol>
 </blockquote>
-<h3 id="6-通配符"><a href="#6-通配符" class="headerlink" title="6. 通配符"></a>6. <a href="https://blog.csdn.net/fw0124/article/details/42296283" target="_blank" rel="noopener">通配符</a></h3><blockquote>
+<h3 id="6-通配符"><a href="#6-通配符" class="headerlink" title="6. 通配符"></a>6. <a target="_blank" rel="noopener" href="https://blog.csdn.net/fw0124/article/details/42296283">通配符</a></h3><blockquote>
 <ol>
 <li>通配符有两种用法：？extends A  和 ？ super A</li>
 <li>？extends A 表示？的上界是A，具体什么类型并不清楚，适合于获取，获取到的一定是A类型</li>
@@ -2100,9 +2138,10 @@ RejectedExecutionHandler 线程拒绝策略
 </ol>
 </blockquote>
 <h3 id="7-注解（Annotation）"><a href="#7-注解（Annotation）" class="headerlink" title="7. 注解（Annotation）"></a>7. 注解（Annotation）</h3><blockquote>
-<p>注解分为三种：源码级别（source），类文件级别（class）或者运行时级别（runtime）；butternife是类文件级别 参考：<a href="https://blog.csdn.net/javazejian/article/details/71860633" target="_blank" rel="noopener">https://blog.csdn.net/javazejian/article/details/71860633</a> <a href="https://blog.csdn.net/u013045971/article/details/53509237" target="_blank" rel="noopener">https://blog.csdn.net/u013045971/article/details/53509237</a><br> <a href="https://www.cnblogs.com/likeshu/p/5526187.html" target="_blank" rel="noopener">https://www.cnblogs.com/likeshu/p/5526187.html</a></p>
+<p>注解分为三种：源码级别（source），类文件级别（class）或者运行时级别（runtime）；butternife是类文件级别 参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/javazejian/article/details/71860633">https://blog.csdn.net/javazejian/article/details/71860633</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/u013045971/article/details/53509237">https://blog.csdn.net/u013045971/article/details/53509237</a><br> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/likeshu/p/5526187.html">https://www.cnblogs.com/likeshu/p/5526187.html</a></p>
 </blockquote>
 
+                
             </div>
             <hr/>
 
@@ -2117,7 +2156,7 @@ RejectedExecutionHandler 线程拒绝策略
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io" rel="external nofollow noreferrer">ECM</a>
+                    <a href="/about" rel="external nofollow noreferrer">ECM</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -2140,7 +2179,7 @@ RejectedExecutionHandler 线程拒绝策略
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+                    <a href="/about" target="_blank">ECM</a>
                     !
                 </span>
             </div>
@@ -2165,10 +2204,6 @@ RejectedExecutionHandler 线程拒绝策略
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                                    <span class="chip bg-color">面试</span>
-                                </a>
-                            
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
                                 </a>
@@ -2177,14 +2212,17 @@ RejectedExecutionHandler 线程拒绝策略
                                     <span class="chip bg-color">知识</span>
                                 </a>
                             
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
 <div id="article-share">
-    
+
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
@@ -2321,9 +2359,14 @@ RejectedExecutionHandler 线程拒绝策略
         $('.tabs').tabs();
     });
 </script>
+
             
         </div>
     </div>
+
+    
+
+    
 
     
 
@@ -2356,13 +2399,7 @@ RejectedExecutionHandler 线程拒绝策略
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Android InterviewAndroid的大体架构图
-分为四个层次：linux内核；libraies和Android runntime；framework；Application
-
-
-Android的四大组件是哪些，它们的作用？
-
-
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -2384,8 +2421,8 @@ Android的四大组件是哪些，它们的作用？
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
                     </a>
                     
                     <a href="/tags/Java/">
@@ -2396,8 +2433,8 @@ Android的四大组件是哪些，它们的作用？
                         <span class="chip bg-color">知识</span>
                     </a>
                     
-                    <a href="/tags/Android/">
-                        <span class="chip bg-color">Android</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
                 </div>
@@ -2423,13 +2460,7 @@ Android的四大组件是哪些，它们的作用？
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            rsync 使用
-h： human-readable, 输出友好
-a： 合并模式；等于-rlptgoD（不含 -H -A -X）。
-b： 制作备份。
-C： 使用与CVS相同的方式来忽略文件。
-u： 跳过比较新的文件。
-v： 处理过程中，显示
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -2451,20 +2482,20 @@ v： 处理过程中，显示
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/rsync/">
-                        <span class="chip bg-color">rsync</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%A4%87%E4%BB%BD/">
-                        <span class="chip bg-color">备份</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                     <a href="/tags/macOS/">
                         <span class="chip bg-color">macOS</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/rsync/">
+                        <span class="chip bg-color">rsync</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%87%E4%BB%BD/">
+                        <span class="chip bg-color">备份</span>
                     </a>
                     
                 </div>
@@ -2497,16 +2528,9 @@ v： 处理过程中，显示
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
+        <div class="toc-widget card" style="background-color: white;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
@@ -2604,13 +2628,17 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
+
     <footer class="page-footer bg-color">
     
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
             <span id="year">2019</span>
-            <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+            <a href="/about" target="_blank">ECM</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -2686,12 +2714,98 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </div>
 </div>
 
-<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
+
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -2706,9 +2820,6 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Baidu Analytics -->
 
@@ -2739,12 +2850,13 @@ $(function () {
 
     
 
+	
     
 
     
 
     
-    
+
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     

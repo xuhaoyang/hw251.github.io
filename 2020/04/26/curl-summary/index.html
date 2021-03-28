@@ -5,24 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="curl总结, 记录小站">
-    <meta name="description" content="curl 参数详解常用参数
-
-
-参数
-描述
-
-
-
--I/–head
-只显示传输文档，经常用于测试连接本身
-
-
--o/–output
-把输出写到该文件中，必须输入保存文件名
-
-
--O/–remote-name
-把输出写到该文件中，保留远程文件">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,6 +13,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
     <title>curl总结 | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -42,8 +28,10 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
 
 
 <body>
@@ -113,6 +101,7 @@
     </a>
   </li>
 </ul>
+
 
 <div id="mobile-nav" class="side-nav sidenav">
 
@@ -186,6 +175,7 @@
         
     </ul>
 </div>
+
 
         </div>
 
@@ -315,8 +305,7 @@
     }
 
     .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
+        padding: 35px 0 15px 17px;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 1.5rem;
@@ -328,7 +317,7 @@
     }
 
     #toc-content {
-        height: calc(100vh - 250px);
+        padding-bottom: 30px;
         overflow: auto;
     }
 
@@ -349,14 +338,14 @@
     #toc-content .toc-link::before {
         background-color: transparent;
         max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
     }
 
     #toc-content .is-active-link {
         color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
     }
 
     #floating-toc-btn {
@@ -434,9 +423,13 @@
 
                 
             </div>
-
         </div>
         <hr class="clearfix">
+
+        
+
+        
+
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="curl-参数详解"><a href="#curl-参数详解" class="headerlink" title="curl 参数详解"></a>curl 参数详解</h1><h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><table>
@@ -655,15 +648,21 @@
 <td>用进度条显示当前的传送状态</td>
 </tr>
 </tbody></table>
-<h3 id="使用cookie文件"><a href="#使用cookie文件" class="headerlink" title="使用cookie文件"></a>使用cookie文件</h3><pre class=" language-sh"><code class="language-sh">curl -b ./cookie_c.txt  http://blog.mydomain.com/wp-admin</code></pre>
-<h3 id="断点续传，-C-大写的"><a href="#断点续传，-C-大写的" class="headerlink" title="断点续传，-C(大写的)"></a>断点续传，<code>-C(大写的)</code></h3><pre class=" language-sh"><code class="language-sh">curl -C -O http://www.sina.com.cn</code></pre>
+<h3 id="使用cookie文件"><a href="#使用cookie文件" class="headerlink" title="使用cookie文件"></a>使用cookie文件</h3><pre class=" language-sh"><code class="language-sh">curl -b ./cookie_c.txt  http://blog.mydomain.com/wp-admin
+</code></pre>
+<h3 id="断点续传，-C-大写的"><a href="#断点续传，-C-大写的" class="headerlink" title="断点续传，-C(大写的)"></a>断点续传，<code>-C(大写的)</code></h3><pre class=" language-sh"><code class="language-sh">curl -C -O http://www.sina.com.cn
+</code></pre>
 <h3 id="传送数据"><a href="#传送数据" class="headerlink" title="传送数据"></a>传送数据</h3><p>最好用登录页面测试，因为你传值过去后，回抓数据，你可以看到你传值有没有成功</p>
-<pre class=" language-sh"><code class="language-sh">curl -d log=aaaa  http://blog.mydomain.com/login.php</code></pre>
+<pre class=" language-sh"><code class="language-sh">curl -d log=aaaa  http://blog.mydomain.com/login.php
+</code></pre>
 <h3 id="显示抓取错误-f"><a href="#显示抓取错误-f" class="headerlink" title="显示抓取错误 -f"></a>显示抓取错误 <code>-f</code></h3><pre class=" language-sh"><code class="language-sh">curl -f http://www.sina.com.cn/asdf
 curl: (22) The requested URL returned error: 404
-curl http://www.sina.com.cn/asdf</code></pre>
-<h3 id="伪造来源地址，有的网站会判断，请求来源地址-e"><a href="#伪造来源地址，有的网站会判断，请求来源地址-e" class="headerlink" title="伪造来源地址，有的网站会判断，请求来源地址-e"></a>伪造来源地址，有的网站会判断，请求来源地址<code>-e</code></h3><pre class=" language-sh"><code class="language-sh">curl -e http://localhost http://www.sina.com.cn</code></pre>
-<h3 id="当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的-这个时候-我们可以用代理"><a href="#当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的-这个时候-我们可以用代理" class="headerlink" title="当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的,这个时候,我们可以用代理"></a>当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的,这个时候,我们可以用代理</h3><pre class=" language-sh"><code class="language-sh">curl -x 10.10.90.83:80 -o home.html http://www.sina.com.cn</code></pre>
+curl http://www.sina.com.cn/asdf
+</code></pre>
+<h3 id="伪造来源地址，有的网站会判断，请求来源地址-e"><a href="#伪造来源地址，有的网站会判断，请求来源地址-e" class="headerlink" title="伪造来源地址，有的网站会判断，请求来源地址-e"></a>伪造来源地址，有的网站会判断，请求来源地址<code>-e</code></h3><pre class=" language-sh"><code class="language-sh">curl -e http://localhost http://www.sina.com.cn
+</code></pre>
+<h3 id="当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的-这个时候-我们可以用代理"><a href="#当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的-这个时候-我们可以用代理" class="headerlink" title="当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的,这个时候,我们可以用代理"></a>当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的,这个时候,我们可以用代理</h3><pre class=" language-sh"><code class="language-sh">curl -x 10.10.90.83:80 -o home.html http://www.sina.com.cn
+</code></pre>
 <h3 id="比较大的东西，我们可以分段下载"><a href="#比较大的东西，我们可以分段下载" class="headerlink" title="比较大的东西，我们可以分段下载"></a>比较大的东西，我们可以分段下载</h3><pre class=" language-sh"><code class="language-sh">curl -r 0-100 -o img.part1 http://mydomian.cn/thumb/xxx.jpg
   % Total    % Received % Xferd  Average Speed  Time    Time    Time  Current
                                 Dload  Upload  Total  Spent    Left  Speed
@@ -676,11 +675,14 @@ curl -r 200- -o img.part3 http://mydomian.cn/thumb/xxx.jpg
   % Total    % Received % Xferd  Average Speed  Time    Time    Time  Current
                                 Dload  Upload  Total  Spent    Left  Speed
 100 13515  100 13515    0    0  154k      0 --:--:-- --:--:-- --:--:--  280k
-ll |grep img.part</code></pre>
+ll |grep img.part
+</code></pre>
 <p>用的时候，把他们cat一下就OK了,<code>cat img.part* &gt;img.jpg</code></p>
-<h3 id="不显示下载进度信息-s"><a href="#不显示下载进度信息-s" class="headerlink" title="不显示下载进度信息 -s"></a>不显示下载进度信息 <code>-s</code></h3><pre class=" language-sh"><code class="language-sh">curl -s -o aaa.jpg</code></pre>
+<h3 id="不显示下载进度信息-s"><a href="#不显示下载进度信息-s" class="headerlink" title="不显示下载进度信息 -s"></a>不显示下载进度信息 <code>-s</code></h3><pre class=" language-sh"><code class="language-sh">curl -s -o aaa.jpg
+</code></pre>
 <h3 id="显示下载进度条"><a href="#显示下载进度条" class="headerlink" title="显示下载进度条 -#"></a>显示下载进度条 <code>-#</code></h3><pre class=" language-sh"><code class="language-sh">curl -# -O  http://www.mydomain.com/linux/25002_3.html
-######################################################################## 100.0%</code></pre>
+######################################################################## 100.0%
+</code></pre>
 <h3 id="通过ftp下载文件"><a href="#通过ftp下载文件" class="headerlink" title="通过ftp下载文件"></a>通过ftp下载文件</h3><pre class=" language-sh"><code class="language-sh">curl -u 用户名:密码 -O http://blog.mydomain.com/demo/curtain/bbstudy_files/style.css
 % Total    % Received % Xferd  Average Speed  Time    Time    Time  Current
 Dload  Upload  Total  Spent    Left  Speed
@@ -689,33 +691,50 @@ Dload  Upload  Total  Spent    Left  Speed
 curl -O ftp://xukai:test@192.168.242.144:21/www/focus/enhouse/index.php
   % Total    % Received % Xferd  Average Speed  Time    Time    Time  Current
                                 Dload  Upload  Total  Spent    Left  Speed
-100 87518  100 87518    0    0  2312k      0 --:--:-- --:--:-- --:--:-- 11.5M</code></pre>
+100 87518  100 87518    0    0  2312k      0 --:--:-- --:--:-- --:--:-- 11.5M
+</code></pre>
 <h3 id="通过ftp上传"><a href="#通过ftp上传" class="headerlink" title="通过ftp上传"></a>通过ftp上传</h3><pre class=" language-sh"><code class="language-sh">curl -T xukai.php ftp://xukai:test@192.168.242.144:21/www/focus/enhouse/
   % Total    % Received % Xferd  Average Speed  Time    Time    Time  Current
                                 Dload  Upload  Total  Spent    Left  Speed
-100 87518    0    0  100 87518      0  2040k --:--:-- --:--:-- --:--:-- 8901k</code></pre>
+100 87518    0    0  100 87518      0  2040k --:--:-- --:--:-- --:--:-- 8901k
+</code></pre>
 <h3 id="用法收集"><a href="#用法收集" class="headerlink" title="用法收集"></a>用法收集</h3><h4 id="下载保存"><a href="#下载保存" class="headerlink" title="下载保存"></a>下载保存</h4><pre class=" language-sh"><code class="language-sh">$curl http://mydomain.net > index.html
 $curl -o index.html http://mydomain.net
-$curl -O http://mydomain.net/target.tar.gz</code></pre>
-<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><pre class=" language-sh"><code class="language-sh">$curl http://www.yahoo.com/login.cgi?user=nickname&password=12345</code></pre>
-<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><pre class=" language-sh"><code class="language-sh">$curl -d "user=nickname&password=12345" http://www.yahoo.com/login.cgi</code></pre>
-<h4 id="POST-文件"><a href="#POST-文件" class="headerlink" title="POST 文件"></a>POST 文件</h4><pre class=" language-sh"><code class="language-sh">$curl -F upload=$localfile  -F $btn_name=$btn_value http://mydomain.net/~zzh/up_file.cgi</code></pre>
-<h4 id="通过代理"><a href="#通过代理" class="headerlink" title="通过代理"></a>通过代理</h4><pre class=" language-sh"><code class="language-sh">$curl -x 123.45.67.89:1080 -o page.html http://mydomain.net</code></pre>
-<h4 id="保存cookie"><a href="#保存cookie" class="headerlink" title="保存cookie"></a>保存cookie</h4><pre class=" language-sh"><code class="language-sh">$curl -x 123.45.67.89:1080 -o page1.html -D cookie0001.txt http://mydomain.net</code></pre>
-<h4 id="使用cookie"><a href="#使用cookie" class="headerlink" title="使用cookie"></a>使用cookie</h4><pre class=" language-sh"><code class="language-sh">$curl -x 123.45.67.89:1080 -o page1.html -D cookie0002.txt -b cookie0001.txt http://mydomain.net</code></pre>
-<h4 id="模仿浏览器"><a href="#模仿浏览器" class="headerlink" title="模仿浏览器"></a>模仿浏览器</h4><pre class=" language-sh"><code class="language-sh">$curl -A "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)" -x123.45.67.89:1080 -o page.html -D cookie0001.txt http://mydomain.net</code></pre>
-<h4 id="伪造referer"><a href="#伪造referer" class="headerlink" title="伪造referer"></a>伪造referer</h4><pre class=" language-sh"><code class="language-sh">$curl -A "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)" -x123.45.67.89:1080 -e"mail.yahoo.com" -o page.html -D cookie0001.txt http://mydomain.net</code></pre>
-<h3 id="高级下载功能"><a href="#高级下载功能" class="headerlink" title="高级下载功能"></a>高级下载功能</h3><h4 id="循环下载"><a href="#循环下载" class="headerlink" title="循环下载"></a>循环下载</h4><pre class=" language-sh"><code class="language-sh">$curl -O http://mydomain.net/~zzh/screen[1-10].JPG</code></pre>
-<h4 id="循环（匹配）下载"><a href="#循环（匹配）下载" class="headerlink" title="循环（匹配）下载"></a>循环（匹配）下载</h4><pre class=" language-sh"><code class="language-sh">$curl -O http://mydomain.net/~{zzh,nick}/[001-201].JPG  # >like zzh/001.JPG</code></pre>
-<h4 id="循环（引用）下载"><a href="#循环（引用）下载" class="headerlink" title="循环（引用）下载"></a>循环（引用）下载</h4><pre class=" language-sh"><code class="language-sh">$curl -o #2_#1.jpg http://mydomain.net/~{zzh,nick}/[001-201].JPG # like >001_zzh.jpg</code></pre>
-<h4 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h4><pre class=" language-sh"><code class="language-sh">$curl -c -O http://mydomain.net/~zzh/screen1.JPG</code></pre>
+$curl -O http://mydomain.net/target.tar.gz
+</code></pre>
+<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><pre class=" language-sh"><code class="language-sh">$curl http://www.yahoo.com/login.cgi?user=nickname&password=12345
+</code></pre>
+<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><pre class=" language-sh"><code class="language-sh">$curl -d "user=nickname&password=12345" http://www.yahoo.com/login.cgi
+</code></pre>
+<h4 id="POST-文件"><a href="#POST-文件" class="headerlink" title="POST 文件"></a>POST 文件</h4><pre class=" language-sh"><code class="language-sh">$curl -F upload=$localfile  -F $btn_name=$btn_value http://mydomain.net/~zzh/up_file.cgi
+</code></pre>
+<h4 id="通过代理"><a href="#通过代理" class="headerlink" title="通过代理"></a>通过代理</h4><pre class=" language-sh"><code class="language-sh">$curl -x 123.45.67.89:1080 -o page.html http://mydomain.net
+</code></pre>
+<h4 id="保存cookie"><a href="#保存cookie" class="headerlink" title="保存cookie"></a>保存cookie</h4><pre class=" language-sh"><code class="language-sh">$curl -x 123.45.67.89:1080 -o page1.html -D cookie0001.txt http://mydomain.net
+</code></pre>
+<h4 id="使用cookie"><a href="#使用cookie" class="headerlink" title="使用cookie"></a>使用cookie</h4><pre class=" language-sh"><code class="language-sh">$curl -x 123.45.67.89:1080 -o page1.html -D cookie0002.txt -b cookie0001.txt http://mydomain.net
+</code></pre>
+<h4 id="模仿浏览器"><a href="#模仿浏览器" class="headerlink" title="模仿浏览器"></a>模仿浏览器</h4><pre class=" language-sh"><code class="language-sh">$curl -A "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)" -x123.45.67.89:1080 -o page.html -D cookie0001.txt http://mydomain.net
+</code></pre>
+<h4 id="伪造referer"><a href="#伪造referer" class="headerlink" title="伪造referer"></a>伪造referer</h4><pre class=" language-sh"><code class="language-sh">$curl -A "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)" -x123.45.67.89:1080 -e"mail.yahoo.com" -o page.html -D cookie0001.txt http://mydomain.net
+</code></pre>
+<h3 id="高级下载功能"><a href="#高级下载功能" class="headerlink" title="高级下载功能"></a>高级下载功能</h3><h4 id="循环下载"><a href="#循环下载" class="headerlink" title="循环下载"></a>循环下载</h4><pre class=" language-sh"><code class="language-sh">$curl -O http://mydomain.net/~zzh/screen[1-10].JPG
+</code></pre>
+<h4 id="循环（匹配）下载"><a href="#循环（匹配）下载" class="headerlink" title="循环（匹配）下载"></a>循环（匹配）下载</h4><pre class=" language-sh"><code class="language-sh">$curl -O http://mydomain.net/~&#123;zzh,nick&#125;/[001-201].JPG  # >like zzh/001.JPG
+</code></pre>
+<h4 id="循环（引用）下载"><a href="#循环（引用）下载" class="headerlink" title="循环（引用）下载"></a>循环（引用）下载</h4><pre class=" language-sh"><code class="language-sh">$curl -o #2_#1.jpg http://mydomain.net/~&#123;zzh,nick&#125;/[001-201].JPG # like >001_zzh.jpg
+</code></pre>
+<h4 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h4><pre class=" language-sh"><code class="language-sh">$curl -c -O http://mydomain.net/~zzh/screen1.JPG
+</code></pre>
 <h4 id="分块下载"><a href="#分块下载" class="headerlink" title="分块下载"></a>分块下载</h4><pre class=" language-sh"><code class="language-sh">$curl -r  0 -10240  -o "zhao.part1"  http://mydomain.net/~zzh/zhao1.mp3 &\
 $curl -r 10241 -20480  -o "zhao.part1"  http://mydomain.net/~zzh/zhao1.mp3 &\
 $curl -r 20481 -40960  -o "zhao.part1"  http://mydomain.net/~zzh/zhao1.mp3 &\
 $curl -r 40961 - -o  "zhao.part1"  http://mydomain.net/~zzh/zhao1.mp3
 ...
-$cat zhao.part* > zhao.mp3</code></pre>
+$cat zhao.part* > zhao.mp3
+</code></pre>
 
+                
             </div>
             <hr/>
 
@@ -730,7 +749,7 @@ $cat zhao.part* > zhao.mp3</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io" rel="external nofollow noreferrer">ECM</a>
+                    <a href="/about" rel="external nofollow noreferrer">ECM</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -753,7 +772,7 @@ $cat zhao.part* > zhao.mp3</code></pre>
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+                    <a href="/about" target="_blank">ECM</a>
                     !
                 </span>
             </div>
@@ -795,9 +814,8 @@ $cat zhao.part* > zhao.mp3</code></pre>
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
 <div id="article-share">
-    
+
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
@@ -934,9 +952,14 @@ $cat zhao.part* > zhao.mp3</code></pre>
         $('.tabs').tabs();
     });
 </script>
+
             
         </div>
     </div>
+
+    
+
+    
 
     
 
@@ -969,9 +992,7 @@ $cat zhao.part* > zhao.mp3</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            重新安装新系统准备List备份系统APP备份APP 数据备份/Users/[user]/Library/Application Support
-/Users/[user]/Library/Containers开发配置备份~/.ssh
-.zs
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -1024,10 +1045,7 @@ $cat zhao.part* > zhao.mp3</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Android 项目 Build 总结Gradle获得当前flavor nameimport java.util.regex.Matcher
-import java.util.regex.Pattern
-
-def getCurrentFla
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -1095,16 +1113,9 @@ def getCurrentFla
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
+        <div class="toc-widget card" style="background-color: white;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
@@ -1202,13 +1213,17 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
+
     <footer class="page-footer bg-color">
     
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
             <span id="year">2019</span>
-            <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+            <a href="/about" target="_blank">ECM</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1284,12 +1299,98 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </div>
 </div>
 
-<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
+
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -1304,9 +1405,6 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Baidu Analytics -->
 
@@ -1337,12 +1435,13 @@ $(function () {
 
     
 
+	
     
 
     
 
     
-    
+
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     

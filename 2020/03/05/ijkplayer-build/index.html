@@ -5,9 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Custom Build Bilibili ijkplayer, 记录小站">
-    <meta name="description" content="Build Bilibili ijkplayerMacOS 环境Homebrewgit、yasm
-NDK必需 Android NDK 10-14
-https://developer.android.google.cn/ndk/downloa">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,6 +13,9 @@ https://developer.android.google.cn/ndk/downloa">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
     <title>Custom Build Bilibili ijkplayer | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -27,8 +28,10 @@ https://developer.android.google.cn/ndk/downloa">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
 
 
 <body>
@@ -98,6 +101,7 @@ https://developer.android.google.cn/ndk/downloa">
     </a>
   </li>
 </ul>
+
 
 <div id="mobile-nav" class="side-nav sidenav">
 
@@ -171,6 +175,7 @@ https://developer.android.google.cn/ndk/downloa">
         
     </ul>
 </div>
+
 
         </div>
 
@@ -300,8 +305,7 @@ https://developer.android.google.cn/ndk/downloa">
     }
 
     .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
+        padding: 35px 0 15px 17px;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 1.5rem;
@@ -313,7 +317,7 @@ https://developer.android.google.cn/ndk/downloa">
     }
 
     #toc-content {
-        height: calc(100vh - 250px);
+        padding-bottom: 30px;
         overflow: auto;
     }
 
@@ -334,14 +338,14 @@ https://developer.android.google.cn/ndk/downloa">
     #toc-content .toc-link::before {
         background-color: transparent;
         max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
     }
 
     #toc-content .is-active-link {
         color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
     }
 
     #floating-toc-btn {
@@ -374,6 +378,10 @@ https://developer.android.google.cn/ndk/downloa">
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/Android/">
+                                <span class="chip bg-color">Android</span>
+                            </a>
+                        
                             <a href="/tags/ffmpeg/">
                                 <span class="chip bg-color">ffmpeg</span>
                             </a>
@@ -392,10 +400,6 @@ https://developer.android.google.cn/ndk/downloa">
                         
                             <a href="/tags/%E8%A7%86%E9%A2%91/">
                                 <span class="chip bg-color">视频</span>
-                            </a>
-                        
-                            <a href="/tags/Android/">
-                                <span class="chip bg-color">Android</span>
                             </a>
                         
                     </div>
@@ -431,16 +435,22 @@ https://developer.android.google.cn/ndk/downloa">
 
                 
             </div>
-
         </div>
         <hr class="clearfix">
+
+        
+
+        
+
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Build-Bilibili-ijkplayer"><a href="#Build-Bilibili-ijkplayer" class="headerlink" title="Build Bilibili ijkplayer"></a>Build Bilibili ijkplayer</h1><h3 id="MacOS-环境"><a href="#MacOS-环境" class="headerlink" title="MacOS 环境"></a>MacOS 环境</h3><p>Homebrew<br>git、yasm</p>
 <h4 id="NDK"><a href="#NDK" class="headerlink" title="NDK"></a>NDK</h4><p>必需 Android NDK 10-14</p>
-<p><a href="https://developer.android.google.cn/ndk/downloads/older_releases.html" target="_blank" rel="noopener">https://developer.android.google.cn/ndk/downloads/older_releases.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/ndk/downloads/older_releases.html">https://developer.android.google.cn/ndk/downloads/older_releases.html</a></p>
 <h3 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h3><pre><code>export ANDROID_NDK=~/workspace/android/ndk-r10e
-export PATH=$PATH:$ANDROID_NDK</code></pre><h4 id="配置编解码器格式支持"><a href="#配置编解码器格式支持" class="headerlink" title="配置编解码器格式支持"></a>配置编解码器格式支持</h4><p>默认为最少支持，如果足够你使用，可以跳过这一步，否则可以改为以下配置:</p>
+export PATH=$PATH:$ANDROID_NDK
+</code></pre>
+<h4 id="配置编解码器格式支持"><a href="#配置编解码器格式支持" class="headerlink" title="配置编解码器格式支持"></a>配置编解码器格式支持</h4><p>默认为最少支持，如果足够你使用，可以跳过这一步，否则可以改为以下配置:</p>
 <ul>
 <li>module-default.sh 更多的编解码器/格式</li>
 <li>module-lite-hevc.sh 较少的编解码器/格式(包括 hevc)</li>
@@ -466,11 +476,17 @@ cd android/contrib
 
 
 cd ..
-./compile-ijk.sh all</code></pre><h4 id="NDK-1"><a href="#NDK-1" class="headerlink" title="NDK"></a>NDK</h4><p>注意申明<code>ANDROID_NDK</code>为指定版本的</p>
+./compile-ijk.sh all
+</code></pre>
+<h4 id="NDK-1"><a href="#NDK-1" class="headerlink" title="NDK"></a>NDK</h4><p>注意申明<code>ANDROID_NDK</code>为指定版本的</p>
 <pre><code># export ANDROID_SDK=&lt;your sdk path&gt;
-# export ANDROID_NDK=&lt;your ndk path&gt;</code></pre><h4 id="0-8-8-Build"><a href="#0-8-8-Build" class="headerlink" title="0.8.8 Build"></a>0.8.8 Build</h4><p><code>module.sh</code> add this </p>
+# export ANDROID_NDK=&lt;your ndk path&gt;
+</code></pre>
+<h4 id="0-8-8-Build"><a href="#0-8-8-Build" class="headerlink" title="0.8.8 Build"></a>0.8.8 Build</h4><p><code>module.sh</code> add this </p>
 <pre><code>export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-linux-perf&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bzlib&quot;</code></pre><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://www.jianshu.com/p/11493731ea2c" target="_blank" rel="noopener">https://www.jianshu.com/p/11493731ea2c</a></p>
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-bzlib&quot;
+</code></pre>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/11493731ea2c">https://www.jianshu.com/p/11493731ea2c</a></p>
 <h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><pre><code>// 添加格式、rtsp(tcp)支持
 export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mpeg4&quot;
 export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mp2*&quot;
@@ -479,15 +495,27 @@ export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-decoder=mjpeg&quo
 export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=rtsp&quot;
 export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-demuxer=mjpeg&quot;
 export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=rtp&quot;
-export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=tcp&quot;</code></pre><p>注释掉</p>
-<pre><code>export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=rtp&quot;</code></pre><h3 id="Gradlew"><a href="#Gradlew" class="headerlink" title="Gradlew"></a>Gradlew</h3><pre><code>#强制清除 gradle 依赖缓存
-./gradlew build --refresh-dependencies  </code></pre><h3 id="问题集合"><a href="#问题集合" class="headerlink" title="问题集合"></a>问题集合</h3><p>1、IJKPlayer 不像系统播放器会给你旋转视频角度，所以你需要通过<code>onInfo</code>的<code>what == IMediaPlayer.MEDIA_INFO_VIDEO_ROTATION_CHANGED</code>去获取角度，自己旋转画面；或者开启硬解硬解码，不过硬解码容易造成黑屏无声</p>
+export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --enable-protocol=tcp&quot;
+</code></pre>
+<p>注释掉</p>
+<pre><code>export COMMON_FF_CFG_FLAGS=&quot;$COMMON_FF_CFG_FLAGS --disable-protocol=rtp&quot;
+</code></pre>
+<h3 id="Gradlew"><a href="#Gradlew" class="headerlink" title="Gradlew"></a>Gradlew</h3><pre><code>#强制清除 gradle 依赖缓存
+./gradlew build --refresh-dependencies  
+</code></pre>
+<h3 id="问题集合"><a href="#问题集合" class="headerlink" title="问题集合"></a>问题集合</h3><p>1、IJKPlayer 不像系统播放器会给你旋转视频角度，所以你需要通过<code>onInfo</code>的<code>what == IMediaPlayer.MEDIA_INFO_VIDEO_ROTATION_CHANGED</code>去获取角度，自己旋转画面；或者开启硬解硬解码，不过硬解码容易造成黑屏无声</p>
 <pre><code>mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
 mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec-auto-rotate&quot;, 1);
-mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec-handle-resolution-change&quot;, 1);</code></pre><p>2、 IJKPlayer 出现黑色有声音没图像，看看你的视频编码是不是H264，pixel format是否存在，音频编码是不是AAC？默认IJKPlayer是不支持3pg（支持它干啥(・-・)？），不支持mepg（比如这个库RecordVideoDemo ）,不支持AMR。所以如果你真的想要支持，那么参考这个#1961，打开mpeg支持，重新编ffmpeg，然后通过硬解码播放mpeg；或者通过系统的录制VideoRecord；或者选另外的JAVACV录制封装FFmpegRecorder。</p>
+mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec-handle-resolution-change&quot;, 1);
+</code></pre>
+<p>2、 IJKPlayer 出现黑色有声音没图像，看看你的视频编码是不是H264，pixel format是否存在，音频编码是不是AAC？默认IJKPlayer是不支持3pg（支持它干啥(・-・)？），不支持mepg（比如这个库RecordVideoDemo ）,不支持AMR。所以如果你真的想要支持，那么参考这个#1961，打开mpeg支持，重新编ffmpeg，然后通过硬解码播放mpeg；或者通过系统的录制VideoRecord；或者选另外的JAVACV录制封装FFmpegRecorder。</p>
 <pre><code>ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
-ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec_mpeg4&quot;, 1);</code></pre><p>3、 **快进和慢放接口，已经支持全版本，如果遇到声调问题，可以设置：</p>
-<pre><code>ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;soundtouch&quot;, 1);</code></pre><p>4、暂停的时候，退到后台再回到前台，画面黑了？</p>
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec_mpeg4&quot;, 1);
+</code></pre>
+<p>3、 **快进和慢放接口，已经支持全版本，如果遇到声调问题，可以设置：</p>
+<pre><code>ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;soundtouch&quot;, 1);
+</code></pre>
+<p>4、暂停的时候，退到后台再回到前台，画面黑了？</p>
 <p>1、<br>这时候个人处理方式是，可以在暂停的时候，通过TextureView.getBitmap(point.x, point.y);获取到暂停的画面，用ImageView显示它，在onSurfaceTextureUpdated的时候隐藏ImageView，来实现画面的衔接。</p>
 <p>2、暂停时绘制静态画面多TextureView的Surface上，详细参考GSYVideoPlayer。</p>
 <p>5、一些视频返回码</p>
@@ -497,39 +525,50 @@ int MEDIA_INFO_BUFFERING_END = 702;//缓冲结束
 int MEDIA_INFO_VIDEO_ROTATION_CHANGED = 10001;//视频选择信息
 int MEDIA_ERROR_SERVER_DIED = 100;//视频中断，一般是视频源异常或者不支持的视频类型。
 int MEDIA_ERROR_IJK_PLAYER = -10000,//一般是视频源有问题或者数据格式不支持，比如音频不是AAC之类的
-int MEDIA_ERROR_NOT_VALID_FOR_PROGRESSIVE_PLAYBACK = 200;//数据错误没有有效的回收</code></pre><p>6、某些视频在SeekTo的时候，会跳回到拖动前的位置，这是因为视频的关键帧的问题，通俗一点就是FFMPEG不兼容，视频压缩过于厉害，seek只支持关键帧，出现这个情况就是原始的视频文件中i 帧比较少，可开启以下来解决：</p>
-<pre><code>setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;enable-accurate-seek&quot;, 1);</code></pre><p>7、下载速度可以通过IjkMediaPlayer的getTcpSpeed获取。</p>
+int MEDIA_ERROR_NOT_VALID_FOR_PROGRESSIVE_PLAYBACK = 200;//数据错误没有有效的回收
+</code></pre>
+<p>6、某些视频在SeekTo的时候，会跳回到拖动前的位置，这是因为视频的关键帧的问题，通俗一点就是FFMPEG不兼容，视频压缩过于厉害，seek只支持关键帧，出现这个情况就是原始的视频文件中i 帧比较少，可开启以下来解决：</p>
+<pre><code>setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;enable-accurate-seek&quot;, 1);
+</code></pre>
+<p>7、下载速度可以通过IjkMediaPlayer的getTcpSpeed获取。</p>
 <p>8、高分辨率开启硬解码，不支持的话会自动切换到软解，就算开启mediacodec，如果设备不支持，显示的解码器也是avcodec软解。</p>
 <p>9、ijkMediaPlayer.setOption可配置的对应头文件参考：ff_ffplay_options。</p>
 <p>10、缓冲进度条不到100，官方表示我就不保证都100，所以一般我都是：</p>
 <pre><code>//95这个数值可能不准确，有些时候可能还需要低一些
-if (secProgress &gt; 95) secProgress = 100;</code></pre><p>11、上面1、2、6的问题，在IJK封装的EXOPlayer和MediaPlayer都不会有问题，兼容上确实强过IJKPlayer，但是它们在细节上，却没有IJK处理的好，如EXOPlayer：退到后再回到前台、切换渲染控件的黑屏一段时间问题，除了用seekto之外目前没发现其他办法，这样的体验让我最后还是选择IJKPlayer。</p>
+if (secProgress &gt; 95) secProgress = 100;
+</code></pre>
+<p>11、上面1、2、6的问题，在IJK封装的EXOPlayer和MediaPlayer都不会有问题，兼容上确实强过IJKPlayer，但是它们在细节上，却没有IJK处理的好，如EXOPlayer：退到后再回到前台、切换渲染控件的黑屏一段时间问题，除了用seekto之外目前没发现其他办法，这样的体验让我最后还是选择IJKPlayer。</p>
 <p>12、设置cookie 可以通过ijkPlayer的public void setDataSource(String path, Map&lt;String, String&gt; headers) 的header实现设置，参考ijkPlayer的issues-1150，headers也是在内部被转化为何issuses一样的setOption方法</p>
 <p>13、多个分片播放的功能，请查阅:</p>
-<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/64" target="_blank" rel="noopener">issues64-一个视频，多个视频片段问题</a><br><a href="https://github.com/Bilibili/ijkplayer/issues/490" target="_blank" rel="noopener">issues490分段视频</a><br><a href="https://www.jianshu.com/p/ea794a357b48" target="_blank" rel="noopener">ijkplayer-ffmpeg之concat</a></p>
-<p>14、硬解码黑屏相关issuse以及建议<br><a href="https://github.com/Bilibili/ijkplayer/issues/1324" target="_blank" rel="noopener">android用硬解码播放器切后台恢复问题</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/CarGuo/GSYVideoPlayer/issues/64">issues64-一个视频，多个视频片段问题</a><br><a target="_blank" rel="noopener" href="https://github.com/Bilibili/ijkplayer/issues/490">issues490分段视频</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ea794a357b48">ijkplayer-ffmpeg之concat</a></p>
+<p>14、硬解码黑屏相关issuse以及建议<br><a target="_blank" rel="noopener" href="https://github.com/Bilibili/ijkplayer/issues/1324">android用硬解码播放器切后台恢复问题</a></p>
 <p>14、硬解码黑屏相关issuse以及建议</p>
-<p><a href="https://github.com/Bilibili/ijkplayer/issues/1324" target="_blank" rel="noopener">bilibili-issuse-1324</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Bilibili/ijkplayer/issues/1324">bilibili-issuse-1324</a></p>
 <p>15、出现声音画面不同步</p>
 <p>1、关了硬解码。</p>
 <p>2、参考如下：</p>
-<p><a href="http://www.jianshu.com/p/a5cf04181f3d" target="_blank" rel="noopener">http://www.jianshu.com/p/a5cf04181f3d</a><br>设置视频的倍速：<br>[options setPlayerOptionIntValue:10 forKey:@”framedrop”];<br>mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, “framedrop”, 60);</p>
+<p><a target="_blank" rel="noopener" href="http://www.jianshu.com/p/a5cf04181f3d">http://www.jianshu.com/p/a5cf04181f3d</a><br>设置视频的倍速：<br>[options setPlayerOptionIntValue:10 forKey:@”framedrop”];<br>mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, “framedrop”, 60);</p>
 <p>16、rtsp播放失败问题</p>
-<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/232" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/232</a></p>
-<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/207" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/207</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/CarGuo/GSYVideoPlayer/issues/232">https://github.com/CarGuo/GSYVideoPlayer/issues/232</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/CarGuo/GSYVideoPlayer/issues/207">https://github.com/CarGuo/GSYVideoPlayer/issues/207</a></p>
 <p>17、m3u8拖动seek之后，加载很长时间</p>
-<p><a href="https://github.com/Bilibili/ijkplayer/issues/2874" target="_blank" rel="noopener">https://github.com/Bilibili/ijkplayer/issues/2874</a></p>
-<p><a href="https://github.com/CarGuo/GSYVideoPlayer/issues/252" target="_blank" rel="noopener">https://github.com/CarGuo/GSYVideoPlayer/issues/252</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Bilibili/ijkplayer/issues/2874">https://github.com/Bilibili/ijkplayer/issues/2874</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/CarGuo/GSYVideoPlayer/issues/252">https://github.com/CarGuo/GSYVideoPlayer/issues/252</a></p>
 <p>18、m3u8本地播放问题</p>
-<pre><code>ijkplayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;protocol_whitelist&quot;, &quot;crypto,file,http,https,tcp,tls,udp&quot;); </code></pre><p>19、断网自动重新连接<br>url前接上ijkhttphook:，如</p>
-<p>String url = “ijkhttphook:<a href="http://baobab.wdjcdn.com/14564977406580.mp4&quot;" target="_blank" rel="noopener">http://baobab.wdjcdn.com/14564977406580.mp4&quot;</a>;<br>然后设置</p>
+<pre><code>ijkplayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;protocol_whitelist&quot;, &quot;crypto,file,http,https,tcp,tls,udp&quot;); 
+</code></pre>
+<p>19、断网自动重新连接<br>url前接上ijkhttphook:，如</p>
+<p>String url = “ijkhttphook:<a target="_blank" rel="noopener" href="http://baobab.wdjcdn.com/14564977406580.mp4&quot;">http://baobab.wdjcdn.com/14564977406580.mp4&quot;</a>;<br>然后设置</p>
 <pre class=" language-((IjkMediaPlayer)mediaPlayer).setOnNativeInvokeListener(new"><code class="language-((IjkMediaPlayer)mediaPlayer).setOnNativeInvokeListener(new">            @Override
-            public boolean onNativeInvoke(int i, Bundle bundle) {
+            public boolean onNativeInvoke(int i, Bundle bundle) &#123;
                 return true;
-            }
-        })</code></pre>
+            &#125;
+        &#125;)
+</code></pre>
 <p>20、url切换400（http与https域名共用）</p>
-<pre><code>ijkplayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;dns_cache_clear&quot;, 1);</code></pre><p>21、Rtsp优化</p>
+<pre><code>ijkplayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;dns_cache_clear&quot;, 1);
+</code></pre>
+<p>21、Rtsp优化</p>
 <pre><code>//硬解码：1、打开，0、关闭
 //mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;mediacodec&quot;, 1);
 //软解码：1、打开，0、关闭
@@ -548,7 +587,10 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;probesize&quot;
 mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, &quot;flush_packets&quot;, 1L);
 //  关闭播放器缓冲，这个必须关闭，否则会出现播放一段时间后，一直卡主，控制台打印 FFP_MSG_BUFFERING_START 
 mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;packet-buffering&quot;, 0L);
-mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;, 1L);</code></pre>
+mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;, 1L);
+</code></pre>
+
+                
             </div>
             <hr/>
 
@@ -563,7 +605,7 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io" rel="external nofollow noreferrer">ECM</a>
+                    <a href="/about" rel="external nofollow noreferrer">ECM</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -586,7 +628,7 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+                    <a href="/about" target="_blank">ECM</a>
                     !
                 </span>
             </div>
@@ -611,6 +653,10 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/Android/">
+                                    <span class="chip bg-color">Android</span>
+                                </a>
+                            
                                 <a href="/tags/ffmpeg/">
                                     <span class="chip bg-color">ffmpeg</span>
                                 </a>
@@ -631,18 +677,13 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
                                     <span class="chip bg-color">视频</span>
                                 </a>
                             
-                                <a href="/tags/Android/">
-                                    <span class="chip bg-color">Android</span>
-                                </a>
-                            
                         </div>
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
 <div id="article-share">
-    
+
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
@@ -779,9 +820,14 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
         $('.tabs').tabs();
     });
 </script>
+
             
         </div>
     </div>
+
+    
+
+    
 
     
 
@@ -814,13 +860,7 @@ mMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, &quot;framedrop&quot;
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            rsync 使用
-h： human-readable, 输出友好
-a： 合并模式；等于-rlptgoD（不含 -H -A -X）。
-b： 制作备份。
-C： 使用与CVS相同的方式来忽略文件。
-u： 跳过比较新的文件。
-v： 处理过程中，显示
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -842,20 +882,20 @@ v： 处理过程中，显示
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/rsync/">
-                        <span class="chip bg-color">rsync</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%A4%87%E4%BB%BD/">
-                        <span class="chip bg-color">备份</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                     <a href="/tags/macOS/">
                         <span class="chip bg-color">macOS</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/rsync/">
+                        <span class="chip bg-color">rsync</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%87%E4%BB%BD/">
+                        <span class="chip bg-color">备份</span>
                     </a>
                     
                 </div>
@@ -881,9 +921,7 @@ v： 处理过程中，显示
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git整理
-入门初始化git生成密钥可以通过命令行ssh-keygen[Windows没有需要安装cmder类似软件支持]，或者PuTTYgen软件生成
-$ ssh-keygen -t rsa -C &quot;497633959@qq.c
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -939,16 +977,9 @@ $ ssh-keygen -t rsa -C &quot;497633959@qq.c
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
+        <div class="toc-widget card" style="background-color: white;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
@@ -1046,13 +1077,17 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
+
     <footer class="page-footer bg-color">
     
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
             <span id="year">2019</span>
-            <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+            <a href="/about" target="_blank">ECM</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1128,12 +1163,98 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </div>
 </div>
 
-<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
+
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -1148,9 +1269,6 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Baidu Analytics -->
 
@@ -1181,12 +1299,13 @@ $(function () {
 
     
 
+	
     
 
     
 
     
-    
+
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     

@@ -5,13 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="网络-面试, 记录小站">
-    <meta name="description" content="Android面试之网络本文是Android面试题整理中的一篇，结合右下角目录食用更佳
-1. 计算机网络的分层按照不同组织的标准和规范，可以有不同的分层方式
-OSI七层
-应用层、表示层、会话层、运输层、网络层、数据链路层、物理层
-
-
-TCP">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,6 +13,9 @@ TCP">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
     <title>网络-面试 | 记录小站</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -31,8 +28,10 @@ TCP">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
 
 
 <body>
@@ -102,6 +101,7 @@ TCP">
     </a>
   </li>
 </ul>
+
 
 <div id="mobile-nav" class="side-nav sidenav">
 
@@ -175,6 +175,7 @@ TCP">
         
     </ul>
 </div>
+
 
         </div>
 
@@ -304,8 +305,7 @@ TCP">
     }
 
     .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
+        padding: 35px 0 15px 17px;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 1.5rem;
@@ -317,7 +317,7 @@ TCP">
     }
 
     #toc-content {
-        height: calc(100vh - 250px);
+        padding-bottom: 30px;
         overflow: auto;
     }
 
@@ -338,14 +338,14 @@ TCP">
     #toc-content .toc-link::before {
         background-color: transparent;
         max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
     }
 
     #toc-content .is-active-link {
         color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
     }
 
     #floating-toc-btn {
@@ -378,12 +378,12 @@ TCP">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                                <span class="chip bg-color">面试</span>
-                            </a>
-                        
                             <a href="/tags/%E7%9F%A5%E8%AF%86/">
                                 <span class="chip bg-color">知识</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
                             <a href="/tags/%E7%BD%91%E7%BB%9C/">
@@ -427,17 +427,21 @@ TCP">
 
                 
             </div>
-
         </div>
         <hr class="clearfix">
+
+        
+
+        
+
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Android面试之网络"><a href="#Android面试之网络" class="headerlink" title="Android面试之网络"></a>Android面试之网络</h1><p>本文是<a href="https://juejin.im/post/5af82ee1f265da0b934865ba" target="_blank" rel="noopener">Android面试题整理</a>中的一篇，结合右下角目录食用更佳</p>
-<h3 id="1-计算机网络的分层"><a href="#1-计算机网络的分层" class="headerlink" title="1. 计算机网络的分层"></a>1. <a href="https://blog.csdn.net/qq_29817411/article/details/51802147" target="_blank" rel="noopener">计算机网络的分层</a></h3><p>按照不同组织的标准和规范，可以有不同的分层方式</p>
+                <h1 id="Android面试之网络"><a href="#Android面试之网络" class="headerlink" title="Android面试之网络"></a>Android面试之网络</h1><p>本文是<a target="_blank" rel="noopener" href="https://juejin.im/post/5af82ee1f265da0b934865ba">Android面试题整理</a>中的一篇，结合右下角目录食用更佳</p>
+<h3 id="1-计算机网络的分层"><a href="#1-计算机网络的分层" class="headerlink" title="1. 计算机网络的分层"></a>1. <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29817411/article/details/51802147">计算机网络的分层</a></h3><p>按照不同组织的标准和规范，可以有不同的分层方式</p>
 <h4 id="OSI七层"><a href="#OSI七层" class="headerlink" title="OSI七层"></a>OSI七层</h4><blockquote>
 <p>应用层、表示层、会话层、运输层、网络层、数据链路层、物理层</p>
 </blockquote>
-<p><img src="1.gif" alt=""></p>
+<p><img src="1.gif"></p>
 <h4 id="TCP-IP（四层）"><a href="#TCP-IP（四层）" class="headerlink" title="TCP/IP（四层）"></a>TCP/IP（四层）</h4><blockquote>
 <p>应用层、传输层、网络层、网络接口层</p>
 </blockquote>
@@ -494,7 +498,7 @@ TCP">
 <li>紧急指针：指向后面是优先数据的字节，在URG标志设置了时才有效。如果URG标志没有被设置，紧急域作为填充。加快处理标示为紧急的数据段。</li>
 </ol>
 </blockquote>
-<h3 id="5-TCP三次握手"><a href="#5-TCP三次握手" class="headerlink" title="5. TCP三次握手"></a>5. <a href="https://www.jianshu.com/p/ef892323e68f" target="_blank" rel="noopener">TCP三次握手</a></h3><p>![img](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="517" height="304"></svg>)</p>
+<h3 id="5-TCP三次握手"><a href="#5-TCP三次握手" class="headerlink" title="5. TCP三次握手"></a>5. <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ef892323e68f">TCP三次握手</a></h3><p>![img](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="517" height="304"></svg>)</p>
 <p>三次握手:TCP是通过报文段进行通信的，在建立TCP连接过程中，需要客户端和服务端总共发送3个报文段以确认连接的建立。</p>
 <blockquote>
 <ol>
@@ -516,7 +520,7 @@ TCP">
 <li>第四次挥手:Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。</li>
 </ol>
 </blockquote>
-<h3 id="8-挥手中TCP为什么要等待终止"><a href="#8-挥手中TCP为什么要等待终止" class="headerlink" title="8. 挥手中TCP为什么要等待终止"></a>8. <a href="https://www.jianshu.com/p/50b6bbeea81f" target="_blank" rel="noopener">挥手中TCP为什么要等待终止</a></h3><blockquote>
+<h3 id="8-挥手中TCP为什么要等待终止"><a href="#8-挥手中TCP为什么要等待终止" class="headerlink" title="8. 挥手中TCP为什么要等待终止"></a>8. <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/50b6bbeea81f">挥手中TCP为什么要等待终止</a></h3><blockquote>
 <ol>
 <li>假如 Client 最后的 ACK 报文段丢失了，这时 Server 就会重新发送 FIN+ACK 报文给 Client，如果 Client 不等待 2MSL 直接关闭连接，那么 Server 就会一直处于 LAST-ACK 状态，造成了 Server 的资源浪费。而等待 2MSL，Client 就会再次收到 Server 的 FIN+ACK 报文，然后重新给 Server 发送 ACK 报文，确保双方都确认要关闭连接。</li>
 <li>假如 ACK 报文段没有丢失，也是在网络中滞留了，这 2MSL 的等待时间可以让滞留的报文传到 Server，保证本连接持续的时间内所生产的报文都从网络中消失，以免影响下一次连接。还有如果不等待 2MSL ，报文滞留也可能导致 Server 资源浪费，原因同 (1)。</li>
@@ -525,13 +529,13 @@ TCP">
 <h3 id="9-为什么建立连接是三次握手，而关闭连接却是四次挥手呢？"><a href="#9-为什么建立连接是三次握手，而关闭连接却是四次挥手呢？" class="headerlink" title="9. 为什么建立连接是三次握手，而关闭连接却是四次挥手呢？"></a>9. 为什么建立连接是三次握手，而关闭连接却是四次挥手呢？</h3><blockquote>
 <p>这是因为服务端在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。而关闭连接时，当收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，己方也未必全部数据都发送给对方了，所以己方可以立即close，也可以发送一些数据给对方后，再发送FIN报文给对方来表示同意现在关闭连接，因此，己方ACK和FIN一般都会分开发送。</p>
 </blockquote>
-<h3 id="10-TCP流量控制：滑动窗口"><a href="#10-TCP流量控制：滑动窗口" class="headerlink" title="10. TCP流量控制：滑动窗口"></a>10. TCP流量控制：<a href="https://www.zhihu.com/question/32255109" target="_blank" rel="noopener">滑动窗口</a></h3><blockquote>
+<h3 id="10-TCP流量控制：滑动窗口"><a href="#10-TCP流量控制：滑动窗口" class="headerlink" title="10. TCP流量控制：滑动窗口"></a>10. TCP流量控制：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/32255109">滑动窗口</a></h3><blockquote>
 <ol>
 <li>所谓流量控制就是让发送方的发送速率不要太快，要让接收方来得及接收</li>
 <li>每次Client返回的ACK都会告知Server当前Client窗口的大小，Server会根据窗口的大小来控制发送数据和向前滑动</li>
 </ol>
 </blockquote>
-<h3 id="11-TCP的拥塞控制"><a href="#11-TCP的拥塞控制" class="headerlink" title="11. TCP的拥塞控制"></a>11. <a href="https://www.zhihu.com/question/264518499/answer/315348958" target="_blank" rel="noopener">TCP的拥塞控制</a></h3><p>防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载。拥塞控制所要做的都有一个前提：网络能够承受现有的网络负荷。拥塞控制是一个全局性的过程，涉及到所有的主机、路由器，以及与降低网络传输性能有关的所有因素。</p>
+<h3 id="11-TCP的拥塞控制"><a href="#11-TCP的拥塞控制" class="headerlink" title="11. TCP的拥塞控制"></a>11. <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/264518499/answer/315348958">TCP的拥塞控制</a></h3><p>防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载。拥塞控制所要做的都有一个前提：网络能够承受现有的网络负荷。拥塞控制是一个全局性的过程，涉及到所有的主机、路由器，以及与降低网络传输性能有关的所有因素。</p>
 <blockquote>
 <p>拥塞控制方法: 慢开始( slow-start )和拥塞避免( congestion avoidance ) 发送方维持一个拥塞窗口 cwnd ( congestion window )的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态地在变化。发送方让自己的发送窗口等于拥塞窗口的大小。 发送方控制拥塞窗口的原则是：只要网络没有出现拥塞，拥塞窗口就再增大一些，以便把更多的分组发送出去。但只要网络出现拥塞，拥塞窗口就减小一些，以减少注入到网络中的分组数。</p>
 <ol>
@@ -541,9 +545,9 @@ TCP">
 <p>无论在慢开始阶段还是在拥塞避免阶段，只要发送方判断网络出现拥塞（其根据就是没有收到确认），就要把慢开始门限ssthresh设置为出现拥塞时的发送方窗口值的一半（但不能小于2）。然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。这样做的目的就是要迅速减少主机发送到网络中的分组数，使得发生拥塞的路由器有足够时间把队列中积压的分组处理完毕。</p>
 <p>快重传算法：要求接收方每收到一个失序的报文段后就立即发出重复确认（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时才进行捎带确认。 快重传算法还规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段，而不必继续等待设置的重传计时器到期。<br>快恢复过程 1.当发送方连续收到三个重复确认，就执行”乘法减小”算法，把慢开始门限ssthresh减半。这是为了预防网络发生拥塞。请注意：接下去不执行慢开始算法。 2.由于发送方现在认为网络很可能没有发生拥塞，因此与慢开始不同之处是现在不执行慢开始算法（即拥塞窗口cwnd现在不设置为1），而是把cwnd值设置为慢开始门限ssthresh减半后的数值，然后开始执行拥塞避免算法（”加法增大”），使拥塞窗口缓慢地线性增大。</p>
 </blockquote>
-<h3 id="12-在浏览器中输入www-baidu-com-后执行的全部过程"><a href="#12-在浏览器中输入www-baidu-com-后执行的全部过程" class="headerlink" title="12. 在浏览器中输入www.baidu.com 后执行的全部过程"></a>12. 在浏览器中输入<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 后执行的全部过程</h3><blockquote>
+<h3 id="12-在浏览器中输入www-baidu-com-后执行的全部过程"><a href="#12-在浏览器中输入www-baidu-com-后执行的全部过程" class="headerlink" title="12. 在浏览器中输入www.baidu.com 后执行的全部过程"></a>12. 在浏览器中输入<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 后执行的全部过程</h3><blockquote>
 <ol>
-<li>客户端浏览器请求DNS服务器解析域名<a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 对应的IP地址，然后通过这个IP地址和默认端口80，和服务器建立TCP连接，连接建立之后通过TCP将HTTP会话封装成数据包。</li>
+<li>客户端浏览器请求DNS服务器解析域名<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 对应的IP地址，然后通过这个IP地址和默认端口80，和服务器建立TCP连接，连接建立之后通过TCP将HTTP会话封装成数据包。</li>
 <li>在客户端的传输层，把HTTP会话请求分成报文段，添加源和目的端口（如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口）然后使用IP层的IP地址查找目的端。</li>
 <li>在客户端的网络层，通过查找路由表确定如何到达服务器，期间可能经过多个路由器，这些都是由路由器来完成的工作，主要是通过查找路由表来决定通过哪个路径到达服务器。</li>
 <li>在客户端的链路层，数据包通过链路层发送到路由器，通过邻居协议查找给定IP地址的MAC地址，然后发送ARP请求查找目的地址，如果得到回应后就可以使用ARP（地址解析协议：将ip地址解析成物理地址）的请求应答交换的IP数据包现在就可以传输了，然后发送IP数据包到达服务器的地址。</li>
@@ -558,7 +562,7 @@ TCP">
 <li>GET传送的数据量较小，不能超过2KB(1024字节?)，POST传送的数据量较大，默认为不受限制。</li>
 </ol>
 </blockquote>
-<h3 id="14-HTTP协议的格式"><a href="#14-HTTP协议的格式" class="headerlink" title="14. HTTP协议的格式"></a>14. <a href="https://www.cnblogs.com/ranyonsue/p/5984001.html" target="_blank" rel="noopener">HTTP协议的格式</a></h3><h4 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h4><blockquote>
+<h3 id="14-HTTP协议的格式"><a href="#14-HTTP协议的格式" class="headerlink" title="14. HTTP协议的格式"></a>14. <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranyonsue/p/5984001.html">HTTP协议的格式</a></h3><h4 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h4><blockquote>
 <ol>
 <li>请求行：三个部分组成：第一部分是请求方法，第二部分是请求网址，第三部分是HTTP版本</li>
 <li>请求头：请求头(request header) ；普通头(general header) ；实体头(entity header)</li>
@@ -583,14 +587,14 @@ TCP">
 </ol>
 <p>扩展（缓存保质期的实现）：HTTP中，通过Cache-Control首部和Expires首部为文档指定了过期时间，通过对过期时间的判断，缓存就可以知道文档是不是在保质期内。Expires首部和Cache-Control:max-age 首部都是来告诉缓存文档有没有过期，为什么需要两个响应首部来做这件简单的事情了？其实这一切都是历史原因，Expires首部是HTTP 1.0中提出来的，因为他使用的是绝对日期，如果服务端和客户端时钟不同步的话（实际上这种情况非常常见），缓存可能就会认为文档已经过了保质期。 HTTP 1.1为了修正这个问题，引入了Cache-Control:max-age 首部，这个首部使用相对时间来控制保质期。</p>
 </blockquote>
-<h3 id="16-Http和Socket区别"><a href="#16-Http和Socket区别" class="headerlink" title="16. Http和Socket区别"></a>16. <a href="https://www.cnblogs.com/embedded-linux/p/6261894.html" target="_blank" rel="noopener">Http和Socket区别</a></h3><blockquote>
+<h3 id="16-Http和Socket区别"><a href="#16-Http和Socket区别" class="headerlink" title="16. Http和Socket区别"></a>16. <a target="_blank" rel="noopener" href="https://www.cnblogs.com/embedded-linux/p/6261894.html">Http和Socket区别</a></h3><blockquote>
 <ol>
 <li>Http是一个协议，Socket是一个接口</li>
 <li>Http可能是基于Socket的</li>
 <li>Socket可以维持一个长连接，http是请求响应式，通常Socket效率高</li>
 </ol>
 </blockquote>
-<h3 id="17-Http1-0-1-1-2-0区别"><a href="#17-Http1-0-1-1-2-0区别" class="headerlink" title="17. Http1.0 /1.1/2.0区别"></a>17. <a href="https://www.cnblogs.com/heluan/p/8620312.html" target="_blank" rel="noopener">Http1.0 /1.1/2.0区别</a></h3><blockquote>
+<h3 id="17-Http1-0-1-1-2-0区别"><a href="#17-Http1-0-1-1-2-0区别" class="headerlink" title="17. Http1.0 /1.1/2.0区别"></a>17. <a target="_blank" rel="noopener" href="https://www.cnblogs.com/heluan/p/8620312.html">Http1.0 /1.1/2.0区别</a></h3><blockquote>
 <ol>
 <li>1.1相对于1.0：<ol>
 <li>支持长连接</li>
@@ -607,7 +611,7 @@ TCP">
 </li>
 </ol>
 </blockquote>
-<h3 id="18-HTTPS"><a href="#18-HTTPS" class="headerlink" title="18. HTTPS"></a>18. <a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" target="_blank" rel="noopener">HTTPS</a></h3><p>HTTPS是安全版本的HTTP，基于SSL加密。以下是SSL建立过程：</p>
+<h3 id="18-HTTPS"><a href="#18-HTTPS" class="headerlink" title="18. HTTPS"></a>18. <a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html">HTTPS</a></h3><p>HTTPS是安全版本的HTTP，基于SSL加密。以下是SSL建立过程：</p>
 <blockquote>
 <ol>
 <li>客户端给出协议版本号、一个客户端生成的随机数（Client random），以及客户端支持的加密方法</li>
@@ -617,14 +621,14 @@ TCP">
 <li>客户端和服务器根据约定的加密方法，使用前面的三个随机数，生成”对话密钥”（session key），用来加密接下来的整个对话过程</li>
 </ol>
 </blockquote>
-<h3 id="19-COOKIE和SESSION有什么区别"><a href="#19-COOKIE和SESSION有什么区别" class="headerlink" title="19. COOKIE和SESSION有什么区别"></a>19. <a href="https://www.zhihu.com/question/19786827" target="_blank" rel="noopener">COOKIE和SESSION有什么区别</a></h3><blockquote>
+<h3 id="19-COOKIE和SESSION有什么区别"><a href="#19-COOKIE和SESSION有什么区别" class="headerlink" title="19. COOKIE和SESSION有什么区别"></a>19. <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19786827">COOKIE和SESSION有什么区别</a></h3><blockquote>
 <ol>
 <li>因为HTTP是无状态的，所以需要某种机制识别用户</li>
 <li>Session是在服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据库、文件中；</li>
 <li>Cookie是客户端保存用户信息的一种机制，用来记录用户的一些信息，也是实现Session的一种方式。</li>
 </ol>
 </blockquote>
-<h3 id="20-Http-状态码"><a href="#20-Http-状态码" class="headerlink" title="20. Http 状态码"></a>20. <a href="https://baike.baidu.com/item/HTTP状态码/5053660?fr=aladdin" target="_blank" rel="noopener">Http 状态码</a></h3><blockquote>
+<h3 id="20-Http-状态码"><a href="#20-Http-状态码" class="headerlink" title="20. Http 状态码"></a>20. <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/5053660?fr=aladdin">Http 状态码</a></h3><blockquote>
 <ol>
 <li>1 ：继续</li>
 <li>2 ：成功</li>
@@ -633,7 +637,7 @@ TCP">
 <li>5： 服务器内部错误</li>
 </ol>
 </blockquote>
-<h3 id="21-常见请求和响应头"><a href="#21-常见请求和响应头" class="headerlink" title="21. 常见请求和响应头"></a>21. <a href="https://blog.csdn.net/qq_30553235/article/details/79282113" target="_blank" rel="noopener">常见请求和响应头</a></h3><blockquote>
+<h3 id="21-常见请求和响应头"><a href="#21-常见请求和响应头" class="headerlink" title="21. 常见请求和响应头"></a>21. <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30553235/article/details/79282113">常见请求和响应头</a></h3><blockquote>
 <ol>
 <li>请求头：Accept/Accept—Language/Cache-Control/Cookie/User-Agent/Date/Host/Range</li>
 <li>返回头：Accept-Ranges/Date/Cache-Control/Content-Length</li>
@@ -647,8 +651,9 @@ TCP">
 <li>一次 send 数据，被封为一个消息，通过一个或多个 MESSAGE帧进行发送。一个消息的帧和控制帧可以交叉发送，不同消息的帧之间不可以。</li>
 <li>WebSocket 连接的两端相互发送一个 CLOSE 帧以最终关闭连接。</li>
 </ol>
-<p><a href="https://juejin.im/entry/5a73d44af265da4e721c4a9c" target="_blank" rel="noopener">OkHttp实现分析之Websocket</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/entry/5a73d44af265da4e721c4a9c">OkHttp实现分析之Websocket</a></p>
 
+                
             </div>
             <hr/>
 
@@ -663,7 +668,7 @@ TCP">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xuhaoyang.github.io" rel="external nofollow noreferrer">ECM</a>
+                    <a href="/about" rel="external nofollow noreferrer">ECM</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -686,7 +691,7 @@ TCP">
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+                    <a href="/about" target="_blank">ECM</a>
                     !
                 </span>
             </div>
@@ -711,12 +716,12 @@ TCP">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                                    <span class="chip bg-color">面试</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%9F%A5%E8%AF%86/">
                                     <span class="chip bg-color">知识</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
                                 </a>
                             
                                 <a href="/tags/%E7%BD%91%E7%BB%9C/">
@@ -732,9 +737,8 @@ TCP">
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
 <div id="article-share">
-    
+
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
@@ -871,9 +875,14 @@ TCP">
         $('.tabs').tabs();
     });
 </script>
+
             
         </div>
     </div>
+
+    
+
+    
 
     
 
@@ -906,9 +915,7 @@ TCP">
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Custom Web 总结SSL 证书export CF_Email=&quot;123123213@qq.com&quot;
-export CF_Key=&quot;12345667&quot;
-~/.acme.sh/acme.sh --
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -969,10 +976,7 @@ export CF_Key=&quot;12345667&quot;
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Clash Tun in macOSClash Tun Experimental release
-Clash Tun Configfake-ip mode (not under test)dns:
-  enable: true
-  list
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -994,12 +998,12 @@ Clash Tun Configfake-ip mode (not under test)dns:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/macOS/">
-                        <span class="chip bg-color">macOS</span>
-                    </a>
-                    
                     <a href="/tags/Clash/">
                         <span class="chip bg-color">Clash</span>
+                    </a>
+                    
+                    <a href="/tags/macOS/">
+                        <span class="chip bg-color">macOS</span>
                     </a>
                     
                     <a href="/tags/Tun/">
@@ -1040,16 +1044,9 @@ Clash Tun Configfake-ip mode (not under test)dns:
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
+        <div class="toc-widget card" style="background-color: white;">
             <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
@@ -1147,13 +1144,17 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
+
     <footer class="page-footer bg-color">
     
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
             <span id="year">2019</span>
-            <a href="https://xuhaoyang.github.io" target="_blank">ECM</a>
+            <a href="/about" target="_blank">ECM</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1229,12 +1230,98 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </div>
 </div>
 
-<script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
+
     <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -1249,9 +1336,6 @@ $(function () {
     <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
     <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
     <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <!-- Baidu Analytics -->
 
@@ -1282,12 +1366,13 @@ $(function () {
 
     
 
+	
     
 
     
 
     
-    
+
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
