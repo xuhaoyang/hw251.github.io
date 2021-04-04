@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -431,6 +431,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -773,15 +776,15 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2398aad3bd61">如何对SQLite数据库中进行大量的数据插入?</a><br> <a target="_blank" rel="noopener" href="https://www.imooc.com/article/14069">显示的开启事务</a></p>
 </blockquote>
-<pre><code>db.beginTransaction();
+<pre class="line-numbers language-none"><code class="language-none">db.beginTransaction();
 try &#123;
    ...
    db.setTransactionSuccessful();
 &#125; finally &#123;
    db.endTransaction();
   &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="5-数据库的升级"><a href="#5-数据库的升级" class="headerlink" title="5. 数据库的升级"></a>5. <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35114086/article/details/53319093">数据库的升级</a></h3><blockquote>
 <ol>
 <li>Android中提供了SqLiteOpenHelper类，当版本更新时，会自动调用onUpgrade方法，我们在此方法中升级</li>
@@ -875,19 +878,19 @@ try &#123;
 <li>处理事件方法的优先级：onTouchListener &gt; onTouchEvent &gt; onClickListener</li>
 </ol>
 </blockquote>
-<pre><code>伪代码
+<pre class="line-numbers language-none"><code class="language-none">伪代码
 public boolean dispatchTouchEvent(MotionEvent ev)&#123;
-boolean consume = false;
+boolean consume &#x3D; false;
 if(onInterceptTouchEvent(ev))&#123;
-  consume = onTouchEvent(ev)
+  consume &#x3D; onTouchEvent(ev)
 &#125; else &#123;
-  consume = child.dispatchTouchEvent(ev);
+  consume &#x3D; child.dispatchTouchEvent(ev);
 &#125;
 return consume;
 &#125;
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <ol>
 <li>完整的事件通常包括Down、Move、Up，当down事件被拦截下来以后，move和up就不再走intercept方法，而是直接被传递给当前view处理</li>
@@ -1089,46 +1092,51 @@ return consume;
 <li>由于不同版本Parcelable可能存在不同，在网络和磁盘存储时，推荐使用Parcelable</li>
 </ol>
 </blockquote>
-<h3 id="4-加载合适比例的Bitmap到内存中"><a href="#4-加载合适比例的Bitmap到内存中" class="headerlink" title="4. 加载合适比例的Bitmap到内存中"></a>4. 加载合适比例的Bitmap到内存中</h3><pre><code>public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+<h3 id="4-加载合适比例的Bitmap到内存中"><a href="#4-加载合适比例的Bitmap到内存中" class="headerlink" title="4. 加载合适比例的Bitmap到内存中"></a>4. 加载合适比例的Bitmap到内存中</h3><pre class="line-numbers language-none"><code class="language-none">public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
         int reqWidth, int reqHeight) &#123;
 
-    // 首先只解析图片资源的边界
-    final BitmapFactory.Options options = new BitmapFactory.Options();
-    options.inJustDecodeBounds = true;
+    &#x2F;&#x2F; 首先只解析图片资源的边界
+    final BitmapFactory.Options options &#x3D; new BitmapFactory.Options();
+    options.inJustDecodeBounds &#x3D; true;
     BitmapFactory.decodeResource(res, resId, options);
 
-    //计算缩放值
-    options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+    &#x2F;&#x2F;计算缩放值
+    options.inSampleSize &#x3D; calculateInSampleSize(options, reqWidth, reqHeight);
 
-    // 用计算出来的缩放值解析图片
-    options.inJustDecodeBounds = false;
+    &#x2F;&#x2F; 用计算出来的缩放值解析图片
+    options.inJustDecodeBounds &#x3D; false;
     return BitmapFactory.decodeResource(res, resId, options);
 &#125;
 
 
 public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) &#123;
-    // Raw height and width of image
-    final int height = options.outHeight;
-    final int width = options.outWidth;
-    int inSampleSize = 1;
+    &#x2F;&#x2F; Raw height and width of image
+    final int height &#x3D; options.outHeight;
+    final int width &#x3D; options.outWidth;
+    int inSampleSize &#x3D; 1;
 
     if (height &gt; reqHeight || width &gt; reqWidth) &#123;
 
-        final int halfHeight = height / 2;
-        final int halfWidth = width / 2;
+        final int halfHeight &#x3D; height &#x2F; 2;
+        final int halfWidth &#x3D; width &#x2F; 2;
 
-        // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-        // height and width larger than the requested height and width.
-        while ((halfHeight / inSampleSize) &gt; reqHeight
-                &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) &#123;
-            inSampleSize *= 2;
+        &#x2F;&#x2F; Calculate the largest inSampleSize value that is a power of 2 and keeps both
+        &#x2F;&#x2F; height and width larger than the requested height and width.
+        while ((halfHeight &#x2F; inSampleSize) &gt; reqHeight
+                &amp;&amp; (halfWidth &#x2F; inSampleSize) &gt; reqWidth) &#123;
+            inSampleSize *&#x3D; 2;
         &#125;
     &#125;
 
     return inSampleSize;
 &#125;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <h3 id="5-图片的三级缓存"><a href="#5-图片的三级缓存" class="headerlink" title="5. 图片的三级缓存"></a>5. <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2cd59a79ed4a">图片的三级缓存</a></h3><blockquote>
 <ol>
 <li>首次加载 Android App 时，肯定要通过网络交互来获取图片，之后我们可以将图片保存至本地SD卡和内存中</li>
@@ -1326,32 +1334,32 @@ public static int calculateInSampleSize(
 <li></li>
 </ol>
 </blockquote>
-<pre><code> getWindow().getDecorView().post(new Runnable() &#123;
+<pre class="line-numbers language-none"><code class="language-none"> getWindow().getDecorView().post(new Runnable() &#123;
     @Override
    public void run() &#123;
         myHandler.post(mLoadingRunnable);
    &#125;
   &#125;);
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/545cf65c4f5e">监听MessageQueue，当空闲时执行任务</a></li>
 </ol>
 </blockquote>
-<pre><code> // 拿到主线程的MessageQueue
+<pre class="line-numbers language-none"><code class="language-none"> &#x2F;&#x2F; 拿到主线程的MessageQueue
  Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler() &#123; 
       @Override public boolean queueIdle() &#123; 
-           // 在这里去处理你想延时加载的东西 
+           &#x2F;&#x2F; 在这里去处理你想延时加载的东西 
            delayLoad(); 
            
-           // 最后返回false，后续不用再监听了。
+           &#x2F;&#x2F; 最后返回false，后续不用再监听了。
            return false; 
            &#125; 
   &#125;);
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="22-ArrayMap"><a href="#22-ArrayMap" class="headerlink" title="22. ArrayMap"></a>22. <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ba65a0aeec44">ArrayMap</a></h3><blockquote>
 <ol>
 <li>ArrayMap 是Android中的一种用时间换空间的容器，用来替代HashMap</li>
@@ -1367,31 +1375,31 @@ public static int calculateInSampleSize(
 </blockquote>
 <h3 id="23-Bitmap没有必要主动recycle"><a href="#23-Bitmap没有必要主动recycle" class="headerlink" title="23. Bitmap没有必要主动recycle"></a>23. Bitmap没有必要主动recycle</h3><p><a target="_blank" rel="noopener" href="https://developer.android.com/topic/performance/graphics/manage-memory">Google Guide-manage bitmap manager</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.android.com/topic/performance/graphics/cache-bitmap.html">Google Guide-Cache Bitmap</a></p>
-<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * Free the native object associated with this bitmap, and clear the
-     * reference to the pixel data. This will not free the pixel data synchronously;
-     * it simply allows it to be garbage collected if there are no other references.
-     * The bitmap is marked as "dead", meaning it will throw an exception if
-     * getPixels() or setPixels() is called, and will draw nothing. This operation
-     * cannot be reversed, so it should only be called if you are sure there are no
-     * further uses for the bitmap. This is an advanced call, and normally need
-     * not be called, since the normal GC process will free up this memory when
-     * there are no more references to this bitmap.
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>mRecycled <span class="token operator">&amp;&amp;</span> mNativePtr <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">nativeRecycle</span><span class="token punctuation">(</span>mNativePtr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                <span class="token comment" spellcheck="true">// return value indicates whether native pixel object was actually recycled.</span>
-                <span class="token comment" spellcheck="true">// false indicates that it is still in use at the native level and these</span>
-                <span class="token comment" spellcheck="true">// objects should not be collected now. They will be collected later when the</span>
-                <span class="token comment" spellcheck="true">// Bitmap itself is collected.</span>
-                mBuffer <span class="token operator">=</span> null<span class="token punctuation">;</span>
-                mNinePatchChunk <span class="token operator">=</span> null<span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-            mRecycled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * Free the native object associated with this bitmap, and clear the
+ * reference to the pixel data. This will not free the pixel data synchronously;
+ * it simply allows it to be garbage collected if there are no other references.
+ * The bitmap is marked as "dead", meaning it will throw an exception if
+ * getPixels() or setPixels() is called, and will draw nothing. This operation
+ * cannot be reversed, so it should only be called if you are sure there are no
+ * further uses for the bitmap. This is an advanced call, and normally need
+ * not be called, since the normal GC process will free up this memory when
+ * there are no more references to this bitmap.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>mRecycled <span class="token operator">&amp;&amp;</span> mNativePtr <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">nativeRecycle</span><span class="token punctuation">(</span>mNativePtr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// return value indicates whether native pixel object was actually recycled.</span>
+            <span class="token comment">// false indicates that it is still in use at the native level and these</span>
+            <span class="token comment">// objects should not be collected now. They will be collected later when the</span>
+            <span class="token comment">// Bitmap itself is collected.</span>
+            mBuffer <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            mNinePatchChunk <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        mRecycled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>“*This will not free the pixel data synchronously; it simply allows it to be garbage collected if there are no other references.*”。<br>recycle确实不是立即回收对应bitmap的内存，因为不是synchronously</p>
 <h2 id="系统实现及原理"><a href="#系统实现及原理" class="headerlink" title="系统实现及原理"></a>系统实现及原理</h2><hr>
 <h3 id="0-AsyncTask"><a href="#0-AsyncTask" class="headerlink" title="0. AsyncTask"></a>0. AsyncTask</h3><blockquote>
@@ -1688,26 +1696,26 @@ public static int calculateInSampleSize(
 </li>
 </ol>
 </blockquote>
-<pre><code>jclass cls = (*env)-&gt;GetObjectClass(env, obj);       //使用GetObjectClass方法获取obj对应的jclass。   
-class cls = (*env)-&gt;FindClass(“android/util/log”) //直接搜索类名，需要是static修饰的类。  
-复制代码
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">jclass cls &#x3D; (*env)-&gt;GetObjectClass(env, obj);       &#x2F;&#x2F;使用GetObjectClass方法获取obj对应的jclass。   
+class cls &#x3D; (*env)-&gt;FindClass(“android&#x2F;util&#x2F;log”) &#x2F;&#x2F;直接搜索类名，需要是static修饰的类。  
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <ol>
 <li>获取MethodID：</li>
 </ol>
 </blockquote>
-<pre><code>methodID mid = (*env)-&gt;GetMethodID(env, cls, &quot;callback&quot;, &quot;(I)V&quot;); //GetStaticMethodID(…)，获取静态方法的ID使用GetMethdoID方法获取你要使用的方法的MethdoID  
-复制代码
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">methodID mid &#x3D; (*env)-&gt;GetMethodID(env, cls, &quot;callback&quot;, &quot;(I)V&quot;); &#x2F;&#x2F;GetStaticMethodID(…)，获取静态方法的ID使用GetMethdoID方法获取你要使用的方法的MethdoID  
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <blockquote>
 <ol>
 <li>调用：</li>
 </ol>
 </blockquote>
-<pre><code>    (*env)-&gt;CallVoidMethod(env, obj, mid, depth);// CallStaticIntMethod(….) ， 调用静态方法  
-复制代码
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">    (*env)-&gt;CallVoidMethod(env, obj, mid, depth);&#x2F;&#x2F; CallStaticIntMethod(….) ， 调用静态方法  
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h3 id="7-NDK是什么"><a href="#7-NDK是什么" class="headerlink" title="7. NDK是什么"></a>7. NDK是什么</h3><blockquote>
 <p>NDK 是Native Development Kit 的缩写，是一些列工具的集合，帮助开发者迅速的开发C/C++的动态库</p>
 </blockquote>
@@ -1918,13 +1926,13 @@ class cls = (*env)-&gt;FindClass(“android/util/log”) //直接搜索类名，
 <li>px = dp*像素密度/160</li>
 </ol>
 </blockquote>
-<pre><code> public static int dp2px(Context context, float dpValue) &#123;
-        final float scale = context.getResources().getDisplayMetrics().density;
+<pre class="line-numbers language-none"><code class="language-none"> public static int dp2px(Context context, float dpValue) &#123;
+        final float scale &#x3D; context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     &#125;
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="8-layout-sw400dp-layout-w400dp分别代表什么意思"><a href="#8-layout-sw400dp-layout-w400dp分别代表什么意思" class="headerlink" title="8. layout-sw400dp, layout-w400dp分别代表什么意思"></a>8. <a target="_blank" rel="noopener" href="https://blog.csdn.net/wxx614817/article/details/50975265">layout-sw400dp, layout-w400dp分别代表什么意思</a></h3><blockquote>
 <ol>
 <li>layout-w400dp:当屏幕相对宽度大于400dp时，来这里取layout（与横竖屏有关）</li>
@@ -2021,11 +2029,11 @@ class cls = (*env)-&gt;FindClass(“android/util/log”) //直接搜索类名，
 <h3 id="class文件如何转化成dex"><a href="#class文件如何转化成dex" class="headerlink" title="class文件如何转化成dex"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2eb518941681">class文件如何转化成dex</a></h3><blockquote>
 <p>使用build tools 下的dx工具</p>
 </blockquote>
-<pre><code>class 和dex文件对比:
+<pre class="line-numbers language-none"><code class="language-none">class 和dex文件对比:
 1. 都是二进制文件
 2. class文件存在容与，dex文件将整个工程的类信息整合到了一起，去掉了冗余
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="硬件加速"><a href="#硬件加速" class="headerlink" title="硬件加速"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/40f660e17a73">硬件加速</a></h3><blockquote>
 <ol>
 <li>随便写点凑个数吧=-=</li>
@@ -2048,64 +2056,64 @@ class cls = (*env)-&gt;FindClass(“android/util/log”) //直接搜索类名，
 </ol>
 </blockquote>
 <h2 id="OkHttp（基于3-9版本）"><a href="#OkHttp（基于3-9版本）" class="headerlink" title="OkHttp（基于3.9版本）"></a>OkHttp（基于3.9版本）</h2><hr>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a><a target="_blank" rel="noopener" href="http://liuwangshu.cn/application/network/5-okhttp2x.html">使用</a></h3><h4 id="1-在gradle中添加依赖"><a href="#1-在gradle中添加依赖" class="headerlink" title="1. 在gradle中添加依赖"></a>1. 在gradle中添加依赖</h4><pre><code>compile &#39;com.squareup.okhttp3:okhttp:3.9.0&#39;
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a><a target="_blank" rel="noopener" href="http://liuwangshu.cn/application/network/5-okhttp2x.html">使用</a></h3><h4 id="1-在gradle中添加依赖"><a href="#1-在gradle中添加依赖" class="headerlink" title="1. 在gradle中添加依赖"></a>1. 在gradle中添加依赖</h4><pre class="line-numbers language-none"><code class="language-none">compile &#39;com.squareup.okhttp3:okhttp:3.9.0&#39;
 compile &#39;com.squareup.okio:okio:1.13.0&#39;
-复制代码
-</code></pre>
-<h4 id="2-创建OkHttpClient，并对timeout等进行设置"><a href="#2-创建OkHttpClient，并对timeout等进行设置" class="headerlink" title="2. 创建OkHttpClient，并对timeout等进行设置"></a>2. 创建OkHttpClient，并对timeout等进行设置</h4><pre><code>File sdcache = getExternalCacheDir();
-int cacheSize = 10 * 1024 * 1024;
-OkHttpClient.Builder builder = new OkHttpClient.Builder()
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-创建OkHttpClient，并对timeout等进行设置"><a href="#2-创建OkHttpClient，并对timeout等进行设置" class="headerlink" title="2. 创建OkHttpClient，并对timeout等进行设置"></a>2. 创建OkHttpClient，并对timeout等进行设置</h4><pre class="line-numbers language-none"><code class="language-none">File sdcache &#x3D; getExternalCacheDir();
+int cacheSize &#x3D; 10 * 1024 * 1024;
+OkHttpClient.Builder builder &#x3D; new OkHttpClient.Builder()
         .connectTimeout(15, TimeUnit.SECONDS)
         .writeTimeout(20, TimeUnit.SECONDS)
         .readTimeout(20, TimeUnit.SECONDS)
         .cache(new Cache(sdcache.getAbsoluteFile(), cacheSize));
-OkHttpClient mOkHttpClient=builder.build();
-复制代码
-</code></pre>
+OkHttpClient mOkHttpClient&#x3D;builder.build();
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="3-创建Request"><a href="#3-创建Request" class="headerlink" title="3. 创建Request"></a>3. 创建Request</h4><ul>
 <li>get请求</li>
 </ul>
-<pre><code>Request request = new Request.Builder()
-            .url(&quot;http://www.baidu.com&quot;)
+<pre class="line-numbers language-none"><code class="language-none">Request request &#x3D; new Request.Builder()
+            .url(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;)
             .build();
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>post请求（post需要传入requsetBody）</li>
 </ul>
-<pre><code>RequestBody formBody = new FormEncodingBuilder()
+<pre class="line-numbers language-none"><code class="language-none">RequestBody formBody &#x3D; new FormEncodingBuilder()
             .add(&quot;size&quot;, &quot;10&quot;)
             .build();
-    Request request = new Request.Builder()
-            .url(&quot;http://api.1-blog.com/biz/bizserver/article/list.do&quot;)
+    Request request &#x3D; new Request.Builder()
+            .url(&quot;http:&#x2F;&#x2F;api.1-blog.com&#x2F;biz&#x2F;bizserver&#x2F;article&#x2F;list.do&quot;)
             .post(formBody)
             .build();
-复制代码
-</code></pre>
-<h4 id="4-创建Call并执行（okHttp的返回结果并没有在ui线程）"><a href="#4-创建Call并执行（okHttp的返回结果并没有在ui线程）" class="headerlink" title="4. 创建Call并执行（okHttp的返回结果并没有在ui线程）"></a>4. 创建Call并执行（okHttp的返回结果并没有在ui线程）</h4><pre><code>Call call = mOkHttpClient.newCall(request);
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-创建Call并执行（okHttp的返回结果并没有在ui线程）"><a href="#4-创建Call并执行（okHttp的返回结果并没有在ui线程）" class="headerlink" title="4. 创建Call并执行（okHttp的返回结果并没有在ui线程）"></a>4. 创建Call并执行（okHttp的返回结果并没有在ui线程）</h4><pre class="line-numbers language-none"><code class="language-none">Call call &#x3D; mOkHttpClient.newCall(request);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ul>
 <li>同步执行</li>
 </ul>
-<pre><code>Response mResponse=call.execute();
+<pre class="line-numbers language-none"><code class="language-none">Response mResponse&#x3D;call.execute();
         if (mResponse.isSuccessful()) &#123;     
            return mResponse.body().string();
        &#125; else &#123;
            throw new IOException(&quot;Unexpected code &quot; + mResponse);
        &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>异步执行</li>
 </ul>
-<pre><code>call.enqueue(new Callback() &#123;
+<pre class="line-numbers language-none"><code class="language-none">call.enqueue(new Callback() &#123;
         @Override
         public void onFailure(Request request, IOException e) &#123;
         &#125;
         @Override
         public void onResponse(Response response) throws IOException &#123;
-            String str = response.body().string();
+            String str &#x3D; response.body().string();
             Log.i(&quot;wangshu&quot;, str);
             runOnUiThread(new Runnable() &#123;
                 @Override
@@ -2115,8 +2123,8 @@ OkHttpClient mOkHttpClient=builder.build();
             &#125;);
         &#125;
     &#125;);
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="4-封装"><a href="#4-封装" class="headerlink" title="4. 封装"></a>4. 封装</h4><p>因为以下原因，所以我们需要封装：</p>
 <ul>
 <li>避免重复代码编写</li>
@@ -2134,22 +2142,22 @@ OkHttpClient mOkHttpClient=builder.build();
 <li>Call的实现类为RealCall</li>
 <li>在执行execute或者enqueue时，会取出okHttpClient中的Dispatcher执行对应的方法</li>
 </ul>
-<pre><code>client.dispatcher().enqueue(new AsyncCall(responseCallback, forWebSocket));
-复制代码
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">client.dispatcher().enqueue(new AsyncCall(responseCallback, forWebSocket));
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h4 id="2-Diapatcher"><a href="#2-Diapatcher" class="headerlink" title="2. Diapatcher"></a>2. Diapatcher</h4><ul>
 <li>Diapatcher在OkHttpClient build时进行初始化</li>
 <li>Dispatcher负责进行任务调度，内部维护一个线程池，处理并发请求</li>
 <li>Dispatcher内部有三个队列</li>
 </ul>
-<pre><code>/** 将要运行的异步请求队列 */
-private final Deque&lt;AsyncCall&gt; readyAsyncCalls = new ArrayDeque&lt;&gt;();
-/**正在运行的异步请求队列 */
-private final Deque&lt;AsyncCall&gt; runningAsyncCalls = new ArrayDeque&lt;&gt;();
-/** 正在运行的同步请求队列 */
-private final Deque&lt;RealCall&gt; runningSyncCalls = new ArrayDeque&lt;&gt;();
-复制代码
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;** 将要运行的异步请求队列 *&#x2F;
+private final Deque&lt;AsyncCall&gt; readyAsyncCalls &#x3D; new ArrayDeque&lt;&gt;();
+&#x2F;**正在运行的异步请求队列 *&#x2F;
+private final Deque&lt;AsyncCall&gt; runningAsyncCalls &#x3D; new ArrayDeque&lt;&gt;();
+&#x2F;** 正在运行的同步请求队列 *&#x2F;
+private final Deque&lt;RealCall&gt; runningSyncCalls &#x3D; new ArrayDeque&lt;&gt;();
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>执行时，线程会调用AsyncCall的excute方法</li>
 </ul>
@@ -2158,21 +2166,21 @@ private final Deque&lt;RealCall&gt; runningSyncCalls = new ArrayDeque&lt;&gt;();
 <li>AsyncCall 通过 getResponseWithInterceptorChain方法取得Response</li>
 <li>执行完毕后通过client.dispatcher().finished(this)；将自身从dispatcher队列中取出，并取出下一个加入相应队列</li>
 </ul>
-<pre><code>//AsyncCall 的excute方法
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;AsyncCall 的excute方法
 @Override protected void execute() &#123;
-  boolean signalledCallback = false;
+  boolean signalledCallback &#x3D; false;
   try &#123;
-    Response response = getResponseWithInterceptorChain(forWebSocket);
+    Response response &#x3D; getResponseWithInterceptorChain(forWebSocket);
     if (canceled) &#123;
-      signalledCallback = true;
+      signalledCallback &#x3D; true;
       responseCallback.onFailure(RealCall.this, new IOException(&quot;Canceled&quot;));
     &#125; else &#123;
-      signalledCallback = true;
+      signalledCallback &#x3D; true;
       responseCallback.onResponse(RealCall.this, response);
     &#125;
   &#125; catch (IOException e) &#123;
     if (signalledCallback) &#123;
-      // Do not signal the callback twice!
+      &#x2F;&#x2F; Do not signal the callback twice!
       logger.log(Level.INFO, &quot;Callback failure for &quot; + toLoggableString(), e);
     &#125; else &#123;
       responseCallback.onFailure(RealCall.this, e);
@@ -2182,15 +2190,15 @@ private final Deque&lt;RealCall&gt; runningSyncCalls = new ArrayDeque&lt;&gt;();
   &#125;
 &#125;
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="4-getResponseWithInterceptorChain"><a href="#4-getResponseWithInterceptorChain" class="headerlink" title="4. getResponseWithInterceptorChain"></a>4. getResponseWithInterceptorChain</h4><p>getResponseWithInterceptorChain是用责任链的方式，执行拦截器，对请求和请求结果进行处理</p>
 <ul>
 <li>getResponseWithInterceptorChain 中创建拦截器，并创建第一个RealInterceptorChain，执行其proceed方法</li>
 </ul>
-<pre><code>Response getResponseWithInterceptorChain() throws IOException &#123;
-    // Build a full stack of interceptors.
-    List&lt;Interceptor&gt; interceptors = new ArrayList&lt;&gt;();
+<pre class="line-numbers language-none"><code class="language-none">Response getResponseWithInterceptorChain() throws IOException &#123;
+    &#x2F;&#x2F; Build a full stack of interceptors.
+    List&lt;Interceptor&gt; interceptors &#x3D; new ArrayList&lt;&gt;();
     interceptors.addAll(client.interceptors());
     interceptors.add(retryAndFollowUpInterceptor);
     interceptors.add(new BridgeInterceptor(client.cookieJar()));
@@ -2201,25 +2209,25 @@ private final Deque&lt;RealCall&gt; runningSyncCalls = new ArrayDeque&lt;&gt;();
     &#125;
     interceptors.add(new CallServerInterceptor(forWebSocket));
 
-    Interceptor.Chain chain = new RealInterceptorChain(interceptors, null, null, null, 0,
+    Interceptor.Chain chain &#x3D; new RealInterceptorChain(interceptors, null, null, null, 0,
         originalRequest, this, eventListener, client.connectTimeoutMillis(),
         client.readTimeoutMillis(), client.writeTimeoutMillis());
 
     return chain.proceed(originalRequest);
   &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>RealInterceptorChain的proceed方法中，会取出拦截器，并创建下一个Chain，将其作为参数传给拦截器的intercept方法</li>
 </ul>
-<pre><code>  // If there&#39;s another interceptor in the chain, call that.
+<pre class="line-numbers language-none"><code class="language-none">  &#x2F;&#x2F; If there&#39;s another interceptor in the chain, call that.
   if (index &lt; client.interceptors().size()) &#123;
-    Interceptor.Chain chain = new ApplicationInterceptorChain(index + 1, request, forWebSocket);
-    //从拦截器列表取出拦截器
-    Interceptor interceptor = client.interceptors().get(index);
-    Response interceptedResponse = interceptor.intercept(chain);
+    Interceptor.Chain chain &#x3D; new ApplicationInterceptorChain(index + 1, request, forWebSocket);
+    &#x2F;&#x2F;从拦截器列表取出拦截器
+    Interceptor interceptor &#x3D; client.interceptors().get(index);
+    Response interceptedResponse &#x3D; interceptor.intercept(chain);
 
-    if (interceptedResponse == null) &#123;
+    if (interceptedResponse &#x3D;&#x3D; null) &#123;
       throw new NullPointerException(&quot;application interceptor &quot; + interceptor
           + &quot; returned null&quot;);
     &#125;
@@ -2227,12 +2235,12 @@ private final Deque&lt;RealCall&gt; runningSyncCalls = new ArrayDeque&lt;&gt;();
     return interceptedResponse;
   &#125;
 
-  // No more interceptors. Do HTTP.
+  &#x2F;&#x2F; No more interceptors. Do HTTP.
   return getResponse(request, forWebSocket);
 &#125;
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><h4 id="1-自定义拦截器"><a href="#1-自定义拦截器" class="headerlink" title="1. 自定义拦截器"></a>1. <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d04b463806c8">自定义拦截器</a></h4><ul>
 <li>自定义拦截器分为两类，interceptor和networkInterceptor（区别：networkInterceptor处理网络相关任务，如果response直接从缓存返回了，那么有可能不会执行networkInterceptor）</li>
 <li>自定义方式：实现Interceptor，重写intercept方法，并注册拦截器</li>
@@ -2251,61 +2259,61 @@ private final Deque&lt;RealCall&gt; runningSyncCalls = new ArrayDeque&lt;&gt;();
 <li>Connection内部维持着一个List<Reference>引用</li>
 </ul>
 <h4 id="2-StreamAllocation"><a href="#2-StreamAllocation" class="headerlink" title="2. StreamAllocation"></a>2. StreamAllocation</h4><p>StreamAllocation是Connection维护的连接，以下是类内注解</p>
-<pre><code> &lt;ul&gt;
- *     &lt;li&gt;&lt;strong&gt;Connections:&lt;/strong&gt; physical socket connections to remote servers. These are
+<pre class="line-numbers language-none"><code class="language-none"> &lt;ul&gt;
+ *     &lt;li&gt;&lt;strong&gt;Connections:&lt;&#x2F;strong&gt; physical socket connections to remote servers. These are
  *         potentially slow to establish so it is necessary to be able to cancel a connection
  *         currently being connected.
- *     &lt;li&gt;&lt;strong&gt;Streams:&lt;/strong&gt; logical HTTP request/response pairs that are layered on
+ *     &lt;li&gt;&lt;strong&gt;Streams:&lt;&#x2F;strong&gt; logical HTTP request&#x2F;response pairs that are layered on
  *         connections. Each connection has its own allocation limit, which defines how many
- *         concurrent streams that connection can carry. HTTP/1.x connections can carry 1 stream
- *         at a time, HTTP/2 typically carry multiple.
- *     &lt;li&gt;&lt;strong&gt;Calls:&lt;/strong&gt; a logical sequence of streams, typically an initial request and
+ *         concurrent streams that connection can carry. HTTP&#x2F;1.x connections can carry 1 stream
+ *         at a time, HTTP&#x2F;2 typically carry multiple.
+ *     &lt;li&gt;&lt;strong&gt;Calls:&lt;&#x2F;strong&gt; a logical sequence of streams, typically an initial request and
  *         its follow up requests. We prefer to keep all streams of a single call on the same
  *         connection for better behavior and locality.
- * &lt;/ul&gt;
-复制代码
-</code></pre>
+ * &lt;&#x2F;ul&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="3-ConnectionPool"><a href="#3-ConnectionPool" class="headerlink" title="3. ConnectionPool"></a>3. ConnectionPool</h4><p>ConnectionPool通过Address等来查找有没有可以复用的Connection，同时维护一个线程池，对Connection做回收工作</p>
 <h2 id="Retrofit"><a href="#Retrofit" class="headerlink" title="Retrofit"></a>Retrofit</h2><hr>
 <p>Retrofit帮助我们对OkHttp进行了封装，使网络请求更加方便</p>
-<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a3e162261ab6">使用</a></h3><h4 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h4><pre><code>dependencies &#123;
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a3e162261ab6">使用</a></h3><h4 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h4><pre class="line-numbers language-none"><code class="language-none">dependencies &#123;
     compile &#39;com.squareup.retrofit2:retrofit:2.0.2&#39;
   &#125;
-复制代码
-</code></pre>
-<h4 id="2-创建Retrofit实例"><a href="#2-创建Retrofit实例" class="headerlink" title="2. 创建Retrofit实例"></a>2. 创建Retrofit实例</h4><pre><code>Retrofit retrofit = new Retrofit.Builder() 
- .baseUrl(&quot;http://fanyi.youdao.com/&quot;) // 设置网络请求的Url地址
- .addConverterFactory(GsonConverterFactory.create()) // 设置数据解析器 
- .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 支持RxJava平台 .build();
-复制代码
-</code></pre>
-<h4 id="3-创建网络接口"><a href="#3-创建网络接口" class="headerlink" title="3. 创建网络接口"></a>3. 创建网络接口</h4><pre><code>@GET(&quot;user&quot;)
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-创建Retrofit实例"><a href="#2-创建Retrofit实例" class="headerlink" title="2. 创建Retrofit实例"></a>2. 创建Retrofit实例</h4><pre class="line-numbers language-none"><code class="language-none">Retrofit retrofit &#x3D; new Retrofit.Builder() 
+ .baseUrl(&quot;http:&#x2F;&#x2F;fanyi.youdao.com&#x2F;&quot;) &#x2F;&#x2F; 设置网络请求的Url地址
+ .addConverterFactory(GsonConverterFactory.create()) &#x2F;&#x2F; 设置数据解析器 
+ .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) &#x2F;&#x2F; 支持RxJava平台 .build();
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-创建网络接口"><a href="#3-创建网络接口" class="headerlink" title="3. 创建网络接口"></a>3. 创建网络接口</h4><pre class="line-numbers language-none"><code class="language-none">@GET(&quot;user&quot;)
 Call&lt;User&gt; getUser(@Header(&quot;Authorization&quot;) String authorization)
-复制代码
-</code></pre>
-<h4 id="4-创建Call"><a href="#4-创建Call" class="headerlink" title="4. 创建Call"></a>4. 创建Call</h4><pre><code> GetRequest_Interface request = retrofit.create(GetRequest_Interface.class);
-//对 发送请求 进行封装
-Call&lt;Reception&gt; call = request.getCall();
-复制代码
-</code></pre>
-<h4 id="5-执行Call的请求方法"><a href="#5-执行Call的请求方法" class="headerlink" title="5. 执行Call的请求方法"></a>5. 执行Call的请求方法</h4><pre><code>//发送网络请求(异步) call.enqueue(new Callback&lt;Translation&gt;() &#123; 
-//请求成功时回调
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4-创建Call"><a href="#4-创建Call" class="headerlink" title="4. 创建Call"></a>4. 创建Call</h4><pre class="line-numbers language-none"><code class="language-none"> GetRequest_Interface request &#x3D; retrofit.create(GetRequest_Interface.class);
+&#x2F;&#x2F;对 发送请求 进行封装
+Call&lt;Reception&gt; call &#x3D; request.getCall();
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5-执行Call的请求方法"><a href="#5-执行Call的请求方法" class="headerlink" title="5. 执行Call的请求方法"></a>5. 执行Call的请求方法</h4><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;发送网络请求(异步) call.enqueue(new Callback&lt;Translation&gt;() &#123; 
+&#x2F;&#x2F;请求成功时回调
  @Override 
 public void onResponse(Call&lt;Translation&gt; call, Response&lt;Translation&gt; response) &#123; 
-   //请求处理,输出结果
+   &#x2F;&#x2F;请求处理,输出结果
     response.body().show(); 
  &#125; 
- //请求失败时候的回调 
+ &#x2F;&#x2F;请求失败时候的回调 
  @Override 
  public void onFailure(Call&lt;Translation&gt; call, Throwable throwable) &#123; 
      System.out.println(&quot;连接失败&quot;); 
  &#125; 
  &#125;);
  
- // 发送网络请求（同步） Response&lt;Reception&gt; response = call.execute();
+ &#x2F;&#x2F; 发送网络请求（同步） Response&lt;Reception&gt; response &#x3D; call.execute();
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="源码解析"><a href="#源码解析" class="headerlink" title="源码解析"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0c055ad46b6c">源码解析</a></h3><h4 id="1-Retrofit"><a href="#1-Retrofit" class="headerlink" title="1. Retrofit"></a>1. Retrofit</h4><p>Retrofit 通过builder模式创建，我们可以对其进行各种设置：</p>
 <ul>
 <li>baseUrl：请求地址的头部，必填</li>
@@ -2320,49 +2328,49 @@ public void onResponse(Call&lt;Translation&gt; call, Response&lt;Translation&gt;
 <li>调用对应方法拿到对应网络请求的Call</li>
 </ul>
 <p>关键在第一步，第一步是通过动态代理实现的</p>
-<pre><code>public &lt;T&gt; T create(final Class&lt;T&gt; service) &#123;
+<pre class="line-numbers language-none"><code class="language-none">public &lt;T&gt; T create(final Class&lt;T&gt; service) &#123;
   Utils.validateServiceInterface(service);
   if (validateEagerly) &#123;
     eagerlyValidateMethods(service);
   &#125;
   return (T) Proxy.newProxyInstance(service.getClassLoader(), new Class&lt;?&gt;[] &#123; service &#125;,
       new InvocationHandler() &#123;
-        private final Platform platform = Platform.get();
+        private final Platform platform &#x3D; Platform.get();
 
         @Override public Object invoke(Object proxy, Method method, Object... args)
             throws Throwable &#123;
-          // If the method is a method from Object then defer to normal invocation.
-          if (method.getDeclaringClass() == Object.class) &#123;
+          &#x2F;&#x2F; If the method is a method from Object then defer to normal invocation.
+          if (method.getDeclaringClass() &#x3D;&#x3D; Object.class) &#123;
             return method.invoke(this, args);
           &#125;
           if (platform.isDefaultMethod(method)) &#123;
             return platform.invokeDefaultMethod(method, service, proxy, args);
           &#125;
-          ServiceMethod serviceMethod = loadServiceMethod(method);//1
-          OkHttpCall okHttpCall = new OkHttpCall&lt;&gt;(serviceMethod, args);
+          ServiceMethod serviceMethod &#x3D; loadServiceMethod(method);&#x2F;&#x2F;1
+          OkHttpCall okHttpCall &#x3D; new OkHttpCall&lt;&gt;(serviceMethod, args);
           return serviceMethod.callAdapter.adapt(okHttpCall);
         &#125;
       &#125;);
 &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>通过loadServiceMethod方法生成mehtod对应的ServiceMethod</li>
 <li>将ServiceMethod和方法参数传进OkHttpCall生成OkHttpCall</li>
 <li>调用callAdapter方法对OkHttpCall进行处理并返回</li>
 </ul>
 <h5 id="1-ServiceMethod"><a href="#1-ServiceMethod" class="headerlink" title="1. ServiceMethod"></a>1. ServiceMethod</h5><p>loadServiceMethod方法会首先在缓存里查找是否有该method对应的ServiceMethod，没有的话调用build方法创建一个</p>
-<pre><code>ServiceMethod loadServiceMethod(Method method) &#123;
+<pre class="line-numbers language-none"><code class="language-none">ServiceMethod loadServiceMethod(Method method) &#123;
  ServiceMethod result; 
- // 设置线程同步锁 
+ &#x2F;&#x2F; 设置线程同步锁 
  synchronized (serviceMethodCache) &#123; 
- result = serviceMethodCache.get(method);
-  // ServiceMethod类对象采用了单例模式进行创建 
-  // 即创建ServiceMethod对象前，先看serviceMethodCache有没有缓存之前创建过的网络请求实例 
-  // 若没缓存，则通过建造者模式创建 
-  serviceMethod 对象 if (result == null) &#123; 
-  // 下面会详细介绍ServiceMethod生成实例的过程 
-  result = new ServiceMethod.Builder(this, method).build(); 
+ result &#x3D; serviceMethodCache.get(method);
+  &#x2F;&#x2F; ServiceMethod类对象采用了单例模式进行创建 
+  &#x2F;&#x2F; 即创建ServiceMethod对象前，先看serviceMethodCache有没有缓存之前创建过的网络请求实例 
+  &#x2F;&#x2F; 若没缓存，则通过建造者模式创建 
+  serviceMethod 对象 if (result &#x3D;&#x3D; null) &#123; 
+  &#x2F;&#x2F; 下面会详细介绍ServiceMethod生成实例的过程 
+  result &#x3D; new ServiceMethod.Builder(this, method).build(); 
   serviceMethodCache.put(method, result); 
    &#125; 
   &#125;
@@ -2370,80 +2378,80 @@ public void onResponse(Call&lt;Translation&gt; call, Response&lt;Translation&gt;
   return result;
 &#125;
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>ServiceMethod的创建过程即是对method的解析过程，解析过程包括：对注解的解析，寻找合适的CallAdapter和Convert等</p>
 <h5 id="2-OkHttpCall"><a href="#2-OkHttpCall" class="headerlink" title="2. OkHttpCall"></a>2. OkHttpCall</h5><p>OkHttpCall实现了Call接口，当执行excute或enqueue请求命令时，内部通过传入的CallFactory（OkHttpClient）执行网络请求</p>
 <h5 id="3-callAdapter"><a href="#3-callAdapter" class="headerlink" title="3. callAdapter"></a>3. callAdapter</h5><p>如果我们没有对CallAdapter进行设置，它的值将是Android平台的默认设置，其adapt方法如下</p>
-<pre><code>public &lt;R&gt; Call&lt;R&gt; adapt(Call&lt;R&gt; call) &#123; 
+<pre class="line-numbers language-none"><code class="language-none">public &lt;R&gt; Call&lt;R&gt; adapt(Call&lt;R&gt; call) &#123; 
     return new ExecutorCallbackCall&lt;&gt;(callbackExecutor, call); 
 &#125; 
 
 
 ExecutorCallbackCall(Executor callbackExecutor, Call&lt;T&gt; delegate) &#123;
 
- this.delegate = delegate; 
- // 把上面创建并配置好参数的OkhttpCall对象交给静态代理delegate 
- // 静态代理和动态代理都属于代理模式 
- // 静态代理作用：代理执行被代理者的方法，且可在要执行的方法前后加入自己的动作，进行对系统功能的拓展 
+ this.delegate &#x3D; delegate; 
+ &#x2F;&#x2F; 把上面创建并配置好参数的OkhttpCall对象交给静态代理delegate 
+ &#x2F;&#x2F; 静态代理和动态代理都属于代理模式 
+ &#x2F;&#x2F; 静态代理作用：代理执行被代理者的方法，且可在要执行的方法前后加入自己的动作，进行对系统功能的拓展 
  
- this.callbackExecutor = callbackExecutor; 
- // 传入上面定义的回调方法执行器 
- // 用于进行线程切换 &#125;
+ this.callbackExecutor &#x3D; callbackExecutor; 
+ &#x2F;&#x2F; 传入上面定义的回调方法执行器 
+ &#x2F;&#x2F; 用于进行线程切换 &#125;
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>ExecutorCallbackCall对OkHttpCall进行了装饰，会调用CallBackExcutor对OkHttpCall执行的返回结果进行处理，使其位于主线程</p>
 <h3 id="自定义Convert和CallAdapter"><a href="#自定义Convert和CallAdapter" class="headerlink" title="自定义Convert和CallAdapter"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/308f3c54abdd">自定义Convert和CallAdapter</a></h3><h2 id="Fresco"><a href="#Fresco" class="headerlink" title="Fresco"></a><a target="_blank" rel="noopener" href="https://www.fresco-cn.org/">Fresco</a></h2><hr>
 <p>Fresco是一个图片加载库，可以帮助我们加载图片显示，控制多线程，以及管理缓存和内存等</p>
 <h3 id="Fresco使用"><a href="#Fresco使用" class="headerlink" title="Fresco使用"></a><a target="_blank" rel="noopener" href="https://www.fresco-cn.org/docs/index.html">Fresco使用</a></h3><ol>
 <li>引入依赖</li>
 </ol>
-<pre><code>dependencies &#123;
-  // 其他依赖
+<pre class="line-numbers language-none"><code class="language-none">dependencies &#123;
+  &#x2F;&#x2F; 其他依赖
   compile &#39;com.facebook.fresco:fresco:0.12.0&#39;
-   // 在 API &lt; 14 上的机器支持 WebP 时，需要添加
+   &#x2F;&#x2F; 在 API &lt; 14 上的机器支持 WebP 时，需要添加
   compile &#39;com.facebook.fresco:animated-base-support:0.12.0&#39;
 
-  // 支持 GIF 动图，需要添加
+  &#x2F;&#x2F; 支持 GIF 动图，需要添加
   compile &#39;com.facebook.fresco:animated-gif:0.12.0&#39;
 
-  // 支持 WebP （静态图+动图），需要添加
+  &#x2F;&#x2F; 支持 WebP （静态图+动图），需要添加
   compile &#39;com.facebook.fresco:animated-webp:0.12.0&#39;
   compile &#39;com.facebook.fresco:webpsupport:0.12.0&#39;
 
-  // 仅支持 WebP 静态图，需要添加
+  &#x2F;&#x2F; 仅支持 WebP 静态图，需要添加
   compile &#39;com.facebook.fresco:webpsupport:0.12.0&#39;
 &#125;
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol>
 <li>初始化</li>
 </ol>
-<pre><code>Fresco.initialize(Context context);
-复制代码
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">Fresco.initialize(Context context);
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ol>
 <li>使用SimpleView</li>
 </ol>
-<pre><code>&lt;com.facebook.drawee.view.SimpleDraweeView
-    android:id=&quot;@+id/my_image_view&quot;
-    android:layout_width=&quot;130dp&quot;
-    android:layout_height=&quot;130dp&quot;
-    fresco:placeholderImage=&quot;@drawable/my_drawable&quot;
-  /&gt;
-复制代码
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&lt;com.facebook.drawee.view.SimpleDraweeView
+    android:id&#x3D;&quot;@+id&#x2F;my_image_view&quot;
+    android:layout_width&#x3D;&quot;130dp&quot;
+    android:layout_height&#x3D;&quot;130dp&quot;
+    fresco:placeholderImage&#x3D;&quot;@drawable&#x2F;my_drawable&quot;
+  &#x2F;&gt;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol>
 <li>加载图片</li>
 </ol>
-<pre><code>Uri uri = Uri.parse(&quot;https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/logo.png&quot;);
-SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
+<pre class="line-numbers language-none"><code class="language-none">Uri uri &#x3D; Uri.parse(&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;facebook&#x2F;fresco&#x2F;gh-pages&#x2F;static&#x2F;logo.png&quot;);
+SimpleDraweeView draweeView &#x3D; (SimpleDraweeView) findViewById(R.id.my_image_view);
 draweeView.setImageURI(uri);
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol>
 <li>以上是Fresco的基本加载流程，此外，我们可以定制加载和显示的各个环节</li>
 </ol>
@@ -2526,33 +2534,33 @@ draweeView.setImageURI(uri);
 <h3 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/acfe78296bb5">使用</a></h3><ol>
 <li>添加依赖</li>
 </ol>
-<pre><code>compile &#39;org.greenrobot:eventbus:3.0.0&#39;
-复制代码
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">compile &#39;org.greenrobot:eventbus:3.0.0&#39;
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ol>
 <li>注册和解绑</li>
 </ol>
-<pre><code>EventBus.getDefault().register(this);
+<pre class="line-numbers language-none"><code class="language-none">EventBus.getDefault().register(this);
 
 EventBus.getDefault().unregister(this);
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol>
 <li>添加订阅消息方法</li>
 </ol>
-<pre><code>@Subscribe(threadMode = ThreadMode.MAIN) 
+<pre class="line-numbers language-none"><code class="language-none">@Subscribe(threadMode &#x3D; ThreadMode.MAIN) 
 public void onEvent(MessageEvent event) &#123;
-    /* Do something */
+    &#x2F;* Do something *&#x2F;
 &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol>
 <li>发送消息</li>
 </ol>
-<pre><code>EventBus.getDefault().post(new MessageEvent(&quot;Hello !.....&quot;));
+<pre class="line-numbers language-none"><code class="language-none">EventBus.getDefault().post(new MessageEvent(&quot;Hello !.....&quot;));
     
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="Subscribe注解"><a href="#Subscribe注解" class="headerlink" title="@Subscribe注解"></a>@Subscribe注解</h4><p>该注解内部有三个成员，分别是threadMode、sticky、priority。</p>
 <blockquote>
 <ol>

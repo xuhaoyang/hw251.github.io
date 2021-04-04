@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -427,6 +427,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -448,33 +451,35 @@
 <p>java是值传递。可以理解为传入的是一个引用的副本，指向统一地址。当值改变时，原引用和副本指向地址中的值都变了；当副本指向的地址改变，指向新值时，原引用指向的地址没有改变，原值也没有改变。</p>
 </blockquote>
 <p>基础类型如int long等，引用类型例如String</p>
-<pre class=" language-Java"><code class="language-Java">
+<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">
 第一个例子：基本类型
 void foo(int value) &#123;
-    value = 100;
+    value &#x3D; 100;
 &#125;
-foo(num); // num 没有被改变
+foo(num); &#x2F;&#x2F; num 没有被改变
 
 第二个例子：没有提供改变自身方法的引用类型
 void foo(String text) &#123;
-    text = "windows";
+    text &#x3D; &quot;windows&quot;;
 &#125;
-foo(str); // str 也没有被改变
+foo(str); &#x2F;&#x2F; str 也没有被改变
 
 第三个例子：提供了改变自身方法的引用类型
-StringBuilder sb = new StringBuilder("iphone");
+StringBuilder sb &#x3D; new StringBuilder(&quot;iphone&quot;);
 void foo(StringBuilder builder) &#123;
-    builder.append("4");
+    builder.append(&quot;4&quot;);
 &#125;
-foo(sb); // sb 被改变了，变成了"iphone4"。
+foo(sb); &#x2F;&#x2F; sb 被改变了，变成了&quot;iphone4&quot;。
 
 第四个例子：提供了改变自身方法的引用类型，但是不使用，而是使用赋值运算符。
-StringBuilder sb = new StringBuilder("iphone");
+StringBuilder sb &#x3D; new StringBuilder(&quot;iphone&quot;);
 void foo(StringBuilder builder) &#123;
-    builder = new StringBuilder("ipad");
+    builder &#x3D; new StringBuilder(&quot;ipad&quot;);
 &#125;
-foo(sb); // sb 没有被改变，还是 "iphone"。
-</code></pre>
+foo(sb); &#x2F;&#x2F; sb 没有被改变，还是 &quot;iphone&quot;。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <p>Java 堆(Heap) 和 栈(Stack) 。</p>
 <h4 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h4><p><strong>从局部变量/方法参数开始讲起：</strong></p>
 <p>局部变量和方法参数在jvm中的储存方法是相同的，都是在栈上开辟空间来储存的，随着进入方法开辟，退出方法回收。以32位JVM为例，boolean/byte/short/char/int/float以及引用都是分配4字节空间，long/double分配8字节空间。对于每个方法来说，最多占用多少空间是一定的，这在编译时就可以计算好。</p>
@@ -601,14 +606,15 @@ foo(sb); // sb 没有被改变，还是 "iphone"。
 <li>clone方法是Object类中方法，会检查当前实例是否实现Cloneable接口，没有实现则抛出异常，实现了就调用native方法进行clone（clone进行的是浅拷贝），源码如下</li>
 </ol>
 </blockquote>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">Cloneable</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token class-name">Object</span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">CloneNotSupportedException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">Cloneable</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">CloneNotSupportedException</span><span class="token punctuation">(</span><span class="token string">"Class "</span> <span class="token operator">+</span> <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span>
                                                  <span class="token string">" doesn't implement Cloneable"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
         <span class="token keyword">return</span> <span class="token function">internalClone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+    <span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="5-两个对象值相同-x-equals-y-true-，但却可有不同的hash-code，这句话对不对？"><a href="#5-两个对象值相同-x-equals-y-true-，但却可有不同的hash-code，这句话对不对？" class="headerlink" title="5. 两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对？"></a>5. 两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对？</h3><blockquote>
 <ol>
 <li>不对。</li>
@@ -622,7 +628,7 @@ foo(sb); // sb 没有被改变，还是 "iphone"。
 <li>通过实现Serializable接口，通过对象的序列化和反序列化实现克隆。</li>
 </ol>
 </blockquote>
-<pre><code>import java.io.ByteArrayInputStream;
+<pre class="line-numbers language-none"><code class="language-none">import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -636,19 +642,20 @@ throw new AssertionError();
 
 @SuppressWarnings(&quot;unchecked&quot;)
 public static &lt;T extends Serializable&gt; T clone(T obj) throws Exception &#123;
-ByteArrayOutputStream bout = new ByteArrayOutputStream();
-ObjectOutputStream oos = new ObjectOutputStream(bout);
+ByteArrayOutputStream bout &#x3D; new ByteArrayOutputStream();
+ObjectOutputStream oos &#x3D; new ObjectOutputStream(bout);
 oos.writeObject(obj);
 
-ByteArrayInputStream bin = new ByteArrayInputStream(bout.toByteArray());
-ObjectInputStream ois = new ObjectInputStream(bin);
+ByteArrayInputStream bin &#x3D; new ByteArrayInputStream(bout.toByteArray());
+ObjectInputStream ois &#x3D; new ObjectInputStream(bin);
 return (T) ois.readObject();
 
-// 说明：调用ByteArrayInputStream或ByteArrayOutputStream对象的close方法没有任何意义
-// 这两个基于内存的流只要垃圾回收器清理对象就能够释放资源，这一点不同于对外部资源（如文件流）的释放
+&#x2F;&#x2F; 说明：调用ByteArrayInputStream或ByteArrayOutputStream对象的close方法没有任何意义
+&#x2F;&#x2F; 这两个基于内存的流只要垃圾回收器清理对象就能够释放资源，这一点不同于对外部资源（如文件流）的释放
 &#125;
 &#125;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="7-谈一谈”-“与”equals-”的区别"><a href="#7-谈一谈”-“与”equals-”的区别" class="headerlink" title="7. 谈一谈”==“与”equals()”的区别"></a>7. 谈一谈”==“与”equals()”的区别</h3><blockquote>
 <ol>
 <li>== :对于基本类型，比较的是他们的值；对于引用类型，比较的是引用的值，也就是对象实例的地址</li>
@@ -656,7 +663,7 @@ return (T) ois.readObject();
 </ol>
 </blockquote>
 <h3 id="8-类中方法调用顺序"><a href="#8-类中方法调用顺序" class="headerlink" title="8. 类中方法调用顺序"></a>8. 类中方法调用顺序</h3><p>指出下面程序的运行结果</p>
-<pre><code>class A &#123;
+<pre class="line-numbers language-none"><code class="language-none">class A &#123;
 
 static &#123;
 System.out.print(&quot;1&quot;);
@@ -681,13 +688,13 @@ System.out.print(&quot;b&quot;);
 public class Hello &#123;
 
 public static void main(String[] args) &#123;
-A ab = new B();
-ab = new B();
+A ab &#x3D; new B();
+ab &#x3D; new B();
 &#125;
 
 &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>执行结果：1a2b2b。 创建对象时构造器的调用顺序是：  父类静态初始化块  -&gt; 子类静态初始化块 -&gt; 父类初始化块 -&gt;调用了父类构造器 -&gt; 子类初始化块 -&gt; 调用子类的构造器</p>
 </blockquote>
@@ -713,13 +720,13 @@ ab = new B();
 <li>可以抛出不同的异常。</li>
 </ol>
 </blockquote>
-<pre><code>扩展：华为的面试题中曾经问过这样一个问题 - &quot;为什么不能根据返回类型来区分重载&quot;
+<pre class="line-numbers language-none"><code class="language-none">扩展：华为的面试题中曾经问过这样一个问题 - &quot;为什么不能根据返回类型来区分重载&quot;
 答：因为调用时不能指定类型信息，编译器不知道你要调用哪个函数。例如：
 float max(int a, int b);
 int max(int a, int b);
 当调用max(1, 2);时无法确定调用的是哪个。
-参考：https://www.zhihu.com/question/21455159/answer/59874307
-</code></pre>
+参考：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;21455159&#x2F;answer&#x2F;59874307<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="10-阐述静态变量和实例变量的区别。"><a href="#10-阐述静态变量和实例变量的区别。" class="headerlink" title="10. 阐述静态变量和实例变量的区别。"></a>10. 阐述静态变量和实例变量的区别。</h3><blockquote>
 <ol>
 <li>静态变量（static 修饰的变量）属于类，被所有类的实例共享，没有实例时也可通过类直接访问</li>
@@ -763,7 +770,7 @@ int max(int a, int b);
 <h3 id="3-Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口？"><a href="#3-Anonymous-Inner-Class-匿名内部类-是否可以继承其它类？是否可以实现接口？" class="headerlink" title="3. Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口？"></a>3. Anonymous Inner Class(匿名内部类)是否可以继承其它类？是否可以实现接口？</h3><blockquote>
 <p>可以继承其他类，也可以实现接口</p>
 </blockquote>
-<pre><code>解析：
+<pre class="line-numbers language-none"><code class="language-none">解析：
 btn.setOnClickListener(new View.OnClickListener()&#123;
 @Override
 public void onClick(View view)&#123;
@@ -772,8 +779,8 @@ public void onClick(View view)&#123;
 &#125;)
 
 这里new的就是一个匿名内部类，这个匿名内部类实现了View.OnClickListener接口。所以匿名内部类本身一定会继承或实现一个且仅一个类或者接口。
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="4-内部类-非静态内部类-可以引用它的包含类（外部类）的成员吗？有没有什么限制？"><a href="#4-内部类-非静态内部类-可以引用它的包含类（外部类）的成员吗？有没有什么限制？" class="headerlink" title="4. 内部类(非静态内部类)可以引用它的包含类（外部类）的成员吗？有没有什么限制？"></a>4. 内部类(非静态内部类)可以引用它的包含类（外部类）的成员吗？有没有什么限制？</h3><blockquote>
 <ol>
 <li>一个内部类对象可以访问创建它的外部类对象的成员，包括私有成员。</li>
@@ -826,7 +833,7 @@ public void onClick(View view)&#123;
 <h3 id="5-列出一些你常见的运行时异常"><a href="#5-列出一些你常见的运行时异常" class="headerlink" title="5.  列出一些你常见的运行时异常"></a>5.  列出一些你常见的运行时异常</h3><blockquote>
 <p>NullPointerException （空指针异常） ClassCastException （类转换异常） IndexOutOfBoundsException （下标越界异常） IllegalArgumentException （非法参数异常）</p>
 </blockquote>
-<h3 id="6-Exception继承相关考题"><a href="#6-Exception继承相关考题" class="headerlink" title="6. Exception继承相关考题"></a>6. Exception继承相关考题</h3><pre><code>题目1:
+<h3 id="6-Exception继承相关考题"><a href="#6-Exception继承相关考题" class="headerlink" title="6. Exception继承相关考题"></a>6. Exception继承相关考题</h3><pre class="line-numbers language-none"><code class="language-none">题目1:
 类ExampleA继承Exception，类ExampleB继承ExampleA。有如下代码片断,请问执行此段代码的输出是什么？
 try &#123;
 throw new ExampleB(&quot;b&quot;)
@@ -864,8 +871,8 @@ System.out.println(&quot;Hello World!&quot;);
 &#125;
 &#125;
 &#125;
-解析：输出Caught AnnoyanceCaught SneezeHello World!
-</code></pre>
+解析：输出Caught AnnoyanceCaught SneezeHello World!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="关键字和运算符"><a href="#关键字和运算符" class="headerlink" title="关键字和运算符"></a>关键字和运算符</h2><h3 id="1-amp-和-amp-amp-的区别；-和-的区别？"><a href="#1-amp-和-amp-amp-的区别；-和-的区别？" class="headerlink" title="1. &amp;和&amp;&amp;的区别；|和||的区别？"></a>1. &amp;和&amp;&amp;的区别；|和||的区别？</h3><blockquote>
 <ol>
 <li>&amp;有两种用法：(1)按位与；(2)逻辑与，我们这里说的是逻辑与。</li>
@@ -989,16 +996,16 @@ System.out.println(&quot;Hello World!&quot;);
 <li>包装类型：Boolean，Character，Byte，Short，Integer，Long，Float，Double</li>
 </ul>
 </blockquote>
-<pre><code>扩展1：
+<pre class="line-numbers language-none"><code class="language-none">扩展1：
 java5中引入了自动拆装箱功能，例如在比较时可以自动拆装箱
 class AutoUnboxingTest &#123;
 
     public static void main(String[] args) &#123;
-        Integer a = new Integer(3);
-        Integer b = 3;                  // 将3自动装箱成Integer类型
-        int c = 3;
-        System.out.println(a == b);     // false 两个引用没有引用同一对象
-        System.out.println(a == c);     // true a自动拆箱成int类型再和c比较
+        Integer a &#x3D; new Integer(3);
+        Integer b &#x3D; 3;                  &#x2F;&#x2F; 将3自动装箱成Integer类型
+        int c &#x3D; 3;
+        System.out.println(a &#x3D;&#x3D; b);     &#x2F;&#x2F; false 两个引用没有引用同一对象
+        System.out.println(a &#x3D;&#x3D; c);     &#x2F;&#x2F; true a自动拆箱成int类型再和c比较
     &#125;
 &#125;
 复制代码
@@ -1007,10 +1014,10 @@ class AutoUnboxingTest &#123;
 public class Test03 &#123;
 
     public static void main(String[] args) &#123;
-        Integer f1 = 100, f2 = 100, f3 = 150, f4 = 150;
+        Integer f1 &#x3D; 100, f2 &#x3D; 100, f3 &#x3D; 150, f4 &#x3D; 150;
 
-        System.out.println(f1 == f2); //true
-        System.out.println(f3 == f4); //false
+        System.out.println(f1 &#x3D;&#x3D; f2); &#x2F;&#x2F;true
+        System.out.println(f3 &#x3D;&#x3D; f4); &#x2F;&#x2F;false
     &#125;
 &#125;
 
@@ -1018,60 +1025,60 @@ public class Test03 &#123;
 具体分析： 
 
 public static Integer valueOf(int i) &#123;
-        if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+        if (i &gt;&#x3D; IntegerCache.low &amp;&amp; i &lt;&#x3D; IntegerCache.high)
             return IntegerCache.cache[i + (-IntegerCache.low)];
         return new Integer(i);
     &#125;
     
 IntegerCache是Integer的内部类，其代码如下所示：
-/**
+&#x2F;**
      * Cache to support the object identity semantics of autoboxing for values between
      * -128 and 127 (inclusive) as required by JLS.
      *
      * The cache is initialized on first usage.  The size of the cache
-     * may be controlled by the &#123;@code -XX:AutoBoxCacheMax=&lt;size&gt;&#125; option.
+     * may be controlled by the &#123;@code -XX:AutoBoxCacheMax&#x3D;&lt;size&gt;&#125; option.
      * During VM initialization, java.lang.Integer.IntegerCache.high property
      * may be set and saved in the private system properties in the
      * sun.misc.VM class.
-     */
+     *&#x2F;
 
     private static class IntegerCache &#123;
-        static final int low = -128;
+        static final int low &#x3D; -128;
         static final int high;
         static final Integer cache[];
 
         static &#123;
-            // high value may be configured by property
-            int h = 127;
-            String integerCacheHighPropValue =
+            &#x2F;&#x2F; high value may be configured by property
+            int h &#x3D; 127;
+            String integerCacheHighPropValue &#x3D;
                 sun.misc.VM.getSavedProperty(&quot;java.lang.Integer.IntegerCache.high&quot;);
-            if (integerCacheHighPropValue != null) &#123;
+            if (integerCacheHighPropValue !&#x3D; null) &#123;
                 try &#123;
-                    int i = parseInt(integerCacheHighPropValue);
-                    i = Math.max(i, 127);
-                    // Maximum array size is Integer.MAX_VALUE
-                    h = Math.min(i, Integer.MAX_VALUE - (-low) -1);
+                    int i &#x3D; parseInt(integerCacheHighPropValue);
+                    i &#x3D; Math.max(i, 127);
+                    &#x2F;&#x2F; Maximum array size is Integer.MAX_VALUE
+                    h &#x3D; Math.min(i, Integer.MAX_VALUE - (-low) -1);
                 &#125; catch( NumberFormatException nfe) &#123;
-                    // If the property cannot be parsed into an int, ignore it.
+                    &#x2F;&#x2F; If the property cannot be parsed into an int, ignore it.
                 &#125;
             &#125;
-            high = h;
+            high &#x3D; h;
 
-            cache = new Integer[(high - low) + 1];
-            int j = low;
-            for(int k = 0; k &lt; cache.length; k++)
-                cache[k] = new Integer(j++);
+            cache &#x3D; new Integer[(high - low) + 1];
+            int j &#x3D; low;
+            for(int k &#x3D; 0; k &lt; cache.length; k++)
+                cache[k] &#x3D; new Integer(j++);
 
-            // range [-128, 127] must be interned (JLS7 5.1.7)
-            assert IntegerCache.high &gt;= 127;
+            &#x2F;&#x2F; range [-128, 127] must be interned (JLS7 5.1.7)
+            assert IntegerCache.high &gt;&#x3D; 127;
         &#125;
 
         private IntegerCache() &#123;&#125;
     &#125;
     简单的说，如果整型字面量的值在-128到127之间，那么不会new新的Integer对象，而是直接引用常量池中的Integer对象，
-    所以上面的面试题中f1==f2的结果是true，而f3==f4的结果是false。
-复制代码
-</code></pre>
+    所以上面的面试题中f1&#x3D;&#x3D;f2的结果是true，而f3&#x3D;&#x3D;f4的结果是false。
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="1-float-f-3-4-是否正确？"><a href="#1-float-f-3-4-是否正确？" class="headerlink" title="1. float f=3.4;是否正确？"></a>1. float f=3.4;是否正确？</h3><blockquote>
 <p>答:不正确。3.4是双精度数，将双精度型（double）赋值给浮点型（float）属于下转型（down-casting，也称为窄化）会造成精度损失，因此需要强制类型转换float f =(float)3.4; 或者写成float f =3.4F;。</p>
 </blockquote>
@@ -1101,19 +1108,19 @@ IntegerCache是Integer的内部类，其代码如下所示：
 <h3 id="7-String和StringBuilder、StringBuffer的区别"><a href="#7-String和StringBuilder、StringBuffer的区别" class="headerlink" title="7. String和StringBuilder、StringBuffer的区别"></a>7. String和StringBuilder、StringBuffer的区别</h3><blockquote>
 <p>String 是只读字符串，StringBuilder和StringBuffer可以改变，StringBuilder效率高，线程不安全，StringBuffer线程安全。 在拼接String时，使用+编译器会帮我们进行优化，使用StringBuilder进行拼接，这时+和StringBuilder没有多大区别。但当循环中使用+时，我们应该显示的使用StringBuilder，以防止多次调用new StringBuilder，造成不必要的性能浪费。</p>
 </blockquote>
-<pre><code>循环中使用+举例：
-String str = &quot;hello,world!&quot;;
-        String result = &quot;&quot;;
+<pre class="line-numbers language-none"><code class="language-none">循环中使用+举例：
+String str &#x3D; &quot;hello,world!&quot;;
+        String result &#x3D; &quot;&quot;;
 
-        for (int i = 0; i &lt; loopCount; i++) &#123;
-            result += str;
+        for (int i &#x3D; 0; i &lt; loopCount; i++) &#123;
+            result +&#x3D; str;
         &#125;
 这个时候编译器会优化成
-String str = &quot;hello,world!&quot;;
-        String result = &quot;&quot;;
+String str &#x3D; &quot;hello,world!&quot;;
+        String result &#x3D; &quot;&quot;;
 
-        for (int i = 0; i &lt; loopCount; i++) &#123;
-            result = new StringBuilder(result).append(str).toString();
+        for (int i &#x3D; 0; i &lt; loopCount; i++) &#123;
+            result &#x3D; new StringBuilder(result).append(str).toString();
         &#125;
 多次new StringBuilder造成了性能浪费。
 复制代码
@@ -1121,25 +1128,25 @@ String str = &quot;hello,world!&quot;;
 class StringEqualTest &#123;
 
     public static void main(String[] args) &#123;
-        String s1 = &quot;Programming&quot;;
-        String s2 = new String(&quot;Programming&quot;);
-        String s3 = &quot;Program&quot;;
-        String s4 = &quot;ming&quot;;
-        String s5 = &quot;Program&quot; + &quot;ming&quot;;
-        String s6 = s3 + s4;
-        System.out.println(s1 == s2); // false
-        System.out.println(s1 == s5); //true
-        System.out.println(s1 == s6); //false
-        System.out.println(s1 == s6.intern()); //true
-        System.out.println(s2 == s2.intern()); //false
+        String s1 &#x3D; &quot;Programming&quot;;
+        String s2 &#x3D; new String(&quot;Programming&quot;);
+        String s3 &#x3D; &quot;Program&quot;;
+        String s4 &#x3D; &quot;ming&quot;;
+        String s5 &#x3D; &quot;Program&quot; + &quot;ming&quot;;
+        String s6 &#x3D; s3 + s4;
+        System.out.println(s1 &#x3D;&#x3D; s2); &#x2F;&#x2F; false
+        System.out.println(s1 &#x3D;&#x3D; s5); &#x2F;&#x2F;true
+        System.out.println(s1 &#x3D;&#x3D; s6); &#x2F;&#x2F;false
+        System.out.println(s1 &#x3D;&#x3D; s6.intern()); &#x2F;&#x2F;true
+        System.out.println(s2 &#x3D;&#x3D; s2.intern()); &#x2F;&#x2F;false
     &#125;
 &#125;
 
-解析：1. String是引用类型，这里 == 比较的是引用是否相同，即是否指向相同的地址
+解析：1. String是引用类型，这里 &#x3D;&#x3D; 比较的是引用是否相同，即是否指向相同的地址
      2. 在new String对象时，会产生一个新的对象，并不会使用常量池中的字符串
      3. intern会在常量池中寻找该字符串（如果没有责新建），并返回他的地址
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="8-String-s-new-String-“xyz”-创建了几个字符串对象？"><a href="#8-String-s-new-String-“xyz”-创建了几个字符串对象？" class="headerlink" title="8. String s = new String(“xyz”);创建了几个字符串对象？"></a>8. String s = new String(“xyz”);创建了几个字符串对象？</h3><blockquote>
 <p>两个对象，一个是静态区的”xyz”;一个是用new创建在堆上的对象。</p>
 </blockquote>
@@ -1155,14 +1162,14 @@ class StringEqualTest &#123;
 <li>再举例一种递归方法：</li>
 </ol>
 </blockquote>
-<pre><code>public String reverse(String originString)&#123;
-if(originString == null || originString.length &lt;= 1)
+<pre class="line-numbers language-none"><code class="language-none">public String reverse(String originString)&#123;
+if(originString &#x3D;&#x3D; null || originString.length &lt;&#x3D; 1)
 return originString;
 return reverse(originString.subString(1)) + originString.charAt(0);
 &#125;
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="11-String-为什么要设计成不可变的"><a href="#11-String-为什么要设计成不可变的" class="headerlink" title="11. String 为什么要设计成不可变的"></a>11. <a target="_blank" rel="noopener" href="https://juejin.im/post/5aa1ee0c51882555677e2109">String 为什么要设计成不可变的</a></h3><h4 id="1-安全性"><a href="#1-安全性" class="headerlink" title="1. 安全性"></a>1. 安全性</h4><blockquote>
 <ol>
 <li>线程安全，不可变天生线程安全</li>
@@ -1273,21 +1280,21 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 <li>找到后调整链表，将该元素从链表中删除</li>
 </ol>
 </blockquote>
-<pre><code>//源码 java8
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;源码 java8
  @Override public V remove(Object key) &#123;
-        if (key == null) &#123;
+        if (key &#x3D;&#x3D; null) &#123;
             return removeNullKey();
         &#125;
-        int hash = Collections.secondaryHash(key);
-        HashMapEntry&lt;K, V&gt;[] tab = table;
-        int index = hash &amp; (tab.length - 1);
-        for (HashMapEntry&lt;K, V&gt; e = tab[index], prev = null;
-                e != null; prev = e, e = e.next) &#123;
-            if (e.hash == hash &amp;&amp; key.equals(e.key)) &#123;
-                if (prev == null) &#123;
-                    tab[index] = e.next;
+        int hash &#x3D; Collections.secondaryHash(key);
+        HashMapEntry&lt;K, V&gt;[] tab &#x3D; table;
+        int index &#x3D; hash &amp; (tab.length - 1);
+        for (HashMapEntry&lt;K, V&gt; e &#x3D; tab[index], prev &#x3D; null;
+                e !&#x3D; null; prev &#x3D; e, e &#x3D; e.next) &#123;
+            if (e.hash &#x3D;&#x3D; hash &amp;&amp; key.equals(e.key)) &#123;
+                if (prev &#x3D;&#x3D; null) &#123;
+                    tab[index] &#x3D; e.next;
                 &#125; else &#123;
-                    prev.next = e.next;
+                    prev.next &#x3D; e.next;
                 &#125;
                 modCount++;
                 size--;
@@ -1297,8 +1304,8 @@ return reverse(originString.subString(1)) + originString.charAt(0);
         &#125;
         return null;
     &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="14-HashMap的扩容过程"><a href="#14-HashMap的扩容过程" class="headerlink" title="14. HashMap的扩容过程"></a>14. HashMap的扩容过程</h3><blockquote>
 <ol>
 <li>在初次加载时，会调用resize（）进行初始化</li>
@@ -1455,41 +1462,41 @@ return reverse(originString.subString(1)) + originString.charAt(0);
 <li>java中虽然有GC帮我们自动回收内存，但是只有当实例没有引用指向它时才会被回收，若我们错误的持有了引用，没有在应当释放时释放，就会造成内存泄漏，例如在长生命周期对象持有短生命周期对象。</li>
 </ol>
 </blockquote>
-<pre><code>举例：
+<pre class="line-numbers language-none"><code class="language-none">举例：
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class MyStack&lt;T&gt; &#123;
 private T[] elements;
-private int size = 0;
+private int size &#x3D; 0;
 
-private static final int INIT_CAPACITY = 16;
+private static final int INIT_CAPACITY &#x3D; 16;
 
 public MyStack() &#123;
-   elements = (T[]) new Object[INIT_CAPACITY];
+   elements &#x3D; (T[]) new Object[INIT_CAPACITY];
  &#125;
 
 public void push(T elem) &#123;
    ensureCapacity();
-   elements[size++] = elem;
+   elements[size++] &#x3D; elem;
  &#125;
 
 public T pop() &#123;
-if(size == 0)
+if(size &#x3D;&#x3D; 0)
    throw new EmptyStackException();
    return elements[--size];
    &#125;
 
 private void ensureCapacity() &#123;
- if(elements.length == size) &#123;
-   elements = Arrays.copyOf(elements, 2 * size + 1);
+ if(elements.length &#x3D;&#x3D; size) &#123;
+   elements &#x3D; Arrays.copyOf(elements, 2 * size + 1);
   &#125;
  &#125;
 &#125;
 
 分析：这里用数组实现了一个栈，但是当数据pop之后，数组里内容并没有被清空。
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="1-GC是什么？为什么要有GC？"><a href="#1-GC是什么？为什么要有GC？" class="headerlink" title="1. GC是什么？为什么要有GC？"></a>1. GC是什么？为什么要有GC？</h3><blockquote>
 <ol>
 <li>GC是垃圾收集器（Garbage Collection）的缩写，是面试中常考的点。了解GC的运行方式，对防止内存泄漏，提高运行效率等都有好处</li>
@@ -1743,22 +1750,22 @@ private void ensureCapacity() &#123;
 <li>volatile禁止进行指令重排序</li>
 </ol>
 </blockquote>
-<h3 id="8-写一个双检锁的单例"><a href="#8-写一个双检锁的单例" class="headerlink" title="8. 写一个双检锁的单例"></a>8. 写一个双检锁的单例</h3><pre><code>private static volatile Singleton instance;  
+<h3 id="8-写一个双检锁的单例"><a href="#8-写一个双检锁的单例" class="headerlink" title="8. 写一个双检锁的单例"></a>8. 写一个双检锁的单例</h3><pre class="line-numbers language-none"><code class="language-none">private static volatile Singleton instance;  
 
 private Singleton()&#123;&#125;  
     
 public Singleton getInstance(
-if(singleton == null)&#123;
+if(singleton &#x3D;&#x3D; null)&#123;
   synchronized(Singleton.class)&#123;
-  if(singleton == null)&#123;
-  singleton = new Singleton();
+  if(singleton &#x3D;&#x3D; null)&#123;
+  singleton &#x3D; new Singleton();
   &#125;
   &#125;
 &#125;
 return sinlgeton;
 )
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="9-单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用"><a href="#9-单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用" class="headerlink" title="9. 单例的DCL方式下，那个单例的私有变量要不要加volatile关键字，这个关键字有什么用"></a>9. <a target="_blank" rel="noopener" href="https://blog.csdn.net/glory1234work2115/article/details/50814419">单例的DCL方式下，那个单例的私有变量要不要加volatile关键字</a>，这个关键字有什么用</h3><blockquote>
 <ol>
 <li>要加</li>
@@ -1805,18 +1812,18 @@ return sinlgeton;
 <li>Executors 是一个工具类，可以帮我们生成一些特性的线程池</li>
 </ol>
 </blockquote>
-<pre><code>newSingleThreadExecutor：创建一个单线程化的Executor，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
+<pre class="line-numbers language-none"><code class="language-none">newSingleThreadExecutor：创建一个单线程化的Executor，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
 newFixedThreadPool：创建一个指定工作线程数量的线程池。每当提交一个任务就创建一个工作线程，如果工作线程数量达到线程池初始的最大数，则将提交的任务存入到池队列中。
 newCachedThreadPool：创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
 newScheduleThreadPool：创建一个定长的线程池，而且支持定时的以及周期性的任务执行，支持定时及周期性任务执行。
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <ol>
 <li>我们常用的ThreadPoolExecutor实现了ExecutorService接口,以下是原理和参数说明</li>
 </ol>
 </blockquote>
-<pre><code>原理：
+<pre class="line-numbers language-none"><code class="language-none">原理：
 step1.调用ThreadPoolExecutor的execute提交线程，首先检查CorePool，如果CorePool内的线程小于CorePoolSize，新创建线程执行任务。
 step2.如果当前CorePool内的线程大于等于CorePoolSize，那么将线程加入到BlockingQueue。
 step3.如果不能加入BlockingQueue，在小于MaxPoolSize的情况下创建线程执行任务。
@@ -1839,8 +1846,8 @@ RejectedExecutionHandler 线程拒绝策略
 2. submit有返回值
 3. 在异常处理时，submit可以通过Future.get捕获抛出的异常
 
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="1-线程池如何调优，最大数目如何确认"><a href="#1-线程池如何调优，最大数目如何确认" class="headerlink" title="1. 线程池如何调优，最大数目如何确认"></a>1. 线程池如何调优，最大数目如何确认</h3><blockquote>
 <ol>
 <li>线程池的调优优根据具体情况具体分析，尽量使系统资源利用率最大</li>
@@ -1863,9 +1870,9 @@ RejectedExecutionHandler 线程拒绝策略
 <li>CountDownLatch:利用它可以实现类似计数器的功能。比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行，此时就可以利用CountDownLatch来实现这种功能了</li>
 </ol>
 </blockquote>
-<pre><code>public class Test &#123;
+<pre class="line-numbers language-none"><code class="language-none">public class Test &#123;
      public static void main(String[] args) &#123;   
-         final CountDownLatch latch = new CountDownLatch(2);
+         final CountDownLatch latch &#x3D; new CountDownLatch(2);
           
          new Thread()&#123;
              public void run() &#123;
@@ -1903,31 +1910,31 @@ RejectedExecutionHandler 线程拒绝策略
         &#125;
      &#125;
 &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <ol>
 <li>CyclicBarrier: 实现让一组线程等待至某个状态之后再全部同时执行</li>
 </ol>
 </blockquote>
-<pre><code>public class Test &#123;
+<pre class="line-numbers language-none"><code class="language-none">public class Test &#123;
     public static void main(String[] args) &#123;
-        int N = 4;
-        CyclicBarrier barrier  = new CyclicBarrier(N);
-        for(int i=0;i&lt;N;i++)
+        int N &#x3D; 4;
+        CyclicBarrier barrier  &#x3D; new CyclicBarrier(N);
+        for(int i&#x3D;0;i&lt;N;i++)
             new Writer(barrier).start();
     &#125;
     static class Writer extends Thread&#123;
         private CyclicBarrier cyclicBarrier;
         public Writer(CyclicBarrier cyclicBarrier) &#123;
-            this.cyclicBarrier = cyclicBarrier;
+            this.cyclicBarrier &#x3D; cyclicBarrier;
         &#125;
  
         @Override
         public void run() &#123;
             System.out.println(&quot;线程&quot;+Thread.currentThread().getName()+&quot;正在写入数据...&quot;);
             try &#123;
-                Thread.sleep(5000);      //以睡眠来模拟写入数据操作
+                Thread.sleep(5000);      &#x2F;&#x2F;以睡眠来模拟写入数据操作
                 System.out.println(&quot;线程&quot;+Thread.currentThread().getName()+&quot;写入数据完毕，等待其他线程写入完毕&quot;);
                 cyclicBarrier.await();
             &#125; catch (InterruptedException e) &#123;
@@ -1941,18 +1948,18 @@ RejectedExecutionHandler 线程拒绝策略
 &#125;
 
 扩展（CyclicBarrier和CountdownLatch的区别）：1.CountdownLatch等待几个任务执行完毕，CyclicBarrier等待达到某个状态；2.CyclicBarrier可以调用reset，循环使用；3.CyclicBarrier可以有含Runnable的构造方法，当达到某一状态时执行某一任务。
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <ol>
 <li>Semaphore：Semaphore可以控同时访问的某个资源的线程个数</li>
 </ol>
 </blockquote>
-<pre><code>public class Test &#123;
+<pre class="line-numbers language-none"><code class="language-none">public class Test &#123;
     public static void main(String[] args) &#123;
-        int N = 8;            //工人数
-        Semaphore semaphore = new Semaphore(5); //机器数目
-        for(int i=0;i&lt;N;i++)
+        int N &#x3D; 8;            &#x2F;&#x2F;工人数
+        Semaphore semaphore &#x3D; new Semaphore(5); &#x2F;&#x2F;机器数目
+        for(int i&#x3D;0;i&lt;N;i++)
             new Worker(i,semaphore).start();
     &#125;
      
@@ -1960,8 +1967,8 @@ RejectedExecutionHandler 线程拒绝策略
         private int num;
         private Semaphore semaphore;
         public Worker(int num,Semaphore semaphore)&#123;
-            this.num = num;
-            this.semaphore = semaphore;
+            this.num &#x3D; num;
+            this.semaphore &#x3D; semaphore;
         &#125;
          
         @Override
@@ -1978,8 +1985,8 @@ RejectedExecutionHandler 线程拒绝策略
         &#125;
     &#125;
 &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="1-java中的信号量（Semaphore）"><a href="#1-java中的信号量（Semaphore）" class="headerlink" title="1. java中的信号量（Semaphore）"></a>1. <a target="_blank" rel="noopener" href="https://blog.csdn.net/zzp_403184692/article/details/8017173">java中的信号量（Semaphore）</a></h3><blockquote>
 <ol>
 <li>Semaphore可以控制当前资源被访问的线程个数，超过最大个数后线程处于阻塞等待状态</li>
@@ -2000,13 +2007,13 @@ RejectedExecutionHandler 线程拒绝策略
 <li>阻塞队列的特征是当取或放元素是，队列不满足条件（比如队列为空时进行取操作）可以阻塞等待，知道满足条件</li>
 </ol>
 </blockquote>
-<pre><code>public class BlockingQueueTest &#123;
- private int size = 20;
- private ArrayBlockingQueue&lt;Integer&gt; queue = new ArrayBlockingQueue&lt;&gt;(size); 
+<pre class="line-numbers language-none"><code class="language-none">public class BlockingQueueTest &#123;
+ private int size &#x3D; 20;
+ private ArrayBlockingQueue&lt;Integer&gt; queue &#x3D; new ArrayBlockingQueue&lt;&gt;(size); 
  public static void main(String[] args) &#123; 
- BlockingQueueTest test = new BlockingQueueTest();
- Producer producer = test.new Producer();
- Consumer consumer = test.new Consumer(); 
+ BlockingQueueTest test &#x3D; new BlockingQueueTest();
+ Producer producer &#x3D; test.new Producer();
+ Consumer consumer &#x3D; test.new Consumer(); 
  producer.start();
  consumer.start(); 
  &#125;
@@ -2014,7 +2021,7 @@ RejectedExecutionHandler 线程拒绝策略
  @Override public void run() &#123;
  while(true)&#123;
  try &#123; 
-      //从阻塞队列中取出一个元素 
+      &#x2F;&#x2F;从阻塞队列中取出一个元素 
       queue.take(); 
       System.out.println(&quot;队列剩余&quot; + queue.size() + &quot;个元素&quot;); 
       &#125; catch (InterruptedException e) &#123; 
@@ -2024,14 +2031,14 @@ RejectedExecutionHandler 线程拒绝策略
        @Override public void run() &#123;
         while (true) &#123;
          try &#123; 
-         //向阻塞队列中插入一个元素 
+         &#x2F;&#x2F;向阻塞队列中插入一个元素 
          queue.put(1); 
          System.out.println(&quot;队列剩余空间：&quot; + (size - queue.size())); 
          &#125; catch (InterruptedException e) &#123;&#125; &#125;&#125; 
 &#125;
 &#125;
-复制代码
-</code></pre>
+复制代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="4-ArrayBlockingQueue-CountDownLatch类的作用"><a href="#4-ArrayBlockingQueue-CountDownLatch类的作用" class="headerlink" title="4. ArrayBlockingQueue, CountDownLatch类的作用"></a>4. ArrayBlockingQueue, CountDownLatch类的作用</h3><blockquote>
 <ol>
 <li>ArrayBlockingQueue:一个基于数组实现的阻塞队列，它在构造时需要指定容量。当试图向满队列中添加元素或者从空队列中移除元素时，当前线程会被阻塞。</li>

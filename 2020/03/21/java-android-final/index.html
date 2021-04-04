@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -423,6 +423,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -440,33 +443,33 @@
 <p>If you’re defining an anonymous inner class and want to use an object that’s defined outside the anonymous inner class, the compiler</p>
 <p>requires that the argument reference be final, as you see in the argument to destination( ).</p>
 <p>这里确实给出了结论，和我们在前面陈述的是一样的，但是没有说清楚为什么，然后我又去翻开了《Java核心卷》，这里面才找到我想要的，首先它贴出这样的代码：</p>
-<pre class=" language-java"><code class="language-java">
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token keyword">int</span> interval<span class="token punctuation">,</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> beep<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#123;</span>
     <span class="token keyword">class</span> <span class="token class-name">TimePrinter</span> <span class="token keyword">implements</span> <span class="token class-name">ActionListener</span>
-    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span>ActionEvent event<span class="token punctuation">)</span>
-        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            Date now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"At the tone, the time is "</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>beep<span class="token punctuation">)</span> Toolkit<span class="token punctuation">.</span><span class="token function">getDefaultToolkit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">beep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span><span class="token class-name">ActionEvent</span> event<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Date</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"At the tone, the time is "</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>beep<span class="token punctuation">)</span> <span class="token class-name">Toolkit</span><span class="token punctuation">.</span><span class="token function">getDefaultToolkit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">beep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
  
-    ActionListener listener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TimePrinter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Timer t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Timer</span><span class="token punctuation">(</span>interval<span class="token punctuation">,</span> listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">ActionListener</span> listener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TimePrinter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Timer</span> t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Timer</span><span class="token punctuation">(</span>interval<span class="token punctuation">,</span> listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
     t<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>注意这个beep，在局部内部类中使用了，而且使用了final，接下来它做了一件事：反编译这个TimePrinter：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">TalkingClock</span>$1TimePrinter
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    TalkingClock$<span class="token function">1TimePrinter</span><span class="token punctuation">(</span>TalkingClock<span class="token punctuation">,</span> <span class="token keyword">boolean</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>awt<span class="token punctuation">.</span>event<span class="token punctuation">.</span>ActionEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">TalkingClock</span>$<span class="token number">1</span>TimePrinter
+<span class="token punctuation">&#123;</span>
+    <span class="token class-name">TalkingClock</span>$<span class="token function">1TimePrinter</span><span class="token punctuation">(</span><span class="token class-name">TalkingClock</span><span class="token punctuation">,</span> <span class="token keyword">boolean</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span><span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>awt<span class="token punctuation">.</span>event<span class="token punctuation">.</span></span>ActionEvent</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">final</span> <span class="token keyword">boolean</span> val$beep<span class="token punctuation">;</span>
-    <span class="token keyword">final</span> TalkingClock <span class="token keyword">this</span>$<span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+    <span class="token keyword">final</span> <span class="token class-name">TalkingClock</span> <span class="token keyword">this</span>$<span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>into the constructor and stored in the val$beep field. The compiler detects access of local variables, makes matching instance fields for each one of them, and copies the local variables into the constructor so that the instance fields can be initialized.</p>
 <p>以上文档就很好的阐述了理由：原来，我们在局部内部类中访问的这些final修饰的局部变量，都会作为局部内部类的由final修饰的成员变量，并在构造中传入值初始化。</p>
 <p>原来，编译器是这么处理的，渐渐有了眉目，但是为什么必须声明是final的呢？还是核心卷里的一段话启发了我：</p>
@@ -475,37 +478,37 @@
 </blockquote>
 <p>也就是说，我们在局部内部类中访问的实际上是这个var$beep（它的值等于beep），它是局部变量beep一份拷贝，并不是局部变量本身，但是为了方便编程，编译器允许我们直接使用beep来指代var$beep。那到这里就能解释为什么要是final了。</p>
 <p>我们来试想这样的场景：如果我们在局部内部类中对访问的这个局部变量进行了修改，例如在上面的actionPerformed方法中，我添加了这样的一行代码：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span>ActionEvent event<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">actionPerformed</span><span class="token punctuation">(</span><span class="token class-name">ActionEvent</span> event<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
     beep <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    Date now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"At the tone, the time is "</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>beep<span class="token punctuation">)</span> Toolkit<span class="token punctuation">.</span><span class="token function">getDefaultToolkit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">beep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+    <span class="token class-name">Date</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"At the tone, the time is "</span> <span class="token operator">+</span> now<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>beep<span class="token punctuation">)</span> <span class="token class-name">Toolkit</span><span class="token punctuation">.</span><span class="token function">getDefaultToolkit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">beep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>那么这个时候，就会出现矛盾，在actionPerformed中将beep置为false，这个时候，这个beep本质上是我们前面提到的var$beep，而不是局部变量beep，那么接下来的代码中，到底以谁为准，就会造成不一致，就会给程序员带来困扰，那么这个时候规定，此时只能使用这个局部变量，而不允许修改它，<strong>因此，局部变量必须声明为final，而且内部类中的这份拷贝，这个成员变量也是final的</strong>。到这里我们已经能够解释原因了。</p>
 <p>接下来我就把项目中遇到的问题在这里与大家分享一下：</p>
 <p>先贴出关键代码：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GroupDetailAdapter</span> <span class="token keyword">extends</span> <span class="token class-name">BaseAdapter</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> UserInfo userInfo<span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GroupDetailAdapter</span> <span class="token keyword">extends</span> <span class="token class-name">BaseAdapter</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">UserInfo</span> userInfo<span class="token punctuation">;</span>
  
      <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> View <span class="token function">getView</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token keyword">int</span> position<span class="token punctuation">,</span> View convertView<span class="token punctuation">,</span> ViewGroup parent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">View</span> <span class="token function">getView</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token keyword">int</span> position<span class="token punctuation">,</span> <span class="token class-name">View</span> convertView<span class="token punctuation">,</span> <span class="token class-name">ViewGroup</span> parent<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
  
         userInfo  <span class="token operator">=</span> mUsers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span>
  
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
  
-        holder<span class="token punctuation">.</span>ivGroupDetailDelete<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        holder<span class="token punctuation">.</span>ivGroupDetailDelete<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
                 <span class="token annotation punctuation">@Override</span>
-                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View v<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token class-name">View</span> v<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
  
-                    <span class="token comment" spellcheck="true">// 删除群成员</span>
+                    <span class="token comment">// 删除群成员</span>
                     mOnGroupDetailListener<span class="token punctuation">.</span><span class="token function">onDeleteMember</span><span class="token punctuation">(</span>userInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>用局部变量，如果在内部类要使用，就声明为final，但是这次就不知为啥心血来潮将这个userInfo声明为成员变量，最终导致onClick方法会出现问题，传入onDeleteMember方法里的userInfo始终是集合中最后一个。后来各种debug，最后把userInfo = mUsers.get(position);这行代码放入到onClick方法中就好了，或者将这个userInfo换成局部变量然后使用也能解决问题。为什么？先解释bug出现的原因：</p>
 <p>由于我的userInfo是在getView方法中获取的，而getView方法只会在视图显示的时候被调用，显示完毕后，position的值肯定到达了它的最大值（即集合的size - 1，#2017.7.19修改：这个地方不严谨，position的值应该为当前页面显示列表的条目，我这刚好是一页就显示完毕，所以position的值为size - 1#），那么这个时候userInfo自然保存的就是集合中的最后一个元素，然后静静的等待着onClick方法的被回调，一旦回调就把userInfo传给onDeleteMember方法执行相应的逻辑，而userInfo此时肯定是集合中的最后一个元素，最终导致这个bug的诞生。</p>
 <p>这实际上才是这篇博客最初的触发点，这里来分别解释下这两种解决问题的办法：</p>

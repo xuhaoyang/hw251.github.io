@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -431,13 +431,16 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Clash-Tun-in-macOS"><a href="#Clash-Tun-in-macOS" class="headerlink" title="Clash Tun in macOS"></a>Clash Tun in macOS</h1><p><a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/releases/tag/TUN">Clash Tun Experimental release</a></p>
-<h2 id="Clash-Tun-Config"><a href="#Clash-Tun-Config" class="headerlink" title="Clash Tun Config"></a>Clash Tun Config</h2><h3 id="fake-ip-mode-not-under-test"><a href="#fake-ip-mode-not-under-test" class="headerlink" title="fake-ip mode (not under test)"></a>fake-ip mode (not under test)</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">dns</span><span class="token punctuation">:</span>
+<h2 id="Clash-Tun-Config"><a href="#Clash-Tun-Config" class="headerlink" title="Clash Tun Config"></a>Clash Tun Config</h2><h3 id="fake-ip-mode-not-under-test"><a href="#fake-ip-mode-not-under-test" class="headerlink" title="fake-ip mode (not under test)"></a>fake-ip mode (not under test)</h3><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">dns</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">listen</span><span class="token punctuation">:</span> 0.0.0.0<span class="token punctuation">:</span><span class="token number">53</span>
   <span class="token key atrule">enhanced-mode</span><span class="token punctuation">:</span> fake<span class="token punctuation">-</span>ip
@@ -445,19 +448,21 @@
     <span class="token punctuation">-</span> 114.114.114.114
 
 <span class="token key atrule">experimental</span><span class="token punctuation">:</span>
-  <span class="token key atrule">interface-name</span><span class="token punctuation">:</span> en0 <span class="token comment" spellcheck="true"># your interface-name</span>
+  <span class="token key atrule">interface-name</span><span class="token punctuation">:</span> en0 <span class="token comment"># your interface-name</span>
 
 <span class="token key atrule">tun</span><span class="token punctuation">:</span>
-  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-</code></pre>
-<h3 id="real-ip-mode-recommend"><a href="#real-ip-mode-recommend" class="headerlink" title="real-ip mode (recommend)"></a>real-ip mode (recommend)</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">dns</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="real-ip-mode-recommend"><a href="#real-ip-mode-recommend" class="headerlink" title="real-ip mode (recommend)"></a>real-ip mode (recommend)</h3><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">dns</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">listen</span><span class="token punctuation">:</span> 0.0.0.0<span class="token punctuation">:</span><span class="token number">53</span>
   <span class="token key atrule">ipv6</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
   <span class="token key atrule">enhanced-mode</span><span class="token punctuation">:</span> redir<span class="token punctuation">-</span>host
   <span class="token key atrule">nameserver</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//doh.rixcloud.dev/dns<span class="token punctuation">-</span>query
-    <span class="token punctuation">-</span> tls<span class="token punctuation">:</span>//dns.rubyfish.cn<span class="token punctuation">:</span><span class="token number">853 </span><span class="token comment" spellcheck="true"># dns over tls</span>
+    <span class="token punctuation">-</span> tls<span class="token punctuation">:</span>//dns.rubyfish.cn<span class="token punctuation">:</span><span class="token number">853</span> <span class="token comment"># dns over tls</span>
     <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//i.233py.com/dns<span class="token punctuation">-</span>query
     <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//dns.google/dns<span class="token punctuation">-</span>query
     <span class="token punctuation">-</span> https<span class="token punctuation">:</span>//118.31.13.131/dns<span class="token punctuation">-</span>query
@@ -468,11 +473,13 @@
     <span class="token punctuation">-</span> 119.28.28.28
 
 <span class="token key atrule">experimental</span><span class="token punctuation">:</span>
-  <span class="token key atrule">interface-name</span><span class="token punctuation">:</span> en0 <span class="token comment" spellcheck="true"># your interface-name</span>
+  <span class="token key atrule">interface-name</span><span class="token punctuation">:</span> en0 <span class="token comment"># your interface-name</span>
 
 <span class="token key atrule">tun</span><span class="token punctuation">:</span>
-  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-</code></pre>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="DNS-recommendations"><a href="#DNS-recommendations" class="headerlink" title="DNS recommendations"></a>DNS recommendations</h3><p>use DoT/DoH.</p>
 <ul>
 <li>tls://dns.rubyfish.cn:853 # dns over tls</li>
@@ -485,91 +492,97 @@
 <li><a target="_blank" rel="noopener" href="https://47.108.56.233/dns-query">https://47.108.56.233/dns-query</a></li>
 <li><a target="_blank" rel="noopener" href="https://59.110.53.209/dns-query">https://59.110.53.209/dns-query</a></li>
 </ul>
-<h3 id="Update-Config-When-Clash-is-Running"><a href="#Update-Config-When-Clash-is-Running" class="headerlink" title="Update Config When Clash  is Running"></a>Update Config When Clash  is Running</h3><pre class=" language-shell"><code class="language-shell">curl -v -X PUT -H "Accept: application/json" -H "Content-type: application/json"  -d '&#123;"path":"/Users/xuhaoyang/clash/config.yaml"&#125;' 127.0.0.1:9090/configs
-</code></pre>
-<h3 id="Run-clash-with-sudo"><a href="#Run-clash-with-sudo" class="headerlink" title="Run clash with sudo"></a>Run clash with sudo</h3><pre class=" language-shell"><code class="language-shell">sudo ./clash -d .
-</code></pre>
-<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><h3 id="macOS-set-global-route-after-tun-start"><a href="#macOS-set-global-route-after-tun-start" class="headerlink" title="macOS set global route (after tun start)"></a>macOS set global route (after tun start)</h3><pre class=" language-shell"><code class="language-shell">sudo route -n add -net 1 198.18.0.1
-sudo route -n add -net 2/7 198.18.0.1
-sudo route -n add -net 4/6 198.18.0.1
-sudo route -n add -net 8/5 198.18.0.1
-sudo route -n add -net 16/4 198.18.0.1
-sudo route -n add -net 32/3 198.18.0.1
-sudo route -n add -net 64/2 198.18.0.1
-sudo route -n add -net 128.0/1 198.18.0.1
-networksetup -setdnsservers Wi-Fi 127.0.0.1
-</code></pre>
-<h3 id="Unset"><a href="#Unset" class="headerlink" title="Unset"></a>Unset</h3><pre class=" language-shell"><code class="language-shell">sudo route -n delete -net 1 198.18.0.1
-sudo route -n delete -net 2/7 198.18.0.1
-sudo route -n delete -net 4/6 198.18.0.1
-sudo route -n delete -net 8/5 198.18.0.1
-sudo route -n delete -net 16/4 198.18.0.1
-sudo route -n delete -net 32/3 198.18.0.1
-sudo route -n delete -net 64/2 198.18.0.1
-sudo route -n delete -net 128.0/1 198.18.0.1
-networksetup -setdnsservers Wi-Fi
-</code></pre>
+<h3 id="Update-Config-When-Clash-is-Running"><a href="#Update-Config-When-Clash-is-Running" class="headerlink" title="Update Config When Clash  is Running"></a>Update Config When Clash  is Running</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -v -X PUT -H <span class="token string">"Accept: application/json"</span> -H <span class="token string">"Content-type: application/json"</span>  -d <span class="token string">'&#123;"path":"/Users/xuhaoyang/clash/config.yaml"&#125;'</span> <span class="token number">127.0</span>.0.1:9090/configs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="Run-clash-with-sudo"><a href="#Run-clash-with-sudo" class="headerlink" title="Run clash with sudo"></a>Run clash with sudo</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> ./clash -d <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="System"><a href="#System" class="headerlink" title="System"></a>System</h2><h3 id="macOS-set-global-route-after-tun-start"><a href="#macOS-set-global-route-after-tun-start" class="headerlink" title="macOS set global route (after tun start)"></a>macOS set global route (after tun start)</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">1</span> <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">2</span>/7 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">4</span>/6 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">8</span>/5 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">16</span>/4 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">32</span>/3 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">64</span>/2 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">128.0</span>/1 <span class="token number">198.18</span>.0.1
+networksetup -setdnsservers Wi-Fi <span class="token number">127.0</span>.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Unset"><a href="#Unset" class="headerlink" title="Unset"></a>Unset</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> route -n delete -net <span class="token number">1</span> <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n delete -net <span class="token number">2</span>/7 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n delete -net <span class="token number">4</span>/6 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n delete -net <span class="token number">8</span>/5 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n delete -net <span class="token number">16</span>/4 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n delete -net <span class="token number">32</span>/3 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n delete -net <span class="token number">64</span>/2 <span class="token number">198.18</span>.0.1
+<span class="token function">sudo</span> route -n delete -net <span class="token number">128.0</span>/1 <span class="token number">198.18</span>.0.1
+networksetup -setdnsservers Wi-Fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>Or close clash</p>
-<h3 id="IP-foward"><a href="#IP-foward" class="headerlink" title="IP foward"></a>IP foward</h3><pre><code># IPv4 的转发
-$ sudo sysctl -w net.inet.ip.forwarding=1
+<h3 id="IP-foward"><a href="#IP-foward" class="headerlink" title="IP foward"></a>IP foward</h3><pre class="line-numbers language-none"><code class="language-none"># IPv4 的转发
+$ sudo sysctl -w net.inet.ip.forwarding&#x3D;1
 net.inet.ip.forwarding: 0 -&gt; 1
 
 # IPv6 的转发
-$ sudo sysctl -w net.inet6.ip6.forwarding=1
+$ sudo sysctl -w net.inet6.ip6.forwarding&#x3D;1
 net.inet6.ip6.forwarding: 0 -&gt; 1
 
 sudo sysctl -a | grep forward
 
-/etc/sysctl.conf 
-</code></pre>
-<h3 id="Shell-setting"><a href="#Shell-setting" class="headerlink" title="Shell setting"></a>Shell setting</h3><pre class=" language-shell"><code class="language-shell">fun setClashNetwork()&#123;
-  OLDIFS=$IFS
-  IFS=$'\n'
-  sudo route -n add -net 1 198.18.0.1
-  sudo route -n add -net 2/7 198.18.0.1
-  sudo route -n add -net 4/6 198.18.0.1
-  sudo route -n add -net 8/5 198.18.0.1
-  sudo route -n add -net 16/4 198.18.0.1
-  sudo route -n add -net 32/3 198.18.0.1
-  sudo route -n add -net 64/2 198.18.0.1
-  sudo route -n add -net 128.0/1 198.18.0.1
-  for line in $(networksetup -listallnetworkservices)
-  do
-    if [[ "$line" != *"An asterisk"* ]] 
-    then
-      echo "$line"
-      networksetup -setdnsservers $line "127.0.0.1"
-    fi
-  done
-  IFS=$OLDIFS
-&#125;
+&#x2F;etc&#x2F;sysctl.conf <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-fun unsetClashNetwork()&#123;
-  OLDIFS=$IFS
-  IFS=$'\n'
-  sudo route delete -net 1 198.18.0.1
-  sudo route delete -net 2/7 198.18.0.1
-  sudo route delete -net 4/6 198.18.0.1
-  sudo route delete -net 8/5 198.18.0.1
-  sudo route delete -net 16/4 198.18.0.1
-  sudo route delete -net 32/3 198.18.0.1
-  sudo route delete -net 64/2 198.18.0.1
-  sudo route delete -net 128.0/1 198.18.0.1
-  for line in $(networksetup -listallnetworkservices)
-  do
-    if [[ "$line" != *"An asterisk"* ]] 
-    then
-      echo "$line"
-      networksetup -setdnsservers $line
-    fi
-  done
-  IFS=$OLDIFS
-&#125;
 
-fun updateClashConfig()&#123;
-  curl -v -X PUT -H "Accept: application/json" -H "Content-type: application/json"  -d '&#123;"path":"/Users/xuhaoyang/clash/config/config.yaml"&#125;' 127.0.0.1:9090/configs
-&#125;
-</code></pre>
+
+<h3 id="Shell-setting"><a href="#Shell-setting" class="headerlink" title="Shell setting"></a>Shell setting</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">fun <span class="token function-name function">setClashNetwork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token assign-left variable">OLDIFS</span><span class="token operator">=</span><span class="token environment constant">$IFS</span>
+  <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span>$<span class="token string">'<span class="token entity" title="\n">\n</span>'</span>
+  <span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">1</span> <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">2</span>/7 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">4</span>/6 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">8</span>/5 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">16</span>/4 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">32</span>/3 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">64</span>/2 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route -n <span class="token function">add</span> -net <span class="token number">128.0</span>/1 <span class="token number">198.18</span>.0.1
+  <span class="token keyword">for</span> <span class="token for-or-select variable">line</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span>networksetup -listallnetworkservices<span class="token variable">)</span></span>
+  <span class="token keyword">do</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">!=</span> *<span class="token string">"An asterisk"</span>* <span class="token punctuation">]</span><span class="token punctuation">]</span> 
+    <span class="token keyword">then</span>
+      <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span>
+      networksetup -setdnsservers <span class="token variable">$line</span> <span class="token string">"127.0.0.1"</span>
+    <span class="token keyword">fi</span>
+  <span class="token keyword">done</span>
+  <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span><span class="token variable">$OLDIFS</span>
+<span class="token punctuation">&#125;</span>
+
+fun <span class="token function-name function">unsetClashNetwork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token assign-left variable">OLDIFS</span><span class="token operator">=</span><span class="token environment constant">$IFS</span>
+  <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span>$<span class="token string">'<span class="token entity" title="\n">\n</span>'</span>
+  <span class="token function">sudo</span> route delete -net <span class="token number">1</span> <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route delete -net <span class="token number">2</span>/7 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route delete -net <span class="token number">4</span>/6 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route delete -net <span class="token number">8</span>/5 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route delete -net <span class="token number">16</span>/4 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route delete -net <span class="token number">32</span>/3 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route delete -net <span class="token number">64</span>/2 <span class="token number">198.18</span>.0.1
+  <span class="token function">sudo</span> route delete -net <span class="token number">128.0</span>/1 <span class="token number">198.18</span>.0.1
+  <span class="token keyword">for</span> <span class="token for-or-select variable">line</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span>networksetup -listallnetworkservices<span class="token variable">)</span></span>
+  <span class="token keyword">do</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">!=</span> *<span class="token string">"An asterisk"</span>* <span class="token punctuation">]</span><span class="token punctuation">]</span> 
+    <span class="token keyword">then</span>
+      <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span>
+      networksetup -setdnsservers <span class="token variable">$line</span>
+    <span class="token keyword">fi</span>
+  <span class="token keyword">done</span>
+  <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span><span class="token variable">$OLDIFS</span>
+<span class="token punctuation">&#125;</span>
+
+fun <span class="token function-name function">updateClashConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token function">curl</span> -v -X PUT -H <span class="token string">"Accept: application/json"</span> -H <span class="token string">"Content-type: application/json"</span>  -d <span class="token string">'&#123;"path":"/Users/xuhaoyang/clash/config/config.yaml"&#125;'</span> <span class="token number">127.0</span>.0.1:9090/configs
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>

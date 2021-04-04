@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -427,6 +427,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -441,106 +444,108 @@
 <li>其他：如 <strong>appleRAID</strong>、<strong>apfs</strong> 等</li>
 </ul>
 <h2 id="apfs"><a href="#apfs" class="headerlink" title="apfs"></a>apfs</h2><p>apfs模拟的是一个完整的硬盘(个人理解)</p>
-<h3 id="列出apfs列表"><a href="#列出apfs列表" class="headerlink" title="列出apfs列表"></a>列出apfs列表</h3><pre class=" language-bash"><code class="language-bash">diskutil apfs list /dev/disk3
-</code></pre>
+<h3 id="列出apfs列表"><a href="#列出apfs列表" class="headerlink" title="列出apfs列表"></a>列出apfs列表</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">diskutil apfs list /dev/disk3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="删除apfs容器"><a href="#删除apfs容器" class="headerlink" title="删除apfs容器"></a>删除apfs容器</h3><p>删除容器目标应该是以disk硬盘为目标</p>
-<pre class=" language-bash"><code class="language-bash"> diskutil apfs deleteContainer disk3
-</code></pre>
-<h2 id="HFS"><a href="#HFS" class="headerlink" title="HFS"></a>HFS</h2><h3 id="格式化-擦除整个磁盘格式化"><a href="#格式化-擦除整个磁盘格式化" class="headerlink" title="格式化/擦除整个磁盘格式化"></a>格式化/擦除整个磁盘格式化</h3><h4 id="eraseDisk"><a href="#eraseDisk" class="headerlink" title="eraseDisk"></a>eraseDisk</h4><pre class=" language-bash"><code class="language-bash">diskutil eraseDisk <span class="token operator">&lt;</span>format<span class="token operator">></span> <span class="token operator">&lt;</span>name<span class="token operator">></span> <span class="token punctuation">[</span>APM<span class="token operator">|</span>MBR<span class="token operator">|</span>GPT<span class="token punctuation">]</span> MountPoint<span class="token operator">|</span>DiskIdentifier<span class="token operator">|</span>DeviceNode
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">diskutil apfs deleteContainer disk3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="HFS"><a href="#HFS" class="headerlink" title="HFS"></a>HFS</h2><h3 id="格式化-擦除整个磁盘格式化"><a href="#格式化-擦除整个磁盘格式化" class="headerlink" title="格式化/擦除整个磁盘格式化"></a>格式化/擦除整个磁盘格式化</h3><h4 id="eraseDisk"><a href="#eraseDisk" class="headerlink" title="eraseDisk"></a>eraseDisk</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">diskutil eraseDisk <span class="token operator">&lt;</span>format<span class="token operator">></span> <span class="token operator">&lt;</span>name<span class="token operator">></span> <span class="token punctuation">[</span>APM<span class="token operator">|</span>MBR<span class="token operator">|</span>GPT<span class="token punctuation">]</span> MountPoint<span class="token operator">|</span>DiskIdentifier<span class="token operator">|</span>DeviceNode<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><em>format</em> 用于指定擦除数据后需要重新建立的文件系统类型。可以为 <em>%noformat%</em> 来跳过初始化文件系统的操作。其他支持的类型可以通过 <code>listFilesystems</code> 选项查看。</p>
 <p>可以使用 <code>diskutil eraseDisk ExFAT StarkyDisk disk2</code> 命令将优盘数据擦除并格式化为 ExFAT 格式。</p>
 <h4 id="eraseVolume"><a href="#eraseVolume" class="headerlink" title="eraseVolume"></a>eraseVolume</h4><p>完全擦除整个磁盘或某个磁盘分区，创建新的文件系统</p>
 <h4 id="zeroDisk"><a href="#zeroDisk" class="headerlink" title="zeroDisk"></a>zeroDisk</h4><p>向整个磁盘或某个分区全部写入 ‘0’，该磁盘上的全部信息被抹除，同时也不再包含分区和文件系统信息</p>
-<h3 id="创建磁盘分区"><a href="#创建磁盘分区" class="headerlink" title="创建磁盘分区"></a>创建磁盘分区</h3><pre class=" language-bash"><code class="language-bash">diskutil partitionDisk MountPoint<span class="token operator">|</span>DiskIdentifier<span class="token operator">|</span>DeviceNode
+<h3 id="创建磁盘分区"><a href="#创建磁盘分区" class="headerlink" title="创建磁盘分区"></a>创建磁盘分区</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">diskutil partitionDisk MountPoint<span class="token operator">|</span>DiskIdentifier<span class="token operator">|</span>DeviceNode
         <span class="token punctuation">[</span>numberOfPartitions<span class="token punctuation">]</span> <span class="token punctuation">[</span>APM<span class="token operator">|</span>MBR<span class="token operator">|</span>GPT<span class="token punctuation">]</span>
         <span class="token punctuation">[</span>part1Format part1Name part1Size part2Format part2Name part2Size
-         part3Format part3Name part3Size <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
-</code></pre>
+         part3Format part3Name part3Size <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>命令选项中的 <strong>Size</strong> 用来指定分区的大小（以<strong>扇区</strong>数计量），合法的值包括带有指定后缀的浮点数。其中的<strong>后缀</strong>有 B(ytes), S(512-byte-<br> blocks), K(ilobytes), M(egabytes), G(igabytes), T(erabytes), P(etabytes)，也可以是 % 来表示对整个磁盘的占比。<br> 最后一个分区会自动扩展到占用整个磁盘的剩余空间，如果想为最后一个分区指定固定的大小，可在其后再创建一个类型为『free space』的分区。</p>
-<pre class=" language-dart"><code class="language-dart">➜  <span class="token operator">~</span> sudo diskutil partitionDisk disk2 <span class="token number">3</span> MBR MS<span class="token operator">-</span>DOS F01 3G JHFS<span class="token operator">+</span> F02 3G <span class="token string">"Free Space"</span> F03 <span class="token number">0</span>
-Started partitioning on disk2
+<pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">➜  <span class="token operator">~</span> sudo diskutil partitionDisk disk2 <span class="token number">3</span> MBR MS<span class="token operator">-</span>DOS F01 <span class="token number">3</span>G JHFS<span class="token operator">+</span> F02 <span class="token number">3</span>G <span class="token string">"Free Space"</span> F03 <span class="token number">0</span>
+Started partitioning <span class="token keyword">on</span> disk2
 Unmounting disk
 Creating the partition map
 Waiting <span class="token keyword">for</span> partitions to activate
-Formatting disk2s1 <span class="token operator">as</span> MS<span class="token operator">-</span><span class="token function">DOS</span> <span class="token punctuation">(</span>FAT<span class="token punctuation">)</span> <span class="token keyword">with</span> name F01
+Formatting disk2s1 <span class="token operator">as</span> MS<span class="token operator">-</span>DOS <span class="token punctuation">(</span>FAT<span class="token punctuation">)</span> <span class="token keyword">with</span> name F01
 <span class="token number">512</span> bytes per physical sector
-<span class="token operator">/</span>dev<span class="token operator">/</span>rdisk2s1<span class="token punctuation">:</span> <span class="token number">5847920</span> sectors <span class="token keyword">in</span> <span class="token number">730990</span> FAT32 <span class="token function">clusters</span> <span class="token punctuation">(</span><span class="token number">4096</span> bytes<span class="token operator">/</span>cluster<span class="token punctuation">)</span>
+<span class="token operator">/</span>dev<span class="token operator">/</span>rdisk2s1<span class="token punctuation">:</span> <span class="token number">5847920</span> sectors <span class="token keyword">in</span> <span class="token number">730990</span> FAT32 clusters <span class="token punctuation">(</span><span class="token number">4096</span> bytes<span class="token operator">/</span>cluster<span class="token punctuation">)</span>
 bps<span class="token operator">=</span><span class="token number">512</span> spc<span class="token operator">=</span><span class="token number">8</span> res<span class="token operator">=</span><span class="token number">32</span> nft<span class="token operator">=</span><span class="token number">2</span> mid<span class="token operator">=</span><span class="token number">0xf8</span> spt<span class="token operator">=</span><span class="token number">32</span> hds<span class="token operator">=</span><span class="token number">255</span> hid<span class="token operator">=</span><span class="token number">2</span> drv<span class="token operator">=</span><span class="token number">0x80</span> bsec<span class="token operator">=</span><span class="token number">5859376</span> bspf<span class="token operator">=</span><span class="token number">5711</span> rdcl<span class="token operator">=</span><span class="token number">2</span> infs<span class="token operator">=</span><span class="token number">1</span> bkbs<span class="token operator">=</span><span class="token number">6</span>
 Mounting disk
-Formatting disk2s2 <span class="token operator">as</span> Mac OS <span class="token function">Extended</span> <span class="token punctuation">(</span>Journaled<span class="token punctuation">)</span> <span class="token keyword">with</span> name F02
-Initialized <span class="token operator">/</span>dev<span class="token operator">/</span>rdisk2s2 <span class="token operator">as</span> a <span class="token number">3</span> GB <span class="token keyword">case</span><span class="token operator">-</span>insensitive HFS Plus volume <span class="token keyword">with</span> a 8192k journal
+Formatting disk2s2 <span class="token operator">as</span> Mac OS Extended <span class="token punctuation">(</span>Journaled<span class="token punctuation">)</span> <span class="token keyword">with</span> name F02
+Initialized <span class="token operator">/</span>dev<span class="token operator">/</span>rdisk2s2 <span class="token operator">as</span> a <span class="token number">3</span> GB <span class="token keyword">case</span><span class="token operator">-</span>insensitive HFS Plus volume <span class="token keyword">with</span> a <span class="token number">8192</span>k journal
 Mounting disk
-Finished partitioning on disk2
-<span class="token operator">/</span>dev<span class="token operator">/</span><span class="token function">disk2</span> <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
+Finished partitioning <span class="token keyword">on</span> disk2
+<span class="token operator">/</span>dev<span class="token operator">/</span>disk2 <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
    #<span class="token punctuation">:</span>                       TYPE NAME                    SIZE       IDENTIFIER
    <span class="token number">0</span><span class="token punctuation">:</span>     FDisk_partition_scheme                        <span class="token operator">*</span><span class="token number">7.8</span> GB     disk2
    <span class="token number">1</span><span class="token punctuation">:</span>                 DOS_FAT_32 F01                     <span class="token number">3.0</span> GB     disk2s1
-   <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F02                     <span class="token number">3.0</span> GB     disk2s2
-</code></pre>
+   <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F02                     <span class="token number">3.0</span> GB     disk2s2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>上面的命令在优盘（disk2）上创建了 3 个分区，第一个（F01）格式为 FAT32，大小是 3 Gb。第二个（F02）格式为 JHFS+，大小为 3 Gb。最后一个是『自由空间』，大小为剩余的容量。所以实际上只是分了两个区，整体的分区表类型为 MBR。</p>
 <h3 id="分割-合并磁盘分区"><a href="#分割-合并磁盘分区" class="headerlink" title="分割/合并磁盘分区"></a>分割/合并磁盘分区</h3><p><em>splitPartition</em> 选项可以用来将已存在的某个分区再分割成数个更小的分区，注意原分区上的所有数据都会丢失。<br> 该选项的第一个参数为需要分割的分区的挂载点/标志符/设备节点，其余参数和使用 <em>partitionDisk</em> 时相同。</p>
-<pre class=" language-dart"><code class="language-dart">➜  <span class="token operator">~</span> sudo diskutil list <span class="token operator">|</span> grep disk2
-<span class="token operator">/</span>dev<span class="token operator">/</span><span class="token function">disk2</span> <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">➜  <span class="token operator">~</span> sudo diskutil list <span class="token operator">|</span> grep disk2
+<span class="token operator">/</span>dev<span class="token operator">/</span>disk2 <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
    <span class="token number">0</span><span class="token punctuation">:</span>      GUID_partition_scheme                        <span class="token operator">*</span><span class="token number">7.8</span> GB     disk2
    <span class="token number">1</span><span class="token punctuation">:</span>                        EFI EFI                     <span class="token number">209.7</span> MB   disk2s1
    <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS starky                  <span class="token number">7.5</span> GB     disk2s2
-➜  <span class="token operator">~</span> sudo diskutil splitPartition disk2s2 <span class="token number">2</span> MS<span class="token operator">-</span>DOS F01 3g JHFS<span class="token operator">+</span> F02 3g
-Started partitioning on disk2s2 starky
+➜  <span class="token operator">~</span> sudo diskutil splitPartition disk2s2 <span class="token number">2</span> MS<span class="token operator">-</span>DOS F01 <span class="token number">3</span>g JHFS<span class="token operator">+</span> F02 <span class="token number">3</span>g
+Started partitioning <span class="token keyword">on</span> disk2s2 starky
 Splitting
 Unmounting disk
 Waiting <span class="token keyword">for</span> partitions to activate
-Formatting disk2s2 <span class="token operator">as</span> MS<span class="token operator">-</span><span class="token function">DOS</span> <span class="token punctuation">(</span>FAT<span class="token punctuation">)</span> <span class="token keyword">with</span> name F01
+Formatting disk2s2 <span class="token operator">as</span> MS<span class="token operator">-</span>DOS <span class="token punctuation">(</span>FAT<span class="token punctuation">)</span> <span class="token keyword">with</span> name F01
 <span class="token number">512</span> bytes per physical sector
-<span class="token operator">/</span>dev<span class="token operator">/</span>rdisk2s2<span class="token punctuation">:</span> <span class="token number">5845824</span> sectors <span class="token keyword">in</span> <span class="token number">730728</span> FAT32 <span class="token function">clusters</span> <span class="token punctuation">(</span><span class="token number">4096</span> bytes<span class="token operator">/</span>cluster<span class="token punctuation">)</span>
+<span class="token operator">/</span>dev<span class="token operator">/</span>rdisk2s2<span class="token punctuation">:</span> <span class="token number">5845824</span> sectors <span class="token keyword">in</span> <span class="token number">730728</span> FAT32 clusters <span class="token punctuation">(</span><span class="token number">4096</span> bytes<span class="token operator">/</span>cluster<span class="token punctuation">)</span>
 bps<span class="token operator">=</span><span class="token number">512</span> spc<span class="token operator">=</span><span class="token number">8</span> res<span class="token operator">=</span><span class="token number">32</span> nft<span class="token operator">=</span><span class="token number">2</span> mid<span class="token operator">=</span><span class="token number">0xf8</span> spt<span class="token operator">=</span><span class="token number">32</span> hds<span class="token operator">=</span><span class="token number">255</span> hid<span class="token operator">=</span><span class="token number">411648</span> drv<span class="token operator">=</span><span class="token number">0x80</span> bsec<span class="token operator">=</span><span class="token number">5857280</span> bspf<span class="token operator">=</span><span class="token number">5709</span> rdcl<span class="token operator">=</span><span class="token number">2</span> infs<span class="token operator">=</span><span class="token number">1</span> bkbs<span class="token operator">=</span><span class="token number">6</span>
 Mounting disk
-Formatting disk2s3 <span class="token operator">as</span> Mac OS <span class="token function">Extended</span> <span class="token punctuation">(</span>Journaled<span class="token punctuation">)</span> <span class="token keyword">with</span> name F02
-Initialized <span class="token operator">/</span>dev<span class="token operator">/</span>rdisk2s3 <span class="token operator">as</span> a <span class="token number">4</span> GB <span class="token keyword">case</span><span class="token operator">-</span>insensitive HFS Plus volume <span class="token keyword">with</span> a 8192k journal
+Formatting disk2s3 <span class="token operator">as</span> Mac OS Extended <span class="token punctuation">(</span>Journaled<span class="token punctuation">)</span> <span class="token keyword">with</span> name F02
+Initialized <span class="token operator">/</span>dev<span class="token operator">/</span>rdisk2s3 <span class="token operator">as</span> a <span class="token number">4</span> GB <span class="token keyword">case</span><span class="token operator">-</span>insensitive HFS Plus volume <span class="token keyword">with</span> a <span class="token number">8192</span>k journal
 Mounting disk
-Finished partitioning on disk2s2 starky
-<span class="token operator">/</span>dev<span class="token operator">/</span><span class="token function">disk2</span> <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
+Finished partitioning <span class="token keyword">on</span> disk2s2 starky
+<span class="token operator">/</span>dev<span class="token operator">/</span>disk2 <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
    #<span class="token punctuation">:</span>                       TYPE NAME                    SIZE       IDENTIFIER
    <span class="token number">0</span><span class="token punctuation">:</span>      GUID_partition_scheme                        <span class="token operator">*</span><span class="token number">7.8</span> GB     disk2
    <span class="token number">1</span><span class="token punctuation">:</span>                        EFI EFI                     <span class="token number">209.7</span> MB   disk2s1
    <span class="token number">2</span><span class="token punctuation">:</span>       Microsoft Basic Data F01                     <span class="token number">3.0</span> GB     disk2s2
-   <span class="token number">3</span><span class="token punctuation">:</span>                  Apple_HFS F02                     <span class="token number">4.5</span> GB     disk2s3
-</code></pre>
+   <span class="token number">3</span><span class="token punctuation">:</span>                  Apple_HFS F02                     <span class="token number">4.5</span> GB     disk2s3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><em>mergePartitions</em> 选项用来将多个已存在的分区合并为一个大的分区。该选项的格式为：</p>
-<pre class=" language-dart"><code class="language-dart">diskutil mergePartitions <span class="token punctuation">[</span>force<span class="token punctuation">]</span> format name DiskIdentifier<span class="token operator">|</span>DeviceNode DiskIdentifier<span class="token operator">|</span>DeviceNode
-</code></pre>
+<pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">diskutil mergePartitions <span class="token punctuation">[</span>force<span class="token punctuation">]</span> format name DiskIdentifier<span class="token operator">|</span>DeviceNode DiskIdentifier<span class="token operator">|</span>DeviceNode<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>第一个分区参数为起始分区，第二个分区参数为结束分区。这两个分区<strong>之间</strong>的所有分区都将被合并。<br> 如果 <em>force</em> 选项没有被指定，且合并前的第一个分区是可调整大小的文件系统（如 JHFS+），则第一个分区上的数据会保留到合并后的分区。</p>
-<pre class=" language-csharp"><code class="language-csharp">➜  <span class="token operator">~</span> sudo diskutil list <span class="token operator">|</span> grep disk2
-<span class="token operator">/</span>dev<span class="token operator">/</span><span class="token function">disk2</span> <span class="token punctuation">(</span>external<span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp">➜  <span class="token operator">~</span> sudo diskutil list <span class="token operator">|</span> grep disk2
+<span class="token operator">/</span>dev<span class="token operator">/</span>disk2 <span class="token punctuation">(</span>external<span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
    <span class="token number">0</span><span class="token punctuation">:</span>      GUID_partition_scheme                        <span class="token operator">*</span><span class="token number">7.8</span> GB     disk2
    <span class="token number">1</span><span class="token punctuation">:</span>                        EFI EFI                     <span class="token number">209.7</span> MB   disk2s1
    <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F01                     <span class="token number">2.9</span> GB     disk2s2
    <span class="token number">3</span><span class="token punctuation">:</span>       Microsoft Basic Data F02                     <span class="token number">4.5</span> GB     disk2s4
 ➜  <span class="token operator">~</span> sudo diskutil mergePartitions JHFS<span class="token operator">+</span> Starky disk2s2 disk2s4
-Merging partitions <span class="token keyword">into</span> a <span class="token keyword">new</span> <span class="token class-name">partition</span>
-     Start partition<span class="token punctuation">:</span> disk2s2 F01
-     Finish partition<span class="token punctuation">:</span> disk2s4 F02
-Started partitioning on disk2
+Merging partitions <span class="token keyword">into</span> a <span class="token keyword">new</span> partition
+     <span class="token class-name">Start</span> partition<span class="token punctuation">:</span> disk2s2 F01
+     <span class="token class-name">Finish</span> partition<span class="token punctuation">:</span> disk2s4 F02
+Started partitioning <span class="token keyword">on</span> disk2
 Merging partitions
 Waiting <span class="token keyword">for</span> partitions to activate
 Growing disk
-Finished partitioning on disk2
-<span class="token operator">/</span>dev<span class="token operator">/</span><span class="token function">disk2</span> <span class="token punctuation">(</span>external<span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
+Finished partitioning <span class="token keyword">on</span> disk2
+<span class="token operator">/</span>dev<span class="token operator">/</span>disk2 <span class="token punctuation">(</span>external<span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
    <span class="token preprocessor property">#:                       TYPE NAME                    SIZE       IDENTIFIER</span>
    <span class="token number">0</span><span class="token punctuation">:</span>      GUID_partition_scheme                        <span class="token operator">*</span><span class="token number">7.8</span> GB     disk2
    <span class="token number">1</span><span class="token punctuation">:</span>                        EFI EFI                     <span class="token number">209.7</span> MB   disk2s1
-   <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F01                     <span class="token number">7.5</span> GB     disk2s2
-</code></pre>
+   <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F01                     <span class="token number">7.5</span> GB     disk2s2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="调整分区大小（无损）"><a href="#调整分区大小（无损）" class="headerlink" title="调整分区大小（无损）"></a>调整分区大小（无损）</h3><p><em>resizeVolume</em> 选项可以<strong>无损</strong>调整（增加或缩减）分区大小。</p>
 <p>将 disk2s2 分区缩减为 4g 大小，腾出的空间作为『free space』：</p>
-<pre class=" language-dart"><code class="language-dart">➜  <span class="token operator">~</span> diskutil list <span class="token operator">|</span> grep disk2
-<span class="token operator">/</span>dev<span class="token operator">/</span><span class="token function">disk2</span> <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">➜  <span class="token operator">~</span> diskutil list <span class="token operator">|</span> grep disk2
+<span class="token operator">/</span>dev<span class="token operator">/</span>disk2 <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
    <span class="token number">0</span><span class="token punctuation">:</span>      GUID_partition_scheme                        <span class="token operator">*</span><span class="token number">7.8</span> GB     disk2
    <span class="token number">1</span><span class="token punctuation">:</span>                        EFI EFI                     <span class="token number">209.7</span> MB   disk2s1
    <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F01                     <span class="token number">7.5</span> GB     disk2s2
-➜  <span class="token operator">~</span> sudo diskutil resizeVolume disk2s2 4g
+➜  <span class="token operator">~</span> sudo diskutil resizeVolume disk2s2 <span class="token number">4</span>g
 Resizing to <span class="token number">4000000000</span> bytes
-Started partitioning on disk2s2 F01
+Started partitioning <span class="token keyword">on</span> disk2s2 F01
 Verifying the disk
 Verifying file system
 Volume was successfully unmounted
@@ -559,17 +564,17 @@ Restoring the original state found <span class="token operator">as</span> mounte
 Resizing
 Shrinking file system
 Modifying partition map
-Finished partitioning on disk2s2 F01
-<span class="token operator">/</span>dev<span class="token operator">/</span><span class="token function">disk2</span> <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
+Finished partitioning <span class="token keyword">on</span> disk2s2 F01
+<span class="token operator">/</span>dev<span class="token operator">/</span>disk2 <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
    #<span class="token punctuation">:</span>                       TYPE NAME                    SIZE       IDENTIFIER
    <span class="token number">0</span><span class="token punctuation">:</span>      GUID_partition_scheme                        <span class="token operator">*</span><span class="token number">7.8</span> GB     disk2
    <span class="token number">1</span><span class="token punctuation">:</span>                        EFI EFI                     <span class="token number">209.7</span> MB   disk2s1
-   <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F01                     <span class="token number">4.0</span> GB     disk2s2
-</code></pre>
+   <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F01                     <span class="token number">4.0</span> GB     disk2s2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>将 disk2s2 分区扩展，并尽可能占用所有可用的自由空间。</p>
-<pre class=" language-dart"><code class="language-dart">➜  <span class="token operator">~</span> sudo diskutil resizeVolume disk2s2 R
-Resizing to full <span class="token function">size</span> <span class="token punctuation">(</span>fit to fill<span class="token punctuation">)</span>
-Started partitioning on disk2s2 F01
+<pre class="line-numbers language-dart" data-language="dart"><code class="language-dart">➜  <span class="token operator">~</span> sudo diskutil resizeVolume disk2s2 R
+Resizing to full size <span class="token punctuation">(</span>fit to fill<span class="token punctuation">)</span>
+Started partitioning <span class="token keyword">on</span> disk2s2 F01
 Verifying the disk
 Verifying file system
 Volume was successfully unmounted
@@ -588,14 +593,12 @@ Restoring the original state found <span class="token operator">as</span> mounte
 Resizing
 Modifying partition map
 Growing file system
-Finished partitioning on disk2s2 F01
-<span class="token operator">/</span>dev<span class="token operator">/</span><span class="token function">disk2</span> <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
+Finished partitioning <span class="token keyword">on</span> disk2s2 F01
+<span class="token operator">/</span>dev<span class="token operator">/</span>disk2 <span class="token punctuation">(</span><span class="token keyword">external</span><span class="token punctuation">,</span> physical<span class="token punctuation">)</span><span class="token punctuation">:</span>
    #<span class="token punctuation">:</span>                       TYPE NAME                    SIZE       IDENTIFIER
    <span class="token number">0</span><span class="token punctuation">:</span>      GUID_partition_scheme                        <span class="token operator">*</span><span class="token number">7.8</span> GB     disk2
    <span class="token number">1</span><span class="token punctuation">:</span>                        EFI EFI                     <span class="token number">209.7</span> MB   disk2s1
-   <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F01                     <span class="token number">7.5</span> GB     disk2s2
-</code></pre>
-
+   <span class="token number">2</span><span class="token punctuation">:</span>                  Apple_HFS F01                     <span class="token number">7.5</span> GB     disk2s2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>

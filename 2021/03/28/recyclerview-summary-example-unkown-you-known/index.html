@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于RecyclerView你知道的不知道的都在这了, 记录小站">
+    <meta name="keywords" content="RecyclerView,总结,教程,优化">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于RecyclerView你知道的不知道的都在这了 | 记录小站</title>
+    <title>关于RecyclerView你知道的不知道的都在这了 | 记录小站</title><meta name="robots" content="noindex">
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -382,16 +382,16 @@
                                 <span class="chip bg-color">Android</span>
                             </a>
                         
-                            <a href="/tags/%E8%BD%AC%E8%BD%BD/">
-                                <span class="chip bg-color">转载</span>
+                            <a href="/tags/recyclerview/">
+                                <span class="chip bg-color">recyclerview</span>
                             </a>
                         
                             <a href="/tags/%E5%88%97%E8%A1%A8/">
                                 <span class="chip bg-color">列表</span>
                             </a>
                         
-                            <a href="/tags/recyclerview/">
-                                <span class="chip bg-color">recyclerview</span>
+                            <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                <span class="chip bg-color">转载</span>
                             </a>
                         
                     </div>
@@ -431,12 +431,18 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="关于RecyclerView你知道的不知道的都在这了"><a href="#关于RecyclerView你知道的不知道的都在这了" class="headerlink" title="关于RecyclerView你知道的不知道的都在这了"></a>关于RecyclerView你知道的不知道的都在这了</h1><hr>
+<blockquote>
+<p>转载自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dasusu/p/9159904.html">https://www.cnblogs.com/dasusu/p/9159904.html</a></p>
+</blockquote>
 <p>最近打算花点精力来研究 RecyclerView 这个控件架构和原理，对我来说，难度很大，我不清楚最后能不能彻底搞清楚，这个系列的博客会不会被太监，但我会尽我最大努力，并将这整个过程分享出来。</p>
 <p>第一篇打算从使用方面入手，力求将 RecyclerView 开放给开发人员的所有接口都体验一番。</p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽然在日常开发中，大伙或多或少都会接触到 RecyclerView，但通常，也就是写写 adapter，用个系统提供的 LayoutManager，写写点击事件，处理处理复杂的 item 布局。</p>
@@ -450,79 +456,79 @@
 </ul>
 <h3 id="1-LayoutManager"><a href="#1-LayoutManager" class="headerlink" title="1. LayoutManager"></a>1. LayoutManager</h3><p>RecyclerView 的 support 包里默认提供了三个 LayoutManager，分别是下列三个，可用于实现大部分场景的布局需求：线性布局、网格布局、瀑布流布局等等。</p>
 <h4 id="1-1-LinearLayoutManager"><a href="#1-1-LinearLayoutManager" class="headerlink" title="1.1 LinearLayoutManager"></a>1.1 LinearLayoutManager</h4><p>线性布局，用它可以来实现横竖自由切换的线性布局，先来看看它的构造函数：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LinearLayoutManager</span> <span class="token keyword">extends</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>LayoutManager</span> <span class="token keyword">implements</span> <span class="token class-name">ItemTouchHelper<span class="token punctuation">.</span>ViewDropHandler</span><span class="token punctuation">,</span> RecyclerView<span class="token punctuation">.</span>SmoothScroller<span class="token punctuation">.</span>ScrollVectorProvider <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LinearLayoutManager</span> <span class="token keyword">extends</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>LayoutManager</span> <span class="token keyword">implements</span> <span class="token class-name">ItemTouchHelper<span class="token punctuation">.</span>ViewDropHandler</span><span class="token punctuation">,</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>SmoothScroller<span class="token punctuation">.</span>ScrollVectorProvider</span> <span class="token punctuation">&#123;</span>
     
-    <span class="token keyword">public</span> <span class="token function">LinearLayoutManager</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">this</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> VERTICAL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token function">LinearLayoutManager</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> <span class="token keyword">int</span> orientation<span class="token punctuation">,</span> <span class="token keyword">boolean</span> reverseLayout<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token keyword">int</span> orientation<span class="token punctuation">,</span> <span class="token keyword">boolean</span> reverseLayout<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token function">LinearLayoutManager</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> AttributeSet attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token class-name">AttributeSet</span> attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>总共三个，我们分别来看看它们各自的使用场景：</p>
 <ul>
 <li><strong>第一个构造函数</strong></li>
 </ul>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//用法(在Activity里初始化控件后)：</span>
-LinearLayoutManager layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//用法(在Activity里初始化控件后)：</span>
+<span class="token class-name">LinearLayoutManager</span> layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>很简单，这种时候默认就是竖直方向的线性布局，效果图：</p>
 <p><img src="1924341-8ad93d1d803f9c42.png" alt="1924341-8ad93d1d803f9c42"></p>
 <p>在 Tv 应用中，这种竖直方向的 LinearLayoutManager 使用场景大多都是用于显示菜单项，使用频率并不是特别高，但在手机应用中，这种的使用频率算是特别高的了，几乎每个 app 都会有竖直方向的滑动列表控件。</p>
 <ul>
 <li><strong>第二个构造函数</strong></li>
 </ul>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//用法(在Activity里初始化控件后)：</span>
-<span class="token comment" spellcheck="true">//第二个参数就是用于指定方向是竖直还是水平，第三个参数用于指定是否从右到左布局，基本都是false，我们的习惯都是左到右的排列方式</span>
-LinearLayoutManager layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> LinearLayoutManager<span class="token punctuation">.</span>HORIZONTAL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//用法(在Activity里初始化控件后)：</span>
+<span class="token comment">//第二个参数就是用于指定方向是竖直还是水平，第三个参数用于指定是否从右到左布局，基本都是false，我们的习惯都是左到右的排列方式</span>
+<span class="token class-name">LinearLayoutManager</span> layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">.</span>HORIZONTAL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>第二个参数就是用于指定方向是竖直还是水平，第三个参数用于指定是否从右到左布局，基本都是false，我们的习惯都是左到右的排列方式，来看看效果：</p>
 <p><img src="1240.png" alt="水平LinearLayoutManager.png"></p>
 <p>在 Tv 应用中，这种布局就比较常见了，常见的还有网格布局，多行布局等等；而在手机应用中，水平滑动的列表控件也还是有，但会比竖直的少见一些。</p>
 <ul>
 <li><strong>第三个构造函数</strong></li>
 </ul>
-<pre class=" language-xml"><code class="language-xml">//xml文件：
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">//xml文件：
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>android.support.v7.widget.RecyclerView</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/recycler_main<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>horizontal<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">app:</span>layoutManager</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>LinearLayoutManager<span class="token punctuation">"</span></span>
-        <span class="token punctuation">/></span></span>
-</code></pre>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@+id/recycler_main<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>horizontal<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">app:</span>layoutManager</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>LinearLayoutManager<span class="token punctuation">"</span></span>
+        <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>这种方式基本没见过吧，我也是看了 LinearLayoutManager 源码的构造函数，才发现，原来还有这种方式，可以直接在 xml 布局文件中指定 RecyclerView 的 LayoutManager，这时候，android:orientation 就是用来指定 LinearLayoutManager 的布局方向了。</p>
 <p>那么使用这种 xml 方式时，还有哪些属性可以配置呢？直接去看对应的 LayoutManager 的源码就清楚了，比如：</p>
-<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//LinearLayoutManager.java</span>
-    <span class="token comment" spellcheck="true">/**
-     * Constructor used when layout manager is set in XML by RecyclerView attribute
-     * "layoutManager". Defaults to vertical orientation.
-     *
-     * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_android_orientation
-     * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_reverseLayout
-     * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_stackFromEnd
-     */</span>
-    <span class="token comment" spellcheck="true">//上面是源码的注释，当在 xml 中通过 app:layoutManager="LinearLayoutManager" 之后，那么此时就还可以再使用三个属性来配置 LinearLayoutManager,如下：</span>
-    <span class="token comment" spellcheck="true">//android:orientation="horizontal"</span>
-    <span class="token comment" spellcheck="true">//app:reverseLayout="false"</span>
-    <span class="token comment" spellcheck="true">//app:stackFromEnd="false"</span>
-    <span class="token keyword">public</span> <span class="token function">LinearLayoutManager</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> AttributeSet attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span>
-            <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        Properties properties <span class="token operator">=</span> <span class="token function">getProperties</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> defStyleAttr<span class="token punctuation">,</span> defStyleRes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setOrientation</span><span class="token punctuation">(</span>properties<span class="token punctuation">.</span>orientation<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setReverseLayout</span><span class="token punctuation">(</span>properties<span class="token punctuation">.</span>reverseLayout<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setStackFromEnd</span><span class="token punctuation">(</span>properties<span class="token punctuation">.</span>stackFromEnd<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setAutoMeasureEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//LinearLayoutManager.java</span>
+<span class="token comment">/**
+    * Constructor used when layout manager is set in XML by RecyclerView attribute
+    * "layoutManager". Defaults to vertical orientation.
+    *
+    * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_android_orientation
+    * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_reverseLayout
+    * @attr ref android.support.v7.recyclerview.R.styleable#RecyclerView_stackFromEnd
+    */</span>
+<span class="token comment">//上面是源码的注释，当在 xml 中通过 app:layoutManager="LinearLayoutManager" 之后，那么此时就还可以再使用三个属性来配置 LinearLayoutManager,如下：</span>
+<span class="token comment">//android:orientation="horizontal"</span>
+<span class="token comment">//app:reverseLayout="false"</span>
+<span class="token comment">//app:stackFromEnd="false"</span>
+   <span class="token keyword">public</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token class-name">AttributeSet</span> attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span>
+           <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       <span class="token class-name">Properties</span> properties <span class="token operator">=</span> <span class="token function">getProperties</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> defStyleAttr<span class="token punctuation">,</span> defStyleRes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token function">setOrientation</span><span class="token punctuation">(</span>properties<span class="token punctuation">.</span>orientation<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token function">setReverseLayout</span><span class="token punctuation">(</span>properties<span class="token punctuation">.</span>reverseLayout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token function">setStackFromEnd</span><span class="token punctuation">(</span>properties<span class="token punctuation">.</span>stackFromEnd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token function">setAutoMeasureEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>另外两个 LayoutManager 同理。</p>
 <p>以上，仅仅就是 LinearLayoutManager 支持的布局样式，我们只需要设置布局方向后，其他都不用管了。那么，LinearLayoutManager 是否还有提供其他一些可选功能来让我们使用呢？接下去就一起再看看：</p>
 <ul>
@@ -546,30 +552,30 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
 <ul>
 <li><strong>setRecycleChildrenOnDetach()</strong></li>
 </ul>
-<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * Set whether LayoutManager will recycle its children when it is detached from
-     * RecyclerView.
-     * &lt;p>
-     * If you are using a &amp;#123;@link RecyclerView.RecycledViewPool&amp;#125;, it might be a good idea to set
-     * this flag to &lt;code>true&lt;/code> so that views will be available to other RecyclerViews
-     * immediately.
-     * &lt;p>
-     * Note that, setting this flag will result in a performance drop if RecyclerView
-     * is restored.
-     *
-     * @param recycleChildrenOnDetach Whether children should be recycled in detach or not.
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setRecycleChildrenOnDetach</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> recycleChildrenOnDetach<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        mRecycleChildrenOnDetach <span class="token operator">=</span> recycleChildrenOnDetach<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+    * Set whether LayoutManager will recycle its children when it is detached from
+    * RecyclerView.
+    * &lt;p>
+    * If you are using a &#123;@link RecyclerView.RecycledViewPool&#125;, it might be a good idea to set
+    * this flag to &lt;code>true&lt;/code> so that views will be available to other RecyclerViews
+    * immediately.
+    * &lt;p>
+    * Note that, setting this flag will result in a performance drop if RecyclerView
+    * is restored.
+    *
+    * @param recycleChildrenOnDetach Whether children should be recycled in detach or not.
+    */</span>
+   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setRecycleChildrenOnDetach</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> recycleChildrenOnDetach<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       mRecycleChildrenOnDetach <span class="token operator">=</span> recycleChildrenOnDetach<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>先来看看源码注释，注释里说了，这个方法是用来设置，当它（LinearLayoutManager）从 RecyclerView 上面 detached 时是否要回收所有的 item。而且，它还建议我们，如果我们项目里有复用 RecyclerViewPool 的话，那么开启这个功能会是一个很好的辅助，它可以将这些 item 回收起来给其他 RecyclerView 用。最后，还指明了一点，开启这个功能的话，当 RecyclerView 恢复时，也就是从 detached 又变回 attached，那么会消耗一定的性能来绘制。</p>
 <p>有<strong>两种场景</strong>会导致 LinearLayoutManager 从 RecyclerView 上被 detached，一种是：<code>setLayoutManager()</code>，而另外一种是：RecyclerView 从视图树上被 remove 掉。</p>
 <p>但经过测试（你也可以去看源码），<code>setLayoutManager()</code> 时，如果之前有设置过 LayoutManger，那么内部会自动先去将之前 LayoutManager 的所有 item 回收，然后再给新的 LayoutManager 复用。此时，这个方法并没有什么卵用。</p>
 <p>也就是说，上面说了有两种场景会触发到该方法开启的回收工作，但实际上，第一种场景内部默认的工作中就包含了回收工作，那么有没有通过这个方法来开启并没有任何影响。只有第二种场景下，要不要去处理回收工作才是由该方法来控制。</p>
 <p>所以我怀疑是不是 Google 工程师太懒了，没有同步更新这个方法的注释。注释的第一句 when 后面应该改成：</p>
-<pre><code>Set whether LayoutManager will recycle its children when RecyclerView is detached from Window.
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Set</span> whether <span class="token class-name">LayoutManager</span> will recycle its children when <span class="token class-name">RecyclerView</span> is detached from <span class="token class-name">Window</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>我觉得这样才比较合理一点，但纯属个人观点哈，也许是我某个地方理解错了。</p>
 <p><strong>那么这个方法开启的回收工作到底有什么使用场景呢？</strong></p>
 <p>这类场景还是有的，我举个例子，比如当前页面是通过 ViewPager + Fragment 来实现的，每个 Fragment 里又有 RecyclerView 控件，那么如果当页面布局信息需要更新时，有时候是直接暴力的通过 ViewPager 的 <code>setAdapter()</code> 来刷新，那么此时，旧的 fragment 其实就全被移除掉了，然后 new 了新的 fragment 绘制新的布局信息。</p>
@@ -581,40 +587,40 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
 </ul>
 <p>另外，LayoutManager 里还有许多 public 的接口，这些方法涉及的方面是 RecyclerView 内嵌 RecyclerView 的场景，比如：<br><code>collectInitialPrefetchPositions()</code><br><code>setInitialPrefetchItemCount()</code><br>等等，但目前还没搞懂这些相关方法的用法及效果，等待后续补充。</p>
 <h4 id="1-2-GridLayoutManager"><a href="#1-2-GridLayoutManager" class="headerlink" title="1.2 GridLayoutManager"></a>1.2 GridLayoutManager</h4><p>网格样式的布局管理器，同样，先来看看它的构造函数：</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//注意看，GridLayoutManager 是继承的 LinearLayoutManger 的</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GridLayoutManager</span> <span class="token keyword">extends</span> <span class="token class-name">LinearLayoutManager</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>  
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//注意看，GridLayoutManager 是继承的 LinearLayoutManger 的</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GridLayoutManager</span> <span class="token keyword">extends</span> <span class="token class-name">LinearLayoutManager</span> <span class="token punctuation">&#123;</span>  
     
-    <span class="token keyword">public</span> <span class="token function">GridLayoutManager</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> AttributeSet attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+	<span class="token keyword">public</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token class-name">AttributeSet</span> attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> attrs<span class="token punctuation">,</span> defStyleAttr<span class="token punctuation">,</span> defStyleRes<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token function">GridLayoutManager</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> <span class="token keyword">int</span> spanCount<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token keyword">int</span> spanCount<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">setSpanCount</span><span class="token punctuation">(</span>spanCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token function">GridLayoutManager</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> <span class="token keyword">int</span> spanCount<span class="token punctuation">,</span> <span class="token keyword">int</span> orientation<span class="token punctuation">,</span> <span class="token keyword">boolean</span> reverseLayout<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token keyword">int</span> spanCount<span class="token punctuation">,</span> <span class="token keyword">int</span> orientation<span class="token punctuation">,</span> <span class="token keyword">boolean</span> reverseLayout<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> orientation<span class="token punctuation">,</span> reverseLayout<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">setSpanCount</span><span class="token punctuation">(</span>spanCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>    
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+    <span class="token punctuation">&#125;</span>	
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>GridLayoutManager 继承自 LinearLayoutManager， 并在它的继承上补充了 spanCount 的概念，也就是说 LinearLayoutManager 是只支持线性布局，要么一行，要么一列。而 GridLayoutManager 补充了 spanCount 概念后，支持多行或者多列，这就是网格布局了。</p>
 <p>使用方面跟 LinearLayoutManager 基本一样，只是在构造函数内需要多传一个 spanCount 参数，来指定多少行或多少列，来看看效果图：</p>
 <ul>
 <li>2 行</li>
 </ul>
-<pre class=" language-java"><code class="language-java">GridLayoutManager gridLayoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> LinearLayoutManager<span class="token punctuation">.</span>HORIZONTAL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>gridLayoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">GridLayoutManager</span> gridLayoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">.</span>HORIZONTAL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>gridLayoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="1240-20210328160630941.png" alt="两行.png"></p>
 <ul>
 <li>4 列</li>
 </ul>
-<pre><code>GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
-mRecyclerView.setLayoutManager(gridLayoutManager);
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">GridLayoutManager</span> gridLayoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>gridLayoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="1240-20210328160641741.png" alt="四列.png"></p>
 <p>这种网格布局不管是 Tv 应用还是手机应用都挺常见的，Tv 上经常需要有多行或多列的形式来展示各个卡位信息，而手机上一些类似于九宫格之类的布局也可以用这个实现。</p>
 <p>但有一些<strong>细节同样需要注意</strong>一下：</p>
@@ -651,45 +657,45 @@ mRecyclerView.setLayoutManager(gridLayoutManager);
 <p>通过 <code>setSpanSizeLookup()</code> 方法就可以自定义为每个 item 指定它在竖直方向要占据多少个小格，最多不超过设定的行数，上述例子中每个 item 最多就只能占据 3 行的高度。如果在该列的剩余空间不足 item 设定占据的行数，那么会将该列剩余的空间空闲出来，将该 item 移到下列进行布局。</p>
 <p>同样的道理，当设定为 VERTICAL 竖直方向的样式时，那么可以自定义为每个 item 设定要占据的列数，最多不超过指定的列数。</p>
 <p><strong>示例</strong>：</p>
-<pre class=" language-java"><code class="language-java">GridLayoutManager gridLayoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> LinearLayoutManager<span class="token punctuation">.</span>HORIZONTAL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//自定义item占据的小格大小时需要重写 getSpanSize()，返回值就是占据的小格数量</span>
-gridLayoutManager<span class="token punctuation">.</span><span class="token function">setSpanSizeLookup</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">GridLayoutManager<span class="token punctuation">.</span>SpanSizeLookup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSpanSize</span><span class="token punctuation">(</span><span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>    
-        <span class="token comment" spellcheck="true">//以下代码仅为上图示例为写，具体场景中应该根据需求具体编写</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">==</span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token number">3</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">GridLayoutManager</span> gridLayoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GridLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">.</span>HORIZONTAL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//自定义item占据的小格大小时需要重写 getSpanSize()，返回值就是占据的小格数量</span>
+gridLayoutManager<span class="token punctuation">.</span><span class="token function">setSpanSizeLookup</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">GridLayoutManager<span class="token punctuation">.</span>SpanSizeLookup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSpanSize</span><span class="token punctuation">(</span><span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    
+		<span class="token comment">//以下代码仅为上图示例为写，具体场景中应该根据需求具体编写</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">==</span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">return</span> <span class="token number">3</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
          <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    
-    <span class="token comment" spellcheck="true">//这个方法也很重要，但我还没搞清楚它的具体效果，从注释上来看，该方法是用于指定 item 在该行或该列上具体哪个位置，比如将GridLayoutManager设置为3行水平样式，那么第1个卡位就是在第一列的 0 位置，第2个卡位 1，一次类推。但该方法具体被调用的场景还没理清</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSpanIndex</span><span class="token punctuation">(</span><span class="token keyword">int</span> position<span class="token punctuation">,</span> <span class="token keyword">int</span> spanCount<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+	
+    <span class="token comment">//这个方法也很重要，但我还没搞清楚它的具体效果，从注释上来看，该方法是用于指定 item 在该行或该列上具体哪个位置，比如将GridLayoutManager设置为3行水平样式，那么第1个卡位就是在第一列的 0 位置，第2个卡位 1，一次类推。但该方法具体被调用的场景还没理清</span>
+	<span class="token annotation punctuation">@Override</span>
+	<span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSpanIndex</span><span class="token punctuation">(</span><span class="token keyword">int</span> position<span class="token punctuation">,</span> <span class="token keyword">int</span> spanCount<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
           <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getSpanIndex</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> spanCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//官方建议说，如果延用默认的 getSpanIndxe() 的实现逻辑的话，那么建议调用下述方法来进行优化，否则每次布局计算时会很耗性能。 </span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//官方建议说，如果延用默认的 getSpanIndxe() 的实现逻辑的话，那么建议调用下述方法来进行优化，否则每次布局计算时会很耗性能。 </span>
 gridLayoutManager<span class="token punctuation">.</span><span class="token function">getSpanSizeLookup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setSpanIndexCacheEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>gridLayoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>gridLayoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>虽然提供了该方法让网格布局可以更加多样化布局，但仍然<strong>无法满足一些场景</strong>，比如当设定为多行的样式时，此时就只支持自定义每个 item 占据的行数，只有行数！也就是说，所有的卡位顶多只会在高度方面不一样，同一列的卡位的宽度都是一样的。那么，如果需求是五花八门的网格布局，每个卡位都有可能占据多行的情况下又占据多列，用这个就没法实现了。</p>
 <h4 id="1-3-StaggeredGridLayoutManager"><a href="#1-3-StaggeredGridLayoutManager" class="headerlink" title="1.3 StaggeredGridLayoutManager"></a>1.3 StaggeredGridLayoutManager</h4><p>英文直译过来是：交错式的网格布局管理者，不过我还是喜欢网上大伙的说法：瀑布流。</p>
 <p>首先，也还是来看看它的构造方法：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StaggeredGridLayoutManager</span> <span class="token keyword">extends</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>LayoutManager</span> <span class="token keyword">implements</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>SmoothScroller<span class="token punctuation">.</span>ScrollVectorProvider</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>  
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StaggeredGridLayoutManager</span> <span class="token keyword">extends</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>LayoutManager</span> <span class="token keyword">implements</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>SmoothScroller<span class="token punctuation">.</span>ScrollVectorProvider</span> <span class="token punctuation">&#123;</span>  
     
-    <span class="token keyword">public</span> <span class="token function">StaggeredGridLayoutManager</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> AttributeSet attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">StaggeredGridLayoutManager</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">,</span> <span class="token class-name">AttributeSet</span> attrs<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleAttr<span class="token punctuation">,</span> <span class="token keyword">int</span> defStyleRes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">public</span> <span class="token function">StaggeredGridLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">int</span> spanCount<span class="token punctuation">,</span> <span class="token keyword">int</span> orientation<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">StaggeredGridLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">int</span> spanCount<span class="token punctuation">,</span> <span class="token keyword">int</span> orientation<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>只有两个构造方法，第一个跟 LinearLayoutManager 一样，用于在 xml 布局文件中直接指定 LayoutManager 时用的。</p>
 <p>第二个构造方法才是我们经常使用它的入口，两个参数，说白点就是用来设置成多行的瀑布流或者多列的瀑布流样式。</p>
 <p>这里顺便提一点不怎么重要的，注意到没有，这里的构造方法是不需要 Context，那么为啥另外两个 LayoutManager 却需要呢？它们之间有什么不同么？</p>
@@ -697,9 +703,9 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
 <ul>
 <li><strong>竖直方向瀑布流</strong></li>
 </ul>
-<pre><code>StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
-mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">StaggeredGridLayoutManager</span> staggeredGridLayoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StaggeredGridLayoutManager</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token class-name">StaggeredGridLayoutManager</span><span class="token punctuation">.</span>VERTICAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+mRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>staggeredGridLayoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="https://upload-images.jianshu.io/upload_images/1924341-c73aef159fb6e264.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="瀑布流.png"></p>
 <p>瀑布流的样式在手机应用上比较常见，尤其图片查看相关的应用，在 Tv 应用上这种瀑布流布局就比较少见了。</p>
 <p>瀑布流的方向可以选择水平或者竖直，两者只是方向上的区别而已，水平方向的效果图就不贴了。</p>
@@ -718,7 +724,7 @@ mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
 <li><strong>setFullSpan()</strong></li>
 </ul>
 <p>该方法是 StaggeredGridLayoutManager 内部类 LayoutParams 的方法，用这个方法可以设置 item 是否要占据总宽度或总高度，当瀑布流中有某个 item 需要横穿的场景时，可以使用这个方法，效果如下：</p>
-<p><img src="1240-20210328200134510.png" alt="瀑布流示例.png"></p>
+<p><img src="1240-7000210.png"></p>
 <ul>
 <li><strong>setOrientation()</strong></li>
 <li><strong>setSpanCount()</strong></li>
@@ -756,35 +762,35 @@ mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
 <p><code>getLayoutPosition()</code>：返回的一直是界面上呈现的 Item 的位置信息，即使某个 Item 已经从数据源中被移除。</p>
 <p><code>getAdapterPosition()</code>：当数据源发生变化，且界面已经刷新过后即 <code>onBindViewHolder()</code> 已经被调用了后，返回的值跟 <code>getLayoutPosition()</code> 一致；但当数据源发生变化，且在 <code>onBindViewHolder()</code> 被调用之前，如果调用了 <code>notifyDataSetChanged()</code>, 那么将返回无效的位置标志 -1；如果调用了 <code>notifyItem系列()</code>，那么将返回 Item 在数据源中的位置信息。</p>
 <p><strong>示例场景：</strong></p>
-<pre class=" language-java"><code class="language-java">mDataList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//1. 场景1</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">mDataList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//1. 场景1</span>
 mAdapter<span class="token punctuation">.</span><span class="token function">notifyDataSetChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">logPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">//2. 场景2</span>
+<span class="token comment">//2. 场景2</span>
 mAdapter<span class="token punctuation">.</span><span class="token function">notifyItemRemove</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">logPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">//3. 场景3</span>
+<span class="token comment">//3. 场景3</span>
 mAdapter<span class="token punctuation">.</span><span class="token function">notifyItemRemove</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mRecyclerView<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Runnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+mRecyclerView<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Runnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token function">logPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token function">logPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">logPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mRecyclerView<span class="token punctuation">.</span><span class="token function">getChildCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        View view <span class="token operator">=</span> mRecyclerView<span class="token punctuation">.</span><span class="token function">getChildAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">logPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mRecyclerView<span class="token punctuation">.</span><span class="token function">getChildCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">View</span> view <span class="token operator">=</span> mRecyclerView<span class="token punctuation">.</span><span class="token function">getChildAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> layPosi <span class="token operator">=</span> mRecyclerView<span class="token punctuation">.</span><span class="token function">findContainingViewHolder</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getLayoutPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> adapterPosi <span class="token operator">=</span> mRecyclerView<span class="token punctuation">.</span><span class="token function">findContainingViewHolder</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAdapterPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> oldPosi <span class="token operator">=</span> mRecyclerView<span class="token punctuation">.</span><span class="token function">findContainingViewHolder</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getOldPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LogUtils<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"getLayoutPosition = "</span> <span class="token operator">+</span> layPosi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LogUtils<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"getAdapterPosition = "</span> <span class="token operator">+</span> adapterPosi<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+        <span class="token class-name">LogUtils</span><span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"getLayoutPosition = "</span> <span class="token operator">+</span> layPosi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">LogUtils</span><span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"getAdapterPosition = "</span> <span class="token operator">+</span> adapterPosi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>场景1：</strong>由于数据源发生变化后，调用了 <code>notifyDataSetChanged()</code>，在这之后马上去遍历界面上的 Item 元素，分别输出 ViewHolder 的几个方法，那么打日志的时间点肯定是在界面刷新之前，所以可以看到这些方法的区别：</p>
 <p><img src="1240-20210328200347410.png" alt="场景1日志.png"></p>
 <p>0 position 的 Item 明明已经从数据源中被移除掉了，但由于日志打印的时机是在界面刷新之前，因此可以看到通过 <code>getLayoutPosition()</code> 获取到的是界面上还未刷新之前的 Item 的信息，而由于是调用了 <code>notifyDataSetChanged()</code> 去通知，因此 <code>getAdapterPosition()</code> 对于所有 Item 都返回无效的位置标志 -1。</p>
@@ -816,19 +822,410 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
 <p>RecyclerView 最大的特性就是它内部实现了一套高效的回收复用机制，而回收复用是以 ViewHolder 为单位进行管理的，每个 item 都会对应一个 ViewHolder，默认都是会参与进回收复用机制中。</p>
 <p>但可以通过该方法来标志该 ViewHolder 不会被回收</p>
 <h3 id="3-LayoutParams"><a href="#3-LayoutParams" class="headerlink" title="3. LayoutParams"></a>3. LayoutParams</h3><p>RecyclerView 自定义了 LayoutParams 内部类，在每个 Item 的 LayoutParams 携带了一些额外的信息，需要的话，我们也可以通过这里来获取这些信息。</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">LayoutParams</span> <span class="token keyword">extends</span> <span class="token class-name">android<span class="token punctuation">.</span>view<span class="token punctuation">.</span>ViewGroup<span class="token punctuation">.</span>MarginLayoutParams</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">viewNeedsUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isViewInvalid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isItemRemoved</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isItemChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getViewLayoutPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getViewAdapterPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">LayoutParams</span> <span class="token keyword">extends</span> <span class="token class-name"><span class="token namespace">android<span class="token punctuation">.</span>view<span class="token punctuation">.</span></span>ViewGroup<span class="token punctuation">.</span>MarginLayoutParams</span> <span class="token punctuation">&#123;</span>
+	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">viewNeedsUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isViewInvalid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isItemRemoved</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isItemChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getViewLayoutPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getViewAdapterPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>公开的接口有以上几个，也就是说，我们可以通过 LayoutParams 获取到 item 的 position 信息、状态信息，是否需要刷新，是否被移除等等。</p>
 <p>更多的应用场景留待后续补充。</p>
+<h3 id="4-Adapter"><a href="#4-Adapter" class="headerlink" title="4. Adapter"></a>4. Adapter</h3><p>adapter 大伙肯定是最熟悉的了，写 RecyclerView 打交道最多的也就是 adapter 了，所以一些基本知识我就一笔带过了，本节着重介绍各种可选功能。</p>
+<ul>
+<li><strong>onCreateViewHolder()</strong></li>
+<li><strong>onBindViewHolder()</strong></li>
+<li><strong>getItemCount()</strong></li>
+<li><strong>RecyclerView.ViewHolder</strong></li>
+</ul>
+<p>以上是写一个 adapter 时必须实现的四点，它们决定了 item 长啥样，填充啥数据，以及有多少个 item，有了这些信息，一个 RecyclerView 列表也就出来了。</p>
+<ul>
+<li><strong>notifyDataSetChanged()</strong></li>
+<li><strong>notifyItemChanged()</strong></li>
+<li><strong>notifyItemXXX() 系列</strong></li>
+</ul>
+<p>以上是用于刷新 item，当数据源发生变化时，我们手动去刷新 item。官方说了， item 的更新分两种，一种是数据需要更新，这类刷新不涉及到 item 的位置变化；而另一种属于结构刷新，就是涉及到 item 的位置变化。</p>
+<p>使用 <strong><code>notifyDataSetChanged()</code></strong> 时，它不管你分哪种形式的刷新，强制所有 item 重新绑定数据，重新布局操作。</p>
+<p>以上都属于常用的基本功能，一句话带过，下面介绍一些可选功能：</p>
+<ul>
+<li><strong>onViewRecycled()</strong></li>
+<li><strong>onViewAttachedFromWindow()</strong></li>
+<li><strong>onViewDetachedFromWindow()</strong></li>
+<li><strong>onAttachedToRecyclerView()</strong></li>
+<li><strong>onDetachedFromRecyclerView()</strong></li>
+</ul>
+<p>这些方法基本都是 item 或 adapter 的一些生命周期的回调，所以分别来看看每个方法都是什么时候会被回调的，可以用来处理什么场景，做些啥工作：</p>
+<p><strong>onViewRecycled()</strong> ：当 ViewHolder 已经确认被回收，且要放进 RecyclerViewPool 中前，该方法会被回调。</p>
+<p>首先需要明确，RecyclerView 的回收机制在工作时，会先将移出屏幕的 ViewHolder 放进一级缓存中，当一级缓存空间已满时，才会考虑将一级缓存中已有的 ViewHolder 移到 RecyclerViewPool 中去。所以，并不是所有刚被移出屏幕的 ViewHoder 都会回调该方法。</p>
+<p>另外，注释中也说了，该方法的回调是在 ViewHolder 放进 RecyclerViewPool 中前，而 ViewHolder 在放进 Pool 中时会被 reset，因为上一节中也说过，其实 ViewHolder 本身携带着很多信息。那么，在该方法回调时，这些信息还没被重置掉，官方建议我们可以在这里释放一些耗内存资源的工作，如 bitmap 的释放。</p>
+<p><strong>onViewAttachedFromWindow()</strong><br><strong>onViewDetachedFromWindow()</strong></p>
+<p>RecyclerView 本质上也是一个 ViewGroup，那么它的 Item 要显示出来，自然要 <code>addView()</code> 进来，移出屏幕时，自然要 <code>removeView()</code> 出去，对应的就是这两个方法的回调。</p>
+<p>所以，当 Item 移出屏幕时，<code>onViewRecycled()</code> 不一定会回调，但 <code>onViewDetachedFromWindow()</code> 肯定会回调。相反，当 Item 移进屏幕内时，另一个方法则会回调。</p>
+<p>那么，其实，在一定场景下，可以通过这两个回调来处理一些 Item 移出屏幕，移进屏幕所需要的工作。为什么说一定场景下呢，因为如果调用了 <code>notifyDataSetChanged()</code> 的话，会触发所有 Item 的 detached 回调先触发再触发 onAttached 回调。</p>
+<p><strong>onAttachedToRecyclerView()</strong><br><strong>onDetachedFromRecyclerView()</strong></p>
+<p>这两个回调则是当 RecyclerView 调用了 <code>setAdapter()</code> 时会触发，旧的 adapter 回调 onDetached，新的 adapter 回调 onAttached。</p>
+<p>我们同样可以在这里来做一些资源回收工作，更多其他应用场景留待后续补充。</p>
+<ul>
+<li><strong>registerAdapterDataObserver()</strong></li>
+<li><strong>unregisterAdapterDataObserver()</strong></li>
+</ul>
+<p>用于注册监听 <code>notifyXXX()</code> 系列方法的事件，当调用了 <code>notifyXXX()</code> 系列的方法时，注册监听后就可以接收到回调。</p>
+<ul>
+<li><em><strong>setHasStableIds()</strong></em></li>
+<li><em><strong>getItemId()</strong></em></li>
+</ul>
+<p>这两方法看注释是说用于回收复用机制中，给 ViewHoler 设置一个唯一的标识符，但具体的使用场景还不清楚，后续有用到，再补充。</p>
+<p>另，<code>setHasStableIds()</code> 必须在 <code>setAdapter()</code> 方法之前调用，否则会抛异常。</p>
+<h3 id="5-RecyclerView"><a href="#5-RecyclerView" class="headerlink" title="5. RecyclerView"></a>5. RecyclerView</h3><h4 id="5-1-addOnItemTouchListener"><a href="#5-1-addOnItemTouchListener" class="headerlink" title="5.1 addOnItemTouchListener()"></a>5.1 addOnItemTouchListener()</h4><p>咋一看到这个方法，我还以为 RecyclerView 也把 item 的点击事件封装好了，终于不用我们自己去写了呢。看了下源码注释才发现，这个方法的作用是用于根据情况是否拦截触屏事件的分发。先看一下它的参数类型：OnItemTouchListener</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OnItemTouchListener</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">boolean</span> <span class="token function">onInterceptTouchEvent</span><span class="token punctuation">(</span><span class="token class-name">RecyclerView</span> rv<span class="token punctuation">,</span> <span class="token class-name">MotionEvent</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">void</span> <span class="token function">onTouchEvent</span><span class="token punctuation">(</span><span class="token class-name">RecyclerView</span> rv<span class="token punctuation">,</span> <span class="token class-name">MotionEvent</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">void</span> <span class="token function">onRequestDisallowInterceptTouchEvent</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> disallowIntercept<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>是不是感觉接口里的方法很熟悉，没错，就是触屏事件分发流程中的拦截和处理的两个方法。</p>
+<p>通常我们都说在自定义 View 中重写这几个方法来将触屏事件拦截，交由自己处理。RecyclerView 也是一个 View，如果你有 RecyclerView 需要拦截触屏事件自己处理的需求，那么你可以选择继承 RecyclerView，也可以选择调用这个方法。</p>
+<h4 id="5-2-addOnScrollListener"><a href="#5-2-addOnScrollListener" class="headerlink" title="5.2 addOnScrollListener()"></a>5.2 addOnScrollListener()</h4><p>RecyclerView 是一个列表控件，自然会涉及到滑动，所以它提供了滑动状态的监听接口，当我们需要在滑动状态变化时相对应的工作时，可以调用该方法注册滑动监听。来看看它的参数：OnScrollListener</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">OnScrollListener</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">/**
+	* Callback method to be invoked when RecyclerView's scroll state changes.
+	*
+	* @param recyclerView The RecyclerView whose scroll state has changed.
+	* @param newState     The updated scroll state. One of &#123;@link #SCROLL_STATE_IDLE&#125;,
+	*                     &#123;@link #SCROLL_STATE_DRAGGING&#125; or &#123;@link #SCROLL_STATE_SETTLING&#125;.
+	*/</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onScrollStateChanged</span><span class="token punctuation">(</span><span class="token class-name">RecyclerView</span> recyclerView<span class="token punctuation">,</span> <span class="token keyword">int</span> newState<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onScrolled</span><span class="token punctuation">(</span><span class="token class-name">RecyclerView</span> recyclerView<span class="token punctuation">,</span> <span class="token keyword">int</span> dx<span class="token punctuation">,</span> <span class="token keyword">int</span> dy<span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>onScrolled()</code>：滑动的实现本质上就是每一帧时要么通过动画，要么通过修改属性，一帧帧内处理一小段滑动，整个过程连起来就是一个流畅的滑动效果。这个方法就是每帧内处理的滑动距离，理想状态下，每帧都会回调一次，直到滑动结束。</p>
+<p>如果想得到滑动的距离，方向的话，可以在这个方法里做。</p>
+<p><code>onScrollStateChanged()</code>：该方法则是滑动状态变化时的回调，一共设置了三种状态：</p>
+<ul>
+<li>SCROLL_STATE_IDLE：停止滑动时的状态</li>
+<li>SCROLL_STATE_DRAGGING：手指拖动时的状态</li>
+<li>SCROLL_STATE_SETTLING：惯性滑动时的状态（这是我的理解）</li>
+</ul>
+<p>在手机应用上和 Tv 应用上，这些状态的回调还是有所区别的，所以分开来说一下：</p>
+<ul>
+<li>手机应用：</li>
+</ul>
+<p>手机上的 RecyclerView 列表控件，通常都是通常手指拖动来触发滑动的，因此在手指触摸并拖动的那个时刻，这个方法会被回调，参数传入 SCROLL_STATE_DRAGGING 表示进入拖动状态。</p>
+<p>当手指放开的时候，分两种情况，一是手指放开后 RecyclerView 又根据惯性滑动了一段距离，只要有稍微滑动就算，那么这个时候进入惯性滑动时该方法会被回调，参数传入 SCROLL_STATE_SETTLING 表示进入了惯性滑动状态。当最终停止滑动后，该方法还会被回调，参数传入 SCROLL_STATE_IDLE。</p>
+<p>另外一种情况是，手指放开后，RecyclerView 并没有任何滑动了，通常是手指很慢的拖动情况下放开，这时候该方法就会只回调一次，参数传入 SCROLL_STATE_IDLE，因为在手指还没放开前就已经停止滑动了，放开后更不会滑动，所以直接进入停止滑动状态。</p>
+<p>所以，在手机应用上，ReyclerView 的滑动状态变化有两种，一是从 SCROLL_STATE_DRAGGING 到 SCROLL_STATE_SETTLING 再到 SCROLL_STATE_IDLE；另外一种是直接从 SCROLL_STATE_DRAGGING 到 SCROLL_STATE_IDLE。</p>
+<ul>
+<li>Tv 应用：</li>
+</ul>
+<p>由于 Tv 应用没有触摸事件，只有遥控器事件，因此 RecyclerView 滑动的触发都是由遥控器方向键操作后由于焦点的变化来触发的，所以在 Tv 应用上不会有 SCROLL_STATE_DRAGGING 这个状态。</p>
+<p>每次滑动都是从 SCROLL_STATE_SETTLING 到 SCROLL_STATE_IDLE。</p>
+<p>两者有所区别，需要注意一下，如果从事 Tv 应用开发的话。</p>
+<h4 id="5-3-setHasFixedSize"><a href="#5-3-setHasFixedSize" class="headerlink" title="5.3 setHasFixedSize()"></a>5.3 setHasFixedSize()</h4><p>看方法注释，它是说，当你能够确定后续通过 <code>notifyItemXXX()</code> 系列方法来刷新界面时，RecyclerView 控件的宽高不会因为 item 而发生变化，那么这时候可以通过该方法来让 ReyclerView 每次刷新界面时不用去重新计算它本身的宽高。</p>
+<p>从代码层面上来看，也就是说，当调用该方法设置了后，之后通过 <code>notifyItemXXX()</code> 系列方法刷新界面时，RecyclerView 的 <code>onMeasure()</code>, <code>onLayout()</code> 就不会被调用了，而是直接调用 LayoutManager 的 <code>onMeasure()</code>。</p>
+<p>但这样做具体有什么好处，提高性能一点，但其他的就不清楚了。想了想，当 ReyclerView 控件的宽高模式是 match_parent 时，其实这个方法可以使用，因为此时它的宽高就不会受到 item 的因素影响了。如果模式为 wrap_content，那这个方法就不要用了。</p>
+<h4 id="5-4-setLayoutFrozen"><a href="#5-4-setLayoutFrozen" class="headerlink" title="5.4 setLayoutFrozen()"></a>5.4 setLayoutFrozen()</h4><p>这方法可以禁掉 RecyclerView 的布局请求操作，而 RecyclerView 的滑动，item 的添加或移除本质上都会触发 RecyclerView 的重新测量、布局操作。</p>
+<p>所以，调用该方法，其实等效于关闭了 ReyclerView 的刷新，不管数据源发生了何种变化，不管用户滑动了多长距离，都不会去刷新界面，看起来就像是不响应一样，但等到再次调用该方法参数传入 false 后，就会立马去根据变化后的数据源来刷新界面了。</p>
+<p>使用场景还是有的，假如有些场景暂时不想让 RecyclerView 去刷新，比如此时有其他动画效果正在执行中，RecyclerView 刷新多少会有些耗时，万一导致了当前动画的卡顿，那么体验就不好了。所以，这个时候可以暂时将 ReyclerView 的刷新关闭掉，但后面记得要重新开启。</p>
+<h4 id="5-5-setPreserveFocusAfterLayout"><a href="#5-5-setPreserveFocusAfterLayout" class="headerlink" title="5.5 setPreserveFocusAfterLayout()"></a>5.5 <em>setPreserveFocusAfterLayout()</em></h4><p>这个还没搞清它的应用场景是什么，注释是说，当在进行布局工作时，有些时候，会由于 item 的状态发生改变，或者由于动画等原因，导致焦点丢失。通过该方法可以再这些工作之后，再继续保持之前 item 的焦点状态。这个方法默认就是开启的。</p>
+<p>但我测试了下，不管有没有开启这个方法，<code>notifyDataSetChanged()</code> 时，焦点仍然会乱飘，后续再继续查证。</p>
+<h4 id="5-6-findChildViewUnder"><a href="#5-6-findChildViewUnder" class="headerlink" title="5.6 findChildViewUnder()"></a>5.6 findChildViewUnder()</h4><p>方法参数是 (float x, float y)，作用是查找指定坐标点 (x, y) 落于 RecyclerView 的哪个子 View 上面，这里的坐标点是以 RecyclerView 控件作为坐标轴，并不是以屏幕左上角作为坐标原点。</p>
+<p>具体应用场景，目前还没遇到过，后续补充。</p>
+<h4 id="5-7-findContainingItemView"><a href="#5-7-findContainingItemView" class="headerlink" title="5.7 findContainingItemView()"></a>5.7 findContainingItemView()</h4><p>该方法参数是 （View view），作用正如命名上的理解，查找含有指定 View 的 ItemView，而 ItemView 是指 RecyclerView 的直接子 View。</p>
+<p>通常，RecyclerView 的 Item 布局都不会简单到直接就是一个具体的 TextView，往往都挺复杂的，比如：</p>
+<p><img src="1240-20210329150950575.png" alt="Item布局.png"></p>
+<p>Item 布局的结构至少如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;RelativeLayout&gt;
+	&lt;ImageView&#x2F;&gt;
+	&lt;TextView&#x2F;&gt;
+&lt;&#x2F;RelativeLayout&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这种 item 已经算是很简单的了，那么如果我们当前拿到的是 TextView 对象，通过该方法就可以找到这个 TextView 的根布局，即 RecyclerView 的直接子 View，这里是 RelativeLayout 对象。</p>
+<p><strong>应用场景：</strong></p>
+<p>我想到一种应用场景，通常我们点击事件都是作用于具体的某个 View，比如上面的 TextView，那我们在点击事件的回调中就只能拿到 TextView 对象而已。而通过这个方法，我们可以拿到这个 TextView 所属的 ItemView。拿到 ItemView 之后可以做些什么呢？</p>
+<p>看需求场景，反正总有些场景是需要用到根布局的。还有一点就是，RecyclerView 内部其实自定义了一个 LayoutParams，作用于它的直接子 View。所以只要我们可以拿到 RecyclerView 的直接子 View，就可以拿到它对应的 LayoutParams，那么就可以通过 LayoutParams 拿到一些这个 item 的信息，比如 position 等等。</p>
+<h4 id="5-9-findViewHolderXXX"><a href="#5-9-findViewHolderXXX" class="headerlink" title="5.9 findViewHolderXXX()"></a>5.9 findViewHolderXXX()</h4><p>既然 ViewHolder 携带着大量 Item 的相关信息，RecyclerView 自然也就提供了各种方式来获取 ViewHolder，这个系列的方法如下：</p>
+<ul>
+<li><strong>findViewHolderForAdapterPosition()</strong></li>
+<li><strong>findViewHolderForLayoutPosition()</strong></li>
+<li><strong>findViewHolderForItemId()</strong></li>
+<li><strong>findContainingViewHolder()</strong></li>
+</ul>
+<p>通过 position, id, view 都可以获取到对应的 ViewHolder 对象。</p>
+<h3 id="6-Recycler"><a href="#6-Recycler" class="headerlink" title="6. Recycler"></a>6. Recycler</h3><p>Recycler 是 RecyclerView 的一个内部类，主要职责就是处理回收复用相关工作的。</p>
+<p>回收复用的单位是 ViewHolder，至于 Item 移出屏幕是怎样回收，回收到哪里，Item 移进屏幕时是怎样复用，整个流程是先复用再回收，还是先回收再复用，还是两边同时进行等等一系列的工作都是交由 Recycler 来处理。</p>
+<p>关于回收复用机制的部分原理，之前已经梳理过一篇文章了：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9306b365da57">基于滑动场景解析RecyclerView的回收复用机制原理</a>，感兴趣的可以先去看看。</p>
+<p>本篇侧重点是介绍各个接口的含义和使用场景，至于回收复用机制，后续肯定还会继续深入去分析，敬请期待。</p>
+<h4 id="6-1-setItemViewCacheSize"><a href="#6-1-setItemViewCacheSize" class="headerlink" title="6.1 setItemViewCacheSize()"></a>6.1 setItemViewCacheSize()</h4><p>有看到上面链接那篇文章的应该就清楚，当 item 被移出屏幕外时，其实这个 item 的 ViewHolder 会被回收掉，而 Recycler 里有一种分级缓存的概念。</p>
+<p>分级缓存，说得白点，就是不同的容器，容器之间有优先级，回收时先将 ViewHolder 缓存到高优先级的容器中，容器满了的话，那就将容器腾出个位置来，被腾出来的 ViewHolder 这时就可以放到优先级较低的容器中。分级缓存的概念就是这样。</p>
+<p>移出屏幕的 ViewHolder 会被缓存到两个容器中，按优先级高到低分别是：<strong>mCachedViews</strong> 和 <strong>mRecyclerPool</strong></p>
+<p>该方法就是用于设置 <strong>mCachedViews</strong> 容器的大小，默认值为 2，可通过该方法随时改变缓存容器的大小。</p>
+<p><strong>应用场景</strong>：</p>
+<p>要搞清楚应用场景，那得先明白 <strong>mCachedViews</strong> 这一级的缓存有什么作用，建议还是到上面给出的链接的那篇文章看一看，就明白了。</p>
+<p>这里大概说一下，个人对于 <strong>mCachedViews</strong> 这一级缓存的理解：这一级的缓存仅仅就只是用来缓存而已，里面存储的 ViewHolder 并没有通用的能力。换句话说也就是，只有原来位置的 Item 可复用这级容器里的 ViewHolder，其他位置的 Item 没办法使用。效果就好像是 ViewPager 之类的缓存一样，所以我才说它仅仅只有缓存的功能。</p>
+<p>这样能达到的效果就是：当某个 Item 刚被移出屏幕外，下一步又立马移进屏幕时，此时并不会去触发到 Adapter 的 onBindXXX 的调用，也就是说，这一级缓存里的 ViewHolder 可直接 addView 到 RecyclerView 上面，不需要重新去设置数据，因为它原本携带的数据都还处于正常状态，并没有被重置掉。</p>
+<h4 id="6-2-setViewCacheExtension"><a href="#6-2-setViewCacheExtension" class="headerlink" title="6.2 setViewCacheExtension()"></a>6.2 setViewCacheExtension()</h4><p>当 Item 要被移进屏幕时，Recycler 会先去那些不需要重新调用 onBindViewHolder() 的缓存容器中寻找是否有可直接复用的 Item，如果没找到，那么会接着调用开发者自定义扩展的复用工作，如果在这里也没找到，那么才会去 RecyclerViewPool 中根据 type 来寻找可复用的，再没找到最后就直接调用 onCreateViewHolder() 新建一个来使用。</p>
+<p>先来看看开发者要怎么自定义扩展：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 我删了一些注释，留下一些困惑的点
+ * 1. Note that, Recycler never sends Views to this method to be cached. It is developers
+ * responsibility to decide whether they want to keep their Views in this custom cache
+ * or let the default recycling policy handle it.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">ViewCacheExtension</span> <span class="token punctuation">&#123;</span>
+	<span class="token comment">/**
+	 * 2.This method should not create a new View. Instead, it is expected to return
+	 * an already created View that can be re-used for the given type and position.
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token class-name">View</span> <span class="token function">getViewForPositionAndType</span><span class="token punctuation">(</span><span class="token class-name">Recycler</span> recycler<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">,</span> <span class="token keyword">int</span> type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>看着好像很简单是吧，就只需要实现一个方法，返回指定 position 和 type 下的 Item 的 View 即可，网上所有分析到回收复用机制时也全部都是这么一笔带过。</p>
+<p><strong>但实际上，存在很多困惑点，这个到底该怎么用？</strong></p>
+<p>注释 1 里说了，Recycler 永远也不会将 ItemView 发送到这个类里来缓存，然后还说由开发者自行决定是要自己维护这些缓存还说交由 Recycler 来处理。</p>
+<p><strong>困惑1：</strong>交由 Recycler 来处理我能理解，毕竟 Recycler 只在复用的过程中开了个接口给开发者扩展使用，但回收的过程并没有开任何接口给开发者扩展。也正是基于这点，我就不理解官方说的让开发者自行维护，怎么维护？</p>
+<p>注释 2 中，官方告诉我们在这个方法中，不要去新建一个新的 ItemView，而是直接从旧的里面拿一个复用。</p>
+<p><strong>困惑2：</strong>我又不知道怎么自己去维护 ViewHolder，那不新建一个 ItemView 又该如何使用，直接借助 Recycler？但 Recycler 不是只开放了 getViewForPosition()？本来内部在复用时就是自己调了这个方法，我们在这个方法内部走到开发者扩展自定义扩展的流程时再重新调一下？那不是就陷入嵌套循环里了？有什么意义或者应用场景么？</p>
+<p>最最困惑的一点，国内居然找不到任何一篇讲解如何使用这个自定义缓存的相关文章！？</p>
+<p>不清楚是由于他们文章的标题太过抽象没加入我的关键词过滤中，还是我关键词提取太烂，总之就是找不到任何一篇相关文章。所以，这小节先埋个坑，我打算后续抽时间自己来研究一下，到底应该如何使用自定义 RecyclerView 的缓存策略，到底都有哪些应用场景。</p>
+<h4 id="6-3-setRecycledViewPool"><a href="#6-3-setRecycledViewPool" class="headerlink" title="6.3 setRecycledViewPool()"></a>6.3 setRecycledViewPool()</h4><p>最后一级缓存就是 RecyclerViewPool，这个容器有三个特性：</p>
+<ul>
+<li>缓存到 RecyclerViewPool 中的 ViewHolder，携带的信息都会被重置，因此从这个容器中取 ViewHolder 去复用时，都会触发 <code>onBindViewHolder()</code> 重新绑定数据。</li>
+<li>多个 RecyclerView 可共用同一个 RecyclerViewPool 容器。</li>
+<li>该容器以 Item 的 type 区分缓存，每种 type 的默认存储容量为 5。</li>
+</ul>
+<p>一般当我们需要修改这个缓存容器的大小，或者需要设置多个 RecyclerView 共用一个 RecyclerViewPool 时才需要调用到该方法。并且，官方在注释中也给出一种应用场景：使用 ViewPager 时各页面中的 RecyclerView 有相同的 Item 布局结构。</p>
+<p><strong>应用场景：</strong></p>
+<p>我们来举个例子，就不用官方给的例子了，我额外补充一种场景：界面上存在多行可分别左右滑动的列表控件，即每行是一个 RecyclerView，每行里的 Item 布局样式一致，这时候就可以让每一行的 RecyclerView 共用一个 RecyclerViewPool 缓存池了，如下：</p>
+<p><img src="1240-7265972.png" alt="多行可局部滑动.png"></p>
+<p>以上布局的实现是外层一个竖直方向的 RecyclerView，它的每一个 Item 都是占据一行的水平方向的 RecyclerView，也就是嵌套 RecyclerView 的方式，实现可上下滑动且每一行均可左右滑动的效果。</p>
+<p>这里的每一行的 RecyclerView 里的每个 Item 项的样式均一致，那么这种场景下，可以让每一行的 RecyclerView 都共用同一个 RecyclerViewPool 缓存池。这样的好处是，当某一行被移出屏幕时，可以将这一行的每个卡位都回收起来，供其他行使用，而不至于每一行每次都是重新创建。</p>
+<p>但有些<strong>注意事项</strong>：</p>
+<ul>
+<li>外层 RecyclerView 缓存复用的应该仅仅是每一行的 RecyclerView 控件而已，不应该包括每一行 RecyclerView 内部的卡位控件，因为各行卡位的个数并不一定相同。</li>
+<li>对于外层 RecyclerView 来说，它的 Item 是每一行的 RecyclerView 控件，所以当某一行被移出屏幕时，它仅仅是将这一行的 RecyclerView 控件从它本身 remove 掉，并回收起来。因此，此时这一行的 RecyclerView 还是携带着它的卡位子 View 的，所以需要我们手动去将这些卡位回收、并从父控件上 remove 掉。</li>
+<li>这个操作可以在外层 RecyclerView 的 adapter 的 <code>onViewRecycled()</code> 回调中进行，也可以在内层每个 RecyclerView 的 adapter 的 <code>onViewDetachedFromWindow()</code> 回调中进行。</li>
+<li>移除并回收卡位可通过 <code>setAdapter(null)</code> 配合 RecyclerView 本身的 <code>removeAllView()</code> 或者 LayoutManager 的 <code>removeAllView()</code> 实现 。或者直接使用 LinearLayoutManager 的 <code>setRecycleChildrenOnDetach()</code> 功能。</li>
+</ul>
+<h4 id="6-4-setRecyclerListener"><a href="#6-4-setRecyclerListener" class="headerlink" title="6.4 setRecyclerListener()"></a>6.4 setRecyclerListener()</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//RecyclerView$Recycler#</span>
+<span class="token keyword">void</span> <span class="token function">dispatchViewRecycled</span><span class="token punctuation">(</span><span class="token class-name">ViewHolder</span> holder<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>mRecyclerListener <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		mRecyclerListener<span class="token punctuation">.</span><span class="token function">onViewRecycled</span><span class="token punctuation">(</span>holder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>mAdapter <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		mAdapter<span class="token punctuation">.</span><span class="token function">onViewRecycled</span><span class="token punctuation">(</span>holder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>所以，这个方法设置的监听 Item 的回收，回调的时机跟 adapter 的 onViewRecycled() 一模一样，都是在 mCachedViews 容器满了之后，放入 RecyclerViewPool 之前被回调。</p>
+<h3 id="7-ItemAnimator"><a href="#7-ItemAnimator" class="headerlink" title="7. ItemAnimator"></a>7. ItemAnimator</h3><p>RecyclerView 是支持对每个 item 做各种各样动画的，那么什么时候才该去执行这些 item 动画呢？说白了，也就是 adapter 数据源发生变化的时候，那么变化的方式无外乎就是四种：add, remove, change, move。相对应的，也就是这些状态时的 item 动画。</p>
+<p>所以当要自定义实现 ItemAnimator 时，需要实现的方法如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">animateAppearance</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ViewHolder</span> viewHolder<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> <span class="token class-name">ItemHolderInfo</span> preLayoutInfo<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ItemHolderInfo</span> postLayoutInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">animateDisappearance</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ViewHolder</span> viewHolder<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> <span class="token class-name">ItemHolderInfo</span> preLayoutInfo<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ItemHolderInfo</span> postLayoutInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">animatePersistence</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ViewHolder</span> viewHolder<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ItemHolderInfo</span> preLayoutInfo<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ItemHolderInfo</span> postLayoutInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">animateChange</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ViewHolder</span> oldHolder<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ViewHolder</span> newHolder<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ItemHolderInfo</span> preLayoutInfo<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ItemHolderInfo</span> postLayoutInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">runPendingAnimations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">endAnimation</span><span class="token punctuation">(</span><span class="token class-name">ViewHolder</span> item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">endAnimations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">isRunning</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>看起来，要实现一个自定义的 Item 好像很复杂，要实现这么多方法。网上这方面的文章已经非常多了，也都跟你说清了每个方法的含义是什么，在这里写些什么，甚至流程都帮你列出来了。</p>
+<p>但大伙会不会好奇，这帮牛人是咋这么清楚的呢？</p>
+<p>其实，Google 内部已经封装好了一个默认动画的实现，有时间大伙可以自己过一下源码，看看默认动画是怎么做的，理解清楚了后，举一反三下，其实也就懂了。</p>
+<p>我目前也不懂，但我就是带着这么一种想法，也是打算这么去做的。虽然跟着大神的文章，最后确实能实现想要的效果，但其实掌握并不是很牢，并不大清楚为什么需要这么写，只是因为大神说这里这么写，然后就这么写了。</p>
+<p>所以，有时间有精力，还是建议深入源码中去学习，自己梳理出来的知识终归是自己的。</p>
+<h4 id="7-1-SimpleItemAnimator"><a href="#7-1-SimpleItemAnimator" class="headerlink" title="7.1 SimpleItemAnimator"></a>7.1 SimpleItemAnimator</h4><p>当 adapter 数据源发生变化，通知了 RecyclerView 去刷新界面时，RecyclerView 会去通知 ItemAnimaotr 此时相应的动画行为。</p>
+<p>比如 add 了一个 Item，那么就会去触发 ItemAnimator 的 <code>animateAppearance()</code> 方法，并将这个 ItemView 在刷新前后不同的信息，如默认携带的信息是 RecyclerView 内部类 ItemHolderInfo，这个类里有关于这个 Item 的坐标信息。</p>
+<p>那么，开发者就可以在这些回调方法里自行判断刷新前后的 Item 的不同信息来决定是否需要进行相对应的动画。</p>
+<p><strong>而 SimpleItemAnimator 其实就是帮忙处理这件事，也就是说，它在四个回调中，如 <code>animateAppearance()</code> 中，根据 Item 前后的坐标信息来判断该 Item 需要进行的动画类型</strong>。</p>
+<p>比如 <code>animateAppearance()</code>：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">animateAppearance</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ViewHolder</span> viewHolder<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> <span class="token class-name">ItemHolderInfo</span> preLayoutInfo<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">ItemHolderInfo</span> postLayoutInfo<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>preLayoutInfo <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>preLayoutInfo<span class="token punctuation">.</span>left <span class="token operator">!=</span> postLayoutInfo<span class="token punctuation">.</span>left
+		<span class="token operator">||</span> preLayoutInfo<span class="token punctuation">.</span>top <span class="token operator">!=</span> postLayoutInfo<span class="token punctuation">.</span>top<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+         <span class="token comment">// slide items in if before/after locations differ</span>
+         <span class="token keyword">return</span> <span class="token function">animateMove</span><span class="token punctuation">(</span>viewHolder<span class="token punctuation">,</span> preLayoutInfo<span class="token punctuation">.</span>left<span class="token punctuation">,</span> preLayoutInfo<span class="token punctuation">.</span>top<span class="token punctuation">,</span>
+                postLayoutInfo<span class="token punctuation">.</span>left<span class="token punctuation">,</span> postLayoutInfo<span class="token punctuation">.</span>top<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+		 <span class="token keyword">return</span> <span class="token function">animateAdd</span><span class="token punctuation">(</span>viewHolder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对于 RecyclerView 回调了 <code>animateAppearance()</code> 方法后，SimpleItemAnimator 内部对其进行的分类，根据参数判断，最终是要执行 <code>animateMove()</code> 类型的动画，还是执行 <code>animateAdd()</code> 类型的动画。</p>
+<p>同理，对于另外三个回调方法，SimpleItemAnimator 内部同样对其进行了封装处理，简单的通过刷新前后 Item 的坐标信息来进行动画类型的区分。</p>
+<p>所以，这个类并没有实现任何动画的逻辑，它只是将动画的准备工作做好，简化开发者开发。所以，如果想要自定义 ItemAnimator，其实没必要从零开始继承自 ItemAnimator 自己写，是可以借助 SimpleItemAnimator 这个类的。</p>
+<h4 id="7-2-DefaultItemAnimator"><a href="#7-2-DefaultItemAnimator" class="headerlink" title="7.2 DefaultItemAnimator"></a>7.2 DefaultItemAnimator</h4><p>RecyclerView 默认有提供 Item 的动画，而 SimpleItemAnimator 只是处理跟动画无关的准备工作，那么具体的默认动画的实现就是在 DefaultItemAnimator 这个类中实现的了。</p>
+<p>先看一下这个类的结构：</p>
+<p><img src="recyclerview-summary-example-unkown-you-known/1240-20210401163625828.png" alt="DefaultItemAnimagtor结构.png"></p>
+<p>它是继承自 SimpleItemAnimator 的，我们如果想要自定义实现一些 Item 动画，需要写的东西，大概就跟上图类似。</p>
+<p>想要自定义 Item 动画，真的可以来参考、借鉴这个类的实现，能学到的东西很多。</p>
+<p>我也还没深入去仔细学习，大概过了一眼，这里就大概说下：</p>
+<p>这个类用了很多集合来维护各种不同类型的动画，在四个 <code>animateXXX()</code> 方法中通过集合记录相对应类型的动画和做了动画的初始化工作。</p>
+<p>然后在 <code>runPendingAnimations()</code> 方法中，依次遍历这些集合，将记录的动画取出来执行，动画的实现方式是通过 <code>View.animate()</code> 方式实现，这种方式的动画本质上是借助了 ValueAnimator 机制，在每帧的回调过程中手动调用 <code>setXXX()</code> 来实现的动画效果。具体分析可参考我之前写的一篇文章：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b43cf452afc1">View.animate()动画ViewPropertyAnimator原理解析</a>。</p>
+<p>大体上的流程原理就是这样，当然，这个类做的事肯定不止这些，还包括了集合的清理维护工作，动画的维护等等，所以很值得去借鉴学习一番。但这里就只给出大概的流程，本篇重点不在这里。</p>
+<p>下面就来列举下，默认实现的各类型的动画分别是什么：</p>
+<p><strong>animateAdd</strong> -&gt; 透明度 0 ~ 1 的动画，默认动画时长 120 ms</p>
+<p><strong>animateChange</strong> -&gt; 涉及两个 ItemView，旧的跟新的，默认动画时长 250ms</p>
+<p>旧 ItemView：透明度从原有值 ~ 0，位置从原坐标移动到新 ItemView 坐标的动画组合</p>
+<p>新 ItemView：透明度从 0 ~ 1，位置从旧 ItemView 坐标移动到新坐标的动画组合</p>
+<p><strong>animateMove</strong> -&gt; 从原坐标位置移动到新坐标位置的移动动画，默认动画时长 250 ms</p>
+<p><strong>animateRemove</strong> -&gt; 从原有透明度 ~ 0 的动画，默认动画时长 120 ms</p>
+<p>所以，RecyclerView 默认的 Item 动画其实也就透明度和移动动画两种，而且大多数情况下都只是单一的动画，只有 change 类型时才会是组合动画。</p>
+<p><strong>效果展示：</strong></p>
+<p>首先，可通过下列方式修改动画时长，这里将动画时长延长，方便查看效果</p>
+<pre class="line-numbers language-none"><code class="language-none">mRecyclerView.getItemAnimator().setAddDuration(1000);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="strip-20210401163626232.gif" alt="20180702_162126.gif"></p>
+<p>可以看到，动画基本就只有透明度动画跟移动动画两种。</p>
+<p>另外，只有通过 <code>notifyItemXXX()</code> 方式更新数据源时才会触发动画行为，如果是通过 <code>notifyDataSetChange()</code> 方式，则不会触发动画。</p>
+<h3 id="8-ItemDecoration"><a href="#8-ItemDecoration" class="headerlink" title="8. ItemDecoration"></a>8. ItemDecoration</h3><p>RecyclerView 支持为每个 Item 之间自定义间隔样式，是要空段距离，还是要以分割线隔开，还是要唯美唯幻的边框，想长啥样都行，自己写得出来就可以了，它给我们提供了这个接口。</p>
+<p>本节就先介绍下系统内置的几种样式，内置里一共有三个类继承该类，分别是 DividerItemDecoration，ItemTouchHelper，FastScroller。前两个都是 public 权限，最后一个包权限，下面分别看看它们都有哪些效果，最后再来看看如何自定义。</p>
+<h4 id="8-1-DividerItemDecoration"><a href="#8-1-DividerItemDecoration" class="headerlink" title="8.1 DividerItemDecoration"></a>8.1 DividerItemDecoration</h4><p>看一下这个类的注释：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * DividerItemDecoration is a &#123;@link RecyclerView.ItemDecoration&#125; that can be used as a divider
+ * between items of a &#123;@link LinearLayoutManager&#125;. It supports both &#123;@link #HORIZONTAL&#125; and
+ * &#123;@link #VERTICAL&#125; orientations.
+ * &lt;pre>
+ *     mDividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+ *             mLayoutManager.getOrientation());
+ *     recyclerView.addItemDecoration(mDividerItemDecoration);
+ * &lt;/pre>
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DividerItemDecoration</span> <span class="token keyword">extends</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>ItemDecoration</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">/**
+     * Sets the &#123;@link Drawable&#125; for this divider.
+     *
+     * @param drawable Drawable that should be used as a divider.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setDrawable</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">Drawable</span> drawable<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>drawable <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"Drawable cannot be null."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        mDivider <span class="token operator">=</span> drawable<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>怎么用，类注释也给我们示例了，有点可惜的是，它只能用于 LinearLayoutManager 这种布局，而 GridLayoutManager 继承自 LinearLayoutManager，所以它也可以用，但需要注意的是，它只有一个方向会生效。来看看如何使用和效果：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">DividerItemDecoration</span> itemDecoration <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DividerItemDecoration</span><span class="token punctuation">(</span>mContext<span class="token punctuation">,</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">.</span>HORIZONTAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+itemDecoration<span class="token punctuation">.</span><span class="token function">setDrawable</span><span class="token punctuation">(</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDrawable</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>divider_space<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mRecyclerView<span class="token punctuation">.</span><span class="token function">addItemDecoration</span><span class="token punctuation">(</span>itemDecoration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//R.drawable.divider_space</span>
+<span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>shape xmlns<span class="token operator">:</span>android<span class="token operator">=</span><span class="token string">"http://schemas.android.com/apk/res/android"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>size android<span class="token operator">:</span>width<span class="token operator">=</span><span class="token string">"20dp"</span> android<span class="token operator">:</span>height<span class="token operator">=</span><span class="token string">"20dp"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>shape<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们在 xml 中写宽度为 20dp 的空隙，然后调用 <code>setDrawable()</code> 应用，看看效果：</p>
+<p><img src="1240-20210401163625963.png" alt="空隙示例.png"></p>
+<p>这样就可以达到将 item 隔离开的效果了，中间这个空隙的样式你可以自己通过 xml 写，也可以直接使用图片，都可以，只要是 Drawable 类型的即可。</p>
+<p>虽然说，RecyclerView 不像 ListView 只要设置个属性就可以达到设置 Item 之间空隙的样式，但它也内置了基本的实现，其实也已经方便了我们的使用。</p>
+<h4 id="8-2-ItemTouchHelper"><a href="#8-2-ItemTouchHelper" class="headerlink" title="8.2 ItemTouchHelper"></a>8.2 <em>ItemTouchHelper</em></h4><p>这是一个工具类，也是 Google 为了方便开发人员实现 item 的拖拽和移动等等效果所提供的一个辅助工具类。借助这个类可以很容易实现 item 的侧滑删除、长按拖拽等功能。</p>
+<p>由于这部分我没有研究过，日常也较少接触，所以暂时先从网上搜索一篇文章，以下的效果图来自大神的博客，会给出链接，侵权删。后续有接触相关需求时再自行来研究一番。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wuyuxing24/article/details/78985026">推荐博客： ItemTouchHelper源码分析</a></p>
+<p><img src="strip.gif" alt="20180105202851329.gif"></p>
+<p><img src="recyclerview-summary-example-unkown-you-known/strip-20210401163626043.gif" alt="20180105202823469.gif"></p>
+<h4 id="8-3-FastScroller"><a href="#8-3-FastScroller" class="headerlink" title="8.3 FastScroller"></a>8.3 <em>FastScroller</em></h4><p>这个类也是继承自 ItemDecoration，但它的类权限只是包权限，不开放给外部使用，稍微看了下注释，说是用来处理动画以及快速滑动相关的支持，具体原理是什么，如何生效，留待后续深入研究时再来分析。</p>
+<h4 id="8-4-自定义ItemDecoration"><a href="#8-4-自定义ItemDecoration" class="headerlink" title="8.4 自定义ItemDecoration"></a>8.4 自定义ItemDecoration</h4><p>上面说过系统默认提供的 DividerItemDecoration 只支持用于 LinearLayoutManager，而如果用于 GridLayoutManager 时，只有一个方向会生效，那么下面我们就以 GridLayoutManager 为例，来看看，如何自定义写 ItemDecoration。</p>
+<p>用 GridLayoutManager 实现一个四列的布局，然后让除了四个边的 Item 外，内部的每个 Item 之间相互间隔 20 dp 的空隙。为了能更明显看出，将 20dp 的空隙用红色绘制出来。</p>
+<p>先来看下效果：</p>
+<ul>
+<li>4 列布局 &amp; 2 行布局</li>
+</ul>
+<p><img src="recyclerview-summary-example-unkown-you-known/strip-20210401163626269.gif" alt="20180619_200035.gif"></p>
+<p>代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyItemDecoration</span> <span class="token keyword">extends</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>ItemDecoration</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> spanCount<span class="token punctuation">;</span><span class="token comment">//几行或几列</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> orientation<span class="token punctuation">;</span><span class="token comment">//方向</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> itemSpace<span class="token punctuation">;</span><span class="token comment">//空隙大小</span>
+    
+    <span class="token keyword">private</span> <span class="token class-name">Rect</span> mBounds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Paint</span> mPaint<span class="token punctuation">;</span><span class="token comment">//用来将空隙绘制成红色的画笔</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">MyItemDecoration</span><span class="token punctuation">(</span><span class="token class-name">GridLayoutManager</span> gridLayoutManager<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        spanCount <span class="token operator">=</span> gridLayoutManager<span class="token punctuation">.</span><span class="token function">getSpanCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        orientation <span class="token operator">=</span> gridLayoutManager<span class="token punctuation">.</span><span class="token function">getOrientation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">initPaint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initPaint</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        mPaint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setAntiAlias</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setColor</span><span class="token punctuation">(</span><span class="token class-name">Color</span><span class="token punctuation">.</span>RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setItemSpace</span><span class="token punctuation">(</span><span class="token keyword">int</span> space<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        itemSpace <span class="token operator">=</span> space<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDraw</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span> c<span class="token punctuation">,</span> <span class="token class-name">RecyclerView</span> parent<span class="token punctuation">,</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>State</span> state<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        c<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">final</span> <span class="token keyword">int</span> childCount <span class="token operator">=</span> parent<span class="token punctuation">.</span><span class="token function">getChildCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> childCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">final</span> <span class="token class-name">View</span> child <span class="token operator">=</span> parent<span class="token punctuation">.</span><span class="token function">getChildAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            parent<span class="token punctuation">.</span><span class="token function">getLayoutManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDecoratedBoundsWithMargins</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> mBounds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            c<span class="token punctuation">.</span><span class="token function">drawRect</span><span class="token punctuation">(</span>mBounds<span class="token punctuation">,</span> mPaint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        c<span class="token punctuation">.</span><span class="token function">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getItemOffsets</span><span class="token punctuation">(</span><span class="token class-name">Rect</span> outRect<span class="token punctuation">,</span> <span class="token class-name">View</span> view<span class="token punctuation">,</span> <span class="token class-name">RecyclerView</span> parent<span class="token punctuation">,</span> <span class="token class-name">RecyclerView<span class="token punctuation">.</span>State</span> state<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//获取当前view的layoutPosition</span>
+        <span class="token keyword">int</span> itemPosition <span class="token operator">=</span> parent<span class="token punctuation">.</span><span class="token function">getChildLayoutPosition</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//计算该View位于哪一行哪一列</span>
+        <span class="token keyword">int</span> positionOfGroup <span class="token operator">=</span> itemPosition <span class="token operator">%</span> spanCount<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> itemGroup <span class="token operator">=</span> itemPosition <span class="token operator">/</span> spanCount<span class="token punctuation">;</span>
+		
+        <span class="token comment">//根据不同方向进行不同处理，最终效果都要实现除四周的View 外，内部的View之间横竖都以相同空隙间隔开</span>
+        <span class="token comment">//实现方式，以水平方向为例：</span>
+        <span class="token comment">//每个view的left和bottom都设置相同间隙</span>
+        <span class="token comment">//去掉第1列的left，和最后一行的bottom，也就实现了除四周外内部view都以相同间隙空隔开</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>orientation <span class="token operator">==</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">.</span>HORIZONTAL<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            outRect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>itemSpace<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> itemSpace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>itemGroup <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                outRect<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>positionOfGroup <span class="token operator">==</span> <span class="token punctuation">(</span>spanCount <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                outRect<span class="token punctuation">.</span>bottom <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>orientation <span class="token operator">==</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">.</span>VERTICAL<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            outRect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> itemSpace<span class="token punctuation">,</span> itemSpace<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>itemGroup <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                outRect<span class="token punctuation">.</span>top <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>positionOfGroup <span class="token operator">==</span> <span class="token punctuation">(</span>spanCount <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                outRect<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>注意事项</strong>：由于 GridLayoutManager 会根据设置的 Orientation 方向，默认为 VERTICAL 数值方向，以及 RecyclerView 的宽高模式来决定是否自动将某一方向的空隙平均分配给各 Item，这点需要注意一下。</p>
+<p>以上的例子想说明，如果要自定义写 Iiem 间的空隙，那么关键点在于重写两个方法：</p>
+<ul>
+<li><code>getItemOffsets()</code></li>
+<li><code>onDraw()</code></li>
+</ul>
+<p>第 1 个方法会携带很多参数，最重要的是 outRect 这个参数，它是一个 Rect 类型的对象，重写这个方法并设置了这个 outRect 的 left, top, right, bottom，就相当于设置了对应这个 view 的四周分别有多大的空隙。</p>
+<p>其他的参数是用来给我们辅助使用，如果不需要区分对待，每个 item 的四周都是同样的间隔空隙，那直接设置 outRect 即可。</p>
+<p>如果需要像上述例子那样，要求四周的 Item 的间隙要区别于内部 item 的间隙，那么就需要判断出这个 View 的位置，因此可以通过其他参数辅助配合实现。</p>
+<p><code>onDraw()</code> 这个方法就是用于绘制，注意这个方法参数只给了 RecyclerView，而绘制 item 的 Decoration 是针对于每个 item 而言的，所以内部需要通过遍历子 View 来对每个 item 进行绘制操作。</p>
+<p>当然，我这里写得很粗糙，考虑到性能优化方面，绘制过度方面等等因素，通常是需要使用到 canvas.clipRect()。这部分代码建议可以参考 DividerItemDecoration 内部的实现。</p>
+<h3 id="9-OnFlingListener"><a href="#9-OnFlingListener" class="headerlink" title="9. OnFlingListener"></a>9. <em>OnFlingListener</em></h3><p>RecyclerView 是可滑动控件，在平常使用过程中，我们可能就是上滑，下滑，左边滑滑，右边滑滑，能够刷新更多列表即可，通常都没太过去注意到滑动的细节。</p>
+<p>但其实，滑动策略也是支持多样化的。</p>
+<p>比如，如果想要实现不管以多大的加速度滑动，滑多长距离，最终停下来时都系统有个 ItemView 是居中显示的效果。</p>
+<p>再比如，只希望翻页滑动，当手指滑动距离小于翻页时，自动滑回原位进行翻页等等。</p>
+<p>这些滑动策略其实就可以直接借助内置的两个类来实现：LinearSnapHelper 和 PagerSnapHelper</p>
+<p><strong>ps：本来以为这种滑动策略也是支持由焦点触发的滑动行为的，最后测试时才发现，原来只支持手指触摸式的滑动行为。由于我是搞 Tv 应用开发的，Tv 应用没有触摸事件，只有遥控器事件，滑动是由于焦点的变化触发的滑动行为。而在 Tv 上，Item 居中的需求也非常常见，但利用这个是无法实现的。所以，我就先不打算深入了解这块了，后续有时间再来慢慢研究。附上鸿神公众号中的一篇文章，大伙看这篇就行了。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ef3a3b8d0a77">Android中使用RecyclerView + SnapHelper实现类似ViewPager效果</a></p>
+<p><img src="700.png" alt="img"></p>
+<h4 id="9-1-SnapHelper"><a href="#9-1-SnapHelper" class="headerlink" title="9.1 SnapHelper"></a>9.1 <em>SnapHelper</em></h4><h4 id="9-2-LinearSnapHelper"><a href="#9-2-LinearSnapHelper" class="headerlink" title="9.2 LinearSnapHelper"></a>9.2 <em>LinearSnapHelper</em></h4><h4 id="9-3-PagerSnapHelper"><a href="#9-3-PagerSnapHelper" class="headerlink" title="9.3 PagerSnapHelper"></a>9.3 <em>PagerSnapHelper</em></h4><!-- flag of hidden posts -->
                 
             </div>
             <hr/>
@@ -896,16 +1293,16 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
                                     <span class="chip bg-color">Android</span>
                                 </a>
                             
-                                <a href="/tags/%E8%BD%AC%E8%BD%BD/">
-                                    <span class="chip bg-color">转载</span>
+                                <a href="/tags/recyclerview/">
+                                    <span class="chip bg-color">recyclerview</span>
                                 </a>
                             
                                 <a href="/tags/%E5%88%97%E8%A1%A8/">
                                     <span class="chip bg-color">列表</span>
                                 </a>
                             
-                                <a href="/tags/recyclerview/">
-                                    <span class="chip bg-color">recyclerview</span>
+                                <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                    <span class="chip bg-color">转载</span>
                                 </a>
                             
                         </div>
@@ -1119,16 +1516,16 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
                         <span class="chip bg-color">Android</span>
                     </a>
                     
-                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
-                        <span class="chip bg-color">转载</span>
+                    <a href="/tags/recyclerview/">
+                        <span class="chip bg-color">recyclerview</span>
                     </a>
                     
                     <a href="/tags/%E5%88%97%E8%A1%A8/">
                         <span class="chip bg-color">列表</span>
                     </a>
                     
-                    <a href="/tags/recyclerview/">
-                        <span class="chip bg-color">recyclerview</span>
+                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">转载</span>
                     </a>
                     
                 </div>
@@ -1139,27 +1536,27 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2020/11/27/java-inner-class-action-and-android-handler-memory-leak/">
+                <a href="/2021/03/28/recyclerview-summary-example-unkown-you-known/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Java内部类四大作用 和 Android Handler内存泄漏原因">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="关于RecyclerView你知道的不知道的都在这了">
                         
-                        <span class="card-title">Java内部类四大作用 和 Android Handler内存泄漏原因</span>
+                        <span class="card-title">关于RecyclerView你知道的不知道的都在这了</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            力求将 RecyclerView 开放给开发人员的所有接口都体验一番，将 ReyclerView 常用的不常用的功能都试一下，为系统的研究、学习 RecyclerView 做准备
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-28
                             </span>
                         <span class="publish-author">
                             
@@ -1173,6 +1570,7 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1180,12 +1578,16 @@ mRecyclerView<span class="token punctuation">.</span><span class="token function
                         <span class="chip bg-color">Android</span>
                     </a>
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/recyclerview/">
+                        <span class="chip bg-color">recyclerview</span>
                     </a>
                     
-                    <a href="/tags/Memory-leak/">
-                        <span class="chip bg-color">Memory leak</span>
+                    <a href="/tags/%E5%88%97%E8%A1%A8/">
+                        <span class="chip bg-color">列表</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                        <span class="chip bg-color">转载</span>
                     </a>
                     
                 </div>

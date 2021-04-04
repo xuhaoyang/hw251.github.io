@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -431,13 +431,16 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Shadowsocks-libev-多端口配置方式"><a href="#Shadowsocks-libev-多端口配置方式" class="headerlink" title="Shadowsocks libev 多端口配置方式"></a>Shadowsocks libev 多端口配置方式</h1><h3 id="创建不同端口的配置文件"><a href="#创建不同端口的配置文件" class="headerlink" title="创建不同端口的配置文件"></a>创建不同端口的配置文件</h3><p>新建<code>/etc/shadowsocks-libev/config_x.json</code>文件</p>
-<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
     <span class="token property">"server"</span><span class="token operator">:</span><span class="token string">"server_ip"</span><span class="token punctuation">,</span>
     <span class="token property">"server_port"</span><span class="token operator">:</span> server_port<span class="token punctuation">,</span>
     <span class="token property">"local_port"</span><span class="token operator">:</span> <span class="token number">1080</span><span class="token punctuation">,</span>
@@ -445,54 +448,54 @@
     <span class="token property">"timeout"</span><span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span>
     <span class="token property">"method"</span><span class="token operator">:</span> <span class="token string">"aes-256-cfb"</span><span class="token punctuation">,</span>
     <span class="token property">"fast_open"</span><span class="token operator">:</span> <span class="token boolean">true</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="创建ss批量启动脚本"><a href="#创建ss批量启动脚本" class="headerlink" title="创建ss批量启动脚本"></a>创建ss批量启动脚本</h3><p>新建 <code>/usr/local/bin/shadowsocks-libev-autostart.sh</code> 文件</p>
-<pre><code>#!/bin/bash
+<pre class="line-numbers language-none"><code class="language-none">#!&#x2F;bin&#x2F;bash
 
-proc=/usr/local/bin/ss-server
-config_dir=/etc/shadowsocks-libev
-log_dir=/etc/shadowsocks-libev
+proc&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;ss-server
+config_dir&#x3D;&#x2F;etc&#x2F;shadowsocks-libev
+log_dir&#x3D;&#x2F;etc&#x2F;shadowsocks-libev
 
-arg=&quot; -v &quot;
+arg&#x3D;&quot; -v &quot;
 
-config_files=()
-files=$(ls $&#123;config_dir&#125;/config_*.json)
+config_files&#x3D;()
+files&#x3D;$(ls $&#123;config_dir&#125;&#x2F;config_*.json)
 
 for f in $&#123;files[@]&#125;
 do 
-   fn=$&#123;f##*/&#125;
-   nohup $proc -c $f $arg  &gt;&gt; $&#123;log_dir&#125;/$&#123;fn%.*&#125;.log 2&gt;&amp;1 &amp;
-done
-</code></pre>
-<h3 id="添加执行权限"><a href="#添加执行权限" class="headerlink" title="添加执行权限"></a>添加执行权限</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">chmod</span> 755 /usr/local/bin/shadowsocks-libev-autostart.sh
-</code></pre>
+   fn&#x3D;$&#123;f##*&#x2F;&#125;
+   nohup $proc -c $f $arg  &gt;&gt; $&#123;log_dir&#125;&#x2F;$&#123;fn%.*&#125;.log 2&gt;&amp;1 &amp;
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="添加执行权限"><a href="#添加执行权限" class="headerlink" title="添加执行权限"></a>添加执行权限</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> <span class="token number">755</span> /usr/local/bin/shadowsocks-libev-autostart.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="配置systemd自启动"><a href="#配置systemd自启动" class="headerlink" title="配置systemd自启动"></a>配置systemd自启动</h3><p>创建文件<code>/etc/systemd/system/sslibev.service</code></p>
-<pre><code>[Unit]
-Description=Shadowsocks-ssserver
-After=network.target
+<pre class="line-numbers language-none"><code class="language-none">[Unit]
+Description&#x3D;Shadowsocks-ssserver
+After&#x3D;network.target
 
 [Service]
-Type=forking
-TimeoutStartSec=3
-ExecStart=/usr/local/bin/shadowsocks-libev-autostart.sh
-Restart=always
+Type&#x3D;forking
+TimeoutStartSec&#x3D;3
+ExecStart&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;shadowsocks-libev-autostart.sh
+Restart&#x3D;always
 
 [Install]
-WantedBy=multi-user.target
-</code></pre>
-<p>注册systemd启动项，并运行</p>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">sudo</span> systemctl <span class="token function">enable</span> /etc/systemd/system/sslibev.service <span class="token comment" spellcheck="true">#注册自启动</span>
-$ <span class="token function">sudo</span> systemctl start sslibev     <span class="token comment" spellcheck="true"># 运行</span>
-</code></pre>
-<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>需要添加新端口的时候，新建<code>/etc/shadowsocks-libev/config_&#123;x&#125;.json</code>文件，如<code>config_1.json</code>、<code>config_2.json</code>，配置对应端口和密码，然后重启systemd的<code>sslibev</code>服务即可。</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><pre><code>$ sudo systemctl restart sslibev   # 重启sslibev服务
-$ sudo systemctl disable sslibev   # 停用sslibev自启动
-$ sudo rm /etc/systemd/system/sslibev.service   # 移除sslibev启动项
-$ systemctl status sslibev         # 查看运行状态
-$ ss -lnt   # 查看tcp端口接听状态
-</code></pre>
+WantedBy&#x3D;multi-user.target<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+
+<p>注册systemd启动项，并运行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> /etc/systemd/system/sslibev.service <span class="token comment">#注册自启动</span>
+$ <span class="token function">sudo</span> systemctl start sslibev     <span class="token comment"># 运行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>需要添加新端口的时候，新建<code>/etc/shadowsocks-libev/config_&#123;x&#125;.json</code>文件，如<code>config_1.json</code>、<code>config_2.json</code>，配置对应端口和密码，然后重启systemd的<code>sslibev</code>服务即可。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><pre class="line-numbers language-none"><code class="language-none">$ sudo systemctl restart sslibev   # 重启sslibev服务
+$ sudo systemctl disable sslibev   # 停用sslibev自启动
+$ sudo rm &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;sslibev.service   # 移除sslibev启动项
+$ systemctl status sslibev         # 查看运行状态
+$ ss -lnt   # 查看tcp端口接听状态<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
